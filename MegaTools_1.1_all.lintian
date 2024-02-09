@@ -1,10 +1,9 @@
 E: MegaTools: bad-package-name
 E: MegaTools: no-changelog usr/share/doc/MegaTools/changelog.gz (native package)
 E: MegaTools: package-not-lowercase
-E: MegaTools: script-without-interpreter [preinst]
 E: MegaTools: script-without-interpreter [prerm]
 E: MegaTools: subdir-in-usr-bin usr/bin/megatools/
-W: MegaTools: desktop-command-not-in-package usr/share/applications/MegaTools.desktop nohup
+W: MegaTools: desktop-command-not-in-package usr/share/applications/MegaTools.desktop bash
 W: MegaTools: extended-description-line-too-long line 1
 W: MegaTools: extended-description-line-too-long line 3
 W: MegaTools: non-standard-dir-perm usr/ 0775 != 0755
