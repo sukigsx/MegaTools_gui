@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# Ejecutar el comando df -h y guardar la salida en una variable
+echo -e "Comando: df -h\n" > /tmp/discos; df -h >> /tmp/discos; echo -e "\n Finalizada la informacion.\n" >> /tmp/discos
+
+while :
+do
+# Mostrar la salida en una ventana con Zenity
+opcion=$(zenity --text-info --filename=/tmp/discos --title="Informacion de discos - MegaTools" --ok-label="Atras" --cancel-label="Salir sin preguntar" --extra-button="Mas detalles" --extra-button="Menos detalles")
+
+    case $opcion in
+
+        "Mas detalles")
+            echo -e "Comando: lsblk -o\n" > /tmp/discos
+            lsblk -o NAME,SIZE,TYPE,FSTYPE,MOUNTPOINT | sed '1s/NAME/NOMBRE/; 1s/SIZE/TAMAÑO/; 1s/TYPE/TIPO/; 1s/FSTYPE/FORMATO/; 1s/MOUNTPOINT/PUNTO_DE_MONTAJE/' | column -t -c 20 >> /tmp/discos
+            ;;
+
+        "Menos detalles")
+            echo -e "Comando: df -h\n" > /tmp/discos; df -h >> /tmp/discos; echo -e "\n Finalizada la informacion.\n" >> /tmp/discos
+            ;;
+
+        *)
+            if [ $? = "1" ]; then
+                # Leer el PID del archivo para matar el script pricipal
+                uno_pid=$(</tmp/ProcesoPidDeMegatools)
+
+                # Matar el proceso de uno.sh
+                kill $uno_pid
+                rm /tmp/ProcesoPidDeMegatools
+                rm /tmp/discos
+                exit
+            else
+                rm /tmp/ProcesoPidDeMegatools
+                rm /tmp/discos
+                exit
+            fi
+        ;;
+    esac
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+#opcion=$(zenity --text-info --filename=/tmp/discos --title="MegaTools ( Diseñado por SUKIGSX )" \
+#--width=400 \
+#--height=550 \
+#--cancel-label="Salir sin preguntar" \
+#--ok-label="Atras" \
+#--extra-button="Mas detalles" \
+#--extra-button="Menos detalles" \
+#--extra-button="3")
+
+
+
+#echo -e "\nInformacion general de discos\n" >> /tmp/discos;  df -h >> /tmp/discos;  echo -e "\nFinalizada la informacion de discos" >> /tmp/discos
+
+#lsblk -o NAME,SIZE,TYPE,FSTYPE,MOUNTPOINT | sed '1s/NAME/NOMBRE/; 1s/SIZE/TAMAÑO/; 1s/TYPE/TIPO/; 1s/FSTYPE/FORMATO/; 1s/MOUNTPOINT/PUNTO_DE_MONTAJE/' | column -t -c 20 >> /tmp/discos.txt

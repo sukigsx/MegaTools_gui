@@ -12,6 +12,15 @@ wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz
 exit
 }
 
+z_rojo='<span foreground="red">' #rerror peligro
+z_azul_chillon='<span foreground="blue">'
+z_verde='<span foreground="green">' #general
+z_amarillo_chillon='<span foreground="yellow">' #avisos
+z_rosa='<span foreground="magenta">'
+z_turquesa='<span foreground="turquoise">'
+z_amarillo='<span foreground="gold">'
+z_fin='</span>'
+
 conexion(){
 if ping -c1 google.com &>/dev/null
 then
@@ -30,7 +39,7 @@ fi
 software_necesario(){
 var_software="NO"
 echo -e " Verificando software necesario:"
-software="which git diff ping figlet yad" #ponemos el foftware a instalar separado por espacion dentro de las comillas ( soft1 soft2 soft3 etc )
+software="which git diff ping figlet zenity neofetch lsblk" #ponemos el foftware a instalar separado por espacion dentro de las comillas ( soft1 soft2 soft3 etc )
 for paquete in $software
 do
 which $paquete 2>/dev/null 1>/dev/null 0>/dev/null #comprueba si esta el programa llamado programa
@@ -106,7 +115,7 @@ if [ $var_conexion = "SI" ]
 then
     var_conexion="SI"
     software_necesario
-    actualizar_script
+    #actualizar_script
 else
     var_conexion="NO"
     software_necesario
@@ -114,4 +123,95 @@ else
     var_actualizado="Imposible comprobar sin conexion a internet"
 fi
 
+# Función para mostrar el menú principal
+while :
+do
+    opcion=$(zenity --list --title="MegaTools ( Diseñado por SUKIGSX )" \
+    --text="Informacion relacionada al Megatools :\n Conexion a internet = $var_conexion\n software necesario para el correcto funcionamiento = $var_software\n Script esta actualizado = $var_actualizado\n\nInformacion de SUKIGSX: \n Correo electronico = susususus@popo.es\n Pagina web = repositorio.mbbsistemas.es\n" \
+    --column "Opciones del menu principal:" --column="Descripcion." \
+    "UTILIDADES PARA EL SISTEMA" "" \
+    "Utilidades generales" "Scripts utiles para realizar en tu sistema." \
+    "Instalacion de software" "Script para instalar programas en tu sistema." \
+    "" "" \
+    "INFORMACION DE TU SISTEMA" "" \
+    "Info general" "Te da la informacion mas importante de tu sistema" \
+    "Info de ips Lan/Wan" "Te da la informacion de ip publica y de tu red" \
+    "Info de discos" "Informacion de el uso de tus discos del sistema" \
+    "Info memoria ram" "Pues la informacion del uso de la memoria del sistema" \
+    "Info dispositivos de red" "Te la la informacion de tus tarjetas de red" \
+    --width=650 \
+    --height=650 \
+    --ok-label="Aceptar" \
+    --cancel-label="Salir" \
+    --extra-button="Web Sukigsx" \
+    --extra-button="Ayuda")
 
+    # Manejar la opción seleccionada
+    case $opcion in
+        "UTILIDADES PARA EL SISTEMA")
+            zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="Selecciona una opcion de UTILIDADES PARA TU SISTEMA."
+            ;;
+
+        "Utilidades generales")
+            zenity --info --title="Software-MegaTools ( Diseñado por SUKIGSX )" --text="Has seleccionado utilidades generales."
+            ;;
+
+        "Instalacion de software")
+            zenity --info --title="Opción 2" --text="Has seleccionado instalacion de software."
+            ;;
+
+        "INFORMACION DE TU SISTEMA")
+            zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="Selecciona una opcion de INFORMACION DE TU SISTEMA."
+            ;;
+
+        "Info general")
+            #mete el pid del proceso a un archivo para poder matar este script desde otro
+            echo $$ > /tmp/ProcesoPidDeMegatools
+            bash InformacionGeneral
+            ;;
+
+        "Info de ips Lan/Wan")
+            #mete el pid del proceso a un archivo para poder matar este script desde otro
+            echo $$ > /tmp/ProcesoPidDeMegatools
+            bash InfoDeIpsLanWan
+            ;;
+
+        "Info de discos")
+            #mete el pid del proceso a un archivo para poder matar este script desde otro
+            echo $$ > /tmp/ProcesoPidDeMegatools
+            bash InfoDeDiscos
+            ;;
+
+        "Info memoria ram")
+            #mete el pid del proceso a un archivo para poder matar este script desde otro
+            echo $$ > /tmp/ProcesoPidDeMegatools
+            bash InfoMemoriaRam
+            ;;
+
+        "Info dispositivos de red")
+            zenity --info --title="Opción 2" --text="Has seleccionado info dispositivos de red."
+            ;;
+
+        "Web Sukigsx")
+            zenity --text-info --title="Ayuda-MegaTools ( Diseñado por SUKIGSX )" --html --url="https://repositorio.mbbsistemas.es" --ok-label="Aceptar" --cancel-label="Atras" --width=10000 --height=10000 2>/dev/null
+            ;;
+
+        "Ayuda")
+            zenity --info --title="Ayuda-MegaTools ( Diseñado por SUKIGSX )" --text="Has seleccionado la Ayuda."
+            ;;
+
+        *)
+            if [ $? -eq 0 ]; then
+                zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+            else
+                zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+                if [ $? -eq 0 ]; then
+                    exit 0
+                fi
+            fi
+            ;;
+    esac
+done
+
+
+#neofetch --off | sed -r "s/\x1B\[[0-9;]*[JKmsu]//g" | sed '1,2d' | head -n -6

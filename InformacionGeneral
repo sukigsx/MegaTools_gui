@@ -1,0 +1,24 @@
+#!/bin/bash
+
+echo -e "Informacion del sistema de $(whoami)\n" >> /tmp/InformacionGeneral; neofetch --off | sed -r "s/\x1B\[[0-9;]*[JKmsu]//g" | sed '1,2d' | head -n -6 >> /tmp/InformacionGeneral; echo -e "\nFin de la informacion" >> /tmp/InformacionGeneral
+zenity --text-info --filename=/tmp/InformacionGeneral --title="Informacion general - MegaTools" \
+--auto-scroll \
+--width=650 \
+--height=650 \
+--cancel-label="Salir sin preguntar" \
+--ok-label="Atras"
+
+
+if [ $? = "1" ]; then
+
+    # Leer el PID del archivo para matar el script pricipal
+    uno_pid=$(</tmp/ProcesoPidDeMegatools)
+
+    # Matar el proceso de uno.sh
+    kill $uno_pid
+    rm /tmp/InformacionGeneral
+    rm /tmp/ProcesoPidDeMegatools
+    exit
+fi
+rm /tmp/InformacionGeneral
+rm /tmp/ProcesoPidDeMegatools

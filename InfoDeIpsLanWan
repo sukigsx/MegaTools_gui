@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo -e " Estas son tus ips:\n\n - Ip WAN es: $(wget -qO- ifconfig.me)\n - Ip LAN es: $(hostname -I)" | zenity --text-info --title="Informacion de Ips Lan/Wan - MegaTools" --width=350 --height=200 --cancel-label="Salir sin preguntar" --ok-label="Atras" --width=650
+
+
+if [ $? = "1" ]; then
+
+    # Leer el PID del archivo para matar el script pricipal
+    uno_pid=$(</tmp/ProcesoPidDeMegatools)
+
+    # Matar el proceso de uno.sh
+    kill $uno_pid
+    rm /tmp/ProcesoPidDeMegatools
+    exit
+fi
+rm /tmp/ProcesoPidDeMegatools
