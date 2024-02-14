@@ -189,7 +189,9 @@ do
             ;;
 
         "Info dispositivos de red")
-            zenity --info --title="Opción 2" --text="Has seleccionado info dispositivos de red."
+            #mete el pid del proceso a un archivo para poder matar este script desde otro
+            echo $$ > /tmp/ProcesoPidDeMegatools
+            bash InfoDispositivosDeRed
             ;;
 
         "Web Sukigsx")

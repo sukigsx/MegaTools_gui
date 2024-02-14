@@ -37,30 +37,3 @@ opcion=$(zenity --text-info --filename=/tmp/discos --title="Informacion de disco
         ;;
     esac
 done
-
-
-
-
-
-
-
-
-
-
-
-
-
-#opcion=$(zenity --text-info --filename=/tmp/discos --title="MegaTools ( Diseñado por SUKIGSX )" \
-#--width=400 \
-#--height=550 \
-#--cancel-label="Salir sin preguntar" \
-#--ok-label="Atras" \
-#--extra-button="Mas detalles" \
-#--extra-button="Menos detalles" \
-#--extra-button="3")
-
-
-
-#echo -e "\nInformacion general de discos\n" >> /tmp/discos;  df -h >> /tmp/discos;  echo -e "\nFinalizada la informacion de discos" >> /tmp/discos
-
-#lsblk -o NAME,SIZE,TYPE,FSTYPE,MOUNTPOINT | sed '1s/NAME/NOMBRE/; 1s/SIZE/TAMAÑO/; 1s/TYPE/TIPO/; 1s/FSTYPE/FORMATO/; 1s/MOUNTPOINT/PUNTO_DE_MONTAJE/' | column -t -c 20 >> /tmp/discos.txt
