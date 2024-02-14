@@ -1,0 +1,21 @@
+ #!/bin/bash
+
+# Nombre del archivo donde se guardará la salida de ethtool
+output_file="ethtool_info.txt"
+
+# Limpiar el archivo de salida si ya existe
+> "$output_file"
+
+# Obtener una lista de todas las interfaces de red
+interfaces=$(ls /sys/class/net/)
+
+# Recorrer cada interfaz y ejecutar ethtool sobre ellas
+for interface in $interfaces; do
+    echo "Informacion de la Tarjeta de red : $interface" >> "$output_file"
+    ethtool "$interface" >> "$output_file"
+    echo "" >> "$output_file"
+    echo "Fin de la informacion de la tarjeta de red $interface" >> "$output_file"
+    echo "" >> "$output_file"
+done
+
+echo "Información de ethtool guardada en $output_file"
