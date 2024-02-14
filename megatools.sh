@@ -115,7 +115,7 @@ if [ $var_conexion = "SI" ]
 then
     var_conexion="SI"
     software_necesario
-    #actualizar_script
+    actualizar_script
 else
     var_conexion="NO"
     software_necesario
