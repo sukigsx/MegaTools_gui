@@ -139,6 +139,8 @@ do
     "Info de discos" "Informacion de el uso de tus discos del sistema" \
     "Info memoria ram" "Pues la informacion del uso de la memoria del sistema" \
     "Info dispositivos de red" "Te la la informacion de tus tarjetas de red" \
+    "" "" \
+    "Crear lanzador" "Te crea un lanzador en tu escritorio." \
     --width=650 \
     --height=650 \
     --ok-label="Aceptar" \
@@ -189,17 +191,28 @@ do
             ;;
 
         "Info dispositivos de red")
-            #mete el pid del proceso a un archivo para poder matar este script desde otro
-            echo $$ > /tmp/ProcesoPidDeMegatools
+
             bash InfoDispositivosDeRed
             ;;
 
         "Web Sukigsx")
-            zenity --text-info --title="Ayuda-MegaTools ( Diseñado por SUKIGSX )" --html --url="https://repositorio.mbbsistemas.es" --ok-label="Aceptar" --cancel-label="Atras" --width=10000 --height=10000 2>/dev/null
+            zenity --text-info --title="Ayuda-MegaTools ( Diseñado por SUKIGSX )" --html --url="https://repositorio.mbbsistemas.es" --ok-label="Salir" --cancel-label="Atras" --width=10000 --height=10000 2>/dev/null
+            if [ $? = 0 ]; then
+                zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+                if [ $? -eq 0 ]; then
+                    exit 0
+                fi
+            fi
             ;;
 
         "Ayuda")
-            zenity --info --title="Ayuda-MegaTools ( Diseñado por SUKIGSX )" --text="Has seleccionado la Ayuda."
+            zenity --text-info --title="Ayuda - MegaTools" --filename=ayuda --font="DejaVu Sans Mono" --width=650 --height=650
+            ;;
+
+        "Crear lanzador")
+            #mete el pid del proceso a un archivo para poder matar este script desde otro
+            echo $$ > /tmp/ProcesoPidDeMegatools
+            bash CrearLanzador
             ;;
 
         *)
@@ -214,6 +227,3 @@ do
             ;;
     esac
 done
-
-
-#neofetch --off | sed -r "s/\x1B\[[0-9;]*[JKmsu]//g" | sed '1,2d' | head -n -6
