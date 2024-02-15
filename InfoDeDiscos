@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Ejecutar el comando df -h y guardar la salida en una variable
-echo -e "Comando: df -h\n" > /tmp/discos; df -h >> /tmp/discos; echo -e "\n Finalizada la informacion.\n" >> /tmp/discos
+echo -e "Comando: df -h\n" > /tmp/discos; df -h >> /tmp/discos; echo -e "\nFinalizada la informacion.\n" >> /tmp/discos
 
 while :
 do
 # Mostrar la salida en una ventana con Zenity
-opcion=$(zenity --text-info --filename=/tmp/discos --title="Informacion de discos - MegaTools" --ok-label="Atras" --cancel-label="Salir sin preguntar" --extra-button="Mas detalles" --extra-button="Menos detalles")
+opcion=$(zenity --text-info --filename=/tmp/discos --title="Informacion de discos - MegaTools" --ok-label="Atras" --cancel-label="Salir sin preguntar" --extra-button="Mas detalles" --extra-button="Menos detalles" --font="DejaVu Sans Mono" --width=800 --height=450)
 
     case $opcion in
 

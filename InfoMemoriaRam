@@ -1,9 +1,9 @@
 #!/bin/bash
 # Ejecutar el comando df -h y guardar la salida en una variable
-echo -e "Comando: free -h\n" > /tmp/memoria; free -h >> /tmp/memoria; echo -e "\n Finalizada la informacion.\n" >> /tmp/memoria
+echo -e "Comando: free -h\n" > /tmp/memoria; free -h >> /tmp/memoria; echo -e "\nFinalizada la informacion.\n" >> /tmp/memoria
 
 # Mostrar la salida en una ventana con Zenity
-zenity --text-info --filename=/tmp/memoria --title="Informacion de memoria ram - MegaTools" --ok-label="Atras" --cancel-label="Salir sin preguntar" --width=450 --height=300
+zenity --text-info --filename=/tmp/memoria --title="Informacion de memoria ram - MegaTools" --ok-label="Atras" --cancel-label="Salir sin preguntar" --font="DejaVu Sans Mono" --width=800 --height=450
 
 if [ $? = "1" ]; then
     # Leer el PID del archivo para matar el script pricipal

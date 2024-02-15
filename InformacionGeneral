@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "Informacion del sistema de $(whoami)\n" >> /tmp/InformacionGeneral; neofetch --off | sed -r "s/\x1B\[[0-9;]*[JKmsu]//g" | sed '1,2d' | head -n -6 >> /tmp/InformacionGeneral; echo -e "\nFin de la informacion" >> /tmp/InformacionGeneral
+echo -e "Informacion del sistema de $(whoami):\n" >> /tmp/InformacionGeneral; neofetch --off | sed -r "s/\x1B\[[0-9;]*[JKmsu]//g" | sed '1,2d' | head -n -6 >> /tmp/InformacionGeneral; echo -e "\nFin de la informacion" >> /tmp/InformacionGeneral
 zenity --text-info --filename=/tmp/InformacionGeneral --title="Informacion general - MegaTools" \
 --auto-scroll \
 --width=650 \
