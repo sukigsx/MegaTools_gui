@@ -127,7 +127,7 @@ fi
 while :
 do
     opcion=$(zenity --list --title="MegaTools ( Diseñado por SUKIGSX )" \
-    --text="Informacion relacionada al Megatools :\n Conexion a internet = $var_conexion\n software necesario para el correcto funcionamiento = $var_software\n Script esta actualizado = $var_actualizado\n\nInformacion de SUKIGSX: \n Correo electronico = susususus@popo.es\n Pagina web = repositorio.mbbsistemas.es\n" \
+    --text="Informacion relacionada al Megatools :\n Conexion a internet = $var_conexion\n software necesario para el correcto funcionamiento = $var_software\n Script esta actualizado = $var_actualizado\n\nInformacion de SUKIGSX: \n Correo electronico = scripts@mbbsistemas.es\n Pagina web = https://repositorio.mbbsistemas.es\n" \
     --column "Opciones del menu principal:" --column="Descripcion." \
     "UTILIDADES PARA EL SISTEMA" "" \
     "Utilidades generales" "Scripts utiles para realizar en tu sistema." \
