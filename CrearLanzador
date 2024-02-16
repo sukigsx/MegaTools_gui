@@ -3,7 +3,7 @@
 
 while :
 do
-    opcion=$(zenity --list --title="Crear lanzador - MegaTools ( Diseñado por SUKIGSX )" \
+    opcion=$(zenity --list --title="Crear lanzador - MegaTools ( Diseñado por SUKIGSX xxxxxx)" \
     --text="Informacion relacionada al Megatools" \
     --column "Opciones para crear el lanzador:" --column="Descripcion." \
     "Crear el lanzador" "Crea el lanzador en tu escritorio" \
