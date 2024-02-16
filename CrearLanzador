@@ -23,19 +23,15 @@ then
     rm -R /tmp/comprobar
 else
     #hay que actualizar, comprueba y actualiza
-    echo ""
-    echo -e "${amarillo} EL script${borra_colores} $0 ${amarillo}NO esta actualizado.${borra_colores}"
-    echo -e "${verde} Se procede a su actualizacion automatica.${borra_colores}"
-    sleep 3
+    #echo ""
+    zenity --warning --title="Megatools - ( Diseñado por SIKIGSX )" --text="Se va a proceder a la actualizacion del componente $0 de forma automatica."
     mv /tmp/comprobar/$archivo_local $descarga
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
-    echo ""
-    echo -e "${verde} El script se ha actualizado.${borra_colores}"
-    sleep 2
+    #echo ""
+    #echo -e "${verde} El script se ha actualizado.${borra_colores}"
+    #sleep 2
     exit
-    #kill -9 $(ps -o ppid= -p $$)
-    #xdotool windowkill `xdotool getactivewindow`
 fi
 }
 
