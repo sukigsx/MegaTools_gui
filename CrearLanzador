@@ -76,6 +76,6 @@ do
                     exit 0
                 fi
             fi
-        ;;
+            ;;
     esac
 done
