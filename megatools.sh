@@ -98,7 +98,7 @@ else
     echo -e "${verde} Se procede a su actualizacion automatica.${borra_colores}"
     sleep 3
     #mv /tmp/comprobar/$archivo_local $descarga
-    mv /tmp/comprobar/* $descarga
+    mv /tmp/comprobar/*.* $descarga
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
     echo ""
