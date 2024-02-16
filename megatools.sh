@@ -71,7 +71,7 @@ done
 }
 
 actualizar_script(){
-archivo_local="*" # Nombre del archivo local
+archivo_local="version" # Nombre del archivo local
 ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
 
 # Obtener la ruta del script
