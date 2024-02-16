@@ -10,6 +10,7 @@ do
     "Borrar el lanzador" "Borra el lanzador de tu escritorio." \
     --width=650 \
     --height=650 \
+    --extra-buton="Salir sin preguntar"
     --ok-label="Aceptar" \
     --cancel-label="Atras")
 
@@ -67,14 +68,19 @@ do
             fi
             ;;
 
+        "Salir sin preguntar")
+            # Leer el PID del archivo para matar el script pricipal
+            uno_pid=$(</tmp/ProcesoPidDeMegatools)
+
+            # Matar el proceso de uno.sh
+            kill $uno_pid
+            exit
+
         *)
             if [ $? -eq 0 ]; then
                 zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
             else
-                zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
-                if [ $? -eq 0 ]; then
-                    exit 0
-                fi
+                exit 0
             fi
             ;;
     esac
