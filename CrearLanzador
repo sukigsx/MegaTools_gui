@@ -10,7 +10,7 @@ do
     "Borrar el lanzador" "Borra el lanzador de tu escritorio." \
     --width=650 \
     --height=650 \
-    --extra-buton="Salir sin preguntar" \
+    --extra-button="Salir sin preguntar" \
     --ok-label="Aceptar" \
     --cancel-label="Atras")
 
