@@ -24,7 +24,7 @@ then
 else
     #hay que actualizar, comprueba y actualiza
     #echo ""
-    zenity --warning --title="Megatools - ( Diseñado por SIKIGSX )" --text="Se va a proceder a la actualizacion del componente $0 de forma automatica."
+    zenity --warning --title="Megatools - ( Diseñado por SIKIGSX )" --text="Se va a proceder a la actualizacion del componente $0 de forma automatica.."
     mv /tmp/comprobar/$archivo_local $descarga
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
