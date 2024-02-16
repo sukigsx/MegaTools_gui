@@ -70,6 +70,7 @@ var_software="SI"
 done
 }
 
+
 actualizar_script(){
 archivo_local="megatools.sh" # Nombre del archivo local
 ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
