@@ -42,17 +42,17 @@ do
     opcion=$(zenity --list --title="Crear lanzador - MegaTools ( Diseñado por SUKIGSX )" \
     --text="Informacion relacionada al Megatools" \
     --column "Opciones para crear el lanzador:" --column="Descripcion." \
-    "Crear un lanzador" "Crea el lanzador en tu escritorio" \
-    "Borrar el lanzador" "Borra el lanzador de tu escritorio." \
+    "Crear lanzador" "Crea el lanzador en tu escritorio" \
+    "Borrar lanzador" "Borra el lanzador de tu escritorio." \
     --width=650 \
-    --height=150 \
+    --height=250 \
     --extra-button="Salir sin preguntar" \
     --ok-label="Aceptar" \
     --cancel-label="Atras")
 
     # Manejar la opción seleccionada
     case $opcion in
-        "Crear un lanzador")
+        "Crear lanzador")
             #recopila la ruta de donde esta el script
             ruta_script=$(dirname "$(readlink -f "$0")")
             #comprueba que exista la carpeta Escritorio
@@ -83,7 +83,7 @@ do
             zenity --info --title="MegaTools ( Diseñado por SUKIGSX )" --text="Lanzador creado en tu escritorio." --width=200
             ;;
 
-        "Borrar el lanzador")
+        "Borrar lanzador")
             #comprueba que exista la carpeta Escritorio
             if [ -d /home/$(whoami)/Escritorio/ ];then
                 ruta_lanzador=/home/$(whoami)/Escritorio
