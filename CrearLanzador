@@ -80,7 +80,7 @@ do
             echo 'X-DBUS-StartupType=none' >> $ruta_lanzador/MegaTools.desktop
             echo 'X-KDE-SubstituteUID=false' >> $ruta_lanzador/MegaTools.desktop
             echo 'X-KDE-Username=' >> $ruta_lanzador/MegaTools.desktop
-            zenity --info --title="MegaTools ( Diseñado por SUKIGSX )" --text="Lanzador creado en tu escritorio." --width=200
+            zenity --info --title="MegaTools ( Diseñado por SUKIGSX )" --text="Lanzador creado en tu escritorio." --width=300
             ;;
 
         "Borrar lanzador")
