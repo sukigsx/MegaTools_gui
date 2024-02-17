@@ -91,7 +91,7 @@ do
                 ruta_lanzador=/home/$(whoami)/Desktop
             fi
 
-            if [ -f $ruta_lanzador/crear_prompt.desktop ] ;then
+            if [ -f $ruta_lanzador/MegaTools.desktop ] ;then
                 zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿Seguro que quieres borrar el lanzador?" --cancel-label="No" --ok-label="Si" --width=200
                 if [ $? = 0 ]; then
                     rm $ruta_lanzador/MegaTools.desktop
