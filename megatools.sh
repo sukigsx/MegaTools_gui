@@ -206,7 +206,7 @@ do
             ;;
 
         "Ayuda")
-            zenity --text-info --title="Ayuda - MegaTools" --filename=ayuda --font="DejaVu Sans Mono" --width=650 --height=650
+            zenity --text-info --title="Ayuda - MegaTools" --filename=Ayuda --font="DejaVu Sans Mono" --width=650 --height=650
             ;;
 
         "Crear lanzador")
