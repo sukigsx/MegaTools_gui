@@ -45,7 +45,7 @@ do
     "Crear un lanzador" "Crea el lanzador en tu escritorio" \
     "Borrar el lanzador" "Borra el lanzador de tu escritorio." \
     --width=650 \
-    --height=350 \
+    --height=150 \
     --extra-button="Salir sin preguntar" \
     --ok-label="Aceptar" \
     --cancel-label="Atras")
