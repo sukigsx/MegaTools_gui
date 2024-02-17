@@ -39,7 +39,7 @@ actualizar_script
 
 while :
 do
-    opcion=$(zenity --list --title="Crear lanzador - MegaTools ( Diseñado por SUKIGSX ) info" \
+    opcion=$(zenity --list --title="Crear lanzador - MegaTools ( Diseñado por SUKIGSX )" \
     --text="Informacion relacionada al Megatools" \
     --column "Opciones para crear el lanzador:" --column="Descripcion." \
     "Crear el lanzador" "Crea el lanzador en tu escritorio" \
