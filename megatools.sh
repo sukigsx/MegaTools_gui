@@ -140,7 +140,7 @@ do
     "Info memoria ram" "Pues la informacion del uso de la memoria del sistema" \
     "Info dispositivos de red" "Te la la informacion de tus tarjetas de red" \
     "" "" \
-    "Crear lanzador" "Te crea un lanzador en tu escritorio." \
+    "Crear/Borrar lanzador" "Te crea o brra el lanzador de tu escritorio." \
     --width=650 \
     --height=650 \
     --ok-label="Aceptar" \
@@ -210,7 +210,7 @@ do
             zenity --text-info --title="Ayuda - MegaTools" --filename=Ayuda --font="DejaVu Sans Mono" --width=650 --height=650
             ;;
 
-        "Crear lanzador")
+        "Crear/Borrar lanzador")
             #mete el pid del proceso a un archivo para poder matar este script desde otro
             echo $$ > /tmp/ProcesoPidDeMegatools
             bash CrearLanzador
