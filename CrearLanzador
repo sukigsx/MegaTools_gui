@@ -42,10 +42,10 @@ do
     opcion=$(zenity --list --title="Crear lanzador - MegaTools ( Diseñado por SUKIGSX )" \
     --text="Informacion relacionada al Megatools" \
     --column "Opciones para crear el lanzador:" --column="Descripcion." \
-    "Crear el lanzador" "Crea el lanzador en tu escritorio" \
+    "Crear un lanzador" "Crea el lanzador en tu escritorio" \
     "Borrar el lanzador" "Borra el lanzador de tu escritorio." \
     --width=650 \
-    --height=650 \
+    --height=350 \
     --extra-button="Salir sin preguntar" \
     --ok-label="Aceptar" \
     --cancel-label="Atras")
