@@ -95,9 +95,9 @@ do
                 zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿Seguro que quieres borrar el lanzador?" --cancel-label="No" --ok-label="Si" --width=200
                 if [ $? = 0 ]; then
                     rm $ruta_lanzador/MegaTools.desktop
-                    zenity --info --title="MegaTools ( Diseñado por SUKIGSX )" --text="Lanzador borrado." --width=200 --timeout=3
+                    zenity --info --title="MegaTools ( Diseñado por SUKIGSX )" --text="Lanzador borrado." --width=300 --timeout=3
                 else
-                    zenity --info --title="MegaTools ( Diseñado por SUKIGSX )" --text="Cancelado. No se borra el lanzador." --width=200 --timeout=3
+                    zenity --info --title="MegaTools ( Diseñado por SUKIGSX )" --text="Cancelado. No se borra el lanzador." --width=300 --timeout=3
                 fi
             else
                 zenity --info --title="MegaTools ( Diseñado por SUKIGSX )" --text="No existe lanzador." --width=300 --timeout=3
