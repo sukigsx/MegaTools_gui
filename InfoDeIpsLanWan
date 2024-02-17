@@ -1,5 +1,42 @@
 #!/bin/bash
 
+actualizar_script(){
+archivo_local="InfoDeIpsLanWan" # Nombre del archivo local
+ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
+
+# Obtener la ruta del script
+descarga=$(dirname "$(readlink -f "$0")")
+#descarga="/home/$(whoami)/scripts"
+git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
+
+diff $descarga/$archivo_local /tmp/comprobar/$archivo_local >/dev/null 2>&1
+
+
+if [ $? = 0 ]
+then
+    #esta actualizado, solo lo comprueba
+    echo ""
+    #echo -e "${verde} El script${borra_colores} $0 ${verde}esta actualizado.${borra_colores}"
+    #echo ""
+    var_actualizado="SI"
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
+else
+    #hay que actualizar, comprueba y actualiza
+    #echo ""
+    zenity --warning --title="Megatools - ( Diseñado por SIKIGSX )" --text="Se va a proceder a la actualizacion del componente $0 de forma automatica.\nCargar de nuevo Info de ips Lan/Wan." --width=650
+    mv /tmp/comprobar/$archivo_local $descarga
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
+    #echo ""
+    #echo -e "${verde} El script se ha actualizado.${borra_colores}"
+    #sleep 2
+    exit
+fi
+}
+
+actualizar_script
+
 echo -e " Estas son tus ips:\n - Ip WAN es: $(wget -qO- ifconfig.me)\n - Ip LAN es: $(hostname -I)" | zenity --text-info --title="Informacion de Ips Lan/Wan - MegaTools" --width=350 --height=200 --cancel-label="Salir sin preguntar" --ok-label="Atras" --width=650
 
 
