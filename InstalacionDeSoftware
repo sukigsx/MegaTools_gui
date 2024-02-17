@@ -1,0 +1,49 @@
+#!/bin/bash
+
+
+
+while :
+do
+    opcion=$(zenity --list --checklist --title="Instalacion de software - MegaTools" \
+    --text="Listado de software disponible en repositorios para tu distribucion basada en Debian. " \
+    --column "Seleciona uno o varios" --column="Software disponible." --column="Descripcion"\
+    false "NAVEGADORES" "Si seleccionas esta, instalara todos los navegadores" \
+    FALSE "AUDIO - VIDEO" "" \
+    FALSE "ENTORNOS GRAFICOS LINUX" "" \
+    FALSE "UTILIDADES" "" \
+    FALSE "OFIMATICA" "" \
+    FALSE "SERVIDORES" "" \
+    FALSE "GESTOR DE PAQUETES" "" \
+    FALSE "PARA TU TERMINAL" "" \
+    FALSE "DISCOS" "" \
+    FALSE "JUEGOS" "" \
+    FALSE "SEGURIDAD" "" \
+    FALSE "MENSAJERIA" "" \
+    --width=850 \
+    --height=650 \
+    --ok-label="Aceptar" \
+    --cancel-label="Atras" \
+    --extra-button="Ayuda instalacion software" \
+    --separator="|")
+
+    # Manejar la opción seleccionada
+    case $opcion in
+
+        "Ayuda instalacion software")
+            zenity --text-info --title="Ayuda instalacion software - MegaTools" --filename=AyudaInstalacionSoftware --font="DejaVu Sans Mono" --width=650 --height=650
+            ;;
+
+
+        *)
+            if [ $? -eq 0 ]; then
+                zenity --error --title="Instalacion de software - MegaTools" --text="No has seleccionado ninguna opcion del menu." --width=300
+            else
+                zenity --question --title="Instalacion de software - MegaTools" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+                if [ $? -eq 0 ]; then
+                    exit 0
+                fi
+            fi
+            ;;
+    esac
+done
+
