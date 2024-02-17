@@ -24,7 +24,7 @@ then
 else
     #hay que actualizar, comprueba y actualiza
     #echo ""
-    zenity --warning --title="Megatools - ( Diseñado por SIKIGSX )" --text="Se va a proceder a la actualizacion del componente $0 de forma automatica.\nCargar de nuevo Info memoria ram." --width=650
+    zenity --warning --title="Megatools - ( Diseñado por SIKIGSX )" --text="Se va a proceder a la actualizacion del componente $0 de forma automatica.\nCarga de nuevo $0." --width=650
     mv /tmp/comprobar/$archivo_local $descarga
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
