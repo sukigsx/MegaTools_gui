@@ -15,7 +15,7 @@ diff $descarga/$archivo_local /tmp/comprobar/$archivo_local >/dev/null 2>&1
 if [ $? = 0 ]
 then
     #esta actualizado, solo lo comprueba
-    echo ""
+    #echo ""
     #echo -e "${verde} El script${borra_colores} $0 ${verde}esta actualizado.${borra_colores}"
     #echo ""
     var_actualizado="SI"
