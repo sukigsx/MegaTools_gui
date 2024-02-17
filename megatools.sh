@@ -191,7 +191,8 @@ do
             ;;
 
         "Info dispositivos de red")
-
+            #mete el pid del proceso a un archivo para poder matar este script desde otro
+            echo $$ > /tmp/ProcesoPidDeMegatools
             bash InfoDispositivosDeRed
             ;;
 
