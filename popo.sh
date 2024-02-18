@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-while :
+while [ $? -eq 1 ]
 do
 # Mostrar un cuadro de diálogo con las opciones
 opciones=$(zenity --list --checklist --title="Selecciona las acciones a realizar" --column="Seleccionar" --column="Acción" --column="Descripcion" \
@@ -25,18 +25,18 @@ opciones=$(zenity --list --checklist --title="Selecciona las acciones a realizar
     --ok-label="Aceptar" \
     --cancel-label="Atras" \
     --extra-button="Ayuda instalacion software" \
-    --extra-button="Salir in confitmar" \
+    --extra-button="Salir sin confitmar" \
     --separator="|")
 
 #Verificar si se seleccionaron acciones
-if [ $? -eq 0 ]; then
-    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
-else
-    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
-    if [ $? -eq 0 ]; then
-        exit 0
-    fi
-fi
+#if [ $? -eq 0 ]; then
+#    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+#else
+#    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+#    if [ $? -eq 0 ]; then
+#        exit 0
+#    fi
+#fi
 
 
 
@@ -51,7 +51,7 @@ for opcion in "${seleccionados[@]}"; do
             sudo apt upgrade;;
         "Mostrar uso de memoria (free)")
             free;;
-        "Salir in confitmar")
+        "Salir sin confitmar")
             echo "uuuuuuuuuuuuuuuuuuuuuuuuuuu"; read p
             ;;
         "Ayuda instalacion software")

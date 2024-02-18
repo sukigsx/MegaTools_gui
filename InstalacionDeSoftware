@@ -35,11 +35,11 @@ else
 fi
 }
 
-actualizar_script
+#actualizar_script
 
 #empieza lo gordo
-while :
-do
+
+
 # Mostrar un cuadro de diálogo con las opciones
 opciones=$(zenity --list --checklist --title="Selecciona las acciones a realizar" --column="Seleccionar" --column="Acción" --column="Descripcion" \
     FALSE "NAVEGADORES" "Si seleccionas esta, instalara todos los navegadores" \
@@ -62,51 +62,48 @@ opciones=$(zenity --list --checklist --title="Selecciona las acciones a realizar
     --ok-label="Aceptar" \
     --cancel-label="Atras" \
     --extra-button="Ayuda instalacion software" \
-    --extra-button="Salir in confirmar" \
+    --extra-button="Salir in confitmar" \
     --separator="|")
 
-Verificar si se seleccionaron acciones
-if [ $? -eq 0 ]; then
-    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
-else
-    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
-    exit 0
-fi
+
 
 
 
 # Recorrer las acciones seleccionadas y ejecutar los comandos correspondientes
 IFS="|"
 read -ra seleccionados <<< "$opciones"
-    for opcion in "${seleccionados[@]}"; do
-        case "$opcion" in
-            "Actualizar paquetes (sudo apt update)")
-                sudo apt update;;
-            "Actualizar e instalar paquetes (sudo apt upgrade)")
-                sudo apt upgrade;;
-            "Mostrar uso de memoria (free)")
-                free;;
-            "Salir in confirmar")
-                # Leer el PID del archivo para matar el script pricipal
-                uno_pid=$(</tmp/ProcesoPidDeMegatools)
-
-                # Matar el proceso de uno.sh
-                kill $uno_pid
-                exit
-                ;;
-            "Ayuda instalacion software")
-                zenity --text-info --title="Ayuda - MegaTools" --filename=AyudaInstalacionSoftware --font="DejaVu Sans Mono" --width=650 --height=650
-                ;;
-            *)
-                if [ $? -eq 0 ]; then
-                    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
-                else
-                    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
-                    if [ $? -eq 0 ]; then
-                        exit 0
-                    fi
-                fi
-                ;;
-        esac
-    done
+for opcion in "${seleccionados[@]}"; do
+    case "$opcion" in
+        "UTILIDADES")
+            echo "utilidades"; read p
+            ;;
+        "Actualizar e instalar paquetes (sudo apt upgrade)")
+            sudo apt upgrade;;
+        "Mostrar uso de memoria (free)")
+            free;;
+        "Salir in confitmar")
+            echo "uuuuuuuuuuuuuuuuuuuuuuuuuuu"; read p
+            ;;
+        "Ayuda instalacion software")
+            zenity --text-info --title="Ayuda - MegaTools" --filename=AyudaInstalacionSoftware --font="DejaVu Sans Mono" --width=650 --height=650
+            ;;
+        "1")
+            echo "es 1"; read p
+            ;;
+        "2")
+            echo "es 2"; read p
+            ;;
+        *)
+            echo "no has puesto nada"
+            ;;
+    esac
 done
+
+#Verificar si se seleccionaron acciones
+if [ $? = 1 ]; then
+    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="saliendo" --cancel-label="No" --ok-label="Si" --width=300
+fi
+
+if [ $? = 0 ]; then
+    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="saliendosssssssssssssssssss" --cancel-label="No" --ok-label="Si" --width=300
+fi
