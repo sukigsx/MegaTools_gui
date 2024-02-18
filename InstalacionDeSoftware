@@ -1,6 +1,43 @@
 #!/bin/bash
 
+actualizar_script(){
+archivo_local="InstalacionDeSoftware" # Nombre del archivo local
+ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
 
+# Obtener la ruta del script
+descarga=$(dirname "$(readlink -f "$0")")
+#descarga="/home/$(whoami)/scripts"
+git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
+
+diff $descarga/$archivo_local /tmp/comprobar/$archivo_local >/dev/null 2>&1
+
+
+if [ $? = 0 ]
+then
+    #esta actualizado, solo lo comprueba
+    #echo ""
+    #echo -e "${verde} El script${borra_colores} $0 ${verde}esta actualizado.${borra_colores}"
+    #echo ""
+    var_actualizado="SI"
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
+else
+    #hay que actualizar, comprueba y actualiza
+    #echo ""
+    zenity --warning --title="Megatools - ( Diseñado por SIKIGSX )" --text="Se va a proceder a la actualizacion del componente $0 de forma automatica.\nCarga de nuevo $0." --width=650
+    mv /tmp/comprobar/$archivo_local $descarga
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
+    #echo ""
+    #echo -e "${verde} El script se ha actualizado.${borra_colores}"
+    #sleep 2
+    exit
+fi
+}
+
+actualizar_script
+
+#empieza lo gordo
 while :
 do
 # Mostrar un cuadro de diálogo con las opciones
@@ -43,27 +80,25 @@ fi
 # Recorrer las acciones seleccionadas y ejecutar los comandos correspondientes
 IFS="|"
 read -ra seleccionados <<< "$opciones"
-for opcion in "${seleccionados[@]}"; do
-    case "$opcion" in
-        "Actualizar paquetes (sudo apt update)")
-            sudo apt update;;
-        "Actualizar e instalar paquetes (sudo apt upgrade)")
-            sudo apt upgrade;;
-        "Mostrar uso de memoria (free)")
-            free;;
-        "Salir in confirmar")
-            # Leer el PID del archivo para matar el script pricipal
-            uno_pid=$(</tmp/ProcesoPidDeMegatools)
+    for opcion in "${seleccionados[@]}"; do
+        case "$opcion" in
+            "Actualizar paquetes (sudo apt update)")
+                sudo apt update;;
+            "Actualizar e instalar paquetes (sudo apt upgrade)")
+                sudo apt upgrade;;
+            "Mostrar uso de memoria (free)")
+                free;;
+            "Salir in confirmar")
+                # Leer el PID del archivo para matar el script pricipal
+                uno_pid=$(</tmp/ProcesoPidDeMegatools)
 
-            # Matar el proceso de uno.sh
-            kill $uno_pid
-            exit
-            ;;
-        "Ayuda instalacion software")
-            zenity --text-info --title="Ayuda - MegaTools" --filename=AyudaInstalacionSoftware --font="DejaVu Sans Mono" --width=650 --height=650
-            ;;
-    esac
+                # Matar el proceso de uno.sh
+                kill $uno_pid
+                exit
+                ;;
+            "Ayuda instalacion software")
+                zenity --text-info --title="Ayuda - MegaTools" --filename=AyudaInstalacionSoftware --font="DejaVu Sans Mono" --width=650 --height=650
+                ;;
+        esac
+    done
 done
-
-done
-exit
