@@ -51,9 +51,9 @@ do
     --width=850 \
     --height=650 \
     FALSE "NAVEGADORES" "Si seleccionas esta, instalara todos los navegadores" \
-        FALSE "Google Chrome" "" \
-        FALSE "Chromium" "" \
-        FALSE "Firefox" "" \
+        FALSE "Google Chrome" "Navegador para internet" \
+        FALSE "chromium-browser" "Navegador para internet" \
+        FALSE "Firefox" "Navegador para internet" \
     FALSE "AUDIO - VIDEO" "Si seleccionas esta, instalara todos de audio - video" \
     FALSE "ENTORNOS GRAFICOS LINUX" "Si seleccionas esta, instalara todos los entornos" \
     FALSE "UTILIDADES" "Si seleccionas esta, instalara todas la utilidades" \
@@ -84,12 +84,14 @@ do
     IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
     for option in "${selected_options[@]}"; do
         case $option in
-            "Ayuda")
-                echo "esto es la ayuda"
-                ;;
-
             "NAVEGADORES")
                 echo "navegadores"
+                ;;
+            "chromium-browser")
+                echo "#chromium-browser" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y chromium-browser" >> /tmp/software.sh
+                echo "sudo apt install -y chromium-browser-l10n" >> /tmp/software.sh
+                echo "" >> /tmp/software
                 ;;
 
             "AUDIO - VIDEO")
