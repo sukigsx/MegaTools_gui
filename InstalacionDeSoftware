@@ -89,8 +89,8 @@ do
                 ;;
             "chromium-browser")
                 echo "#chromium-browser" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y chromium-browser" >> /tmp/software.sh
-                echo "sudo apt install -y chromium-browser-l10n" >> /tmp/software.sh
+                echo "sudo apt install -y chromium-browser" >> /tmp/software
+                echo "sudo apt install -y chromium-browser-l10n" >> /tmp/software
                 echo "" >> /tmp/software
                 ;;
 
