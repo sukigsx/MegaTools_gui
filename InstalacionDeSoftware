@@ -39,6 +39,9 @@ actualizar_script
 
 #empieza lo gordo
 
+#actualiza repositorios
+(echo -e "Ejecutando (sudo apt update)\n " && sudo apt update && echo -e "\nTerminado el update") | zenity --text-info --width=600 --height=400 --title="Actualizando repositorios - MegaTools" --auto-scroll
+
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
