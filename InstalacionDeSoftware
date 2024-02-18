@@ -39,71 +39,106 @@ fi
 
 #empieza lo gordo
 
-
-# Mostrar un cuadro de diálogo con las opciones
-opciones=$(zenity --list --checklist --title="Selecciona las acciones a realizar" --column="Seleccionar" --column="Acción" --column="Descripcion" \
-    FALSE "NAVEGADORES" "Si seleccionas esta, instalara todos los navegadores" \
-    FALSE "AUDIO - VIDEO" "" \
-    FALSE "ENTORNOS GRAFICOS LINUX" "" \
-    FALSE "UTILIDADES" "" \
-    FALSE "OFIMATICA" "" \
-    FALSE "SERVIDORES" "" \
-    FALSE "GESTOR DE PAQUETES" "" \
-    FALSE "PARA TU TERMINAL" "" \
-    FALSE "DISCOS" "" \
-    FALSE "JUEGOS" "" \
-    FALSE "SEGURIDAD" "" \
-    FALSE "MENSAJERIA" "" \
-    FALSE "Actualizar paquetes (sudo apt update)" "" \
-    FALSE "Actualizar e instalar paquetes (sudo apt upgrade)" "" \
-    FALSE "Mostrar uso de memoria (free)" "" \
+while :
+do
+    # Mostrar el menú de selección utilizando Zenity
+    selection=$(zenity --list --title="Instalacion de software - MegaTools" \
+    --text="\nSoftware disponible en repositorios para distribuciones basadas en debian.\n" \
+    --checklist --column="Marca una o varias casillas para instalar" --column="Nombre del software" --column="Descripcion." \
+    --width=300 --height=200 \
+    --cancel-label="Atras" \
+    --ok-label="Aceptar" \
     --width=850 \
     --height=650 \
-    --ok-label="Aceptar" \
-    --cancel-label="Atras" \
-    --extra-button="Ayuda instalacion software" \
-    --extra-button="Salir in confitmar" \
-    --separator="|")
+    FALSE "NAVEGADORES" "Si seleccionas esta, instalara todos los navegadores" \
+        FALSE "Google Chrome" "" \
+        FALSE "Chromium" "" \
+        FALSE "Firefox" "" \
+    FALSE "AUDIO - VIDEO" "Si seleccionas esta, instalara todos de audio - video" \
+    FALSE "ENTORNOS GRAFICOS LINUX" "Si seleccionas esta, instalara todos los entornos" \
+    FALSE "UTILIDADES" "Si seleccionas esta, instalara todas la utilidades" \
+    FALSE "OFIMATICA" "Si seleccionas esta, instalara todo de ofimatica" \
+    FALSE "SERVIDORES" "Si seleccionas esta, instalara todos los servidores" \
+    FALSE "GESTOR DE PAQUETES" "Si seleccionas esta, instalara todos los gestores de paquetes" \
+    FALSE "PARA TU TERMINAL" "Si seleccionas esta, instalara todo para tu terminal" \
+    FALSE "DISCOS" "Si seleccionas esta, instalara todos los discos" \
+    FALSE "JUEGOS" "Si seleccionas esta, instalara todos los juegos" \
+    FALSE "SEGURIDAD" "Si seleccionas esta, instalara todos los seguridad" \
+    FALSE "MENSAJERIA" "Si seleccionas esta, instalara todos los mensajeria" \
+    )
+
+    # Verificar si se presionó "Cancelar" en el diálogo de Zenity
+    if [ $? -eq 1 ]; then
+        echo "Se ha cancelado la selección."
+        exit 0
+    fi
+
+    # Verificar si no se seleccionó ninguna opción
+    if [ -z "$selection" ]; then
+        zenity --error --text="No se seleccionó ninguna opción. Por favor, selecciona al menos una opción."
+    else
+        echo ""
+    fi
 
 
+    # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
+    IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
+    for option in "${selected_options[@]}"; do
+        case $option in
+            "Ayuda")
+                echo "esto es la ayuda"
+                ;;
 
+            "NAVEGADORES")
+                echo "navegadores"
+                ;;
 
+            "AUDIO - VIDEO")
+                echo "video auidoo"
+                ;;
 
-# Recorrer las acciones seleccionadas y ejecutar los comandos correspondientes
-IFS="|"
-read -ra seleccionados <<< "$opciones"
-for opcion in "${seleccionados[@]}"; do
-    case "$opcion" in
-        "UTILIDADES")
-            echo "utilidades"; read p
+            "ENTORNOS GRAFICOS LINUX")
+                echo "graficos entorno"
+                ;;
+
+            "UTILIDADES")
+                ;;
+
+            "OFIMATICA")
+                ;;
+
+            "SERVIDORES")
+                ;;
+
+            "GESTOR DE PAQUETES")
+                ;;
+
+            "PARA TU TERMINAL")
+                ;;
+
+            "DISCOS")
+                ;;
+
+            "JUEGOS")
+                ;;
+
+            "SEGURIDAD")
+                ;;
+
+            "MENSAJERIA")
+                ;;
+            *)
+            #if [ $? -eq 0 ]; then
+            #    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+            #else
+            #    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+            #    if [ $? -eq 0 ]; then
+            #        exit 0
+            #    fi
+            #fi
+            echo "he entrado en el *"; read p
             ;;
-        "Actualizar e instalar paquetes (sudo apt upgrade)")
-            sudo apt upgrade;;
-        "Mostrar uso de memoria (free)")
-            free;;
-        "Salir in confitmar")
-            echo "uuuuuuuuuuuuuuuuuuuuuuuuuuu"; read p
-            ;;
-        "Ayuda instalacion software")
-            zenity --text-info --title="Ayuda - MegaTools" --filename=AyudaInstalacionSoftware --font="DejaVu Sans Mono" --width=650 --height=650
-            ;;
-        "1")
-            echo "es 1"; read p
-            ;;
-        "2")
-            echo "es 2"; read p
-            ;;
-        *)
-            echo "no has puesto nada"
-            ;;
-    esac
+        esac
+    done
 done
 
-#Verificar si se seleccionaron acciones
-if [ $? = 1 ]; then
-    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="saliendo" --cancel-label="No" --ok-label="Si" --width=300
-fi
-
-if [ $? = 0 ]; then
-    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="saliendosssssssssssssssssss" --cancel-label="No" --ok-label="Si" --width=300
-fi
