@@ -69,7 +69,6 @@ do
 
     # Verificar si se presionó "Cancelar" en el diálogo de Zenity
     if [ $? -eq 1 ]; then
-        echo "Se ha cancelado la selección."
         exit 0
     fi
 
