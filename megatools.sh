@@ -154,8 +154,6 @@ do
             zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="Selecciona una opcion de UTILIDADES PARA TU SISTEMA."
             ;;
         "Instalacion de software")
-            #mete el pid del proceso a un archivo para poder matar este script desde otro
-            echo $$ > /tmp/ProcesoPidDeMegatools
             bash InstalacionDeSoftware
             ;;
         "Utilidades generales")

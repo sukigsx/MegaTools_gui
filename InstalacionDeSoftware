@@ -42,6 +42,9 @@ actualizar_script
 #actualiza repositorios
 (echo -e "Ejecutando (sudo apt update)\n " && sudo apt update && echo -e "\nTerminado el update") | zenity --text-info --width=600 --height=400 --title="Actualizando repositorios - MegaTools" --auto-scroll
 
+#Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
+rm /tmp/software 2>/dev/null
+
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
@@ -70,8 +73,9 @@ do
     FALSE "MENSAJERIA" "Si seleccionas esta, instalara todos los mensajeria" \
     )
 
-    # Verificar si se presionó "Cancelar" en el diálogo de Zenity
+    # Verificar si se presionó "Atras" en el diálogo de Zenity
     if [ $? -eq 1 ]; then
+        rm /tmp/software 2>/dev/null
         exit 0
     fi
 
