@@ -99,6 +99,16 @@ read -ra seleccionados <<< "$opciones"
             "Ayuda instalacion software")
                 zenity --text-info --title="Ayuda - MegaTools" --filename=AyudaInstalacionSoftware --font="DejaVu Sans Mono" --width=650 --height=650
                 ;;
+            *)
+                if [ $? -eq 0 ]; then
+                    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+                else
+                    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+                    if [ $? -eq 0 ]; then
+                        exit 0
+                    fi
+                fi
+                ;;
         esac
     done
 done
