@@ -101,6 +101,7 @@ do
                 echo "sudo apt install -y google-chrome-stable" >> /tmp/software
                 echo "sudo rm /etc/apt/sources.list.d/google*" >> /tmp/software
                 echo "" >> /tmp/software
+                break
                 ;;
 
             "Google Chrome")
@@ -111,6 +112,7 @@ do
                 echo "sudo apt install -y google-chrome-stable" >> /tmp/software
                 echo "sudo rm /etc/apt/sources.list.d/google*" >> /tmp/software
                 echo "" >> /tmp/software
+                break
                 ;;
 
             "chromium-browser")
@@ -118,6 +120,7 @@ do
                 echo "sudo apt install -y chromium-browser" >> /tmp/software
                 echo "sudo apt install -y chromium-browser-l10n" >> /tmp/software
                 echo "" >> /tmp/software
+                break
                 ;;
 
             "AUDIO - VIDEO")
