@@ -157,6 +157,7 @@ do
             #mete el pid del proceso a un archivo para poder matar este script desde otro
             echo $$ > /tmp/ProcesoPidDeMegatools
             bash InstalacionDeSoftware
+            ;;
         "Utilidades generales")
             zenity --info --title="Software-MegaTools ( Diseñado por SUKIGSX )" --text="Has seleccionado utilidades generales."
             ;;
