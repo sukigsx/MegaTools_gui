@@ -40,7 +40,7 @@ actualizar_script
 #empieza lo gordo
 
 #actualiza repositorios
-(echo -e "Ejecutando (sudo apt update)\n " && sudo apt update && echo -e "\nTerminado el update") | zenity --text-info --width=600 --height=400 --title="Actualizando repositorios - MegaTools" --auto-scroll
+(echo -e "Ejecutando (sudo apt update)\n " && sudo apt update && echo -e "\nTerminado el update") | zenity --text-info --width=600 --height=400 --title="Actualizando repositorios - MegaTools" --auto-scroll 2>/dev/null
 
 #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
 rm /tmp/software 2>/dev/null
@@ -92,8 +92,30 @@ do
     for option in "${selected_options[@]}"; do
         case $option in
             "NAVEGADORES")
-                echo "navegadores"
+                echo "#chromium-browser" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y chromium-browser" >> /tmp/software
+                echo "sudo apt install -y chromium-browser-l10n" >> /tmp/software
+                echo "" >> /tmp/software
+
+                echo "#google-chrome" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -" >> /tmp/software
+                echo 'sudo add-apt-repository -y "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"' >> /tmp/software
+                echo "sudo apt update" >> /tmp/software
+                echo "sudo apt install -y google-chrome-stable" >> /tmp/software
+                echo "sudo rm /etc/apt/sources.list.d/google*" >> /tmp/software
+                echo "" >> /tmp/software
                 ;;
+
+            "Google Chrome")
+                echo "#google-chrome" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -" >> /tmp/software
+                echo 'sudo add-apt-repository -y "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"' >> /tmp/software
+                echo "sudo apt update" >> /tmp/software
+                echo "sudo apt install -y google-chrome-stable" >> /tmp/software
+                echo "sudo rm /etc/apt/sources.list.d/google*" >> /tmp/software
+                echo "" >> /tmp/software
+                ;;
+
             "chromium-browser")
                 echo "#chromium-browser" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y chromium-browser" >> /tmp/software
