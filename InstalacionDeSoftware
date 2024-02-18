@@ -178,4 +178,4 @@ done
 
 awk '!($0 in seen) || !NF {seen[$0]; print}' software > archivo_temporal && mv archivo_temporal software
 
-bash /tmp/softwarffe | zenity --text-info --width=600 --height=400 --title="Actualizando repositorios - MegaTools" --auto-scroll --timeout 20
+bash /tmp/software | zenity --text-info --width=600 --height=400 --title="Actualizando repositorios - MegaTools" --auto-scroll
