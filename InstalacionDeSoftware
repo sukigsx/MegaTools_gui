@@ -177,5 +177,5 @@ done
 (echo -e "Ejecutando (sudo apt update)\n " && sudo apt update 2>/dev/null && echo -e "\nTerminado el update") | zenity --text-info --width=600 --height=400 --title="Actualizando repositorios - MegaTools" --auto-scroll --timeout 20
 
 awk '!($0 in seen) || !NF {seen[$0]; print}' software > archivo_temporal && mv archivo_temporal software
-read -p "para" pause
+
 bash /tmp/softwarffe | zenity --text-info --width=600 --height=400 --title="Actualizando repositorios - MegaTools" --auto-scroll --timeout 20
