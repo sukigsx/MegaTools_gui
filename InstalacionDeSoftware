@@ -66,14 +66,14 @@ opciones=$(zenity --list --checklist --title="Selecciona las acciones a realizar
     --separator="|")
 
 #Verificar si se seleccionaron acciones
-if [ $? -eq 0 ]; then
-    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
-else
-    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
-    if [ $? -eq 0 ]; then
-        exit 0
-    fi
-fi
+#if [ $? -eq 0 ]; then
+#    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+#else
+#    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+#    if [ $? -eq 0 ]; then
+#        exit 0
+#    fi
+#fi
 
 
 
