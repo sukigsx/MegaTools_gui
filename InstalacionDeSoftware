@@ -75,7 +75,7 @@ do
 
     # Verificar si no se seleccionó ninguna opción
     if [ -z "$selection" ]; then
-        zenity --error --text="No se seleccionó ninguna opción. Por favor, selecciona al menos una opción."
+        zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado nada para instalar." --width=300
     else
         echo ""
     fi
