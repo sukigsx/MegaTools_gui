@@ -33,14 +33,14 @@ do
     --width=650 \
     --height=650 \
     --ok-label="Aceptar" \
-    --cancel-label="Salir" \
+    --cancel-label="Atras" \
     --extra-button="Instalar Software Seleccionado")
 
     # Manejar la opción seleccionada
     case $opcion in
 
         "NAVEGADORES")
-            bash InstalacionDeNavegadores
+            bash InstalacionNavegadores
             ;;
 
         "AUDIO - VIDEO")
