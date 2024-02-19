@@ -1,0 +1,68 @@
+ #!/bin/bash
+
+while :
+do
+    # Mostrar el menú de selección utilizando Zenity
+    selection=$(zenity --list --title="Instalacion de Navegadores - MegaTools" \
+    --text="\nSoftware disponible en repositorios para distribuciones basadas en debian.\n" \
+    --checklist --column="Marca una o varias casillas para instalar" --column="Nombre del navegador" --column="Descripcion." \
+    --width=300 --height=200 \
+    --cancel-label="Atras" \
+    --ok-label="Aceptar" \
+    --width=850 \
+    --height=650 \
+    FALSE "Google Chrome" "Navegador para internet" \
+    FALSE "chromium-browser" "Navegador para internet" \
+    FALSE "Firefox" "Navegador para internet" \
+    )
+
+    # Verificar si se presionó "Atras" en el diálogo de Zenity
+    if [ $? -eq 1 ]; then
+        exit 0
+    fi
+
+    # Verificar si no se seleccionó ninguna opción
+    if [ -z "$selection" ]; then
+        zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ningun Navegador." --width=300
+    else
+        echo ""
+    fi
+
+
+    # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
+    IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
+    for option in "${selected_options[@]}"; do
+        case $option in
+            "Google Chrome")
+                echo "#google-chrome" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -" >> /tmp/software
+                echo 'sudo add-apt-repository -y "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"' >> /tmp/software
+                echo "sudo apt update" >> /tmp/software
+                echo "sudo apt install -y google-chrome-stable" >> /tmp/software
+                echo "sudo rm /etc/apt/sources.list.d/google*" >> /tmp/software
+                echo "" >> /tmp/software
+                ;;
+
+            "chromium-browser")
+                echo "#chromium-browser" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y chromium-browser" >> /tmp/software
+                echo "sudo apt install -y chromium-browser-l10n" >> /tmp/software
+                echo "" >> /tmp/software
+                ;;
+
+            *)
+            #if [ $? -eq 0 ]; then
+            #    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+            #else
+            #    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+            #    if [ $? -eq 0 ]; then
+            #        exit 0
+            #    fi
+            #fi
+            echo "he entrado en el *"; read p
+            ;;
+        esac
+    done
+done
+
+
