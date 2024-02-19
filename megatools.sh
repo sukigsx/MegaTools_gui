@@ -38,18 +38,6 @@ fi
 
 software_necesario(){
 clear
-#comprobar si esta pkcon
-if [ $(which pkcon) ]; then
-    echo " Actualizando repositorios (sudo pkcon update y sudo apt update)"
-    echo ""
-    sudo pkcon update
-    sudo apt update
-else
-    echo ""
-    echo "Actualizando repositorios ( sudo apt update)"
-    sudo apt update
-fi
-
 var_software="NO"
 echo -e " Verificando software necesario:"
 software="which git diff ping figlet zenity neofetch lsblk ethtool" #ponemos el foftware a instalar separado por espacion dentro de las comillas ( soft1 soft2 soft3 etc )
