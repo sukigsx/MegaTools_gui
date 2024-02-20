@@ -217,7 +217,8 @@ do
         "Crear/Borrar lanzador")
             #mete el pid del proceso a un archivo para poder matar este script desde otro
             echo $$ > /tmp/ProcesoPidDeMegatools
-            bash CrearLanzador
+            ruta=$(dirname "$(readlink -f "$0")")
+            bash $ruta/MenuPrincipal/CrearBorrarLanzador/CrearBorrarLanzador
             ;;
 
         *)
