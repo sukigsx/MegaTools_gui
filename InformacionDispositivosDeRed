@@ -37,6 +37,8 @@ fi
 
 actualizar_script
 
+
+
 echo -e "Comando: ifconfig -s\n" > /tmp/InfoDispositivosDeRed; ifconfig -s >> /tmp/InfoDispositivosDeRed; echo -e "\nInformacion de dispositivos de red finalizado." >> /tmp/InfoDispositivosDeRed
 
 while :
