@@ -52,6 +52,7 @@ else
     else
         # Mensaje de error si no se proporcionó una contraseña
         zenity --error --text="No se proporcionó una contraseña."
+        exit
     fi
     sudo apt install net-tools | zenity --text-info --title="instalando - MegaTools" --width=350 --height=200 --cancel-label="Salir sin preguntar" --ok-label="Atras" --width=650
 fi
