@@ -44,16 +44,44 @@ else
     if [ $? -eq 1 ]; then
         exit 0
     fi
-    password=$(zenity --password --title="Instalacion de net-tools - MegaTools" --text="Ingrese la contraseña de root para poder instalar las net-tools" --timeout=20)
-    if [ -n "$password" ]; then
-        # Utilizar sudo para ejecutar el comando de instalación del paquete
-        echo "$password" | sudo -S apt-get install net-tools -y | zenity --text-info --title="instalando net-tools - MegaTools" --width=350 --height=200 --cancel-label="Salir sin preguntar"
-        # Aquí puedes reemplazar "nombre_del_paquete" con el nombre real del paquete que deseas instalar
-    else
-        # Mensaje de error si no se proporcionó una contraseña
-        zenity --error --text="No se proporcionó una contraseña."
-        exit
-    fi
+
+    # Inicializar el contador de intentos
+    attempts=0
+
+    # Bucle para solicitar la contraseña hasta tres intentos
+    while [ $attempts -lt 3 ]; do
+        # Solicitar la contraseña del usuario actual utilizando Zenity
+        PASSWORD=$(zenity --password --text="Ingrese su contraseña") --title="MegaTools ( Diseñado por SUKIGSX )"
+
+        # Verificar si se ha cancelado la entrada de la contraseña
+        if [ $? -ne 0 ]; then
+            # Salir del script si se ha cancelado
+            exit
+        fi
+
+        # Verificar la contraseña utilizando el comando sudo
+        echo "$PASSWORD" | sudo -S ls /root >/dev/null 2>&1
+
+        # Verificar el código de salida del comando sudo
+        if [ $? -eq 0 ]; then
+            # Contraseña correcta
+            zenity --info --title="Contraseña Correcta" --text="La contraseña es correcta."
+            exit
+        else
+            # Contraseña incorrecta
+            let "attempts+=1"
+            if [ $attempts -lt 3 ]; then
+                zenity --error --title="" --text="La contraseña es incorrecta. Inténtelo de nuevo."
+            else
+                zenity --error --title="Contraseña Incorrecta" --text="Se han superado los tres intentos. Saliendo del script."
+                exit
+            fi
+        fi
+    done
+
+
+
+
     sudo apt install net-tools | zenity --text-info --title="instalando - MegaTools" --width=350 --height=200 --cancel-label="Salir sin preguntar" --ok-label="Atras" --width=650
 fi
 
