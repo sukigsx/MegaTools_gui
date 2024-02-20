@@ -41,7 +41,7 @@ clear
 if [ which ifconfig ]; then
     echo ""
 else
-    sudo apt install net-MegaTools
+    sudo apt install net-tools
 fi
 
 var_software="NO"
