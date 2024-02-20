@@ -168,36 +168,31 @@ do
         "Informacion general")
             #mete el pid del proceso a un archivo para poder matar este script desde otro
             echo $$ > /tmp/ProcesoPidDeMegatools
-            ruta=$(dirname "$(readlink -f "$0")")
-            bash $ruta/MenuPrincipal/InformacionGeneral/InformacionGeneral
+            bash InformacionGeneral
             ;;
 
         "Informacion de ips Lan/Wan")
             #mete el pid del proceso a un archivo para poder matar este script desde otro
             echo $$ > /tmp/ProcesoPidDeMegatools
-            ruta=$(dirname "$(readlink -f "$0")")
-            bash $ruta/MenuPrincipal/InformacionDeIpsLanWan/InformacionDeIpsLanWan
+            bash InformacionDeIpsLanWan
             ;;
 
         "Informacion de discos")
             #mete el pid del proceso a un archivo para poder matar este script desde otro
             echo $$ > /tmp/ProcesoPidDeMegatools
-            ruta=$(dirname "$(readlink -f "$0")")
-            bash $ruta/MenuPrincipal/InformacionDeDiscos/InformacionDeDiscos
+            bash InformacionDeDiscos
             ;;
 
         "Informacion memoria ram")
             #mete el pid del proceso a un archivo para poder matar este script desde otro
             echo $$ > /tmp/ProcesoPidDeMegatools
-            ruta=$(dirname "$(readlink -f "$0")")
-            bash $ruta/MenuPrincipal/InformacionMemoriaRamInformacionMemoriaRam
+            bash InformacionMemoriaRam
             ;;
 
         "Informacion dispositivos de red")
             #mete el pid del proceso a un archivo para poder matar este script desde otro
             echo $$ > /tmp/ProcesoPidDeMegatools
-            ruta=$(dirname "$(readlink -f "$0")")
-            bash $tuta/MenuPrincipal/InformacionDispositivosDeRed/InformacionDispositivosDeRed
+            bash InformacionDispositivosDeRed
             ;;
 
         "Web Sukigsx")
@@ -217,8 +212,7 @@ do
         "Crear/Borrar lanzador")
             #mete el pid del proceso a un archivo para poder matar este script desde otro
             echo $$ > /tmp/ProcesoPidDeMegatools
-            ruta=$(dirname "$(readlink -f "$0")")
-            bash $ruta/MenuPrincipal/CrearBorrarLanzador/CrearBorrarLanzador
+            bash CrearBorrarLanzador
             ;;
 
         *)
