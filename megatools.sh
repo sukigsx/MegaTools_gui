@@ -135,11 +135,11 @@ do
     "Instalacion de software" "Script para instalar programas en tu sistema." \
     "" "" \
     "INFORMACION DE TU SISTEMA" "" \
-    "Info general" "Te da la informacion mas importante de tu sistema" \
-    "Info de ips Lan/Wan" "Te da la informacion de ip publica y de tu red" \
-    "Info de discos" "Informacion de el uso de tus discos del sistema" \
-    "Info memoria ram" "Pues la informacion del uso de la memoria del sistema" \
-    "Info dispositivos de red" "Te la la informacion de tus tarjetas de red" \
+    "Informacion general" "Te da la informacion mas importante de tu sistema" \
+    "Informacion de ips Lan/Wan" "Te da la informacion de ip publica y de tu red" \
+    "Informacion de discos" "Informacion de el uso de tus discos del sistema" \
+    "Informacion memoria ram" "Pues la informacion del uso de la memoria del sistema" \
+    "Informacion dispositivos de red" "Te la la informacion de tus tarjetas de red" \
     "" "" \
     "Crear/Borrar lanzador" "Te crea o brra el lanzador de tu escritorio." \
     --width=650 \
@@ -161,42 +161,43 @@ do
             zenity --info --title="Software-MegaTools ( Diseñado por SUKIGSX )" --text="Has seleccionado utilidades generales."
             ;;
 
-        "Instalacion de software")
-            zenity --info --title="Opción 2" --text="Has seleccionado instalacion de software."
-            ;;
-
         "INFORMACION DE TU SISTEMA")
             zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="Selecciona una opcion de INFORMACION DE TU SISTEMA."
             ;;
 
-        "Info general")
+        "Informacion general")
             #mete el pid del proceso a un archivo para poder matar este script desde otro
             echo $$ > /tmp/ProcesoPidDeMegatools
-            bash InformacionGeneral
+            ruta=$(dirname "$(readlink -f "$0")")
+            bash $ruta/MenuPrincipal/InformacionGeneral/InformacionGeneral
             ;;
 
-        "Info de ips Lan/Wan")
+        "Informacion de ips Lan/Wan")
             #mete el pid del proceso a un archivo para poder matar este script desde otro
             echo $$ > /tmp/ProcesoPidDeMegatools
-            bash InfoDeIpsLanWan
+            ruta=$(dirname "$(readlink -f "$0")")
+            bash $ruta/MenuPrincipal/InformacionDeIpsLanWan/InformacionDeIpsLanWan
             ;;
 
-        "Info de discos")
+        "Informacion de discos")
             #mete el pid del proceso a un archivo para poder matar este script desde otro
             echo $$ > /tmp/ProcesoPidDeMegatools
-            bash InfoDeDiscos
+            ruta=$(dirname "$(readlink -f "$0")")
+            bash $ruta/MenuPrincipal/InformacionDeDiscos/InformacionDeDiscos
             ;;
 
-        "Info memoria ram")
+        "Informacion memoria ram")
             #mete el pid del proceso a un archivo para poder matar este script desde otro
             echo $$ > /tmp/ProcesoPidDeMegatools
-            bash InfoMemoriaRam
+            ruta=$(dirname "$(readlink -f "$0")")
+            bash $ruta/MenuPrincipal/InformacionMemoriaRamInformacionMemoriaRam
             ;;
 
-        "Info dispositivos de red")
+        "Informacion dispositivos de red")
             #mete el pid del proceso a un archivo para poder matar este script desde otro
             echo $$ > /tmp/ProcesoPidDeMegatools
-            bash InfoDispositivosDeRed
+            ruta=$(dirname "$(readlink -f "$0")")
+            bash $tuta/MenuPrincipal/InformacionDispositivosDeRed/InformacionDispositivosDeRed
             ;;
 
         "Web Sukigsx")
