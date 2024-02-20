@@ -41,7 +41,7 @@ if [ $(which ifconfig) ]; then
     echo ""
 else
     zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="Se necesita el paquete net-tools. ¿ Quieres instalarlo ?" --cancel-label="No" --ok-label="Si" --width=300
-    if [ $? -eq 0 ]; then
+    if [ $? -eq 1 ]; then
         exit 0
     fi
     password=$(zenity --password --title="Ingrese la contraseña de root para poder instalar las net-tools" --timeout=20)
