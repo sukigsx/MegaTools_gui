@@ -37,7 +37,7 @@ fi
 
 actualizar_script
 
-if [ which ifconfig ]; then
+if [ $(which ifconfig) ]; then
     echo ""
 else
     zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="Se necesita el paquete net-tools. ¿ Quieres instalarlo ?" --cancel-label="No" --ok-label="Si" --width=300
@@ -53,13 +53,6 @@ else
         # Mensaje de error si no se proporcionó una contraseña
         zenity --error --text="No se proporcionó una contraseña."
     fi
-
-
-
-
-
-
-
     sudo apt install net-tools | zenity --text-info --title="instalando - MegaTools" --width=350 --height=200 --cancel-label="Salir sin preguntar" --ok-label="Atras" --width=650
 fi
 
