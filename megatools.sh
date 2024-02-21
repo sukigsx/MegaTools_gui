@@ -142,7 +142,6 @@ do
     "Informacion memoria ram" "Pues la informacion del uso de la memoria del sistema" \
     "Informacion dispositivos de red" "Te la la informacion de tus tarjetas de red" \
     "" "" \
-    "Crear/Borrar lanzador" "Te crea o brra el lanzador de tu escritorio." \
     --width=650 \
     --height=650 \
     --ok-label="Aceptar" \
@@ -173,7 +172,7 @@ do
             "Informacion general")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash InformacionGeneral
+                bash InformacionDeTuSistema/InformacionGeneral
                 ;;
 
             "Informacion de ips Lan/Wan")
