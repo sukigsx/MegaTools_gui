@@ -109,18 +109,62 @@ else
 fi
 }
 
-conexion
+actualizar_script_zenity(){
+archivo_local="megatools.sh" # Nombre del archivo local
+ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
 
-if [ $var_conexion = "SI" ]
+# Obtener la ruta del script
+descarga=$(dirname "$(readlink -f "$0")")
+#descarga="/home/$(whoami)/scripts"
+git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
+
+diff $descarga/$archivo_local /tmp/comprobar/$archivo_local >/dev/null 2>&1
+
+
+if [ $? = 0 ]
 then
-    var_conexion="SI"
-    software_necesario
-    actualizar_script
+    #esta actualizado, solo lo comprueba
+    #echo ""
+    #echo -e "${verde} El script${borra_colores} $0 ${verde}esta actualizado.${borra_colores}"
+    #echo ""
+    var_actualizado="SI"
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
 else
-    var_conexion="NO"
-    software_necesario
-    var_software="SI"
-    var_actualizado="Imposible comprobar sin conexion a internet"
+    #hay que actualizar, comprueba y actualiza
+    echo ""
+    echo -e "${amarillo} EL script${borra_colores} $0 ${amarillo}NO esta actualizado.${borra_colores}"
+    echo -e "${verde} Se procede a su actualizacion automatica.${borra_colores}"
+    sleep 3
+    mv /tmp/comprobar/$archivo_local $descarga
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
+    echo ""
+    echo -e "${verde} El script se ha actualizado.${borra_colores}"
+    sleep 2
+    exit
+    #kill -9 $(ps -o ppid= -p $$)
+    #xdotool windowkill `xdotool getactivewindow`
+fi
+}
+
+#comprueba para actualizar y software necesario dependiendo si tiene zenity o no.
+if [ $(which zenity) ]; then
+    echo "tiene zenity"
+else
+    conexion
+
+    if [ $var_conexion = "SI" ]
+    then
+        var_conexion="SI"
+        software_necesario
+        actualizar_script
+    else
+        var_conexion="NO"
+        software_necesario
+        var_software="SI"
+        var_actualizado="Imposible comprobar sin conexion a internet"
+    fi
 fi
 
 titulo="MegaTools"
