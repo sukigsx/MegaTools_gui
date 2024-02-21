@@ -156,7 +156,7 @@ do
             ;;
 
             "Instalacion de software")
-                bash UtilidadesParaElSistema/IsntalacionDeSoftware/InstalacionDeSoftware
+                bash UtilidadesParaElSistema/InstalacionDeSoftware/InstalacionDeSoftware
                 ;;
 
             "Crear/Borrar lanzador")
@@ -200,7 +200,7 @@ do
                 ;;
 
         "Web Sukigsx")
-            zenity --text-info --title="Ayuda - $titulo" --html --url="https://repositorio.mbbsistemas.es" --ok-label="Salir" --cancel-label="Atras" --width=10000 --height=10000 2>/dev/null
+            zenity --text-info --title="Web de Sukigsx, Diseñador de $titulo" --html --url="https://repositorio.mbbsistemas.es" --ok-label="Salir" --cancel-label="Atras" --width=10000 --height=10000 2>/dev/null
             if [ $? = 0 ]; then
                 zenity --question --title="$titulo" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
                 if [ $? -eq 0 ]; then
