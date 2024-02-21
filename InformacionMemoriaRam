@@ -1,7 +1,7 @@
 #!/bin/bash
 
 actualizar_script(){
-archivo_local="InformacionDeIpsLanWan" # Nombre del archivo local
+archivo_local="InformacionMemoriaRam" # Nombre del archivo local
 ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
 
 # Obtener la ruta del script
@@ -24,7 +24,7 @@ then
 else
     #hay que actualizar, comprueba y actualiza
     #echo ""
-    zenity --warning --title="Megatools - ( Diseñado por SIKIGSX )" --text="Se va a proceder a la actualizacion del componente INFORMACION DE IPS LAN/WAN de forma automatica.\nSeleccionalo de nuevo" --width=650
+    zenity --warning --title="Megatools - ( Diseñado por SIKIGSX )" --text="Se va a proceder a la actualizacion del componente INFORMACION DE MEMORIA RAM de forma automatica.\nSeleccionalo de nuevo" --width=650
     mv /tmp/comprobar/$archivo_local $descarga
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
@@ -35,19 +35,24 @@ else
 fi
 }
 
-#actualizar_script
+actualizar_script
 
-echo -e " Estas son tus ips:\n - Ip WAN es: $(wget -qO- ifconfig.me)\n - Ip LAN es: $(hostname -I)" | zenity --text-info --title="Informacion de Ips Lan/Wan - MegaTools" --width=350 --height=200 --cancel-label="Salir sin preguntar" --ok-label="Atras" --width=650
+# Ejecutar el comando df -h y guardar la salida en una variable
+echo -e "Comando: free -h\n" > /tmp/memoria; free -h >> /tmp/memoria; echo -e "\nFinalizada la informacion.\n" >> /tmp/memoria
 
+# Mostrar la salida en una ventana con Zenity
+zenity --text-info --filename=/tmp/memoria --title="Informacion de memoria ram - MegaTools" --ok-label="Atras" --cancel-label="Salir sin preguntar" --font="DejaVu Sans Mono" --width=800 --height=450
 
 if [ $? = "1" ]; then
-
     # Leer el PID del archivo para matar el script pricipal
     uno_pid=$(</tmp/ProcesoPidDeMegatools)
-
     # Matar el proceso de uno.sh
     kill $uno_pid
     rm /tmp/ProcesoPidDeMegatools
+    rm /tmp/memoria
+    exit
+else
+    rm /tmp/ProcesoPidDeMegatools
+    rm /tmp/memoria
     exit
 fi
-rm /tmp/ProcesoPidDeMegatools
