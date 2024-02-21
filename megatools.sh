@@ -123,6 +123,8 @@ else
     var_actualizado="Imposible comprobar sin conexion a internet"
 fi
 
+titulo="MegaTools"
+
 # Función para mostrar el menú principal
 while :
 do
@@ -130,7 +132,7 @@ do
     --text="Informacion relacionada al Megatools :\n Conexion a internet = $var_conexion\n software necesario para el correcto funcionamiento = $var_software\n Script esta actualizado = $var_actualizado\n\nInformacion de SUKIGSX: \n Correo electronico = scripts@mbbsistemas.es\n Pagina web = https://repositorio.mbbsistemas.es\n" \
     --column "Opciones del menu principal:" --column="Descripcion." \
     "UTILIDADES PARA EL SISTEMA" "" \
-    "Utilidades generales" "Scripts utiles para realizar en tu sistema." \
+    "Crear/Borrar lanzador" "Te crea o brra el lanzador de tu escritorio." \
     "Instalacion de software" "Script para instalar programas en tu sistema." \
     "" "" \
     "INFORMACION DE TU SISTEMA" "" \
@@ -151,53 +153,57 @@ do
     # Manejar la opción seleccionada
     case $opcion in
         "UTILIDADES PARA EL SISTEMA")
-            zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="Selecciona una opcion de UTILIDADES PARA TU SISTEMA."
+            zenity --error --title="$titulo" --text="Selecciona una opcion de UTILIDADES PARA TU SISTEMA."
             ;;
-        "Instalacion de software")
-            bash InstalacionDeSoftware
-            ;;
-        "Utilidades generales")
-            zenity --info --title="Software-MegaTools ( Diseñado por SUKIGSX )" --text="Has seleccionado utilidades generales."
-            ;;
+
+            "Instalacion de software")
+                bash UtilidadesParaElSistema/IsntalacionDeSoftware/InstalacionDeSoftware
+                ;;
+
+            "Crear/Borrar lanzador")
+                #mete el pid del proceso a un archivo para poder matar este script desde otro
+                echo $$ > /tmp/ProcesoPidDeMegatools
+                bash UtilidadesParaElSistema/CrearBorrarLanzador/CrearBorrarLanzador
+                ;;
 
         "INFORMACION DE TU SISTEMA")
-            zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="Selecciona una opcion de INFORMACION DE TU SISTEMA."
+            zenity --error --title="$titulo" --text="Selecciona una opcion de INFORMACION DE TU SISTEMA."
             ;;
 
-        "Informacion general")
-            #mete el pid del proceso a un archivo para poder matar este script desde otro
-            echo $$ > /tmp/ProcesoPidDeMegatools
-            bash InformacionGeneral
-            ;;
+            "Informacion general")
+                #mete el pid del proceso a un archivo para poder matar este script desde otro
+                echo $$ > /tmp/ProcesoPidDeMegatools
+                bash InformacionGeneral
+                ;;
 
-        "Informacion de ips Lan/Wan")
-            #mete el pid del proceso a un archivo para poder matar este script desde otro
-            echo $$ > /tmp/ProcesoPidDeMegatools
-            bash InformacionDeIpsLanWan
-            ;;
+            "Informacion de ips Lan/Wan")
+                #mete el pid del proceso a un archivo para poder matar este script desde otro
+                echo $$ > /tmp/ProcesoPidDeMegatools
+                bash InformacionDeTuSistema/InformacionDeIpsLanWan
+                ;;
 
-        "Informacion de discos")
-            #mete el pid del proceso a un archivo para poder matar este script desde otro
-            echo $$ > /tmp/ProcesoPidDeMegatools
-            bash InformacionDeDiscos
-            ;;
+            "Informacion de discos")
+                #mete el pid del proceso a un archivo para poder matar este script desde otro
+                echo $$ > /tmp/ProcesoPidDeMegatools
+                bash InformacionDeTuSistema/InformacionDeDiscos
+                ;;
 
-        "Informacion memoria ram")
-            #mete el pid del proceso a un archivo para poder matar este script desde otro
-            echo $$ > /tmp/ProcesoPidDeMegatools
-            bash InformacionMemoriaRam
-            ;;
+            "Informacion memoria ram")
+                #mete el pid del proceso a un archivo para poder matar este script desde otro
+                echo $$ > /tmp/ProcesoPidDeMegatools
+                bash InformacionDeTuSistema/InformacionMemoriaRam
+                ;;
 
-        "Informacion dispositivos de red")
-            #mete el pid del proceso a un archivo para poder matar este script desde otro
-            echo $$ > /tmp/ProcesoPidDeMegatools
-            bash InformacionDispositivosDeRed
-            ;;
+            "Informacion dispositivos de red")
+                #mete el pid del proceso a un archivo para poder matar este script desde otro
+                echo $$ > /tmp/ProcesoPidDeMegatools
+                bash InformacionDeTuSistema/InformacionDispositivosDeRed
+                ;;
 
         "Web Sukigsx")
-            zenity --text-info --title="Ayuda-MegaTools ( Diseñado por SUKIGSX )" --html --url="https://repositorio.mbbsistemas.es" --ok-label="Salir" --cancel-label="Atras" --width=10000 --height=10000 2>/dev/null
+            zenity --text-info --title="Ayuda - $titulo" --html --url="https://repositorio.mbbsistemas.es" --ok-label="Salir" --cancel-label="Atras" --width=10000 --height=10000 2>/dev/null
             if [ $? = 0 ]; then
-                zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+                zenity --question --title="$titulo" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
                 if [ $? -eq 0 ]; then
                     exit 0
                 fi
@@ -205,20 +211,14 @@ do
             ;;
 
         "Ayuda")
-            zenity --text-info --title="Ayuda - MegaTools" --filename=Ayuda --font="DejaVu Sans Mono" --width=650 --height=650
-            ;;
-
-        "Crear/Borrar lanzador")
-            #mete el pid del proceso a un archivo para poder matar este script desde otro
-            echo $$ > /tmp/ProcesoPidDeMegatools
-            bash CrearBorrarLanzador
+            zenity --text-info --title="Ayuda - $titulo" --filename=Ayuda --font="DejaVu Sans Mono" --width=650 --height=650
             ;;
 
         *)
             if [ $? -eq 0 ]; then
-                zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+                zenity --error --title="$titulo" --text="No has seleccionado ninguna opcion del menu." --width=300
             else
-                zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+                zenity --question --title="$titulo" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
                 if [ $? -eq 0 ]; then
                     exit 0
                 fi
