@@ -25,7 +25,7 @@ else
     #hay que actualizar, comprueba y actualiza
     #echo ""
     zenity --warning --title="Megatools - ( Diseñado por SIKIGSX )" --text="Se va a proceder a la actualizacion del componente CREAR LANZADOR de forma automatica.\nSeleccionalo de nuevo" --width=650
-    mv /tmp/comprobar/$descarga/$archivo_local $descarga
+    mv /tmp/comprobar/$archivo_local $descarga
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
     #echo ""
