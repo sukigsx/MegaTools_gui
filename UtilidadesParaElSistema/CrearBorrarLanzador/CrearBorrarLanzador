@@ -6,7 +6,7 @@ ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del reposi
 
 # Obtener la ruta del script
 descarga=$(dirname "$(readlink -f "$0")")
-
+ruta=$(pwd)
 git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
 
 diff $descarga/$archivo_local /tmp/comprobar/$archivo_local >/dev/null 2>&1
@@ -25,7 +25,7 @@ else
     #hay que actualizar, comprueba y actualiza
     #echo ""
     zenity --warning --title="Megatools - ( Diseñado por SIKIGSX )" --text="Se va a proceder a la actualizacion del componente CREAR LANZADOR de forma automatica.\nSeleccionalo de nuevo" --width=650
-    mv /tmp/comprobar/$archivo_local $descarga
+    mv /tmp/comprobar/$ruta$archivo_local $descarga
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
     #echo ""
