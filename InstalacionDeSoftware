@@ -1,145 +1,99 @@
 #!/bin/bash
 
-actualizar_script(){
-archivo_local="InstalacionDeSoftware" # Nombre del archivo local
-ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
-
-# Obtener la ruta del script
-descarga=$(dirname "$(readlink -f "$0")")
-#descarga="/home/$(whoami)/scripts"
-git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
-
-diff $descarga/$archivo_local /tmp/comprobar/$archivo_local >/dev/null 2>&1
-
-
-if [ $? = 0 ]
-then
-    #esta actualizado, solo lo comprueba
-    #echo ""
-    #echo -e "${verde} El script${borra_colores} $0 ${verde}esta actualizado.${borra_colores}"
-    #echo ""
-    var_actualizado="SI"
-    chmod -R +w /tmp/comprobar
-    rm -R /tmp/comprobar
-else
-    #hay que actualizar, comprueba y actualiza
-    #echo ""
-    zenity --warning --title="Megatools - ( Diseñado por SIKIGSX )" --text="Se va a proceder a la actualizacion del componente $0 de forma automatica.\nCarga de nuevo $0." --width=650
-    mv /tmp/comprobar/$archivo_local $descarga
-    chmod -R +w /tmp/comprobar
-    rm -R /tmp/comprobar
-    #echo ""
-    #echo -e "${verde} El script se ha actualizado.${borra_colores}"
-    #sleep 2
-    exit
-fi
-}
-
-actualizar_script
-
-#empieza lo gordo
+#Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
+rm /tmp/software 2>/dev/null
+echo 'clear' >> /tmp/software
+echo 'echo -e "\nActualizando repositorios.\n"' >> /tmp/software
+echo 'if [ $(whois pkcon) ]' >> /tmp/software
+echo 'then' >> /tmp/software
+echo '    sudo pkcon update' >> /tmp/software
+echo '    sudo apt update' >> /tmp/software
+echo 'else' >> /tmp/software
+echo '    sudo apt update' >> /tmp/software
+echo 'fi' >> /tmp/software
+echo 'echo -e "\nActualizacion de repositorios FINALIZADA.\n"' >> /tmp/software
 
 while :
 do
-    # Mostrar el menú de selección utilizando Zenity
-    selection=$(zenity --list --title="Instalacion de software - MegaTools" \
-    --text="\nSoftware disponible en repositorios para distribuciones basadas en debian.\n" \
-    --checklist --column="Marca una o varias casillas para instalar" --column="Nombre del software" --column="Descripcion." \
-    --width=300 --height=200 \
-    --cancel-label="Atras" \
-    --ok-label="Aceptar" \
-    --width=850 \
+    opcion=$(zenity --list --title="MegaTools ( Diseñado por SUKIGSX )" \
+    --text="\nSelecciona una categoria de software y vete marcando el que mas te guste o necesites.\n" \
+    --column "Categorias principales:" --column="Descripcion." \
+    "NAVEGADORES" "Los principales navegadores para internet." \
+    "AUDIO - VIDEO" "Software relacionado el el Audio y el Video." \
+    "ENTORNOS GRAFICOS LINUX" "Los principales entornos graficos para linux basados en debian." \
+    "UTILIDADES" "Cantidad de utilidades" \
+    "OFIMATICA" "Software dedicado a la ofimatica" \
+    "SERVIDORES" "Servidores para tu sistema, (ssh, ftp, smb, etc)" \
+    "GESTOR DE PAQUETES" "Software para el control de paquetes. (snap apt etc)." \
+    "PARA TU TERMINAL" "Software pensado para la terminal linux." \
+    "DISCOS" "Software de control de discos duros y unidades en general." \
+    "JUEGOS" "Pues ya lo dice todo, juegos." \
+    "SEGURIDAD" "Software destinado a la seguridad de tu equipo." \
+    "MENSAJERIA" "Software de mensajeria en red." \
+    --width=650 \
     --height=650 \
-    FALSE "NAVEGADORES" "Si seleccionas esta, instalara todos los navegadores" \
-        FALSE "Google Chrome" "Navegador para internet" \
-        FALSE "chromium-browser" "Navegador para internet" \
-        FALSE "Firefox" "Navegador para internet" \
-    FALSE "AUDIO - VIDEO" "Si seleccionas esta, instalara todos de audio - video" \
-    FALSE "ENTORNOS GRAFICOS LINUX" "Si seleccionas esta, instalara todos los entornos" \
-    FALSE "UTILIDADES" "Si seleccionas esta, instalara todas la utilidades" \
-    FALSE "OFIMATICA" "Si seleccionas esta, instalara todo de ofimatica" \
-    FALSE "SERVIDORES" "Si seleccionas esta, instalara todos los servidores" \
-    FALSE "GESTOR DE PAQUETES" "Si seleccionas esta, instalara todos los gestores de paquetes" \
-    FALSE "PARA TU TERMINAL" "Si seleccionas esta, instalara todo para tu terminal" \
-    FALSE "DISCOS" "Si seleccionas esta, instalara todos los discos" \
-    FALSE "JUEGOS" "Si seleccionas esta, instalara todos los juegos" \
-    FALSE "SEGURIDAD" "Si seleccionas esta, instalara todos los seguridad" \
-    FALSE "MENSAJERIA" "Si seleccionas esta, instalara todos los mensajeria" \
-    )
+    --ok-label="Aceptar" \
+    --cancel-label="Atras" \
+    --extra-button="Instalar Software Seleccionado")
 
-    # Verificar si se presionó "Cancelar" en el diálogo de Zenity
-    if [ $? -eq 1 ]; then
-        exit 0
-    fi
+    # Manejar la opción seleccionada
+    case $opcion in
 
-    # Verificar si no se seleccionó ninguna opción
-    if [ -z "$selection" ]; then
-        zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado nada para instalar." --width=300
-    else
-        echo ""
-    fi
-
-
-    # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
-    IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
-    for option in "${selected_options[@]}"; do
-        case $option in
-            "NAVEGADORES")
-                echo "navegadores"
-                ;;
-            "chromium-browser")
-                echo "#chromium-browser" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y chromium-browser" >> /tmp/software
-                echo "sudo apt install -y chromium-browser-l10n" >> /tmp/software
-                echo "" >> /tmp/software
-                ;;
-
-            "AUDIO - VIDEO")
-                echo "video auidoo"
-                ;;
-
-            "ENTORNOS GRAFICOS LINUX")
-                echo "graficos entorno"
-                ;;
-
-            "UTILIDADES")
-                ;;
-
-            "OFIMATICA")
-                ;;
-
-            "SERVIDORES")
-                ;;
-
-            "GESTOR DE PAQUETES")
-                ;;
-
-            "PARA TU TERMINAL")
-                ;;
-
-            "DISCOS")
-                ;;
-
-            "JUEGOS")
-                ;;
-
-            "SEGURIDAD")
-                ;;
-
-            "MENSAJERIA")
-                ;;
-            *)
-            #if [ $? -eq 0 ]; then
-            #    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
-            #else
-            #    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
-            #    if [ $? -eq 0 ]; then
-            #        exit 0
-            #    fi
-            #fi
-            echo "he entrado en el *"; read p
+        "NAVEGADORES")
+            bash InstalacionNavegadores
             ;;
-        esac
-    done
-done
 
+        "AUDIO - VIDEO")
+            ;;
+
+        "ENTORNOS GRAFICOS LINUX")
+            ;;
+
+        "UTILIDADES")
+            ;;
+
+        "OFIMATICA")
+            ;;
+
+        "SERVIDORES")
+            ;;
+
+        "GESTOR DE PAQUETES")
+            ;;
+
+        "PARA TU TERMINAL")
+            ;;
+
+        "DISCOS")
+            ;;
+
+        "JUEGOS")
+            ;;
+
+        "SEGURIDAD")
+            ;;
+
+        "MENSAJERIA")
+            ;;
+
+        "Instalar Software Seleccionado")
+            #empieza la instalacion
+            #actualiza repositorios
+            (echo -e "Ejecutando (sudo apt update)\n " && sudo apt update 2>/dev/null && echo -e "\nTerminado el sudo apt update") | zenity --text-info --width=600 --height=400 --title="Actualizando repositorios - MegaTools" --auto-scroll
+
+            bash /tmp/software | zenity --text-info --width=600 --height=400 --title="Instalando software seleccionado - MegaTools" --auto-scroll
+            ;;
+
+        *)
+            if [ $? -eq 0 ]; then
+                zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna categoria del menu." --width=300
+            else
+                #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
+                rm /tmp/software 2>/dev/null
+                exit 0
+            fi
+            ;;
+    esac
+done
+#Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
+rm /tmp/software 2>/dev/null
