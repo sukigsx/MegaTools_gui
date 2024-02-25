@@ -209,6 +209,7 @@ echo "Ejecuto el resto"
 echo "Actializado = $var_actualizado"
 echo "conexion a internet = $var_conexion"
 echo "software necesario = $var_software"
+echo "este es el repodir $repo_dir"
 
 zenity --list --title="MegaTools ( Diseñado por SUKIGSX )" \
     --text="Informacion relacionada al Megatools :\n Conexion a internet = $var_conexion\n software necesario para el correcto funcionamiento = $var_software\n Script esta actualizado = $var_actualizado\n\nInformacion de SUKIGSX: \n Correo electronico = scripts@mbbsistemas.es\n Pagina web = https://repositorio.mbbsistemas.es\n" \
