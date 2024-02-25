@@ -118,7 +118,7 @@ actualizar_script(){
 #    DIRECTORIO_LOCAL=$(dirname "$(readlink -f "$0")")
 
 # Clonar el repositorio en /tmp/comprobar
-repo_dir=$(dirname "$(readlink -f "$0")")
+repo_dir=$(pwd)
 repo_url="https://github.com/sukigsx/MegaTools_gui.git"
 cloned_dir="/tmp/comprobar"
 git clone $repo_url $cloned_dir
