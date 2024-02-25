@@ -137,6 +137,7 @@ if [ $? = 0 ]; then
 else
     # Copiar el contenido del repositorio clonado al repositorio en /tmp/comprobar
     cd ..
+    chmod -R +w $repo_dir
     rm -r $repo_dir
     mkdir $repo_dir
     cp -r $cloned_dir/* $repo_dir/
