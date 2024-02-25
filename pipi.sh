@@ -19,6 +19,7 @@ then
     var_conexion="SI"
 else
     var_conexion="NO"
+    var_actualizado="No hay conexion a internet"
 fi
 }
 
