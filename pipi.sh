@@ -131,7 +131,7 @@ if [ $var_software = "NO" ]; then
         fi
 fi
 
-echo "Ejecuto el resto"
+echo "Ejecuto el resto tio"
 
 
 
