@@ -137,7 +137,7 @@ if [ $var_conexion = "SI" ]; then
     fi
 fi
 
-echo "Ejecuto el resto"
+echo "Ejecuto el restoaaaaaaaaaaaaaaaaaaaaaaaa"
 
 
 
