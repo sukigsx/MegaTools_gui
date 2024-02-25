@@ -125,13 +125,25 @@ git clone $repo_url $cloned_dir
 
 # Comparar el contenido del repositorio clonado con el repositorio en /tmp/comprobar
 if diff -qr $cloned_dir $repo_dir >/dev/null ; then
+    #esta actualizado, solo lo comprueba
+    echo ""
+    echo -e " El script $0 esta actualizado."
+    echo ""
+    var_actualizado="SI"
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
     echo "No se encontraron cambios. No se realizó ninguna acción."
 else
     # Copiar el contenido del repositorio clonado al repositorio en /tmp/comprobar
-    cp -r $cloned_dir/* $repo_dir
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
+    mv -r $cloned_dir/* $repo_dir
     cd $repo_dir
     # Agregar todos los cambios, realizar commit y push
     echo "Repositorio actualizado con éxito."
+    echo -e " El script se ha actualizado."
+    echo -e " Hay que cargar de nuevo el script."
+    salir="SI"
 fi
 }
 
