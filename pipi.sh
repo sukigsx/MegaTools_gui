@@ -214,7 +214,7 @@ if [ $var_conexion = "SI" ]; then
     fi
 fi
 
-echo "Ejecuto el restoaaaaaaaaaaaaaaaaa"
+echo "Ejecuto el restoa"
 echo "Actializado = $var_actualizado"
 echo "conexion a internet = $var_conexion"
 echo "software necesario = $var_software"
