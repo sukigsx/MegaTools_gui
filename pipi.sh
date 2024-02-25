@@ -120,7 +120,7 @@ actualizar_script(){
 
 
 # Actualiza el repositorio local
-git pull
+git pull; read -p "he ejecutado gir pull" po
 
 # Comprueba si hay cambios
 CAMBIOS=$(git status --porcelain)
