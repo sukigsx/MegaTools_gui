@@ -115,47 +115,24 @@ fi
 
 actualizar_script(){
     ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git"
-    descarga=$(dirname "$(readlink -f "$0")")
+    DIRECTORIO_LOCAL=$(dirname "$(readlink -f "$0")")
 
-    # Clonar el repositorio remoto
-    git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
 
-    # Obtener la lista de todos los archivos y directorios en el repositorio (excluyendo archivos ocultos)
-    archivos_directorios_repositorio=$(find /tmp/comprobar -not -path '*/\.*')
 
-    # Recorrer los archivos y directorios del repositorio
-    for archivo_directorio_repositorio in $archivos_directorios_repositorio; do
-        archivo_local="${descarga}/${archivo_directorio_repositorio#/tmp/comprobar/}"  # Obtener la ruta relativa del archivo o directorio local
+# Actualiza el repositorio local
+git pull
 
-        if [ -d "$archivo_directorio_repositorio" ]; then
-            # Si es un directorio
-            if [ ! -d "$archivo_local" ]; then
-                # Si el directorio no existe localmente, lo crea
-                mkdir -p "$archivo_local"
-            fi
-        else
-            # Si es un archivo
-            # Comparar el archivo del repositorio con el archivo local
-            diff "$archivo_local" "$archivo_directorio_repositorio" >/dev/null 2>&1
+# Comprueba si hay cambios
+CAMBIOS=$(git status --porcelain)
 
-            if [ $? -ne 0 ]; then
-                # El archivo local necesita actualizarse
-                echo ""
-                echo -e "El archivo $archivo_local NO está actualizado."
-                echo -e "Se procede a su actualización automática."
-                sleep 3
-                mv "$archivo_directorio_repositorio" "$archivo_local"
-                echo ""
-                echo -e "El archivo $archivo_local se ha actualizado."
-                echo -e "Es necesario cargar de nuevo el script."
-                salir="SI"
-            fi
-        fi
-    done
-
-    # Limpiar
-    chmod -R +w /tmp/comprobar
-    rm -R /tmp/comprobar
+# Si hay cambios, realiza la actualización
+if [ -n "$CAMBIOS" ]; then
+    echo "Se encontraron cambios. Actualizando el repositorio local..."
+    git pull origin master
+    echo "Repositorio actualizado."
+else
+    echo "No se encontraron cambios. El repositorio está actualizado."
+fi
 }
 
 
