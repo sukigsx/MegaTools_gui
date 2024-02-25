@@ -135,9 +135,9 @@ carpetas_remotas=$(git ls-tree --name-only -d -r HEAD)
 if [ "$(diff <(echo "$archivos_locales") <(echo "$archivos_remotos"))" != "" ]; then
     # Hay cambios en los archivos, por lo que actualizamos el repositorio
     echo "Se han encontrado cambios en archivos. Actualizando el repositorio..."
-    git add .
-    git commit -m "Actualizando archivos"
-    git push origin HEAD
+    #git add .
+    #git commit -m "Actualizando archivos"
+    git pull
     echo "Repositorio actualizado con éxito."
 else
     echo "No se encontraron cambios en archivos. No se realizó ninguna acción."
@@ -213,7 +213,7 @@ if [ $var_conexion = "SI" ]; then
     fi
 fi
 
-echo "Ejecuto el restoaaaaaaaaaaaaaaaaaa"
+echo "Ejecuto el resto"
 echo "Actializado = $var_actualizado"
 echo "conexion a internet = $var_conexion"
 echo "software necesario = $var_software"
