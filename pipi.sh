@@ -118,13 +118,14 @@ actualizar_script(){
 #    DIRECTORIO_LOCAL=$(dirname "$(readlink -f "$0")")
 
 # Clonar el repositorio en /tmp/comprobar
-repo_dir=$(pwd)
+repo_dir=$(dirname "$(readlink -f "$0")")
 repo_url="https://github.com/sukigsx/MegaTools_gui.git"
 cloned_dir="/tmp/comprobar"
 git clone $repo_url $cloned_dir
 
 # Comparar el contenido del repositorio clonado con el repositorio en /tmp/comprobar
-if diff -qr $cloned_dir $repo_dir >/dev/null ; then
+diff -qr $cloned_dir $repo_dir >/dev/null
+if [ $? = 0 ]; then
     #esta actualizado, solo lo comprueba
     echo ""
     echo -e " El script $0 esta actualizado."
