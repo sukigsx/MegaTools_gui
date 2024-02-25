@@ -27,7 +27,7 @@ software_necesario(){
 clear
 var_software="NO"
 
-echo -e " Actualizando repositorios y verificando software necesario:\n"
+echo -e "\n Actualizando repositorios y verificando software necesario:\n"
 sudo apt update 2>/dev/null 1>/dev/null 0>/dev/null
 for paquete in $software
 do
@@ -76,7 +76,7 @@ which $paquete 2>/dev/null 1>/dev/null 0>/dev/null #comprueba si esta el program
 done
 }
 
-actualizar_script(){
+copia(){
 archivo_local="pipi.sh" # Nombre del archivo local
 ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
 
@@ -112,6 +112,43 @@ else
     salir="SI"
 fi
 }
+
+actualizar_script(){
+    ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git"
+    descarga=$(dirname "$(readlink -f "$0")")
+
+    # Clonar el repositorio remoto
+    git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
+
+    # Obtener la lista de archivos en el repositorio
+    archivos_repositorio=$(find /tmp/comprobar -type f)
+
+    # Recorrer los archivos del repositorio
+    for archivo_repositorio in $archivos_repositorio; do
+        archivo_local="${descarga}/${archivo_repositorio##*/}"  # Obtener el nombre del archivo local
+
+        # Comparar el archivo del repositorio con el archivo local
+        diff "$archivo_local" "$archivo_repositorio" >/dev/null 2>&1
+
+        if [ $? -ne 0 ]; then
+            # El archivo local necesita actualizarse
+            echo ""
+            echo -e "El archivo $archivo_local NO está actualizado."
+            echo -e "Se procede a su actualización automática."
+            sleep 3
+            mv "$archivo_repositorio" "$archivo_local"
+            echo ""
+            echo -e "El archivo $archivo_local se ha actualizado."
+            echo -e "Es necesario cargar de nuevo el script."
+            salir="SI"
+        fi
+    done
+
+    # Limpiar
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
+}
+
 
 comprobar_actualizacion_sino(){
 archivo_local="pipi.sh" # Nombre del archivo local
