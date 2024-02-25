@@ -111,6 +111,30 @@ else
 fi
 }
 
+comprobar_actualizacion_sino(){
+archivo_local="pipi.sh" # Nombre del archivo local
+ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
+
+# Obtener la ruta del script
+descarga=$(dirname "$(readlink -f "$0")")
+#descarga="/home/$(whoami)/scripts"
+git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
+
+diff $descarga/$archivo_local /tmp/comprobar/$archivo_local >/dev/null 2>&1
+
+
+if [ $? = 0 ]
+then
+    var_actualizado="SI"
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
+else
+    var_actualizado="NO"
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
+fi
+}
+
 #ejecuto la funcion para comprobar si esta el software necesario instalado.
 #si esta instalado ejecuta el programa y listo.
 #si no esta instalado, entonces entra en el if y comprueba la conexion a internet y todo lo demas.
@@ -131,9 +155,12 @@ fi
 
 conexion
 if [ $var_conexion = "SI" ]; then
-    actualizar_script | zenity --text-info --title="Este es el titulo de la ventana" --text="Se comprobara el software necesario.\nEl que falte se intentara instalar." --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
-    if [ $salir="SI" ]; then
-        exit
+    comprobar_actualizacion_sino
+    if [ $var_actualizado = "NO" ]; then
+        actualizar_script | zenity --text-info --title="Este es el titulo de la ventana" --text="Se comprobara el software necesario.\nEl que falte se intentara instalar." --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
+        if [ $salir="SI" ]; then
+            exit
+        fi
     fi
 fi
 
