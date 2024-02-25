@@ -170,6 +170,27 @@ echo "Actializado = $var_actualizado"
 echo "conexion a internet = $var_conexion"
 echo "software necesario = $var_software"
 
+zenity --list --title="MegaTools ( Diseñado por SUKIGSX )" \
+    --text="Informacion relacionada al Megatools :\n Conexion a internet = $var_conexion\n software necesario para el correcto funcionamiento = $var_software\n Script esta actualizado = $var_actualizado\n\nInformacion de SUKIGSX: \n Correo electronico = scripts@mbbsistemas.es\n Pagina web = https://repositorio.mbbsistemas.es\n" \
+    --column "Opciones del menu principal:" --column="Descripcion." \
+    "UTILIDADES PARA EL SISTEMA" "" \
+    "Crear/Borrar lanzador" "Te crea o brra el lanzador de tu escritorio." \
+    "Instalacion de software" "Script para instalar programas en tu sistema." \
+    "" "" \
+    "INFORMACION DE TU SISTEMA" "" \
+    "Informacion general" "Te da la informacion mas importante de tu sistema" \
+    "Informacion de ips Lan/Wan" "Te da la informacion de ip publica y de tu red" \
+    "Informacion de discos" "Informacion de el uso de tus discos del sistema" \
+    "Informacion memoria ram" "Pues la informacion del uso de la memoria del sistema" \
+    "Informacion dispositivos de red" "Te la la informacion de tus tarjetas de red" \
+    "" "" \
+    --width=650 \
+    --height=650 \
+    --ok-label="Aceptar" \
+    --cancel-label="Salir" \
+    --extra-button="Web Sukigsx" \
+    --extra-button="Ayuda"
+
 
 
 
