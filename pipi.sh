@@ -136,12 +136,13 @@ if [ $? = 0 ]; then
     echo "No se encontraron cambios. No se realizó ninguna acción."
 else
     # Copiar el contenido del repositorio clonado al repositorio en /tmp/comprobar
-    rm -r $repo_dir
+    sudo rm -r $repo_dir
     cp -r $cloned_dir/* $repo_dir
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
     cd $repo_dir
     # Agregar todos los cambios, realizar commit y push
+    echo "este es el repodir $repo_dir"
     echo "Repositorio actualizado con éxito."
     echo -e " El script se ha actualizado."
     echo -e " Hay que cargar de nuevo el script."
