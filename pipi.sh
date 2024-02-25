@@ -131,6 +131,11 @@ if [ $var_software = "NO" ]; then
         fi
 fi
 
+conexion
+if [ $var_conexion = "SI" ]; then
+    actualizar_script
+fi
+
 echo "Ejecuto el resto tio"
 
 
