@@ -120,7 +120,7 @@ actualizar_script(){
 
 
 # Actualiza el repositorio local
-git pull
+#git pull
 
 # Comprueba si hay cambios
 CAMBIOS=$(git status --porcelain)
