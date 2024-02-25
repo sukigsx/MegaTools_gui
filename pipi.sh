@@ -114,25 +114,47 @@ fi
 }
 
 actualizar_script(){
-    ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git"
-    DIRECTORIO_LOCAL=$(dirname "$(readlink -f "$0")")
+#    ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git"
+#    DIRECTORIO_LOCAL=$(dirname "$(readlink -f "$0")")
 
+# Directorio local del repositorio clonado
+repo_dir=$(dirname "$(readlink -f "$0")")
 
+# Cambiar al directorio del repositorio
+cd $repo_dir || exit
 
-# Actualiza el repositorio local
-git pull; read -p "he ejecutado gir pull" po
+# Obtener la lista de archivos y carpetas locales ignorando los archivos ocultos
+archivos_locales=$(find . -not -path '*/\.*' -type f -printf "%P\n")
+carpetas_locales=$(find . -not -path '*/\.*' -type d -printf "%P\n")
 
-# Comprueba si hay cambios
-CAMBIOS=$(git status --porcelain)
+# Obtener la lista de archivos y carpetas en el repositorio remoto
+archivos_remotos=$(git ls-files)
+carpetas_remotas=$(git ls-tree --name-only -d -r HEAD)
 
-# Si hay cambios, realiza la actualización
-if [ -n "$CAMBIOS" ]; then
-    echo "Se encontraron cambios. Actualizando el repositorio local..."
-    git pull origin master
-    echo "Repositorio actualizado."
+# Comprobar si hay cambios en archivos
+if [ "$(diff <(echo "$archivos_locales") <(echo "$archivos_remotos"))" != "" ]; then
+    # Hay cambios en los archivos, por lo que actualizamos el repositorio
+    echo "Se han encontrado cambios en archivos. Actualizando el repositorio..."
+    git add .
+    git commit -m "Actualizando archivos"
+    git push origin HEAD
+    echo "Repositorio actualizado con éxito."
 else
-    echo "No se encontraron cambios. El repositorio está actualizado."
+    echo "No se encontraron cambios en archivos. No se realizó ninguna acción."
 fi
+
+# Comprobar si hay cambios en carpetas
+if [ "$(diff <(echo "$carpetas_locales") <(echo "$carpetas_remotas"))" != "" ]; then
+    # Hay cambios en las carpetas, por lo que actualizamos el repositorio
+    echo "Se han encontrado cambios en carpetas. Actualizando el repositorio..."
+    git add .
+    git commit -m "Actualizando carpetas"
+    git push origin HEAD
+    echo "Repositorio actualizado con éxito."
+else
+    echo "No se encontraron cambios en carpetas. No se realizó ninguna acción."
+fi
+
 }
 
 
@@ -191,7 +213,7 @@ if [ $var_conexion = "SI" ]; then
     fi
 fi
 
-echo "Ejecuto el restoaaaaaaaaaaaaaaaaaaaaaaaaaa"
+echo "Ejecuto el resto"
 echo "Actializado = $var_actualizado"
 echo "conexion a internet = $var_conexion"
 echo "software necesario = $var_software"
