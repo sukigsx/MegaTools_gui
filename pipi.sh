@@ -26,8 +26,9 @@ fi
 software_necesario(){
 clear
 var_software="NO"
-echo -e " Verificando software necesario:\n"
 
+echo -e " Actualizando repositorios y verificando software necesario:\n"
+sudo apt update 2>/dev/null 1>/dev/null 0>/dev/null
 for paquete in $software
 do
 which $paquete 2>/dev/null 1>/dev/null 0>/dev/null #comprueba si esta el programa llamado programa
