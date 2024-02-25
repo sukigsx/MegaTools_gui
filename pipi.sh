@@ -120,7 +120,7 @@ actualizar_script(){
 
 
 # Actualiza el repositorio local
-#git pull
+git pull
 
 # Comprueba si hay cambios
 CAMBIOS=$(git status --porcelain)
@@ -191,7 +191,7 @@ if [ $var_conexion = "SI" ]; then
     fi
 fi
 
-echo "Ejecuto el restoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+echo "Ejecuto el resto"
 echo "Actializado = $var_actualizado"
 echo "conexion a internet = $var_conexion"
 echo "software necesario = $var_software"
