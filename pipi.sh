@@ -147,9 +147,9 @@ fi
 if [ "$(diff <(echo "$carpetas_locales") <(echo "$carpetas_remotas"))" != "" ]; then
     # Hay cambios en las carpetas, por lo que actualizamos el repositorio
     echo "Se han encontrado cambios en carpetas. Actualizando el repositorio..."
-    git add .
-    git commit -m "Actualizando carpetas"
-    git push origin HEAD
+    #git add .
+    #git commit -m "Actualizando carpetas"
+    git pull
     echo "Repositorio actualizado con éxito."
 else
     echo "No se encontraron cambios en carpetas. No se realizó ninguna acción."
@@ -213,7 +213,7 @@ if [ $var_conexion = "SI" ]; then
     fi
 fi
 
-echo "Ejecuto el resto"
+echo "Ejecuto el restoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 echo "Actializado = $var_actualizado"
 echo "conexion a internet = $var_conexion"
 echo "software necesario = $var_software"
