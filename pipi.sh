@@ -90,7 +90,7 @@ if [ $? = 0 ]
 then
     #esta actualizado, solo lo comprueba
     echo ""
-    echo -e "${verde} El script${borra_colores} $0 ${verde}esta actualizado.${borra_colores}"
+    echo -e " El script $0 esta actualizado."
     echo ""
     var_actualizado="SI"
     chmod -R +w /tmp/comprobar
@@ -98,14 +98,14 @@ then
 else
     #hay que actualizar, comprueba y actualiza
     echo ""
-    echo -e "${amarillo} EL script${borra_colores} $0 ${amarillo}NO esta actualizado.${borra_colores}"
-    echo -e "${verde} Se procede a su actualizacion automatica.${borra_colores}"
+    echo -e " EL script $0 NO esta actualizado."
+    echo -e " Se procede a su actualizacion automatica."
     sleep 3
     mv /tmp/comprobar/$archivo_local $descarga
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
     echo ""
-    echo -e "${verde} El script se ha actualizado.${borra_colores}"
+    echo -e " El script se ha actualizado."
 fi
 }
 
