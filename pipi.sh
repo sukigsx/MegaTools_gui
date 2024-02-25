@@ -135,9 +135,9 @@ if diff -qr $cloned_dir $repo_dir >/dev/null ; then
     echo "No se encontraron cambios. No se realizó ninguna acción."
 else
     # Copiar el contenido del repositorio clonado al repositorio en /tmp/comprobar
+    cp -r $cloned_dir/* $repo_dir
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
-    mv -r $cloned_dir/* $repo_dir
     cd $repo_dir
     # Agregar todos los cambios, realizar commit y push
     echo "Repositorio actualizado con éxito."
