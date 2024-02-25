@@ -140,7 +140,6 @@ else
     cp -r $cloned_dir/* $repo_dir
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
-    cd $repo_dir
     # Agregar todos los cambios, realizar commit y push
     echo "este es el repodir $repo_dir"
     echo "Repositorio actualizado con éxito."
