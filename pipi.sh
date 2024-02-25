@@ -117,44 +117,22 @@ actualizar_script(){
 #    ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git"
 #    DIRECTORIO_LOCAL=$(dirname "$(readlink -f "$0")")
 
-# Directorio local del repositorio clonado
+# Clonar el repositorio en /tmp/comprobar
 repo_dir=$(dirname "$(readlink -f "$0")")
+repo_url="https://github.com/sukigsx/MegaTools_gui.git"
+cloned_dir="/tmp/comprobar"
+git clone $repo_url $cloned_dir
 
-# Cambiar al directorio del repositorio
-cd $repo_dir || exit
-
-# Obtener la lista de archivos y carpetas locales ignorando los archivos ocultos
-archivos_locales=$(find . -not -path '*/\.*' -type f -printf "%P\n")
-carpetas_locales=$(find . -not -path '*/\.*' -type d -printf "%P\n")
-
-# Obtener la lista de archivos y carpetas en el repositorio remoto
-archivos_remotos=$(git ls-files)
-carpetas_remotas=$(git ls-tree --name-only -d -r HEAD)
-
-# Comprobar si hay cambios en archivos
-if [ "$(diff <(echo "$archivos_locales") <(echo "$archivos_remotos"))" != "" ]; then
-    # Hay cambios en los archivos, por lo que actualizamos el repositorio
-    echo "Se han encontrado cambios en archivos. Actualizando el repositorio..."
-    #git add .
-    #git commit -m "Actualizando archivos"
-    git pull
-    echo "Repositorio actualizado con éxito."
+# Comparar el contenido del repositorio clonado con el repositorio en /tmp/comprobar
+if diff -qr $cloned_dir $repo_dir >/dev/null ; then
+    echo "No se encontraron cambios. No se realizó ninguna acción."
 else
-    echo "No se encontraron cambios en archivos. No se realizó ninguna acción."
-fi
-
-# Comprobar si hay cambios en carpetas
-if [ "$(diff <(echo "$carpetas_locales") <(echo "$carpetas_remotas"))" != "" ]; then
-    # Hay cambios en las carpetas, por lo que actualizamos el repositorio
-    echo "Se han encontrado cambios en carpetas. Actualizando el repositorio..."
-    #git add .
-    #git commit -m "Actualizando carpetas"
-    git pull
+    # Copiar el contenido del repositorio clonado al repositorio en /tmp/comprobar
+    cp -r $cloned_dir/* $repo_dir
+    cd $repo_dir
+    # Agregar todos los cambios, realizar commit y push
     echo "Repositorio actualizado con éxito."
-else
-    echo "No se encontraron cambios en carpetas. No se realizó ninguna acción."
 fi
-
 }
 
 
