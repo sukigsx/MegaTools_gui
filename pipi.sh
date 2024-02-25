@@ -106,10 +106,6 @@ else
     rm -R /tmp/comprobar
     echo ""
     echo -e "${verde} El script se ha actualizado.${borra_colores}"
-    sleep 2
-    exit
-    #kill -9 $(ps -o ppid= -p $$)
-    #xdotool windowkill `xdotool getactivewindow`
 fi
 }
 
@@ -133,7 +129,7 @@ fi
 
 conexion
 if [ $var_conexion = "SI" ]; then
-    actualizar_script
+     (actualizar_script && echo -e "\n Terminado") | zenity --text-info --title="Este es el titulo de la ventana" --text="Se comprobara el software necesario.\nEl que falte se intentara instalar." --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
 fi
 
 echo "Ejecuto el resto"
