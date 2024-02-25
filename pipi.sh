@@ -144,7 +144,7 @@ if [ $var_software = "NO" ]; then
     conexion
         if [ $var_conexion = "SI" ]; then
             software_necesario
-            actualizar_script_zenity
+            actualizar_script
         else
             clear
             echo -e "${verde}\n Verificando software necesario para el correcto funcionamiento.${borra_colores}"
