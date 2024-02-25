@@ -136,7 +136,7 @@ if [ $var_conexion = "SI" ]; then
     actualizar_script
 fi
 
-echo "Ejecuto el resto tio"
+echo "Ejecuto el resto"
 
 
 
