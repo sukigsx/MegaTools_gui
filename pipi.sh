@@ -120,8 +120,8 @@ actualizar_script(){
     # Clonar el repositorio remoto
     git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
 
-    # Obtener la lista de archivos en el repositorio
-    archivos_repositorio=$(find /tmp/comprobar -type f)
+    # Obtener la lista de archivos en el repositorio (excluyendo archivos ocultos)
+    archivos_repositorio=$(find /tmp/comprobar -type f -not -path '*/\.*')
 
     # Recorrer los archivos del repositorio
     for archivo_repositorio in $archivos_repositorio; do
@@ -148,6 +148,7 @@ actualizar_script(){
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
 }
+
 
 
 comprobar_actualizacion_sino(){
