@@ -132,7 +132,7 @@ if [ $var_conexion = "SI" ]; then
      actualizar_script | zenity --text-info --title="Este es el titulo de la ventana" --text="Se comprobara el software necesario.\nEl que falte se intentara instalar." --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
 fi
 
-echo "Ejecuto el resto"
+echo "Ejecuto el restopppp"
 
 
 
