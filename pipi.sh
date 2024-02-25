@@ -1,6 +1,6 @@
 
 #software necesario para la ejecucion del programa
-software="which git diff ping figlet nano neofetch lsblk ethtool zenity"
+software="which git diff ping figlet nano neofetch lsblk ethtool zenity rsync"
 
 #colores
 #ejemplo: echo -e "${verde} La opcion (-e) es para que pille el color.${borra_colores}"
@@ -136,14 +136,15 @@ if [ $? = 0 ]; then
     echo "No se encontraron cambios. No se realizó ninguna acción."
 else
     # Copiar el contenido del repositorio clonado al repositorio en /tmp/comprobar
-    cd $HOME
-    chmod -R +w $repo_dir
-    rm -r $repo_dir
-    mkdir $repo_dir
-    cp -r $cloned_dir/* $repo_dir/
-    chmod -R +w /tmp/comprobar
-    rm -R /tmp/comprobar
+    #cd $HOME
+    #chmod -R +w $repo_dir
+    #rm -r $repo_dir
+    #mkdir $repo_dir
+    #cp -r $cloned_dir/* $repo_dir/
+    #chmod -R +w /tmp/comprobar
+    #rm -R /tmp/comprobar
     # Agregar todos los cambios, realizar commit y push
+    rsync -av --deletee $cloned_dir $repo_dir
     echo "este es el repodir $repo_dir"
     echo "Repositorio actualizado con éxito."
     echo -e " El script se ha actualizado."
