@@ -144,7 +144,7 @@ else
     #chmod -R +w /tmp/comprobar
     #rm -R /tmp/comprobar
     # Agregar todos los cambios, realizar commit y push
-    rsync -av --deletee $cloned_dir $repo_dir
+    rsync -av --delete $cloned_dir $repo_dir
     echo "este es el repodir $repo_dir"
     echo "Repositorio actualizado con éxito."
     echo -e " El script se ha actualizado."
