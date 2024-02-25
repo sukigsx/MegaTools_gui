@@ -74,6 +74,45 @@ which $paquete 2>/dev/null 1>/dev/null 0>/dev/null #comprueba si esta el program
 done
 }
 
+actualizar_script(){
+archivo_local="pipi.sh" # Nombre del archivo local
+ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
+
+# Obtener la ruta del script
+descarga=$(dirname "$(readlink -f "$0")")
+#descarga="/home/$(whoami)/scripts"
+git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
+
+diff $descarga/$archivo_local /tmp/comprobar/$archivo_local >/dev/null 2>&1
+
+
+if [ $? = 0 ]
+then
+    #esta actualizado, solo lo comprueba
+    #echo ""
+    #echo -e "${verde} El script${borra_colores} $0 ${verde}esta actualizado.${borra_colores}"
+    #echo ""
+    var_actualizado="SI"
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
+else
+    #hay que actualizar, comprueba y actualiza
+    echo ""
+    echo -e "${amarillo} EL script${borra_colores} $0 ${amarillo}NO esta actualizado.${borra_colores}"
+    echo -e "${verde} Se procede a su actualizacion automatica.${borra_colores}"
+    sleep 3
+    mv /tmp/comprobar/$archivo_local $descarga
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
+    echo ""
+    echo -e "${verde} El script se ha actualizado.${borra_colores}"
+    sleep 2
+    exit
+    #kill -9 $(ps -o ppid= -p $$)
+    #xdotool windowkill `xdotool getactivewindow`
+fi
+}
+
 #ejecuto la funcion para comprobar si esta el software necesario instalado.
 #si esta instalado ejecuta el programa y listo.
 #si no esta instalado, entonces entra en el if y comprueba la conexion a internet y todo lo demas.
@@ -81,8 +120,8 @@ software_necesario_sino
 if [ $var_software = "NO" ]; then
     conexion
         if [ $var_conexion = "SI" ]; then
-            #aqui colocar verificar actualizar
             software_necesario
+            actualizar_script_zenity
         else
             clear
             echo -e "${verde}\n Verificando software necesario para el correcto funcionamiento.${borra_colores}"
