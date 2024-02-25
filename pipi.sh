@@ -136,7 +136,8 @@ if [ $? = 0 ]; then
     echo "No se encontraron cambios. No se realizó ninguna acción."
 else
     # Copiar el contenido del repositorio clonado al repositorio en /tmp/comprobar
-    sudo rm -r $repo_dir
+    cd ..
+    rm -r $repo_dir
     mkdir $repo_dir
     cp -r $cloned_dir/* $repo_dir/
     chmod -R +w /tmp/comprobar
