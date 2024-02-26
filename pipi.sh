@@ -113,7 +113,7 @@ else
 fi
 }
 
-actualizar_script(){
+#actualizar_script(){
 #    ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git"
 #    DIRECTORIO_LOCAL=$(dirname "$(readlink -f "$0")")
 
@@ -124,8 +124,7 @@ cloned_dir="/tmp/comprobar"
 git clone $repo_url $cloned_dir
 
 # Comparar el contenido del repositorio clonado con el repositorio en /tmp/comprobar
-#diff -qr $cloned_dir $repo_dir #>/dev/null
-diff $cloned_dir $repo_dir #>/dev/null
+diff -qr $cloned_dir $repo_dir #>/dev/null
 if [ $? = 0 ]; then
     #esta actualizado, solo lo comprueba
     echo ""
@@ -153,7 +152,7 @@ else
     echo -e " Hay que cargar de nuevo el script."
     salir="SI"
 fi
-}
+#}
 
 
 
