@@ -129,7 +129,7 @@ changes=$(git diff HEAD origin/main)
 # Si hay cambios, actualizar el repositorio local
 if [ -n "$changes" ]; then
     echo "Se encontraron cambios. Actualizando..."
-    git pull origin main
+    git pull origin main  --force -r
     echo "Repositorio actualizado."
 else
     echo "No se encontraron cambios. El repositorio ya está actualizado."
