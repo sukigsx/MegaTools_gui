@@ -114,39 +114,25 @@ fi
 }
 
 actualizar_script(){
-archivo_local="pipi.sh" # Nombre del archivo local
-ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
-
-# Obtener la ruta del script
-descarga=$(dirname "$(readlink -f "$0")")
-#descarga="/home/$(whoami)/scripts"
-git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
-
-diff -qr $descarga/* /tmp/comprobar/* >/dev/null 2>&1
+# Clonar el repositorio si no está presente
 
 
-if [ $? = 0 ]
-then
-    #esta actualizado, solo lo comprueba
-    echo ""
-    echo -e " El script $0 esta actualizado."
-    echo ""
-    var_actualizado="SI"
-    chmod -R +w /tmp/comprobar
-    rm -R /tmp/comprobar
+# Cambiar al directorio del repositorio
+
+
+# Obtener cambios del repositorio remoto
+git fetch origin
+
+# Comparar cambios entre el repositorio local y el remoto
+changes=$(git diff HEAD origin/main)
+
+# Si hay cambios, actualizar el repositorio local
+if [ -n "$changes" ]; then
+    echo "Se encontraron cambios. Actualizando..."
+    git pull origin main
+    echo "Repositorio actualizado."
 else
-    #hay que actualizar, comprueba y actualiza
-    echo ""
-    echo -e " EL script $0 NO esta actualizado."
-    echo -e " Se procede a su actualizacion automatica."
-    sleep 3
-    mv /tmp/comprobar/* $descarga
-    chmod -R +w /tmp/comprobar
-    rm -R /tmp/comprobar
-    echo ""
-    echo -e " El script se ha actualizado."
-    echo -e " Hay que cargar de nuevo el script."
-    salir="SI"
+    echo "No se encontraron cambios. El repositorio ya está actualizado."
 fi
 }
 
@@ -206,7 +192,7 @@ if [ $var_conexion = "SI" ]; then
     fi
 fi
 
-echo "Ejecuto el resto"
+echo "Ejecuto el restoaaaaaaaaaaaaa"
 echo "Actializado = $var_actualizado"
 echo "conexion a internet = $var_conexion"
 echo "software necesario = $var_software"
