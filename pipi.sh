@@ -124,7 +124,8 @@ cloned_dir="/tmp/comprobar"
 git clone $repo_url $cloned_dir
 
 # Comparar el contenido del repositorio clonado con el repositorio en /tmp/comprobar
-diff -qr $cloned_dir $repo_dir #>/dev/null
+#diff -qr $cloned_dir $repo_dir #>/dev/null
+diff $cloned_dir $repo_dir #>/dev/null
 if [ $? = 0 ]; then
     #esta actualizado, solo lo comprueba
     echo ""
