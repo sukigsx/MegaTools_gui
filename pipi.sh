@@ -141,8 +141,8 @@ else
     #rm -r $repo_dir
     #mkdir $repo_dir
     #cp -r $cloned_dir/* $repo_dir/
-    #chmod -R +w /tmp/comprobar
-    #rm -R /tmp/comprobar
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
     # Agregar todos los cambios, realizar commit y push
     rsync -av --delete /tmp/comprobar/* $repo_dir
     echo "este es el repodir $repo_dir"
