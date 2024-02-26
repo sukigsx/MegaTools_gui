@@ -113,19 +113,20 @@ else
 fi
 }
 
-#actualizar_script(){
-#    ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git"
-#    DIRECTORIO_LOCAL=$(dirname "$(readlink -f "$0")")
+actualizar_script(){
+archivo_local="pipi.sh" # Nombre del archivo local
+ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
 
-# Clonar el repositorio en /tmp/comprobar
-repo_dir=$(dirname "$(readlink -f "$0")")
-repo_url="https://github.com/sukigsx/MegaTools_gui.git"
-cloned_dir="/tmp/comprobar"
-git clone $repo_url $cloned_dir
+# Obtener la ruta del script
+descarga=$(dirname "$(readlink -f "$0")")
+#descarga="/home/$(whoami)/scripts"
+git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
 
-# Comparar el contenido del repositorio clonado con el repositorio en /tmp/comprobar
-diff -qr $cloned_dir $repo_dir #>/dev/null
-if [ $? = 0 ]; then
+diff -qr $descarga/* /tmp/comprobar/* >/dev/null 2>&1
+
+
+if [ $? = 0 ]
+then
     #esta actualizado, solo lo comprueba
     echo ""
     echo -e " El script $0 esta actualizado."
@@ -133,26 +134,21 @@ if [ $? = 0 ]; then
     var_actualizado="SI"
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
-    echo "No se encontraron cambios. No se realizó ninguna acción."
 else
-    # Copiar el contenido del repositorio clonado al repositorio en /tmp/comprobar
-    #cd $HOME
-    #chmod -R +w $repo_dir
-    #rm -r $repo_dir
-    #mkdir $repo_dir
-    #cp -r $cloned_dir/* $repo_dir/
-
-    # Agregar todos los cambios, realizar commit y push
-    rsync -av --delete /tmp/comprobar/* $repo_dir
+    #hay que actualizar, comprueba y actualiza
+    echo ""
+    echo -e " EL script $0 NO esta actualizado."
+    echo -e " Se procede a su actualizacion automatica."
+    sleep 3
+    mv /tmp/comprobar/* $descarga
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
-    echo "este es el repodir $repo_dir"
-    echo "Repositorio actualizado con éxito."
+    echo ""
     echo -e " El script se ha actualizado."
     echo -e " Hay que cargar de nuevo el script."
     salir="SI"
 fi
-#}
+}
 
 
 
