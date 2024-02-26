@@ -141,10 +141,11 @@ else
     #rm -r $repo_dir
     #mkdir $repo_dir
     #cp -r $cloned_dir/* $repo_dir/
-    chmod -R +w /tmp/comprobar
-    rm -R /tmp/comprobar
+
     # Agregar todos los cambios, realizar commit y push
     rsync -av --delete /tmp/comprobar/* $repo_dir
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
     echo "este es el repodir $repo_dir"
     echo "Repositorio actualizado con éxito."
     echo -e " El script se ha actualizado."
