@@ -98,18 +98,20 @@ then
     actualizado="SI"
 else
     #hay que actualizar, comprueba y actualiza
-    echo ""
-    echo -e " EL script $0 NO esta actualizado."
-    echo -e " Se procede a su actualizacion automatica."
-    sleep 3
-    mv /tmp/comprobar/$archivo_local $descarga
-    chmod -R +w /tmp/comprobar
-    rm -R /tmp/comprobar
-    echo ""
-    echo -e " El script se ha actualizado, es necesario cargarlo de nuevo."
-    echo -e ""
-    read -p " Pulsa una tecla para continuar." pause
-    exit
+    git fetch origin
+    git reset --hard origin/main
+    #echo ""
+    #echo -e " EL script $0 NO esta actualizado."
+    #echo -e " Se procede a su actualizacion automatica."
+    #sleep 3
+    #mv /tmp/comprobar/$archivo_local $descarga
+    #chmod -R +w /tmp/comprobar
+    #rm -R /tmp/comprobar
+    #echo ""
+    #echo -e " El script se ha actualizado, es necesario cargarlo de nuevo."
+    #echo -e ""
+    #read -p " Pulsa una tecla para continuar." pause
+    #exit
 fi
 
 # git fetch origin
