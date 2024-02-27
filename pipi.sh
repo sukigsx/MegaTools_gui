@@ -86,9 +86,9 @@ descarga=$(dirname "$(readlink -f "$0")")
 cd $descarga
 git fetch origin >/dev/null 2>&1
 git reset --hard origin/main >/dev/null 2>&1
-echo -e " Nuevas version de MegaTools disponible.\n"
-echo -e " Se procedes a su actualizacion automatica.\n"
-echo -e " \n Es necesario reiniciar MegaTools.\n"
+echo -e "\n¡ Nueva version de MegaTools disponible.!\n"
+echo -e " Se procede a su actualizacion automatica.\n"
+echo -e " Es necesario reiniciar MegaTools.\n"
 
 }
 
@@ -139,7 +139,7 @@ conexion
 if [ $var_conexion = "SI" ]; then
     comprobar_actualizacion_sino
     if [ $var_actualizado = "NO" ]; then
-        actualizar_script | zenity --text-info --title="Actualizacion de - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
+        actualizar_script | zenity --text-info --title="Actualizacion - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
         if [ $salir="SI" ]; then
             exit
         fi
