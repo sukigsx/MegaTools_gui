@@ -87,6 +87,7 @@ echo -e "\n¡ Nueva version de MegaTools disponible.!\n"
 echo -e " Se procede a su actualizacion automatica.\n"
 echo -e " Es necesario reiniciar MegaTools.\n"
 exit
+salir="SI"
 }
 
 comprobar_actualizacion_sino(){
