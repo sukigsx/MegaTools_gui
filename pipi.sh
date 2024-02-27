@@ -122,14 +122,23 @@ software_necesario_sino
 if [ "$var_software" = "NO" ]; then
     conexion
         if [ $var_conexion = "SI" ]; then
-            software_necesario
-            actualizar_script
+            if which zenity; then
+                software_necesario | zenity --text-info --title="Software necesario - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
+                actualizar_script | zenity --text-info --title="Actualizacion - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
+            else
+                software_necesario
+                actualizar_script
+            fi
         else
-            clear
-            echo -e "${verde}\n Verificando software necesario para el correcto funcionamiento.${borra_colores}"
-            echo -e "${rojo}\n No hay conexion a internet.${borra_colores}"
-            echo -e "${amarillo} No se puede ejecutar el script sin el software necesario.\n${borra_colores}"
-            exit
+             if which zenity; then
+                zenity --list --title="- MegaTools -" \
+                --text="\n Verificando software necesario para el correcto funcionamiento.\n No hay conexion a internet.\n No se puede ejecutar el script sin el software necesario.\n" --width=600 --height=450
+            else
+                echo -e "${verde}\n Verificando software necesario para el correcto funcionamiento.${borra_colores}"
+                echo -e "${rojo}\n No hay conexion a internet.${borra_colores}"
+                echo -e "${amarillo} No se puede ejecutar el script sin el software necesario.\n${borra_colores}"
+                exit
+            fi
         fi
     else
         var_software="SI"
