@@ -148,7 +148,8 @@ archivo_local="pipi.sh" # Nombre del archivo local
 ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
 
 # Obtener la ruta del script
-descarga=$(dirname "$(readlink -f "$0")")
+#descarga=$(dirname "$(readlink -f "$0")")
+descarga=$(pwd)
 #descarga="/home/$(whoami)/scripts"
 git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
 
@@ -172,7 +173,7 @@ fi
 #ejecuto la funcion para comprobar si esta el software necesario instalado.
 #si esta instalado ejecuta el programa y listo.
 #si no esta instalado, entonces entra en el if y comprueba la conexion a internet y todo lo demas.
-descarga=$(dirname "$(readlink -f "$0")")
+
 software_necesario_sino
 if [ $var_software = "NO" ]; then
     conexion
