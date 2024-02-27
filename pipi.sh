@@ -137,10 +137,10 @@ if [ "$var_software" = "NO" ]; then
             else
                 clear
                 echo ""
-                echo " - MegaTools -"
+                echo -e "${verde} - MegaTools -${borra_colores}"
                 echo ""
-                echo -e "${verde}\n Verificando software necesario = $var_software.${borra_colores}"
-                echo -e "${rojo}\n Conexion a internet = $var_conexion.${borra_colores}"
+                echo -e "\n Verificando software necesario = ${rojo}$var_software${borra_colores}."
+                echo -e "\n Conexion a internet = ${rojo}$var_conexion${borra_colores}."
                 echo ""
                 echo -e "${amarillo} No se puede ejecutar el script sin el software necesario.\n${borra_colores}"
                 exit
