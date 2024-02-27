@@ -1,6 +1,6 @@
 
 
-version="11"
+version="11d"
 #software necesario para la ejecucion del programa
 #software="which git diff ping figlet nano neofetch lsblk ethtool zenity rsync"
 
