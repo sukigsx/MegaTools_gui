@@ -136,11 +136,11 @@ else
 fi
 }
 
-git fetch origin
-git reset --hard origin/main
+
 
 
 comprobar_actualizacion_sino(){
+
 archivo_local="pipi.sh" # Nombre del archivo local
 ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
 
@@ -159,6 +159,8 @@ then
     rm -R /tmp/comprobar
 else
     var_actualizado="NO"
+    git fetch origin
+    git reset --hard origin/main
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
 fi
