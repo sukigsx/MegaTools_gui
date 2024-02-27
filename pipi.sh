@@ -111,32 +111,34 @@ else
     echo -e " Hay que cargar de nuevo el script."
     salir="SI"
 fi
+
+ git fetch origin
+    git reset --hard origin/main
 }
 
 actualizar_script(){
-ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
+#!/bin/bash
 
-# Obtener la ruta del script
-#descarga=$(dirname "$(readlink -f "$0")")
-git clone $ruta_repositorio /tmp/comprobar #>/dev/null 2>&1
+# Definir la URL del repositorio
+REPO_URL="https://github.com/sukigsx/MegaTools_gui.git"
+# Definir la ruta donde se descargará el repositorio
+DEST_DIR="/tmp/comprobar"
 
-diff $descarga/ /tmp/comprobar/ >/dev/null 2>&1
+# Crear directorio de destino si no existe
+mkdir -p "$DEST_DIR"
 
+# Clonar el repositorio en el directorio de destino
+git clone "$REPO_URL" "$DEST_DIR" || { echo "Error al clonar el repositorio"; exit 1; }
 
-if [ $? = 0 ]
-then
-    var_actualizado="SI"
-    echo "si esta actualizado"
-    chmod -R +w /tmp/comprobar
-    rm -R /tmp/comprobar
+# Comprobar si hay diferencias entre el repositorio descargado y el local
+if diff -rq "$DEST_DIR" "$HOME/MegaTools_gui" >/dev/null; then
+    echo "No hay diferencias entre el repositorio descargado y el local."
 else
-    var_actualizado="NO"
-    echo "no esta var_actualizado"
-    git fetch origin
-    git reset --hard origin/main
-    chmod -R +w /tmp/comprobar
-    rm -R /tmp/comprobar
+    echo "Hay diferencias entre el repositorio descargado y el local. Actualizando..."
+    # Actualizar el repositorio local
+    rsync -av --delete "$DEST_DIR/" "$HOME/MegaTools_gui/"
 fi
+
 }
 
 
