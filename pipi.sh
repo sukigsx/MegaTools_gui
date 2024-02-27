@@ -83,6 +83,7 @@ ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del reposi
 # Obtener la ruta del script
 descarga=$(dirname "$(readlink -f "$0")")
 #descarga="/home/$(whoami)/scripts"
+archivo_local="version"
 git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
 
 diff $descarga/$archivo_local /tmp/comprobar/$archivo_local >/dev/null 2>&1
