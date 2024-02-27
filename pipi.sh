@@ -77,6 +77,17 @@ done
 }
 
 actualizar_script(){
+
+# Obtener la ruta del script
+descarga=$(dirname "$(readlink -f "$0")")
+cd $descarga
+git fetch origin
+git reset --hard origin/main
+
+}
+
+comprobar_actualizacion_sino(){
+
 archivo_local="version" # Nombre del archivo local
 ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
 
@@ -89,58 +100,11 @@ diff $descarga/$archivo_local /tmp/comprobar/$archivo_local >/dev/null 2>&1
 
 if [ $? = 0 ]
 then
-    #esta actualizado, solo lo comprueba
-    echo ""
-    echo -e " El script $0 esta actualizado."
-    echo ""
-    chmod -R +w /tmp/comprobar
-    rm -R /tmp/comprobar
-    actualizado="SI"
-else
-    #hay que actualizar, comprueba y actualiza
-    git fetch origin
-    git reset --hard origin/main
-    #echo ""
-    #echo -e " EL script $0 NO esta actualizado."
-    #echo -e " Se procede a su actualizacion automatica."
-    #sleep 3
-    #mv /tmp/comprobar/$archivo_local $descarga
-    #chmod -R +w /tmp/comprobar
-    #rm -R /tmp/comprobar
-    #echo ""
-    #echo -e " El script se ha actualizado, es necesario cargarlo de nuevo."
-    #echo -e ""
-    #read -p " Pulsa una tecla para continuar." pause
-    #exit
-fi
-
-# git fetch origin
-#    git reset --hard origin/main
-}
-
-comprobar_actualizacion_sino(){
-
-archivo_local="pipi.sh" # Nombre del archivo local
-ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
-
-# Obtener la ruta del script
-#descarga=$(dirname "$(readlink -f "$0")")
-descarga=$(pwd)
-#descarga="/home/$(whoami)/scripts"
-git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
-
-diff $descarga/$archivo_local /tmp/comprobar/$archivo_local >/dev/null 2>&1
-
-
-if [ $? = 0 ]
-then
     var_actualizado="SI"
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
 else
     var_actualizado="NO"
-    git fetch origin
-    git reset --hard origin/main
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
 fi
