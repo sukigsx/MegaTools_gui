@@ -114,25 +114,28 @@ fi
 }
 
 actualizar_script(){
-# Clonar el repositorio si no está presente
+ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
+
+# Obtener la ruta del script
+descarga=$(dirname "$(readlink -f "$0")")
+git clone $ruta_repositorio /tmp/comprobar #>/dev/null 2>&1
+
+diff $descarga/ /tmp/comprobar/ >/dev/null 2>&1
 
 
-# Cambiar al directorio del repositorio
-
-
-# Obtener cambios del repositorio remoto
-git fetch origin
-
-# Comparar cambios entre el repositorio local y el remoto
-changes=$(git diff HEAD origin/main)
-
-# Si hay cambios, actualizar el repositorio local
-if [ -n "$changes" ]; then
-    echo "Se encontraron cambios. Actualizando..."
-    git pull origin main  --force -r
-    echo "Repositorio actualizado."
+if [ $? = 0 ]
+then
+    var_actualizado="SI"
+    echo "si esta actualizado"
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
 else
-    echo "No se encontraron cambios. El repositorio ya está actualizado."
+    var_actualizado="NO"
+    echo "no esta var_actualizado"
+    git fetch origin
+    git reset --hard origin/main
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
 fi
 }
 
