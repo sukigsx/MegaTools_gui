@@ -82,8 +82,6 @@ ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del reposi
 
 # Obtener la ruta del script
 descarga=$(dirname "$(readlink -f "$0")")
-#descarga="/home/$(whoami)/scripts"
-archivo_local="version"
 git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
 
 diff $descarga/$archivo_local /tmp/comprobar/$archivo_local >/dev/null 2>&1
@@ -95,9 +93,9 @@ then
     echo ""
     echo -e " El script $0 esta actualizado."
     echo ""
-    var_actualizado="SI"
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
+    actualizado="SI"
 else
     #hay que actualizar, comprueba y actualiza
     echo ""
@@ -108,9 +106,10 @@ else
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
     echo ""
-    echo -e " El script se ha actualizado."
-    echo -e " Hay que cargar de nuevo el script."
-    salir="SI"
+    echo -e " El script se ha actualizado, es necesario cargarlo de nuevo."
+    echo -e ""
+    read -p " Pulsa una tecla para continuar." pause
+    exit
 fi
 
 # git fetch origin
