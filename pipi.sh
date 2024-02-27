@@ -131,7 +131,7 @@ if [ "$var_software" = "NO" ]; then
             fi
         else
              if which zenity; then
-                zenity --text-info --title="- MegaTools -" --text="\n Verificando software necesario para el correcto funcionamiento.\n No hay conexion a internet.\n No se puede ejecutar el script sin el software necesario.\n" --width=600 --height=450
+                zenity --text-info --title="- MegaToolsssssss -" --text="\n Verificando software necesario para el correcto funcionamiento.\n No hay conexion a internet.\n No se puede ejecutar el script sin el software necesario.\n" --width=600 --height=450
             else
                 echo -e "${verde}\n Verificando software necesario para el correcto funcionamiento.${borra_colores}"
                 echo -e "${rojo}\n No hay conexion a internet.${borra_colores}"
