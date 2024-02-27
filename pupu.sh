@@ -6,7 +6,7 @@ descarga=$(dirname "$(readlink -f "$0")")
 #descarga="/home/$(whoami)/scripts"
 git clone $ruta_repositorio /tmp/comprobar #>/dev/null 2>&1
 
-diff $descarga/$archivo_local /tmp/comprobar/$archivo_local >/dev/null 2>&1
+diff $descarga/ /tmp/comprobar/ >/dev/null 2>&1
 
 
 if [ $? = 0 ]
