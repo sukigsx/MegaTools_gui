@@ -1,6 +1,8 @@
 
+
+version="1"
 #software necesario para la ejecucion del programa
-software="which git diff ping figlet nano neofetch lsblk ethtool zenity rsync"
+#software="which git diff ping figlet nano neofetch lsblk ethtool zenity rsync"
 
 #colores
 #ejemplo: echo -e "${verde} La opcion (-e) es para que pille el color.${borra_colores}"
@@ -26,7 +28,8 @@ fi
 software_necesario(){
 clear
 var_software="NO"
-
+#software necesario para la ejecucion del programa
+software="which git diff ping figlet nano neofetch lsblk ethtool zenity rsync"
 echo -e "\n Actualizando repositorios y verificando software necesario:\n"
 sudo apt update 2>/dev/null 1>/dev/null 0>/dev/null
 for paquete in $software
@@ -88,7 +91,7 @@ git reset --hard origin/main
 
 comprobar_actualizacion_sino(){
 
-archivo_local="version" # Nombre del archivo local
+archivo_local="pipi.sh" # Nombre del archivo local
 ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
 
 # Obtener la ruta del script
