@@ -6,7 +6,7 @@ echo -e "Comando: df -h\n" > /tmp/discos; df -h >> /tmp/discos; echo -e "\nFinal
 while :
 do
 # Mostrar la salida en una ventana con Zenity
-opcion=$(zenity --text-info --filename=/tmp/discos --title="Informacion de discos - MegaTools" --ok-label="Atras" --cancel-label="Salir sin preguntar" --extra-button="Mas detalles" --extra-button="Menos detalles" --font="DejaVu Sans Mono" --width=800 --height=450)
+opcion=$(zenity --text-info --filename=/tmp/discos --title="Informacion de discos. - MegaTools -" --ok-label="Atras" --cancel-label="Salir sin preguntar" --extra-button="Mas detalles" --extra-button="Menos detalles" --font="DejaVu Sans Mono" --width=800 --height=450)
 
     case $opcion in
 

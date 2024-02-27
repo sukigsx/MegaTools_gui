@@ -3,7 +3,7 @@
 if [ $(which ifconfig) ]; then
     echo ""
 else
-    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="Se necesita el paquete net-tools. ¿ Quieres instalarlo ?" --cancel-label="No" --ok-label="Si" --width=300
+    zenity --question --title="Informacion de dispositivos de red. - MegaTools -" --text="Se necesita el paquete net-tools. ¿ Quieres instalarlo ?" --cancel-label="No" --ok-label="Si" --width=300
     if [ $? -eq 1 ]; then
         exit 0
     fi
@@ -14,7 +14,7 @@ else
     # Bucle para solicitar la contraseña hasta tres intentos
     while [ $attempts -lt 3 ]; do
         # Solicitar la contraseña del usuario actual utilizando Zenity
-        PASSWORD=$(zenity --password --text="Ingrese su contraseña") --title="MegaTools ( Diseñado por SUKIGSX )"
+        PASSWORD=$(zenity --password --text="Ingrese su contraseña") --title="Contraseña de usuario. - MegaTools -"
 
         # Verificar si se ha cancelado la entrada de la contraseña
         if [ $? -ne 0 ]; then
@@ -28,7 +28,7 @@ else
         # Verificar el código de salida del comando sudo
         if [ $? -eq 0 ]; then
             # Contraseña correcta
-            zenity --info --title="Contraseña Correcta" --text="La contraseña es correcta."
+            zenity --info --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es correcta."
             exit
         else
             # Contraseña incorrecta
@@ -36,7 +36,7 @@ else
             if [ $attempts -lt 3 ]; then
                 zenity --error --title="" --text="La contraseña es incorrecta. Inténtelo de nuevo."
             else
-                zenity --error --title="Contraseña Incorrecta" --text="Se han superado los tres intentos. Saliendo del script."
+                zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Saliendo del script."
                 exit
             fi
         fi
@@ -45,7 +45,7 @@ else
 
 
 
-    sudo apt install net-tools | zenity --text-info --title="instalando - MegaTools" --width=350 --height=200 --cancel-label="Salir sin preguntar" --ok-label="Atras" --width=650
+    sudo apt install net-tools | zenity --text-info --title="Instalando - MegaTools" --width=350 --height=200 --cancel-label="Salir sin preguntar" --ok-label="Atras" --width=650
 fi
 
 echo -e "Comando: ifconfig -s\n" > /tmp/InfoDispositivosDeRed; ifconfig -s >> /tmp/InfoDispositivosDeRed; echo -e "\nInformacion de dispositivos de red finalizado." >> /tmp/InfoDispositivosDeRed
@@ -53,7 +53,7 @@ echo -e "Comando: ifconfig -s\n" > /tmp/InfoDispositivosDeRed; ifconfig -s >> /t
 while :
 do
 # Mostrar la salida en una ventana con Zenity
-opcion=$(zenity --text-info --filename=/tmp/InfoDispositivosDeRed --title="Informacion de dispositivos de red - MegaTools" --ok-label="Atras" --cancel-label="Salir sin preguntar" --extra-button="Mas detalles" --extra-button="Menos detalles" --font="DejaVu Sans Mono" --width=800 --height=450)
+opcion=$(zenity --text-info --filename=/tmp/InfoDispositivosDeRed --title="Informacion de dispositivos de red. - MegaTools -" --ok-label="Atras" --cancel-label="Salir sin preguntar" --extra-button="Mas detalles" --extra-button="Menos detalles" --font="DejaVu Sans Mono" --width=800 --height=450)
 
     case $opcion in
 

@@ -2,7 +2,7 @@
 
 while :
 do
-    opcion=$(zenity --list --title="Crear lanzador - MegaTools ( Diseñado por SUKIGSX )" \
+    opcion=$(zenity --list --title="Crear lanzador - MegaTools -" \
     --text="Informacion relacionada al Megatools" \
     --column "Opciones para crear el lanzador:" --column="Descripcion." \
     "Crear lanzador" "Crea el lanzador en tu escritorio" \
@@ -43,7 +43,7 @@ do
             echo 'X-DBUS-StartupType=none' >> $ruta_lanzador/MegaTools.desktop
             echo 'X-KDE-SubstituteUID=false' >> $ruta_lanzador/MegaTools.desktop
             echo 'X-KDE-Username=' >> $ruta_lanzador/MegaTools.desktop
-            zenity --info --title="MegaTools ( Diseñado por SUKIGSX )" --text="Lanzador creado en tu escritorio." --width=300
+            zenity --info --title="Crear lanzador - MegaTools -" --text="Lanzador creado en tu escritorio." --width=300
             ;;
 
         "Borrar lanzador")
@@ -55,15 +55,15 @@ do
             fi
 
             if [ -f $ruta_lanzador/MegaTools.desktop ] ;then
-                zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿Seguro que quieres borrar el lanzador?" --cancel-label="No" --ok-label="Si" --width=200
+                zenity --question --title="Crear lanzador - MegaTools -" --text="¿Seguro que quieres borrar el lanzador?" --cancel-label="No" --ok-label="Si" --width=200
                 if [ $? = 0 ]; then
                     rm $ruta_lanzador/MegaTools.desktop
-                    zenity --info --title="MegaTools ( Diseñado por SUKIGSX )" --text="Lanzador borrado." --width=300 --timeout=3
+                    zenity --info --title="Crear lanzador - MegaTools -" --text="Lanzador borrado." --width=300 --timeout=3
                 else
-                    zenity --info --title="MegaTools ( Diseñado por SUKIGSX )" --text="Cancelado. No se borra el lanzador." --width=300 --timeout=3
+                    zenity --info --title="Crear lanzador - MegaTools -" --text="Cancelado. No se borra el lanzador." --width=300 --timeout=3
                 fi
             else
-                zenity --info --title="MegaTools ( Diseñado por SUKIGSX )" --text="No existe lanzador." --width=300 --timeout=3
+                zenity --info --title="Crear lanzador - MegaTools -" --text="No existe lanzador." --width=300 --timeout=3
             fi
             ;;
 
@@ -78,7 +78,7 @@ do
 
         *)
             if [ $? -eq 0 ]; then
-                zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+                zenity --error --title="Crear lanzador - MegaTools -" --text="No has seleccionado ninguna opcion del menu." --width=300
             else
               exit
             fi
