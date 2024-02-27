@@ -76,8 +76,8 @@ which $paquete 2>/dev/null 1>/dev/null 0>/dev/null #comprueba si esta el program
 done
 }
 
-copia(){
-archivo_local="pipi.sh" # Nombre del archivo local
+actualizar_script(){
+archivo_local="version" # Nombre del archivo local
 ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
 
 # Obtener la ruta del script
@@ -112,37 +112,9 @@ else
     salir="SI"
 fi
 
- git fetch origin
-    git reset --hard origin/main
+# git fetch origin
+#    git reset --hard origin/main
 }
-
-actualizar_script(){
-#!/bin/bash
-
-# Definir la URL del repositorio
-REPO_URL="https://github.com/sukigsx/MegaTools_gui.git"
-# Definir la ruta donde se descargará el repositorio
-DEST_DIR="/tmp/comprobar"
-
-# Crear directorio de destino si no existe
-mkdir -p "$DEST_DIR"
-
-# Clonar el repositorio en el directorio de destino
-git clone "$REPO_URL" "$DEST_DIR" || { echo "Error al clonar el repositorio"; exit 1; }
-
-# Comprobar si hay diferencias entre el repositorio descargado y el local
-if diff -rq "$DEST_DIR" "$HOME/MegaTools_gui" >/dev/null; then
-    echo "No hay diferencias entre el repositorio descargado y el local."
-else
-    echo "Hay diferencias entre el repositorio descargado y el local. Actualizando..."
-    # Actualizar el repositorio local
-    rsync -av --delete "$DEST_DIR/" "$HOME/MegaTools_gui/"
-fi
-
-}
-
-
-
 
 comprobar_actualizacion_sino(){
 
