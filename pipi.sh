@@ -150,7 +150,7 @@ echo "software necesario = $var_software"
 echo "este es el repodir $repo_dir"
 
 zenity --list --title="MegaTools ( Diseñado por SUKIGSX )" \
-    --text="Informacion relacionada al Megatools :\n Version = $version\n Conexion a internet = $var_conexion\n software necesario para el correcto funcionamiento = $var_software\n Script esta actualizado = $var_actualizado\n\nInformacion de SUKIGSX: \n Correo electronico = scripts@mbbsistemas.es\n Pagina web = https://repositorio.mbbsistemas.es\n" \
+    --text=" Version de MegaTools= $version\n Conexion a internet = $var_conexion\n software necesario para el correcto funcionamiento = $var_software\n Script esta actualizado = $var_actualizado\n\nInformacion de SUKIGSX: \n Correo electronico = scripts@mbbsistemas.es\n Pagina web = https://repositorio.mbbsistemas.es\n" \
     --column "Opciones del menu principal:" --column="Descripcion." \
     "UTILIDADES PARA EL SISTEMA" "" \
     "Crear/Borrar lanzador" "Te crea o brra el lanzador de tu escritorio." \
