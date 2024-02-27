@@ -110,6 +110,7 @@ else
     echo -e " El script se ha actualizado."
     echo -e " Hay que cargar de nuevo el script."
     salir="SI"
+
 fi
 
  git fetch origin
