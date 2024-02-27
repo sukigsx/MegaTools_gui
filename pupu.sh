@@ -25,3 +25,5 @@ else
 fi
 
 echo "ruta de la variable descarga = $descarga"
+
+echo ""
