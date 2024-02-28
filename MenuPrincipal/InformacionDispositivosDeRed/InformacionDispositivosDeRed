@@ -14,7 +14,7 @@ else
     # Bucle para solicitar la contraseña hasta tres intentos
     while [ $attempts -lt 3 ]; do
         # Solicitar la contraseña del usuario actual utilizando Zenity
-        PASSWORD=$(zenity --password --text="Ingrese su contraseña") --title="Contraseña de usuario. - MegaTools -"
+        PASSWORD=$(zenity --entry --hide-text --text="Ingrese tu contraseña" --title="Contraseña de usuario. - MegaTools -" --width=450 --height=100)
 
         # Verificar si se ha cancelado la entrada de la contraseña
         if [ $? -ne 0 ]; then
