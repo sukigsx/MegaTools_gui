@@ -225,7 +225,7 @@ do
             "Informacion de discos")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash MenuPrincipal/InformacionDeDisco/InformacionDeDiscos
+                bash MenuPrincipal/InformacionDeDiscos/InformacionDeDiscos
                 ;;
 
             "Informacion memoria ram")
