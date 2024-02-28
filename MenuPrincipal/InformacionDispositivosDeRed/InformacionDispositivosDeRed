@@ -29,21 +29,22 @@ else
         if [ $? -eq 0 ]; then
             # Contraseña correcta
             zenity --info --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es correcta."
-            exit
+            break
         else
             # Contraseña incorrecta
             let "attempts+=1"
             if [ $attempts -lt 3 ]; then
                 zenity --error --title="" --text="La contraseña es incorrecta. Inténtelo de nuevo."
             else
-                zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos.\n Regresando al Menu Principal."
+                zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Regresando al Menu Principal."
                 exit
             fi
         fi
     done
 
 
-
+echo $var_conexion
+read -p "parado" pp
 
     sudo apt install net-tools | zenity --text-info --title="Instalando - MegaTools" --width=350 --height=200 --cancel-label="Salir sin preguntar" --ok-label="Atras" --width=650
 fi
