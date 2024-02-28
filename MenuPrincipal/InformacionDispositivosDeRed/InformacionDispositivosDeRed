@@ -1,5 +1,14 @@
  #!/bin/bash
 
+conexion(){
+if ping -c1 google.com &>/dev/null
+then
+    var_conexion="SI"
+else
+    var_conexion="NO"
+fi
+}
+
 if [ $(which ifconfig) ]; then
     echo ""
 else
@@ -43,10 +52,11 @@ else
     done
 
 
-echo $var_conexion
-read -p "parado" pp
-
-    sudo apt install net-tools | zenity --text-info --title="Instalando - MegaTools" --width=350 --height=200 --cancel-label="Salir sin preguntar" --ok-label="Atras" --width=650
+conexion
+if [ $var_conexion = "SI" ]; then
+    sudo apt install net-tools | zenity --text-info --title="Instalando net-tools. - MegaTools" --width=350 --height=200 --cancel-label="Salir sin preguntar" --ok-label="Atras" --width=650
+else
+    zenity --error --title="Instalando net-tools. - MegaTools -" --text="No se puede instalar sin conexion a internet."
 fi
 
 echo -e "Comando: ifconfig -s\n" > /tmp/InfoDispositivosDeRed; ifconfig -s >> /tmp/InfoDispositivosDeRed; echo -e "\nInformacion de dispositivos de red finalizado." >> /tmp/InfoDispositivosDeRed
