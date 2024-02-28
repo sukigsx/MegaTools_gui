@@ -182,7 +182,6 @@ do
     "Informacion de discos" "Informacion de el uso de tus discos del sistema" \
     "Informacion memoria ram" "Pues la informacion del uso de la memoria del sistema" \
     "Informacion dispositivos de red" "Te la la informacion de tus tarjetas de red" \
-    "" "" \
     --width=650 \
     --height=650 \
     --ok-label="Aceptar" \
