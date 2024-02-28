@@ -197,13 +197,13 @@ do
             ;;
 
             "Instalacion de software")
-                bash InstalacionDeSoftware
+                bash MenuPrincipal/InstalacionDeSosfware/InstalacionDeSoftware
                 ;;
 
             "Crear/Borrar lanzador")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash CrearBorrarLanzador
+                bash MenuPrincipal/CreaBorrarLanzador/CrearBorrarLanzador
                 ;;
 
         "INFORMACION DE TU SISTEMA")
@@ -213,31 +213,31 @@ do
             "Informacion general")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash InformacionGeneral
+                bash MenuPrincipal/InformacionGeneral/InformacionGeneral
                 ;;
 
             "Informacion de ips Lan/Wan")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash InformacionDeIpsLanWan
+                bash MenuPrincipal/InformacionDeIpsLanWan/InformacionDeIpsLanWan
                 ;;
 
             "Informacion de discos")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash InformacionDeDiscos
+                bash MenuPrincipal/InformacionDeDisco/InformacionDeDiscos
                 ;;
 
             "Informacion memoria ram")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash InformacionMemoriaRam
+                bash MenuPrincipal/InformacionMemoriaRam/InformacionMemoriaRam
                 ;;
 
             "Informacion dispositivos de red")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash InformacionDispositivosDeRed
+                bash MenuPrincipal/InformacionDispositivosDeRed/InformacionDispositivosDeRed
                 ;;
 
         "Web Sukigsx")
