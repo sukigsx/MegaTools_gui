@@ -36,7 +36,7 @@ else
             if [ $attempts -lt 3 ]; then
                 zenity --error --title="" --text="La contraseña es incorrecta. Inténtelo de nuevo."
             else
-                zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Saliendo del script."
+                zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos.\n Regresando al Menu Principal."
                 exit
             fi
         fi
