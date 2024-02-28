@@ -39,7 +39,7 @@ else
         if [ $? -eq 0 ]; then
             # Contraseña correcta
             zenity --info --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es correcta."
-            exit
+            break
         else
             # Contraseña incorrecta
             let "attempts+=1"
