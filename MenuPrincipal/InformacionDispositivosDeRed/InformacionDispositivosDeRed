@@ -1,13 +1,4 @@
- #!/bin/bash
-
-conexion(){
-if ping -c1 google.com &>/dev/null
-then
-    var_conexion="SI"
-else
-    var_conexion="NO"
-fi
-}
+#!/bin/bash
 
 if [ $(which ifconfig) ]; then
     echo ""
@@ -38,25 +29,23 @@ else
         if [ $? -eq 0 ]; then
             # Contraseña correcta
             zenity --info --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es correcta."
-            break
+            exit
         else
             # Contraseña incorrecta
             let "attempts+=1"
             if [ $attempts -lt 3 ]; then
                 zenity --error --title="" --text="La contraseña es incorrecta. Inténtelo de nuevo."
             else
-                zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Regresando al Menu Principal."
+                zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Saliendo del script."
                 exit
             fi
         fi
     done
 
 
-conexion
-if [ "$var_conexion" = "SI" ]; then
-    sudo apt install net-tools | zenity --text-info --title="Instalando net-tools. - MegaTools" --width=350 --height=200 --cancel-label="Salir sin preguntar" --ok-label="Atras" --width=650
-else
-    zenity --error --title="Instalando net-tools. - MegaTools -" --text="No se puede instalar sin conexion a internet."
+
+
+    sudo apt install net-tools | zenity --text-info --title="Instalando - MegaTools" --width=350 --height=200 --cancel-label="Salir sin preguntar" --ok-label="Atras" --width=650
 fi
 
 echo -e "Comando: ifconfig -s\n" > /tmp/InfoDispositivosDeRed; ifconfig -s >> /tmp/InfoDispositivosDeRed; echo -e "\nInformacion de dispositivos de red finalizado." >> /tmp/InfoDispositivosDeRed
