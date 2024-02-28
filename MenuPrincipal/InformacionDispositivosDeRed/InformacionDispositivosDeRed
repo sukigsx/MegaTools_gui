@@ -53,7 +53,7 @@ else
 
 
 conexion
-if [ $var_conexion = "SI" ]; then
+if [ "$var_conexion" = "SI" ]; then
     sudo apt install net-tools | zenity --text-info --title="Instalando net-tools. - MegaTools" --width=350 --height=200 --cancel-label="Salir sin preguntar" --ok-label="Atras" --width=650
 else
     zenity --error --title="Instalando net-tools. - MegaTools -" --text="No se puede instalar sin conexion a internet."

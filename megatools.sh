@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="1s.v0"
+version="1.v0"
 #software necesario para la ejecucion del programa
 software="which git diff ping figlet nano neofetch lsblk ethtool zenity rsync"
 
