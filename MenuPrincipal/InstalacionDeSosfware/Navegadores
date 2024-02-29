@@ -1,5 +1,15 @@
  #!/bin/bash
 
+ conexion(){
+if ping -c1 google.com &>/dev/null
+then
+    var_conexion="SI"
+else
+    var_conexion="NO"
+    var_actualizado="No hay conexion a internet"
+fi
+}
+
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
@@ -23,7 +33,7 @@ do
 
     # Verificar si no se seleccionó ninguna opción
     if [ -z "$selection" ]; then
-        zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ningun Navegador." --width=300
+        zenity --error --title="Instalacion de Navegadores - MegaTools -" --text="No has seleccionado ningun Navegador." --width=300
     else
         echo ""
     fi

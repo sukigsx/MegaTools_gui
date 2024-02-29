@@ -2,6 +2,8 @@
 
 #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
 rm /tmp/software 2>/dev/null
+
+#crea fichero nuevo para actualizar cuando se le da a instalar software
 echo 'clear' >> /tmp/software
 echo 'echo -e "\nActualizando repositorios.\n"' >> /tmp/software
 echo 'if [ $(whois pkcon) ]' >> /tmp/software
@@ -12,10 +14,11 @@ echo 'else' >> /tmp/software
 echo '    sudo apt update' >> /tmp/software
 echo 'fi' >> /tmp/software
 echo 'echo -e "\nActualizacion de repositorios FINALIZADA.\n"' >> /tmp/software
+echo 'echo -e "\nIniciando instalacion de software.\n"' >> /tmp/software
 
 while :
 do
-    opcion=$(zenity --list --title="MegaTools ( Diseñado por SUKIGSX )" \
+    opcion=$(zenity --list --title="Instalacion de software.- MegaTools -" \
     --text="\nSelecciona una categoria de software y vete marcando el que mas te guste o necesites.\n" \
     --column "Categorias principales:" --column="Descripcion." \
     "NAVEGADORES" "Los principales navegadores para internet." \
@@ -86,7 +89,7 @@ do
 
         *)
             if [ $? -eq 0 ]; then
-                zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna categoria del menu." --width=300
+                zenity --error --title="Instalacion de software - MegaTools -" --text="No has seleccionado ninguna categoria del menu." --width=300
             else
                 #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
                 rm /tmp/software 2>/dev/null
