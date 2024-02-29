@@ -1,6 +1,6 @@
  #!/bin/bash
 
- conexion(){
+conexion(){
 if ping -c1 google.com &>/dev/null
 then
     var_conexion="SI"
@@ -13,7 +13,7 @@ fi
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
-    selection=$(zenity --list --title="Instalacion de Navegadores - MegaTools" \
+    selection=$(zenity --list --title="Instalacion de Navegadores. - MegaTools" \
     --text="\nSoftware disponible en repositorios para distribuciones basadas en debian.\n" \
     --checklist --column="Marca una o varias casillas para instalar" --column="Nombre del navegador" --column="Descripcion." \
     --width=300 --height=200 \
@@ -72,6 +72,7 @@ do
             echo "he entrado en el *"; read p
             ;;
         esac
+        exit #sale cuando termiona el for con lo seleccionado.
     done
 done
 
