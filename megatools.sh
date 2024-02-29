@@ -2,7 +2,7 @@
 
 version="1.fdd0"
 #software necesario para la ejecucion del programa
-software="which git diff ping figlet nano neofetch lsblk ethtool zenity rsync wget gdebi"
+software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi"
 
 #colores
 #ejemplo: echo -e "${verde} La opcion (-e) es para que pille el color.${borra_colores}"
