@@ -72,7 +72,7 @@ do
 
         "Ver software para instalar")
             #muestra el software seleccionado
-            if grep -q '^#' archivo.txt; then #comprueba si hay algun software para instalar verificando la #
+            if grep -q '^#' /tmp/software; then #comprueba si hay algun software para instalar verificando la #
                 (echo -e "\nEste es tu software para instalar\n"; grep '^#' software | sed 's/^#/- /') | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Atras empezar de nuevo" --ok-label="Instalar"
 
                 #comprueba si le damos a cancelar si es asi, sale del script al anterior
