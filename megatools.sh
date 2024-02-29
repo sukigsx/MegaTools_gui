@@ -27,6 +27,7 @@ fi
 
 software_necesario(){
 clear
+echo -e "\n- MegaTools -\n"
 var_software="NO"
 echo -e "\n Actualizando repositorios y verificando software necesario:\n"
 sudo apt update 2>/dev/null 1>/dev/null 0>/dev/null
@@ -117,10 +118,7 @@ fi
 #ejecuto la funcion para comprobar si esta el software necesario instalado.
 #si esta instalado ejecuta el programa y listo.
 #si no esta instalado, entonces entra en el if y comprueba la conexion a internet y todo lo demas.
-
 software_necesario_sino
-
-echo -e "\n- MegaTools -\n"
 if [ "$var_software" = "NO" ]; then
     conexion
         if [ $var_conexion = "SI" ]; then
