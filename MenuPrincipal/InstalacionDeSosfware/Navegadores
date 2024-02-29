@@ -72,8 +72,8 @@ do
             echo "he entrado en el *"; read p
             ;;
         esac
-        exit #sale cuando termiona el for con lo seleccionado.
     done
+    exit #sale cuando termiona el for con lo seleccionado.
 done
 
 
