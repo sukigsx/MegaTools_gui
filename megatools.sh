@@ -27,7 +27,7 @@ fi
 
 software_necesario(){
 clear
-echo -e "\n- MegaTools -\n"
+echo -e "\n- MegaTools -"
 var_software="NO"
 echo -e "\n Actualizando repositorios y verificando software necesario:\n"
 sudo apt update 2>/dev/null 1>/dev/null 0>/dev/null
