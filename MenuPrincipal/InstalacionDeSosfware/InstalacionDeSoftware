@@ -34,7 +34,7 @@ do
     case $opcion in
 
         "NAVEGADORES")
-            bash InstalacionNavegadores
+            bash MenuPincipal/InstalacionDeSosfware/Navegadores
             ;;
 
         "AUDIO - VIDEO")
