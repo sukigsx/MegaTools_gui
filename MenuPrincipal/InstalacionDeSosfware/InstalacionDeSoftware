@@ -72,7 +72,21 @@ do
 
         "Ver software para instalar")
             #muestra el software seleccionado
-            grep '^#' /tmp/software | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono"
+            if grep -q '^#' archivo.txt; then #comprueba si hay algun software para instalar verificando la #
+                (echo -e "\nEste es tu software para instalar\n"; grep '^#' software | sed 's/^#/- /') | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Atras empezar de nuevo" --ok-label="Instalar"
+
+                #comprueba si le damos a cancelar si es asi, sale del script al anterior
+                if [ $? = 1 ]; then
+                    #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
+                    rm /tmp/software 2>/dev/null
+                    exit
+                fi
+                #le hemos dado a instalar
+                echo "le ha dado a instalar"; read p
+            else
+                zenity --error --title="Instalacion del software seleccionado.- MegaTools -" --text="No hay seleccionado ningun software para instalar." --width=300
+            fi
+
 
 
 
