@@ -45,7 +45,7 @@ echo 'echo -e "\nActualizacion de repositorios FINALIZADA."' >> /tmp/software
 
 while :
 do
-    opcion=$(zenity --list --title="MegaTools ( Diseñado por SUKIGSX )" \
+    opcion=$(zenity --list --title="Instalacion de software. - MegaTools -" \
     --text="\nSelecciona una categoria de software y vete marcando el que mas te guste o necesites.\n" \
     --column "Categorias principales:" --column="Descripcion." \
     "NAVEGADORES" "Los principales navegadores para internet." \
