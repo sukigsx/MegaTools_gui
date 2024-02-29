@@ -6,15 +6,11 @@ rm /tmp/software 2>/dev/null
 #crea fichero nuevo para actualizar cuando se le da a instalar software
 echo 'clear' >> /tmp/software
 echo 'echo -e "\nActualizando repositorios.\n"' >> /tmp/software
-echo 'if [ $(which pkcon) ]' >> /tmp/software
-echo 'then' >> /tmp/software
-echo '    sudo pkcon update' >> /tmp/software
-echo '    sudo apt update' >> /tmp/software
-echo 'else' >> /tmp/software
-echo '    sudo apt update' >> /tmp/software
-echo 'fi' >> /tmp/software
+echo 'sleep 2' >> /tmp/software
+echo 'sudo apt update' >> /tmp/software
 echo 'echo -e "\nActualizacion de repositorios FINALIZADA.\n"' >> /tmp/software
 echo 'echo -e "\nIniciando instalacion de software.\n"' >> /tmp/software
+echo 'echo ""' >> /tmp/software
 
 while :
 do
