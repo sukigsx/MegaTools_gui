@@ -3,18 +3,13 @@
 #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
 rm /tmp/software 2>/dev/null
 
-
-#crea fichero nuevo para actualizar cuando se le da a instalar software
 echo 'echo -e "\nActualizando repositorios.\n"' >> /tmp/software
-echo 'sleep 2' >> /tmp/software
 echo 'sudo apt update' >> /tmp/software
-echo 'echo -e "\nActualizacion de repositorios FINALIZADA.\n"' >> /tmp/software
-echo 'echo -e "Iniciando instalacion de software.\n"' >> /tmp/software
-echo 'sleep 2' >> /tmp/software
+echo 'echo -e "\nActualizacion de repositorios FINALIZADA."' >> /tmp/software
 
 while :
 do
-    opcion=$(zenity --list --title="Instalacion de software.- MegaTools -" \
+    opcion=$(zenity --list --title="MegaTools ( Diseñado por SUKIGSX )" \
     --text="\nSelecciona una categoria de software y vete marcando el que mas te guste o necesites.\n" \
     --column "Categorias principales:" --column="Descripcion." \
     "NAVEGADORES" "Los principales navegadores para internet." \
@@ -39,7 +34,7 @@ do
     case $opcion in
 
         "NAVEGADORES")
-            bash MenuPrincipal/InstalacionDeSosfware/Navegadores
+            bash InstalacionNavegadores
             ;;
 
         "AUDIO - VIDEO")
@@ -78,13 +73,13 @@ do
         "Instalar Software Seleccionado")
             #empieza la instalacion
             #actualiza repositorios
-            #(echo -e "Ejecutando (sudo apt update)\n " && sudo apt update 2>/dev/null && echo -e "\nTerminado el sudo apt update") | zenity --text-info --width=600 --height=400 --title="Actualizando repositorios - MegaTools" --auto-scroll
 
-            bash /tmp/software | zenity --text-info --font="DejaVu Sans Mono" --width=600 --height=400 --title="Instalacion del software seleccionado - MegaTools" --auto-scroll
+            bash /tmp/software | zenity --text-info --width=600 --height=400 --title="Instalando software seleccionado - MegaTools" --auto-scroll
+            ;;
 
         *)
             if [ $? -eq 0 ]; then
-                zenity --error --title="Instalacion del software selecciona - MegaTools -" --text="No has seleccionado ninguna categoria del menu." --width=300
+                zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna categoria del menu." --width=300
             else
                 #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
                 rm /tmp/software 2>/dev/null
