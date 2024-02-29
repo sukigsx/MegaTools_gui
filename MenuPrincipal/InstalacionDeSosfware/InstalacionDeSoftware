@@ -11,6 +11,7 @@ password(){
         # Verificar si se ha cancelado la entrada de la contraseña
         if [ $? -ne 0 ]; then
             # Salir del script si se ha cancelado
+            rm /tmp/software 2>/dev/null
             exit
         fi
 
@@ -29,6 +30,7 @@ password(){
                 zenity --error --title="" --text="La contraseña es incorrecta. Inténtelo de nuevo."
             else
                 zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Saliendo del script."
+                rm /tmp/software 2>/dev/null
                 exit
             fi
         fi
