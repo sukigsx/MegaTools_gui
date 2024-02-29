@@ -119,6 +119,8 @@ fi
 #si no esta instalado, entonces entra en el if y comprueba la conexion a internet y todo lo demas.
 
 software_necesario_sino
+
+echo -e "\n- MegaTools -\n"
 if [ "$var_software" = "NO" ]; then
     conexion
         if [ $var_conexion = "SI" ]; then
