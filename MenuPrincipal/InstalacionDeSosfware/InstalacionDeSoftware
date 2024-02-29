@@ -74,12 +74,12 @@ do
             #empieza la instalacion
             #actualiza repositorios
 
-            bash /tmp/software | zenity --text-info --width=600 --height=400 --title="Instalando software seleccionado - MegaTools" --auto-scroll
+            bash /tmp/software | zenity --text-info --width=600 --height=400 --title="Instalacion del software seleccionado. - MegaTools" --auto-scroll
             ;;
 
         *)
             if [ $? -eq 0 ]; then
-                zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna categoria del menu." --width=300
+                zenity --error --title="Instalacion del software seleccionado.- MegaTools -" --text="No has seleccionado ninguna categoria del menu." --width=300
             else
                 #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
                 rm /tmp/software 2>/dev/null
