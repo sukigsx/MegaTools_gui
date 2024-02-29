@@ -28,7 +28,7 @@ do
     --height=650 \
     --ok-label="Aceptar" \
     --cancel-label="Atras" \
-    --extra-button="Instalar Software Seleccionado")
+    --extra-button="Ver software para instalar")
 
     # Manejar la opción seleccionada
     case $opcion in
@@ -70,11 +70,16 @@ do
         "MENSAJERIA")
             ;;
 
-        "Instalar Software Seleccionado")
+        "Ver software para instalar")
+            #muestra el software seleccionado
+            grep '^#' /tmp/software | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono"
+
+
+
             #empieza la instalacion
             #actualiza repositorios
 
-            bash /tmp/software | zenity --text-info --width=600 --height=400 --title="Instalacion del software seleccionado. - MegaTools" --auto-scroll
+            #bash /tmp/software | zenity --text-info --width=600 --height=400 --title="Instalacion del software seleccionado. - MegaTools" --auto-scroll
             ;;
 
         *)
