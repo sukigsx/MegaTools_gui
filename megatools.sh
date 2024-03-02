@@ -1,8 +1,10 @@
 #!/bin/bash
 
+#se modifica la version para que sepa el actualizador que hay cambios y actualiza megatools
 version="1.fdd0"
+
 #software necesario para la ejecucion del programa
-software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi"
+software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi popo"
 
 #colores
 #ejemplo: echo -e "${verde} La opcion (-e) es para que pille el color.${borra_colores}"
