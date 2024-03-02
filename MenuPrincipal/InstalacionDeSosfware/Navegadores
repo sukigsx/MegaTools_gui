@@ -70,7 +70,7 @@ do
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "firefox" >> /tmp/ComprobarSoftware
+                echo "popo" >> /tmp/ComprobarSoftware
                 ;;
 
             *)
