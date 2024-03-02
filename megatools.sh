@@ -199,7 +199,7 @@ if [ $var_conexion = "SI" ]; then
     fi
 fi
 
-if [ "$salir" = "SI" ]; then
+if [ "$var_software" = "NO" ]; then
     exit
 fi
 
