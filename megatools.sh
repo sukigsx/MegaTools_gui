@@ -49,6 +49,7 @@ contador="1" #ponemos la variable contador a 1
             echo -e ""
             echo -e " ${rojo}NNNNNNNNNNNNNo se puede ejecutar el script sin el software necesario.${borra_colores}"
             salir="SI"
+            export salir
             exit
         else #intenta instalar
             echo " Instalando $paquete. Intento $contador/3."
@@ -161,7 +162,7 @@ if [ $var_conexion = "SI" ]; then
     comprobar_actualizacion_sino
     if [ $var_actualizado = "NO" ]; then
         actualizar_script | zenity --text-info --title="Actualizacion - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
-        if [ $salir="SI" ]; then
+        if [ "$salir" = "SI" ]; then
             exit
         fi
     fi
