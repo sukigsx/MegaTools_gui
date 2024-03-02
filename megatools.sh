@@ -2,7 +2,7 @@
 
 version="1.fdd0"
 #software necesario para la ejecucion del programa
-software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi popo"
+software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi"
 
 #colores
 #ejemplo: echo -e "${verde} La opcion (-e) es para que pille el color.${borra_colores}"
@@ -44,8 +44,7 @@ contador="1" #ponemos la variable contador a 1
             echo -e " Intentelo usted con las ordenes: (sudo apt update y sudo apt install $paquete )"
             echo -e ""
             echo -e " No se puede ejecutar el script sin el software necesario."
-            salir="SI"
-            export salir
+            exit
         else #intenta instalar
             echo " Instalando $paquete. Intento $contador/3."
             sudo apt install $paquete -y 2>/dev/null 1>/dev/null 0>/dev/null
@@ -57,7 +56,7 @@ contador="1" #ponemos la variable contador a 1
 echo -e " [ok] $paquete."
 var_software="SI"
 done
-echo -e "\n Terminada la verificacion de software.\n Todo el software = [OK$]\n"
+echo -e "\n Terminada la verificacion de software.\n Todo el software = [OK]\n"
 }
 
 software_necesario(){
@@ -153,9 +152,6 @@ fi
 #ejecuto la funcion para comprobar si esta el software necesario instalado.
 #si esta instalado ejecuta el programa y listo.
 #si no esta instalado, entonces entra en el if y comprueba la conexion a internet y todo lo demas.
-
-
-
 software_necesario_sino
 if [ "$var_software" = "NO" ]; then
     conexion
@@ -199,10 +195,13 @@ if [ $var_conexion = "SI" ]; then
     fi
 fi
 
-if [ "$var_software" = "NO" ]; then
+if [ "$salir" = "SI" ]; then
     exit
 fi
 
+if [ "$var_actualizado" = "NO" ]; then
+    exit
+fi
 
 # Muestrael el menú principal
 while :
