@@ -47,6 +47,7 @@ contador="1" #ponemos la variable contador a 1
             echo -e ""
             echo -e " ${rojo}No se puede ejecutar el script sin el software necesario.${borra_colores}"
             salir="SI"
+            export salir
             exit
         else #intenta instalar
             echo " Instalando $paquete. Intento $contador/3."
