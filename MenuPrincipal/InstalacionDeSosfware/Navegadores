@@ -49,13 +49,18 @@ do
                 echo 'sudo gdebi google-chrome-stable_current_amd64.deb -n' >> /tmp/software
                 echo "rm google-chrome-stable_current_amd64.deb" >> /tmp/software
                 echo "" >> /tmp/software
+                echo "google-chrome-stable" >> /tmp/comprobar_software
                 ;;
 
             "chromium-browser")
+                #codigo para la instalacion se mete a /tmp/software
                 echo "#chromium-browser" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y chromium-browser" >> /tmp/software
                 echo "sudo apt install -y chromium-browser-l10n" >> /tmp/software
                 echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "chromium-browser" >> /tmp/comprobar_software
                 ;;
 
             *)
