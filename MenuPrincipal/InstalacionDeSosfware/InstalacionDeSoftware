@@ -44,6 +44,7 @@ echo 'sudo apt update' >> /tmp/software
 echo 'echo -e "\n- ACTUALIZACION DE REPOSITORIOS FINALIZADA. -"' >> /tmp/software
 echo 'echo ""' >> /tmp/software
 echo 'echo "- COMANZANDO LA INSTALACION DE SOFTWARE -"' >> /tmp/software
+echo 'echo "- Se paciente.. tiempo dependiendo de tu conexion. -"' >> /tmp/software
 
 while :
 do
@@ -121,7 +122,7 @@ do
                 fi
                 #le hemos dado a instalar y pregunta la password
                 password
-                (bash /tmp/software 2>/dev/null; echo "- TERMINADO EL PROCESO DE INSTALACION DE SOFTWARE -") | zenity --text-info --width=600 --height=400 --title="Instalando software seleccionado. - MegaTools" --auto-scroll
+                (bash /tmp/software 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE INSTALACION DE SOFTWARE -") | zenity --text-info --width=600 --height=400 --title="Instalando software seleccionado. - MegaTools" --auto-scroll
             else
                 zenity --error --title="Instalacion del software seleccionado. - MegaTools -" --text="No hay seleccionado ningun software para instalar." --width=400
             fi
