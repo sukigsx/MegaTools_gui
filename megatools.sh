@@ -198,6 +198,7 @@ if [ $var_conexion = "SI" ]; then
     fi
 fi
 
+salir="SI"
 if [ $salir = "SI" ]; then
     exit
 fi
