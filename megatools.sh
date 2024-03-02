@@ -46,6 +46,26 @@ contador="1" #ponemos la variable contador a 1
             echo -e " No se puede ejecutar el script sin el software necesario."
             exit
         else #intenta instalar
+
+            # Verificar la contraseña utilizando el comando sudo
+            echo "$PASSWORD" | sudo -S ls /root >/dev/null 2>&1
+
+            # Verificar el código de salida del comando sudo
+            if [ $? -eq 0 ]; then
+                # Contraseña correcta
+                zenity --info --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es correcta."
+                break
+            else
+                # Contraseña incorrecta
+                let "attempts+=1"
+                if [ $attempts -lt 3 ]; then
+                    zenity --error --title="" --text="La contraseña es incorrecta. Inténtelo de nuevo."
+                else
+                    zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Saliendo del script."
+                    exit
+                fi
+            fi
+
             echo " Instalando $paquete. Intento $contador/3."
             sudo apt install $paquete -y 2>/dev/null 1>/dev/null 0>/dev/null
             let "contador=contador+1" #incrementa la variable contador en 1
