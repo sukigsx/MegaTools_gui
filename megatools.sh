@@ -89,8 +89,8 @@ git reset --hard origin/main >/dev/null 2>&1
 echo -e "\n¡ Nueva version de MegaTools disponible.!\n"
 echo -e " Se procede a su actualizacion automatica.\n"
 echo -e " Es necesario reiniciar MegaTools.\n"
-exit
 salir="SI"
+exit
 }
 
 comprobar_actualizacion_sino(){
