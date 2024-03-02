@@ -45,6 +45,7 @@ contador="1" #ponemos la variable contador a 1
             echo -e ""
             echo -e " No se puede ejecutar el script sin el software necesario."
             salir="SI"
+            export salir
         else #intenta instalar
             echo " Instalando $paquete. Intento $contador/3."
             sudo apt install $paquete -y 2>/dev/null 1>/dev/null 0>/dev/null
@@ -198,8 +199,7 @@ if [ $var_conexion = "SI" ]; then
     fi
 fi
 
-salir="SI"
-if [ $salir = "SI" ]; then
+if [ "$salir" = "SI" ]; then
     exit
 fi
 
