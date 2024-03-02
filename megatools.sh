@@ -1,10 +1,8 @@
 #!/bin/bash
 
-#se modifica la version para que sepa el actualizador que hay cambios y actualiza megatools
-version="1.0"
-
+version="1.fdd0"
 #software necesario para la ejecucion del programa
-software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi popo"
+software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi"
 
 #colores
 #ejemplo: echo -e "${verde} La opcion (-e) es para que pille el color.${borra_colores}"
@@ -47,9 +45,7 @@ contador="1" #ponemos la variable contador a 1
             echo -e " ${amarillo}NO se ha podido instalar ${rojo}$paquete${amarillo}.${borra_colores}"
             echo -e " ${amarillo}Intentelo usted con las ordenes: (${borra_colores}sudo apt update y sudo apt install $paquete ${amarillo})${borra_colores}"
             echo -e ""
-            echo -e " ${rojo}NNNNNNNNNNNNNo se puede ejecutar el script sin el software necesario.${borra_colores}"
-            salir="SI"
-            export salir
+            echo -e " ${rojo}No se puede ejecutar el script sin el software necesario.${borra_colores}"
             exit
         else #intenta instalar
             echo " Instalando $paquete. Intento $contador/3."
@@ -91,8 +87,8 @@ git reset --hard origin/main >/dev/null 2>&1
 echo -e "\n¡ Nueva version de MegaTools disponible.!\n"
 echo -e " Se procede a su actualizacion automatica.\n"
 echo -e " Es necesario reiniciar MegaTools.\n"
-salir="SI"
 exit
+salir="SI"
 }
 
 comprobar_actualizacion_sino(){
@@ -127,11 +123,8 @@ if [ "$var_software" = "NO" ]; then
     conexion
         if [ $var_conexion = "SI" ]; then
             if which zenity >/dev/null 2>&1; then
-                software_necesario | zenity --text-info --title="dos Software necesario - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
-                if [ "$salir" = "SI" ]; then
-                    exit
-                fi
-                actualizar_script | zenity --text-info --title="tres Actualizacion - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
+                software_necesario | zenity --text-info --title="Software necesario - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
+                actualizar_script | zenity --text-info --title="Actualizacion - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
             else
                 software_necesario
                 actualizar_script
@@ -139,7 +132,7 @@ if [ "$var_software" = "NO" ]; then
         else
              if which zenity>/dev/null 2>&1; then
 
-                zenity --info --title="uno- MegaTools -" --text="\n Verificando software necesario = $var_software.\n Conexion a internet = $var_conexion.\n No se puede ejecutar el script sin el software necesario.\n" --width=400 --height=150
+                zenity --info --title="- MegaTools -" --text="\n Verificando software necesario = $var_software.\n Conexion a internet = $var_conexion.\n No se puede ejecutar el script sin el software necesario.\n" --width=400 --height=150
                 salir="SI"
             else
                 clear
@@ -162,7 +155,7 @@ if [ $var_conexion = "SI" ]; then
     comprobar_actualizacion_sino
     if [ $var_actualizado = "NO" ]; then
         actualizar_script | zenity --text-info --title="Actualizacion - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
-        if [ "$salir" = "SI" ]; then
+        if [ $salir="SI" ]; then
             exit
         fi
     fi
