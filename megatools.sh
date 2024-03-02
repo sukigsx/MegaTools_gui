@@ -199,7 +199,7 @@ if [ "$salir" = "SI" ]; then
     exit
 fi
 
-if [ "$var_actualizado" = "NO" ]; then
+if [ "$var_software" = "NO" ]; then
     exit
 fi
 
