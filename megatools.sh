@@ -198,7 +198,7 @@ if [ $var_conexion = "SI" ]; then
     fi
 fi
 
-if [ "$salir" = "SI" ]; then
+if [ $salir = "SI" ]; then
     exit
 fi
 
