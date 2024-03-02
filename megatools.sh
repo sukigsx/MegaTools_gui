@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #se modifica la version para que sepa el actualizador que hay cambios y actualiza megatools
-version="1.fdd0"
+version="1.0"
 
 #software necesario para la ejecucion del programa
 software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi popo"
