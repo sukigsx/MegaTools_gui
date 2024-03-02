@@ -26,7 +26,6 @@ fi
 }
 
 software_necesario_zenity(){
-clear
 echo -e "\n- MegaTools -"
 var_software="NO"
 echo -e "\n Actualizando repositorios y verificando software necesario:\n"
@@ -40,7 +39,6 @@ contador="1" #ponemos la variable contador a 1
     do
         if [ $contador = "4" ] || [ $conexion = "no" ] 2>/dev/null 1>/dev/null 0>/dev/null #si el contador es 4 entre en then y sino en else
         then #si entra en then es porque el contador es igual a 4 y no ha podido instalar o no hay conexion a internet
-            clear
             echo ""
             echo -e " NO se ha podido instalar $paquete."
             echo -e " Intentelo usted con las ordenes: (sudo apt update y sudo apt install $paquete )"
