@@ -43,7 +43,7 @@ echo 'echo -e "\n- ACTUALIZANDO REPOSITORIOS.- \n"' >> /tmp/software
 echo 'sudo apt update' >> /tmp/software
 echo 'echo -e "\n- ACTUALIZACION DE REPOSITORIOS FINALIZADA. -"' >> /tmp/software
 echo 'echo ""' >> /tmp/software
-echo 'echo "- COMANZANDO LA INSTALACION DE SOFTWARE -"'
+echo 'echo "- COMANZANDO LA INSTALACION DE SOFTWARE -"' >> /tmp/software
 
 while :
 do
