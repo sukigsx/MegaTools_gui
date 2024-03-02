@@ -12,6 +12,8 @@ password(){
         if [ $? -ne 0 ]; then
             # Salir del script si se ha cancelado
             rm /tmp/software 2>/dev/null
+            rm /tmp/ComprobarSoftware 2>/dev/null
+            rm /tmp/comprobacion 2>/dev/null
             exit
         fi
 
@@ -38,7 +40,8 @@ password(){
 }
 #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
 rm /tmp/software 2>/dev/null
-rm /tmp/comprobar_software 2>/dev/null
+rm /tmp/ComprobarSoftware 2>/dev/null
+rm /tmp/comprobacion 2>/dev/null
 
 #crea el fichero de instalacion de software
 echo 'echo -e "\n- ACTUALIZANDO REPOSITORIOS.- \n"' >> /tmp/software
@@ -49,13 +52,13 @@ echo 'echo "- COMENZANDO LA INSTALACION DE SOFTWARE -"' >> /tmp/software
 echo 'echo "- Se paciente.. El tiempo depende de tu conexion. -"' >> /tmp/software
 
 #crea el fichero para comprobar la instalacion
-echo 'for programa in $(cat /tmp/comprobar_software); do' >> /tmp/comprobar_software
-echo '    if which "$programa" &>/dev/null; then' >> /tmp/comprobar_software
-echo '        echo "$programa está instalado."' >> /tmp/comprobar_software
-echo '    else' >> /tmp/comprobar_software
-echo '        echo "$programa no está instalado."' >> /tmp/comprobar_software
-echo '    fi' >> /tmp/comprobar_software
-echo 'done' >> /tmp/comprobar_software
+echo 'for programa in $(cat /tmp/ComprobarSoftware); do' >> /tmp/comprobacion
+echo '    if which "$programa" &>/dev/null; then' >> /tmp/comprobacion
+echo '        echo "$programa está instalado."' >> /tmp/comprobacion
+echo '    else' >> /tmp/comprobacion
+echo '        echo "$programa no está instalado."' >> /tmp/comprobacion
+echo '    fi' >> /tmp/comprobacion
+echo 'done' >> /tmp/comprobacion
 
 while :
 do
@@ -136,7 +139,7 @@ do
                 password
                 (bash /tmp/software 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE INSTALACION DE SOFTWARE -") | zenity --text-info --width=600 --height=400 --title="Instalando software seleccionado. - MegaTools" --auto-scroll
 
-                (echo -e "\n - VERIFICACION DEL SOFTWARE INSTALADO -\N"; bash /tmp/comprobar_software 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE VERIFICACION -") | zenity --text-info --width=600 --height=400 --title="Verificacion de software. - MegaTools" --auto-scroll
+                (echo -e "\n - VERIFICACION DEL SOFTWARE INSTALADO -\N"; bash /tmp/comprobacion 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE VERIFICACION -") | zenity --text-info --width=600 --height=400 --title="Verificacion de software. - MegaTools" --auto-scroll
 
             else
                 zenity --error --title="Instalacion del software seleccionado. - MegaTools -" --text="No hay seleccionado ningun software para instalar." --width=400
@@ -150,7 +153,8 @@ do
             else
                 #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
                 rm /tmp/software 2>/dev/null
-                rm /tmp/comprobar_software 2>/dev/null
+                rm /tmp/ComprobarSoftware 2>/dev/null
+                rm /tmp/comprobacion 2>/dev/null
                 exit 0
             fi
             ;;
@@ -158,4 +162,5 @@ do
 done
 #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
 rm /tmp/software 2>/dev/null
-rm /tmp/comprobar_software 2>/dev/null
+rm /tmp/ComprobarSoftware 2>/dev/null
+rm /tmp/comprobacion 2>/dev/null
