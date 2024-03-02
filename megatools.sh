@@ -30,24 +30,39 @@ echo -e "\n- MegaTools -"
 var_software="NO"
 echo -e "\n Actualizando repositorios y verificando software necesario:\n"
 
-# Verificar la contraseña utilizando el comando sudo
-echo "$PASSWORD" | sudo -S ls /root >/dev/null 2>&1
+# Inicializar el contador de intentos
+    attempts=0
 
-# Verificar el código de salida del comando sudo
-if [ $? -eq 0 ]; then
-    # Contraseña correcta
-    zenity --info --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es correcta."
-    break
-else
-    # Contraseña incorrecta
-    let "attempts+=1"
-    if [ $attempts -lt 3 ]; then
-        zenity --error --title="" --text="La contraseña es incorrecta. Inténtelo de nuevo."
-    else
-        zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Saliendo del script."
+# Bucle para solicitar la contraseña hasta tres intentos
+while [ $attempts -lt 3 ]; do
+    # Solicitar la contraseña del usuario actual utilizando Zenity
+    PASSWORD=$(zenity --entry --hide-text --text="Ingrese tu contraseña" --title="Contraseña de usuario. - MegaTools -" --width=450 --height=100)
+
+    # Verificar si se ha cancelado la entrada de la contraseña
+    if [ $? -ne 0 ]; then
+        # Salir del script si se ha cancelado
         exit
     fi
-fi
+
+    # Verificar la contraseña utilizando el comando sudo
+    echo "$PASSWORD" | sudo -S ls /root >/dev/null 2>&1
+
+    # Verificar el código de salida del comando sudo
+    if [ $? -eq 0 ]; then
+        # Contraseña correcta
+        zenity --info --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es correcta."
+        break
+    else
+        # Contraseña incorrecta
+        let "attempts+=1"
+        if [ $attempts -lt 3 ]; then
+            zenity --error --title="" --text="La contraseña es incorrecta. Inténtelo de nuevo."
+        else
+            zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Saliendo del script."
+            exit
+        fi
+    fi
+done
 
 sudo apt update 2>/dev/null 1>/dev/null 0>/dev/null
 for paquete in $software
