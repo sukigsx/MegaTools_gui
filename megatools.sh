@@ -119,8 +119,7 @@ fi
 #si esta instalado ejecuta el programa y listo.
 #si no esta instalado, entonces entra en el if y comprueba la conexion a internet y todo lo demas.
 
-echo $salir
-read -p "parado control c" popo
+
 
 software_necesario_sino
 if [ "$var_software" = "NO" ]; then
@@ -168,6 +167,9 @@ fi
 if [ "$salir" = "SI" ]; then
     exit
 fi
+
+echo $salir
+read -p "parado control c" popo
 
 
 # Muestrael el menú principal
