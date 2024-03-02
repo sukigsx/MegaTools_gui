@@ -39,9 +39,11 @@ password(){
 #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
 rm /tmp/software 2>/dev/null
 
-echo 'echo -e "\nActualizando repositorios.\n"' >> /tmp/software
+echo 'echo -e "\n- ACTUALIZANDO REPOSITORIOS.- \n"' >> /tmp/software
 echo 'sudo apt update' >> /tmp/software
-echo 'echo -e "\nActualizacion de repositorios FINALIZADA."' >> /tmp/software
+echo 'echo -e "\n- ACTUALIZACION DE REPOSITORIOS FINALIZADA. -"' >> /tmp/software
+echo 'echo ""' >> /tmp/software
+echo 'echo "- COMANZANDO LA INSTALACION DE SOFTWARE -"'
 
 while :
 do
