@@ -25,6 +25,42 @@ else
 fi
 }
 
+software_necesario_zenity(){
+clear
+echo -e "\n- MegaTools -"
+var_software="NO"
+echo -e "\n Actualizando repositorios y verificando software necesario:\n"
+sudo apt update 2>/dev/null 1>/dev/null 0>/dev/null
+for paquete in $software
+do
+which $paquete 2>/dev/null 1>/dev/null 0>/dev/null #comprueba si esta el programa llamado programa
+sino=$? #recojemos el 0 o 1 del resultado de which
+contador="1" #ponemos la variable contador a 1
+    while [ $sino -gt 0 ] #entra en el bicle si variable programa es 0, no lo ha encontrado which
+    do
+        if [ $contador = "4" ] || [ $conexion = "no" ] 2>/dev/null 1>/dev/null 0>/dev/null #si el contador es 4 entre en then y sino en else
+        then #si entra en then es porque el contador es igual a 4 y no ha podido instalar o no hay conexion a internet
+            clear
+            echo ""
+            echo -e " NO se ha podido instalar $paquete."
+            echo -e " Intentelo usted con las ordenes: (sudo apt update y sudo apt install $paquete )"
+            echo -e ""
+            echo -e " No se puede ejecutar el script sin el software necesario."
+            exit
+        else #intenta instalar
+            echo " Instalando $paquete. Intento $contador/3."
+            sudo apt install $paquete -y 2>/dev/null 1>/dev/null 0>/dev/null
+            let "contador=contador+1" #incrementa la variable contador en 1
+            which $paquete 2>/dev/null 1>/dev/null 0>/dev/null #comprueba si esta el programa en tu sistema
+            sino=$? ##recojemos el 0 o 1 del resultado de which
+        fi
+    done
+echo -e " [ok] $paquete."
+var_software="SI"
+done
+echo -e "\n Terminada la verificacion de software.\n Todo el software = [OK$]\n"
+}
+
 software_necesario(){
 clear
 echo -e "\n- MegaTools -"
@@ -46,8 +82,6 @@ contador="1" #ponemos la variable contador a 1
             echo -e " ${amarillo}Intentelo usted con las ordenes: (${borra_colores}sudo apt update y sudo apt install $paquete ${amarillo})${borra_colores}"
             echo -e ""
             echo -e " ${rojo}No se puede ejecutar el script sin el software necesario.${borra_colores}"
-            salir="SI"
-            export salir
             exit
         else #intenta instalar
             echo " Instalando $paquete. Intento $contador/3."
@@ -128,7 +162,7 @@ if [ "$var_software" = "NO" ]; then
     conexion
         if [ $var_conexion = "SI" ]; then
             if which zenity >/dev/null 2>&1; then
-                software_necesario | zenity --text-info --title="Software necesario - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
+                software_necesario_zenity | zenity --text-info --title="Software necesario - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
                 actualizar_script | zenity --text-info --title="Actualizacion - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
             else
                 software_necesario
@@ -169,9 +203,6 @@ fi
 if [ "$salir" = "SI" ]; then
     exit
 fi
-
-echo $salir
-read -p "parado control c" popo
 
 
 # Muestrael el menú principal
