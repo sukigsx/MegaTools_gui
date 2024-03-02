@@ -48,6 +48,7 @@ contador="1" #ponemos la variable contador a 1
             echo -e " ${amarillo}Intentelo usted con las ordenes: (${borra_colores}sudo apt update y sudo apt install $paquete ${amarillo})${borra_colores}"
             echo -e ""
             echo -e " ${rojo}No se puede ejecutar el script sin el software necesario.${borra_colores}"
+            salir="SI"
             exit
         else #intenta instalar
             echo " Instalando $paquete. Intento $contador/3."
