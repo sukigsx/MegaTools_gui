@@ -126,11 +126,11 @@ if [ "$var_software" = "NO" ]; then
     conexion
         if [ $var_conexion = "SI" ]; then
             if which zenity >/dev/null 2>&1; then
-                software_necesario | zenity --text-info --title="Software necesario - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
+                software_necesario | zenity --text-info --title="dos Software necesario - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
                 if [ "$salir" = "SI" ]; then
                     exit
                 fi
-                actualizar_script | zenity --text-info --title="Actualizacion - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
+                actualizar_script | zenity --text-info --title="tres Actualizacion - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
             else
                 software_necesario
                 actualizar_script
@@ -138,7 +138,7 @@ if [ "$var_software" = "NO" ]; then
         else
              if which zenity>/dev/null 2>&1; then
 
-                zenity --info --title="- MegaTools -" --text="\n Verificando software necesario = $var_software.\n Conexion a internet = $var_conexion.\n No se puede ejecutar el script sin el software necesario.\n" --width=400 --height=150
+                zenity --info --title="uno- MegaTools -" --text="\n Verificando software necesario = $var_software.\n Conexion a internet = $var_conexion.\n No se puede ejecutar el script sin el software necesario.\n" --width=400 --height=150
                 salir="SI"
             else
                 clear
