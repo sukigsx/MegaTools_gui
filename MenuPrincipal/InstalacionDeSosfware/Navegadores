@@ -63,6 +63,16 @@ do
                 echo "chromium-browser" >> /tmp/ComprobarSoftware
                 ;;
 
+            "Firefox")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#firefox" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y popo" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "firefox" >> /tmp/ComprobarSoftware
+                ;;
+
             *)
             #if [ $? -eq 0 ]; then
             #    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
