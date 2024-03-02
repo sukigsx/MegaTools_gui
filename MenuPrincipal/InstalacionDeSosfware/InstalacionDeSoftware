@@ -121,7 +121,7 @@ do
                 fi
                 #le hemos dado a instalar y pregunta la password
                 password
-                (echo -e "\n Instalado el software seleccionado."; bash /tmp/software) | zenity --text-info --width=600 --height=400 --title="Instalando software seleccionado. - MegaTools" --auto-scroll
+                (bash /tmp/software 2>/dev/null: echo "- TERMINADO EL PROCESO DE INSTALACION DE SOFTWARE -") | zenity --text-info --width=600 --height=400 --title="Instalando software seleccionado. - MegaTools" --auto-scroll
             else
                 zenity --error --title="Instalacion del software seleccionado. - MegaTools -" --text="No hay seleccionado ningun software para instalar." --width=400
             fi
