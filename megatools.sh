@@ -127,7 +127,7 @@ if [ "$var_software" = "NO" ]; then
         if [ $var_conexion = "SI" ]; then
             if which zenity >/dev/null 2>&1; then
                 software_necesario | zenity --text-info --title="Software necesario - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
-                if [ "salir" = "SI" ]; then
+                if [ "$salir" = "SI" ]; then
                     exit
                 fi
                 actualizar_script | zenity --text-info --title="Actualizacion - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
