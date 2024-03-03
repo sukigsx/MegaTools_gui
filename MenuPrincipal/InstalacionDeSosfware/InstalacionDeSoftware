@@ -130,19 +130,21 @@ do
                 awk '!seen[$0]++' /tmp/software > /tmp/software_sin_duplicados
                 mv /tmp/software_sin_duplicados /tmp/software
 
+                awk '!seen[$0]++' /tmp/comprobacion > /tmp/comprobacion_duplicados
+                mv /tmp/comprobacion_duplicados /tmp/comprobacion
+
                 (echo -e "\nEste es tu software para instalar\n"; grep '^#' /tmp/software | sed 's/^#/- /') | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Atras empezar de nuevo" --ok-label="Instalar"
 
                 #comprueba si le damos a cancelar si es asi, sale del script al anterior
                 if [ $? = 1 ]; then
                     #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
                     rm /tmp/software 2>/dev/null
-                    rm /tmp/comprobar_software 2>/dev/null
+                    rm /tmp/ComprobarSoftware 2>/dev/null
+                    rm /tmp/comprobacion 2>/dev/null
                     exit
                 fi
                 #le hemos dado a instalar y pregunta la password
                 password
-
-
 
                 #ejecuta el fichero de instalacion
                 (bash /tmp/software 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE INSTALACION DE SOFTWARE -") | zenity --text-info --width=600 --height=400 --title="Instalando software seleccionado. - MegaTools" --auto-scroll
