@@ -137,8 +137,14 @@ do
                 fi
                 #le hemos dado a instalar y pregunta la password
                 password
+
+                #elimina lineas duplicadas del fichero de instalacion
+                awk '!seen[$0]++' /tmp/software > /tmp/software_sin_duplicados
+
+                #ejecuta el fichero de instalacion
                 (bash /tmp/software 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE INSTALACION DE SOFTWARE -") | zenity --text-info --width=600 --height=400 --title="Instalando software seleccionado. - MegaTools" --auto-scroll
 
+                #verifica el software que se ha instalado
                 (echo -e "\n - VERIFICACION DEL SOFTWARE INSTALADO -\N"; bash /tmp/comprobacion 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE VERIFICACION -") | zenity --text-info --width=600 --height=400 --title="Verificacion de software. - MegaTools" --auto-scroll
 
             else
