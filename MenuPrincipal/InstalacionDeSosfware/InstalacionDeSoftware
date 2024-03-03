@@ -130,8 +130,8 @@ do
                 awk '!seen[$0]++' /tmp/software > /tmp/software_sin_duplicados
                 mv /tmp/software_sin_duplicados /tmp/software
 
-                awk '!seen[$0]++' /tmp/comprobacion > /tmp/comprobacion_duplicados
-                mv /tmp/comprobacion_duplicados /tmp/comprobacion
+                awk '!seen[$0]++' /tmp/ComprobarSoftware > /tmp/ComprobarSoftware_duplicados
+                mv /tmp/ComprobarSoftware_duplicados /tmp/ComprobarSoftware
 
                 (echo -e "\nEste es tu software para instalar\n"; grep '^#' /tmp/software | sed 's/^#/- /') | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Atras empezar de nuevo" --ok-label="Instalar"
 
