@@ -152,6 +152,15 @@ do
                 #verifica el software que se ha instalado
                 (echo -e "\n - VERIFICACION DEL SOFTWARE INSTALADO -\N"; bash /tmp/comprobacion 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE VERIFICACION -") | zenity --text-info --width=600 --height=400 --title="Verificacion de software. - MegaTools" --auto-scroll
 
+                #pregunta si quiero guardar la instalacion
+                if zenity --question --title="Instalacion de software - MegaTools -" --text="¿Quieres guardar un script de tu instalacion?\n\nSe guardara en tu escritorio." --cancel-label="No" --ok-label="Si"; then
+                    echo "El usuario ha seleccionado 'Sí'."
+                    # Haz algo si el usuario selecciona "Sí"
+                else
+                    echo ""
+                fi
+
+
             else
                 zenity --error --title="Instalacion del software seleccionado. - MegaTools -" --text="No hay seleccionado ningun software para instalar." --width=400
             fi
