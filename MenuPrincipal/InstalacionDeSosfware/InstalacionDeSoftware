@@ -126,6 +126,9 @@ do
         "Ver software para instalar")
             #muestra el software seleccionado
             if grep -q '^#' /tmp/software; then #comprueba si hay algun software para instalar verificando la #
+                #elimina lineas duplicadas del fichero de instalacion
+                awk '!seen[$0]++' /tmp/software > /tmp/software_sin_duplicados
+
                 (echo -e "\nEste es tu software para instalar\n"; grep '^#' /tmp/software | sed 's/^#/- /') | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Atras empezar de nuevo" --ok-label="Instalar"
 
                 #comprueba si le damos a cancelar si es asi, sale del script al anterior
@@ -138,8 +141,7 @@ do
                 #le hemos dado a instalar y pregunta la password
                 password
 
-                #elimina lineas duplicadas del fichero de instalacion
-                awk '!seen[$0]++' /tmp/software > /tmp/software_sin_duplicados
+
 
                 #ejecuta el fichero de instalacion
                 (bash /tmp/software 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE INSTALACION DE SOFTWARE -") | zenity --text-info --width=600 --height=400 --title="Instalando software seleccionado. - MegaTools" --auto-scroll
