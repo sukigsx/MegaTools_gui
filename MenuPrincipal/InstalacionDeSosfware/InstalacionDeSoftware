@@ -154,8 +154,12 @@ do
 
                 #pregunta si quiero guardar la instalacion
                 if zenity --question --title="Instalacion de software - MegaTools -" --text="¿Quieres guardar un script de tu instalacion?\n\nSe guardara en tu escritorio." --cancel-label="No" --ok-label="Si"; then
-                    echo "El usuario ha seleccionado 'Sí'."
-                    # Haz algo si el usuario selecciona "Sí"
+                    #entra si la respuesta es si
+                    if [ -d /home/$(whoami)/Escritorio ]
+                        cp /tmp/software /home/$(whoami)/Escritorio/InstalarSosftware.sh
+                    else
+                        cp /tmp/software /home/$(whoami)/Desktop/InstalarSoftware.sh
+                    fi
                 else
                     echo ""
                 fi
