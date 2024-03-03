@@ -128,6 +128,7 @@ do
             if grep -q '^#' /tmp/software; then #comprueba si hay algun software para instalar verificando la #
                 #elimina lineas duplicadas del fichero de instalacion
                 awk '!seen[$0]++' /tmp/software > /tmp/software_sin_duplicados
+                mv /tmp/software_sin_duplicados /tmp/software
 
                 (echo -e "\nEste es tu software para instalar\n"; grep '^#' /tmp/software | sed 's/^#/- /') | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Atras empezar de nuevo" --ok-label="Instalar"
 
