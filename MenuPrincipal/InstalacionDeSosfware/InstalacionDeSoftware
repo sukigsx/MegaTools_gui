@@ -23,15 +23,15 @@ password(){
         # Verificar el código de salida del comando sudo
         if [ $? -eq 0 ]; then
             # Contraseña correcta
-            zenity --info --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es correcta." --timeout 3
+            zenity --info --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es correcta." --width=250 --height=100 --timeout 3
             break
         else
             # Contraseña incorrecta
             let "attempts+=1"
             if [ $attempts -lt 3 ]; then
-                zenity --error --title="" --text="La contraseña es incorrecta. Inténtelo de nuevo." --timeout 3
+                zenity --error --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es incorrecta. Inténtelo de nuevo." --width=250 --height=100 --timeout 3
             else
-                zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Se regresa al menu principal." --timeout 7
+                zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Se regresa al menu principal." --width=250 --height=100 --timeout 7
                 rm /tmp/software 2>/dev/null
                 exit
             fi
