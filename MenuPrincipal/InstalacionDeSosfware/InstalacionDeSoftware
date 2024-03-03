@@ -54,9 +54,9 @@ echo 'echo "- Se paciente.. El tiempo depende de tu conexion. -"' >> /tmp/softwa
 #crea el fichero para comprobar la instalacion
 echo 'for programa in $(cat /tmp/ComprobarSoftware); do' >> /tmp/comprobacion
 echo '    if which "$programa" &>/dev/null; then' >> /tmp/comprobacion
-echo '        echo "$programa está instalado."' >> /tmp/comprobacion
+echo '        echo "$programa [ OK ]."' >> /tmp/comprobacion
 echo '    else' >> /tmp/comprobacion
-echo '        echo "$programa no está instalado."' >> /tmp/comprobacion
+echo '        echo "$programa [ NO INSTALADO ]."' >> /tmp/comprobacion
 echo '    fi' >> /tmp/comprobacion
 echo 'done' >> /tmp/comprobacion
 
