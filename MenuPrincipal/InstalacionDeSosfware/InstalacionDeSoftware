@@ -1,4 +1,20 @@
 #!/bin/bash
+CrearInstalarSoftware(){
+#pregunta si quiero guardar la instalacion
+if zenity --question --title="Instalacion de software - MegaTools -" --text="¿Quieres guardar un script de tu instalacion?\n\nSe guardara en tu escritorio." --cancel-label="No" --ok-label="Si"
+then
+    #entra si la respuesta es si
+    if [ -d /home/$(whoami)/Escritorio ]
+        cp /tmp/software /home/$(whoami)/Escritorio/InstalarSosftware.sh
+    else
+        cp /tmp/software /home/$(whoami)/Desktop/InstalarSoftware.sh
+    fi
+else
+    echo ""
+fi
+}
+
+
 password(){
 # Inicializar el contador de intentos
     attempts=0
@@ -152,6 +168,7 @@ do
                 #verifica el software que se ha instalado
                 (echo -e "\n - VERIFICACION DEL SOFTWARE INSTALADO -\N"; bash /tmp/comprobacion 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE VERIFICACION -") | zenity --text-info --width=600 --height=400 --title="Verificacion de software. - MegaTools" --auto-scroll
 
+                CrearInstalarSoftware(){
                 #pregunta si quiero guardar la instalacion
                 if zenity --question --title="Instalacion de software - MegaTools -" --text="¿Quieres guardar un script de tu instalacion?\n\nSe guardara en tu escritorio." --cancel-label="No" --ok-label="Si"; then
                     #entra si la respuesta es si
@@ -163,7 +180,7 @@ do
                 else
                     echo ""
                 fi
-
+                }
 
             else
                 zenity --error --title="Instalacion del software seleccionado. - MegaTools -" --text="No hay seleccionado ningun software para instalar." --width=400
