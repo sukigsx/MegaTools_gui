@@ -7,10 +7,10 @@ then
     if [ -d /home/$(whoami)/Escritorio ]
     then
         #rm /tmp/software /home/$(whoami)/Escritorio/InstalarSosftware.sh 2>/dev/null
-        cp /tmp/software /home/$(whoami)/Escritorio/InstalarSosftware.sh 2>/dev/null
+        cp /tmp/software /home/$(whoami)/Escritorio/InstalarSosftware.sh
     else
         #rm /tmp/software /home/$(whoami)/Desktop/InstalarSoftware.sh 2>/dev/null
-        cp /tmp/software /home/$(whoami)/Desktop/InstalarSoftware.sh 2>/dev/null
+        cp /tmp/software /home/$(whoami)/Desktop/InstalarSoftware.sh
     fi
 else
     echo ""
