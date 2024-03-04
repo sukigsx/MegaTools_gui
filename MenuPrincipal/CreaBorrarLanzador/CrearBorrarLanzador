@@ -35,8 +35,8 @@ do
             echo 'GenericName=' >> $ruta_lanzador/MegaTools.desktop
             echo "Icon=autocorrection" >> $ruta_lanzador/MegaTools.desktop
             echo 'MimeType=' >> $ruta_lanzador/MegaTools.desktop
-            echo 'Name[es_ES]=MegaTools ( Por SUKIGSX )' >> $ruta_lanzador/MegaTools.desktop
-            echo 'Name=MegaTools ( Por SUKIGSX )' >> $ruta_lanzador/MegaTools.desktop
+            echo 'Name[es_ES]=MegaTools' >> $ruta_lanzador/MegaTools.desktop
+            echo 'Name=MegaTools' >> $ruta_lanzador/MegaTools.desktop
             echo "Path=$ruta_script" >> $ruta_lanzador/MegaTools.desktop
             echo 'StartupNotify=true' >> $ruta_lanzador/MegaTools.desktop
             echo 'Terminal=false' >> $ruta_lanzador/MegaTools.desktop
