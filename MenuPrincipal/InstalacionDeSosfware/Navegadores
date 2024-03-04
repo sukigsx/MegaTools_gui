@@ -92,7 +92,7 @@ do
                 echo 'sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg' >> /tmp/software
                 echo 'echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list' >> /tmp/software
                 echo "sudo apt update" >> /tmp/software
-                echo "sudo apt install brave-browser" >> /tmp/software
+                echo "sudo apt install brave-browser -y" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
