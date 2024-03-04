@@ -5,6 +5,7 @@ if zenity --question --title="Instalacion de software - MegaTools -" --text="¿Q
 then
     #entra si la respuesta es si
     if [ -d /home/$(whoami)/Escritorio ]
+    then
         cp /tmp/software /home/$(whoami)/Escritorio/InstalarSosftware.sh
     else
         cp /tmp/software /home/$(whoami)/Desktop/InstalarSoftware.sh

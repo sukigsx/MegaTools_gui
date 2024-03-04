@@ -66,11 +66,11 @@ do
             "Firefox")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#firefox" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y popo" >> /tmp/software
+                echo "sudo apt install -y firefox" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "popo" >> /tmp/ComprobarSoftware
+                echo "firefox" >> /tmp/ComprobarSoftware
                 ;;
 
             *)
