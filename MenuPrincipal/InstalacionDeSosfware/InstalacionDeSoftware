@@ -6,9 +6,11 @@ then
     #entra si la respuesta es si
     if [ -d /home/$(whoami)/Escritorio ]
     then
-        cp /tmp/software /home/$(whoami)/Escritorio/InstalarSosftware.sh
+        rm /tmp/software /home/$(whoami)/Escritorio/InstalarSosftware.sh 2>/dev/null
+        cp /tmp/software /home/$(whoami)/Escritorio/InstalarSosftware.sh 2>/dev/null
     else
-        cp /tmp/software /home/$(whoami)/Desktop/InstalarSoftware.sh
+        rm /tmp/software /home/$(whoami)/Desktop/InstalarSoftware.sh 2>/dev/null
+        cp /tmp/software /home/$(whoami)/Desktop/InstalarSoftware.sh 2>/dev/null
     fi
 else
     echo ""
@@ -167,7 +169,7 @@ do
                 (bash /tmp/software 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE INSTALACION DE SOFTWARE -") | zenity --text-info --width=600 --height=400 --title="Instalando software seleccionado. - MegaTools" --auto-scroll
 
                 #verifica el software que se ha instalado
-                (echo -e "\n - VERIFICACION DEL SOFTWARE INSTALADO -\N"; bash /tmp/comprobacion 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE VERIFICACION -") | zenity --text-info --width=600 --height=400 --title="Verificacion de software. - MegaTools" --auto-scroll
+                (echo -e "\n - VERIFICACION DEL SOFTWARE INSTALADO -\n"; bash /tmp/comprobacion 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE VERIFICACION -") | zenity --text-info --width=600 --height=400 --title="Verificacion de software. - MegaTools" --auto-scroll
 
                 CrearInstalarSoftware
 
