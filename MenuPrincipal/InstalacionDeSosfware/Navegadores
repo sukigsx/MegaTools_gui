@@ -22,8 +22,9 @@ do
     --width=850 \
     --height=650 \
     FALSE "Google Chrome" "Navegador para internet" \
-    FALSE "chromium-browser" "Navegador para internet" \
+    FALSE "Chromium-browser" "Navegador para internet" \
     FALSE "Firefox" "Navegador para internet" \
+    FALSE "Opera" "Navegador para internet" \
     )
 
     # Verificar si se presionó "Atras" en el diálogo de Zenity
@@ -52,7 +53,7 @@ do
                 echo "google-chrome-stable" >> /tmp/ComprobarSoftware
                 ;;
 
-            "chromium-browser")
+            "Chromium-browser")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#chromium-browser" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y chromium-browser" >> /tmp/software
@@ -72,6 +73,19 @@ do
                 #linea con el nombre del programa instalado para la comprobacion
                 echo "firefox" >> /tmp/ComprobarSoftware
                 ;;
+
+            "Opera")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#opera" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y snap" >> /tmp/software
+                echo "sudo snap install -y opera" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "opera" >> /tmp/ComprobarSoftware
+                ;;
+
+
 
             *)
             #if [ $? -eq 0 ]; then
