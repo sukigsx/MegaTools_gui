@@ -6,10 +6,10 @@ then
     #entra si la respuesta es si
     if [ -d /home/$(whoami)/Escritorio ]
     then
-        rm /tmp/software /home/$(whoami)/Escritorio/InstalarSosftware.sh 2>/dev/null
+        #rm /tmp/software /home/$(whoami)/Escritorio/InstalarSosftware.sh 2>/dev/null
         cp /tmp/software /home/$(whoami)/Escritorio/InstalarSosftware.sh 2>/dev/null
     else
-        rm /tmp/software /home/$(whoami)/Desktop/InstalarSoftware.sh 2>/dev/null
+        #rm /tmp/software /home/$(whoami)/Desktop/InstalarSoftware.sh 2>/dev/null
         cp /tmp/software /home/$(whoami)/Desktop/InstalarSoftware.sh 2>/dev/null
     fi
 else
