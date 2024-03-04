@@ -25,6 +25,7 @@ do
     FALSE "Chromium-browser" "Navegador para internet" \
     FALSE "Firefox" "Navegador para internet" \
     FALSE "Opera" "Navegador para internet" \
+    FALSE "Brave" "Navegador para internet"
     )
 
     # Verificar si se presionó "Atras" en el diálogo de Zenity
@@ -85,6 +86,18 @@ do
                 echo "opera" >> /tmp/ComprobarSoftware
                 ;;
 
+            "Brave")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#brave" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo 'sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg' >> /tmp/software
+                echo 'echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list' >> /tmp/software
+                echo "sudo apt update" >> /tmp/software
+                echo "sudo apt install brave-browser" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "brave" >> /tmp/ComprobarSoftware
+                ;;
 
 
             *)
