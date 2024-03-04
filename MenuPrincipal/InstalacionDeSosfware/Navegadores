@@ -25,7 +25,8 @@ do
     FALSE "Chromium-browser" "Navegador para internet" \
     FALSE "Firefox" "Navegador para internet" \
     FALSE "Opera" "Navegador para internet" \
-    FALSE "Brave" "Navegador para internet"
+    FALSE "Brave" "Navegador para internet" \
+    FALSE "Vivaldi" "Navegador para internet" \
     )
 
     # Verificar si se presionó "Atras" en el diálogo de Zenity
@@ -97,6 +98,19 @@ do
 
                 #linea con el nombre del programa instalado para la comprobacion
                 echo "brave" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Vivaldi")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#vivaldi" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo 'wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | gpg --dearmor | sudo dd of=/usr/share/keyrings/vivaldi-browser.gpg' >> /tmp/software
+                echo 'echo "deb [signed-by=/usr/share/keyrings/vivaldi-browser.gpg arch=$(dpkg --print-architecture)] https://repo.vivaldi.com/archive/deb/ stable main" | sudo dd of=/etc/apt/sources.list.d/vivaldi-archive.list' >> /tmp/software
+                echo "sudo apt update" >> /tmp/software
+                echo "sudo apt install vivaldi-stable -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "vivaldi" >> /tmp/ComprobarSoftware
                 ;;
 
 
