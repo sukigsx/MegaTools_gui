@@ -78,7 +78,7 @@ do
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#opera" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y snap" >> /tmp/software
-                echo "sudo snap install -y opera" >> /tmp/software
+                echo "sudo snap install opera" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
