@@ -272,6 +272,7 @@ do
             ;;
 
             "Instalacion de software")
+                echo $$ > /tmp/ProcesoPidDeMegatools
                 bash MenuPrincipal/InstalacionDeSosfware/InstalacionDeSoftware
                 ;;
 
