@@ -18,7 +18,7 @@ do
             #recopila la ruta de donde esta el script
             #ruta_script=$(dirname "$(readlink -f "$0")")
             ruta_script=$(find / -type d -name "MegaTools_gui" 2>/dev/null)
-            ruta_script=$ruta_script/MenuPrincipal/InstalacionDeSosfware/CrearLanzadorInstalacionDeSoftware
+            ruta_script=$ruta_script/MenuPrincipal/InstalacionDeSosfware
 
 
             #comprueba que exista la carpeta Escritorio
@@ -27,25 +27,25 @@ do
             else
                 ruta_lanzador=/home/$(whoami)/Desktop
             fi
-            echo '[Desktop Entry]' >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo 'Comment[es_ES]=' >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo 'Comment=' >> $ruta_lanzador/"Instalacion de Software-MegaTools.desktop"
-            echo "Exec=nohup bash $ruta_script/megatools.sh" >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo 'GenericName[es_ES]=' >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo 'GenericName=' >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo "Icon=autocorrection" >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo 'MimeType=' >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo 'Name[es_ES]=MegaTools' >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo 'Name=MegaTools' >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo "Path=$ruta_script" >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo 'StartupNotify=true' >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo 'Terminal=false' >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo 'TerminalOptions=' >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo 'Type=Application' >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo 'X-DBUS-ServiceName=' >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo 'X-DBUS-StartupType=none' >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo 'X-KDE-SubstituteUID=false' >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
-            echo 'X-KDE-Username=' >> $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
+            echo '[Desktop Entry]' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'Comment[es_ES]=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'Comment=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo "Exec=nohup bash $ruta_script/CrearLanzadorInstalacionDeSoftware" >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'GenericName[es_ES]=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'GenericName=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo "Icon=autocorrection" >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'MimeType=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'Name[es_ES]=MegaTools' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'Name=MegaTools' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo "Path=$ruta_script" >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'StartupNotify=true' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'Terminal=false' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'TerminalOptions=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'Type=Application' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'X-DBUS-ServiceName=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'X-DBUS-StartupType=none' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'X-KDE-SubstituteUID=false' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'X-KDE-Username=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
             zenity --info --title="Crear lanzador - MegaTools -" --text="Lanzador creado en tu escritorio." --width=300
             ;;
 
@@ -57,10 +57,10 @@ do
                 ruta_lanzador=/home/$(whoami)/Desktop
             fi
 
-            if [ -f $ruta_lanzador/"Instalacion de Software - MegaTools.desktop" ] ;then
+            if [ -f $ruta_lanzador/nstalacion_Software_MegaTools.desktop ] ;then
                 zenity --question --title="Borrar lanzador - MegaTools -" --text="¿Seguro que quieres borrar el lanzador?" --cancel-label="No" --ok-label="Si" --width=200
                 if [ $? = 0 ]; then
-                    rm $ruta_lanzador/"Instalacion de Software - MegaTools.desktop"
+                    rm $ruta_lanzador/Instalacion_Software_MegaTools
                     zenity --info --title="Borrar lanzador - MegaTools -" --text="Lanzador borrado." --width=300 --timeout=3
                 else
                     zenity --info --title="Borrar lanzador - MegaTools -" --text="Cancelado. No se borra el lanzador." --width=300 --timeout=3
@@ -68,15 +68,6 @@ do
             else
                 zenity --info --title="Borrar lanzador - MegaTools -" --text="No existe lanzador." --width=300 --timeout=3
             fi
-            ;;
-
-        "Salir sin preguntar")
-            # Leer el PID del archivo para matar el script pricipal
-            uno_pid=$(</tmp/ProcesoPidDeMegatools)
-
-            # Matar el proceso de uno.sh
-            kill $uno_pid
-            exit
             ;;
 
         *)
