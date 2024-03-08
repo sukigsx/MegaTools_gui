@@ -35,7 +35,7 @@ do
             echo 'GenericName=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
             echo "Icon=autocorrection" >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
             echo 'MimeType=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-            echo 'Name[es_ES]=MegaTools' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo 'Name[es_ES]=Instalacion_Software_MegaTools' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
             echo 'Name=MegaTools' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
             echo "Path=$ruta_script" >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
             echo 'StartupNotify=true' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
@@ -46,7 +46,7 @@ do
             echo 'X-DBUS-StartupType=none' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
             echo 'X-KDE-SubstituteUID=false' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
             echo 'X-KDE-Username=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-            zenity --info --title="Crear lanzador - MegaTools -" --text="Lanzador creado en tu escritorio." --width=300
+            zenity --info --title="Crear lanzador - MegaTools -" --text="Lanzador creado en tu escritorio." --width=300 --timeout=3
             ;;
 
         "Borrar lanzador")
