@@ -160,6 +160,9 @@ do
                     rm /tmp/software 2>/dev/null
                     rm /tmp/ComprobarSoftware 2>/dev/null
                     rm /tmp/comprobacion 2>/dev/null
+                    echo "saliendo"
+                    read p
+                    break
                     exit
                 fi
                 #le hemos dado a instalar y pregunta la password
@@ -193,8 +196,7 @@ do
     esac
 done
 #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
-echo "saliendo"
-read p
+
 rm /tmp/software 2>/dev/null
 rm /tmp/ComprobarSoftware 2>/dev/null
 rm /tmp/comprobacion 2>/dev/null
