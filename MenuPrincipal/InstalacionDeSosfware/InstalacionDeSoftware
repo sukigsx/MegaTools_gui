@@ -100,6 +100,7 @@ do
     --height=650 \
     --ok-label="Aceptar" \
     --cancel-label="Atras" \
+    --extra-button="Crear lanzador de Instalacion de Software" \
     --extra-button="Ver software para instalar")
 
     # Manejar la opción seleccionada
@@ -140,6 +141,10 @@ do
             ;;
 
         "MENSAJERIA")
+            ;;
+
+        "Crear lanzador de Instalacion de Software")
+            bash CrearLanzadorInstalacionDeSoftware
             ;;
 
         "Ver software para instalar")
