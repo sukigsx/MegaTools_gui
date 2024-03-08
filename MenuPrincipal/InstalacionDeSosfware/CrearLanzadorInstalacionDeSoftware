@@ -30,7 +30,7 @@ do
             echo '[Desktop Entry]' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
             echo 'Comment[es_ES]=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
             echo 'Comment=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-            echo "Exec=nohup bash $ruta_script/CrearLanzadorInstalacionDeSoftware" >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
+            echo "Exec=nohup bash $ruta_script/InstalacionDeSoftware" >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
             echo 'GenericName[es_ES]=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
             echo 'GenericName=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
             echo "Icon=autocorrection" >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
@@ -47,6 +47,7 @@ do
             echo 'X-KDE-SubstituteUID=false' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
             echo 'X-KDE-Username=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
             zenity --info --title="Crear lanzador - MegaTools -" --text="Lanzador creado en tu escritorio." --width=300 --timeout=3
+            break
             ;;
 
         "Borrar lanzador")
@@ -79,3 +80,4 @@ do
             ;;
     esac
 done
+exit
