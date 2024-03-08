@@ -144,7 +144,8 @@ do
             ;;
 
         "Crear lanzador de Instalacion de Software")
-            bash CrearLanzadorInstalacionDeSoftware
+            ruta_script=$(find / -type d -name "MegaTools_gui" 2>/dev/null)
+            bash $ruta_script/MenuPrincipal/InstalacionDeSosfware/CrearLanzadorInstalacionDeSoftware
             ;;
 
         "Ver software para instalar")
