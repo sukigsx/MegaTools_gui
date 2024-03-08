@@ -162,7 +162,7 @@ do
                     rm /tmp/comprobacion 2>/dev/null
                     echo "saliendo"
                     read p
-                    break
+                    continue
                 fi
                 #le hemos dado a instalar y pregunta la password
                 password
