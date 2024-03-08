@@ -163,7 +163,6 @@ do
                     echo "saliendo"
                     read p
                     break
-                    exit
                 fi
                 #le hemos dado a instalar y pregunta la password
                 password
