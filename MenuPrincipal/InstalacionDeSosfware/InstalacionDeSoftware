@@ -187,14 +187,14 @@ do
                 rm /tmp/software 2>/dev/null
                 rm /tmp/ComprobarSoftware 2>/dev/null
                 rm /tmp/comprobacion 2>/dev/null
-                #exit 0
-                echo "saliendo"
-                read p
+                exit 0
             fi
             ;;
     esac
 done
 #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
+echo "saliendo"
+read p
 rm /tmp/software 2>/dev/null
 rm /tmp/ComprobarSoftware 2>/dev/null
 rm /tmp/comprobacion 2>/dev/null
