@@ -148,18 +148,40 @@ done
 }
 
 actualizar_script(){
+archivo_local="megatools.sh" # Nombre del archivo local
+ruta_repositorio="https://github.com/sukigsx/MegaTools_gui.git" #ruta del repositorio para actualizar y clonar con git clone
 
 # Obtener la ruta del script
 descarga=$(dirname "$(readlink -f "$0")")
-cd $descarga
-git fetch origin >/dev/null 2>&1
-git reset --hard origin/main >/dev/null 2>&1
-echo -e "\n¡ Nueva version de MegaTools disponible.!\n"
-echo -e " Se procede a su actualizacion automatica.\n"
-echo -e " Es necesario reiniciar MegaTools.\n"
-echo "$descarga"
-exit
-salir="SI"
+git clone $ruta_repositorio /tmp/comprobar >/dev/null 2>&1
+
+diff $descarga/$archivo_local /tmp/comprobar/$archivo_local >/dev/null 2>&1
+
+
+if [ $? = 0 ]
+then
+    var_actualizado="SI"
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
+else
+    var_actualizado="NO"
+    cp -r /tmp/comprobar/* $descarga
+    chmod -R +w /tmp/comprobar
+    rm -R /tmp/comprobar
+fi
+
+
+
+## Obtener la ruta del script
+#descarga=$(dirname "$(readlink -f "$0")")
+#cd $descarga
+##git fetch origin >/dev/null 2>&1
+#git reset --hard origin/main >/dev/null 2>&1
+#echo -e "\n¡ Nueva version de MegaTools disponible.!\n"
+#echo -e " Se procede a su actualizacion automatica.\n"
+#echo -e " Es necesario reiniciar MegaTools.\n"
+#exit
+#salir="SI"
 }
 
 comprobar_actualizacion_sino(){
