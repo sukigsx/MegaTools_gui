@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="1.00000000000"
+version="1.1"
 #software necesario para la ejecucion del programa
 software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi find curl"
 
@@ -160,14 +160,17 @@ diff $descarga/$archivo_local /tmp/comprobar/$archivo_local >/dev/null 2>&1
 
 if [ $? = 0 ]
 then
-    var_actualizado="SI"
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
 else
-    var_actualizado="NO"
     cp -r /tmp/comprobar/* $descarga
     chmod -R +w /tmp/comprobar
     rm -R /tmp/comprobar
+    echo -e "\n¡ Nueva version de MegaTools disponible.!\n"
+    echo -e " Se procede a su actualizacion automatica.\n"
+    echo -e " Es necesario reiniciar MegaTools.\n"
+    exit
+    salir="SI"
 fi
 
 
