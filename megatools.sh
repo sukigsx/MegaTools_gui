@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="1.1.1"
+version="1.0"
 #software necesario para la ejecucion del programa
 software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi find curl"
 
