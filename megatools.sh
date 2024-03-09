@@ -272,7 +272,7 @@ do
             ;;
 
             "Instalacion de software")
-                bash MenuPrincipal/InstalacionDeSosfware/InstalacionDeSoftware
+                bash MenuPrincipal/InstalacionDeSoftware/InstalacionDeSoftware
                 ;;
 
             "Crear/Borrar lanzador")
