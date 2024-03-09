@@ -49,27 +49,83 @@ do
     for option in "${selected_options[@]}"; do
         case $option in
             "Vlc")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#vlc" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y vlc" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "vlc" >> /tmp/ComprobarSoftware
                 ;;
 
             "Spotify")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#spotify" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y snapd; sudo snap install spotify" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "spotify" >> /tmp/ComprobarSoftware
                 ;;
 
             "Digikam")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#digikam" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y digikam" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "digikam" >> /tmp/ComprobarSoftware
                 ;;
 
             "Simple scan")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#simple-scan" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y simple-scan" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "simple-scan" >> /tmp/ComprobarSoftware
                 ;;
 
             "Handbrake")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#handbrake" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y handbrake" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "handbrake" >> /tmp/ComprobarSoftware
                 ;;
 
             "Shotwell")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#shotwell" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y shotwell" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "shotwell" >> /tmp/ComprobarSoftware
                 ;;
 
             "Skanlite")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#skanlite" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y skanlite" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "skanlite" >> /tmp/ComprobarSoftware
                 ;;
 
             "krita")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#krita" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y krita" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "krita" >> /tmp/ComprobarSoftware
                 ;;
 
 
