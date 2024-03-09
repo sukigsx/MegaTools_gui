@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 version="1.1"
 #software necesario para la ejecucion del programa
 software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi find curl"
@@ -298,15 +298,13 @@ do
             ;;
 
             "Instalacion de software")
-                ruta_ejecucion=$(dirname "$(readlink -f "$0")")
-                echo "$ruta_ejecucion"; read p
                 bash $ruta_ejecucion/MenuPrincipal/InstalacionDeSoftware/InstalacionDeSoftware
                 ;;
 
             "Crear/Borrar lanzadores")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash MenuPrincipal/CreaBorrarLanzadores/CrearBorrarLanzadores
+                bash $ruta_ejecucion/MenuPrincipal/CreaBorrarLanzadores/CrearBorrarLanzadores
                 ;;
 
         "INFORMACION DE TU SISTEMA")
@@ -316,31 +314,31 @@ do
             "Informacion general")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash MenuPrincipal/InformacionGeneral/InformacionGeneral
+                bash $ruta_ejecucion/MenuPrincipal/InformacionGeneral/InformacionGeneral
                 ;;
 
             "Informacion de ips Lan/Wan")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash MenuPrincipal/InformacionDeIpsLanWan/InformacionDeIpsLanWan
+                bash $ruta_ejecucion/MenuPrincipal/InformacionDeIpsLanWan/InformacionDeIpsLanWan
                 ;;
 
             "Informacion de discos")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash MenuPrincipal/InformacionDeDiscos/InformacionDeDiscos
+                bash $ruta_ejecucion/MenuPrincipal/InformacionDeDiscos/InformacionDeDiscos
                 ;;
 
             "Informacion memoria ram")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash MenuPrincipal/InformacionMemoriaRam/InformacionMemoriaRam
+                bash $ruta_ejecucion/MenuPrincipal/InformacionMemoriaRam/InformacionMemoriaRam
                 ;;
 
             "Informacion dispositivos de red")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash MenuPrincipal/InformacionDispositivosDeRed/InformacionDispositivosDeRed
+                bash $ruta_ejecucion/MenuPrincipal/InformacionDispositivosDeRed/InformacionDispositivosDeRed
                 ;;
 
         "Web Sukigsx")
