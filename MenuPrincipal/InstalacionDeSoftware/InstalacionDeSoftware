@@ -1,40 +1,5 @@
 #!/bin/bash
 
-lanzador(){
-#recopila la ruta de donde esta el script
-#ruta_script=$(dirname "$(readlink -f "$0")")
-ruta_script=$(find / -type d -name "MegaTools_gui" 2>/dev/null)
-ruta_script=$ruta_script/MenuPrincipal/InstalacionDeSosfware
-
-#comprueba que exista la carpeta Escritorio
-if [ -d /home/$(whoami)/Escritorio/ ];then
-    ruta_lanzador=/home/$(whoami)/Escritorio
-else
-    ruta_lanzador=/home/$(whoami)/Desktop
-fi
-echo '[Desktop Entry]' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo 'Comment[es_ES]=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo 'Comment=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo "Exec=nohup bash $ruta_script/InstalacionDeSoftware" >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo 'GenericName[es_ES]=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo 'GenericName=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo "Icon=autocorrection" >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo 'MimeType=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo 'Name[es_ES]=Instalacion_Software_MegaTools' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo 'Name=MegaTools' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo "Path=$ruta_script" >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo 'StartupNotify=true' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo 'Terminal=false' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo 'TerminalOptions=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo 'Type=Application' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo 'X-DBUS-ServiceName=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo 'X-DBUS-StartupType=none' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo 'X-KDE-SubstituteUID=false' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-echo 'X-KDE-Username=' >> $ruta_lanzador/Instalacion_Software_MegaTools.desktop
-zenity --info --title="Crear lanzador - MegaTools -" --text="Lanzador creado en tu escritorio." --width=300 --timeout=3
-
-}
-
 CrearInstalarSoftware(){
 #pregunta si quiero guardar la instalacion
 if zenity --question --title="Instalacion de software - MegaTools -" --text="¿Quieres guardar un script de instalacion del software seleccionado?\n\nSe guardara en tu escritorio." --cancel-label="No" --ok-label="Si"
@@ -147,6 +112,7 @@ do
             ;;
 
         "AUDIO - VIDEO")
+            bash MenuPrincipal/InstalacionDeSoftware/AudioVideo
             ;;
 
         "ENTORNOS GRAFICOS LINUX")
