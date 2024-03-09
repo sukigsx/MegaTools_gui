@@ -1,6 +1,6 @@
 #!/bin/bash
 ruta_ejecucion=$(dirname "$(readlink -f "$0")")
-echo "$ruta_ejecucion"; read p
+
 CrearInstalarSoftware(){
 #pregunta si quiero guardar la instalacion
 if zenity --question --title="Instalacion de software - MegaTools -" --text="¿Quieres guardar un script de instalacion del software seleccionado?\n\nSe guardara en tu escritorio." --cancel-label="No" --ok-label="Si"
@@ -109,11 +109,11 @@ do
     case $opcion in
 
         "NAVEGADORES")
-            bash MenuPrincipal/InstalacionDeSoftware/Navegadores
+            bash $ruta_ejecucion/Navegadores
             ;;
 
         "AUDIO - VIDEO")
-            bash MenuPrincipal/InstalacionDeSoftware/AudioVideo
+            bash $ruta_ejecucion/AudioVideo
             ;;
 
         "ENTORNOS GRAFICOS LINUX")
