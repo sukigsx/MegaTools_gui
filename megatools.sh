@@ -300,7 +300,7 @@ do
             "Instalacion de software")
                 ruta_ejecucion=$(dirname "$(readlink -f "$0")")
                 echo "$ruta_ejecucion"; read p
-                bash MenuPrincipal/InstalacionDeSoftware/InstalacionDeSoftware
+                bash $ruta_ejecucion/InstalacionDeSoftware/InstalacionDeSoftware
                 ;;
 
             "Crear/Borrar lanzadores")
