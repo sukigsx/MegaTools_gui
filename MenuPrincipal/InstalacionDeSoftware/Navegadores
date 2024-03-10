@@ -21,7 +21,7 @@ do
     --ok-label="Aceptar" \
     --width=850 \
     --height=650 \
-    FALSE "Google Chromeqqqqqqq" "Navegador para internet" \
+    FALSE "Google Chrome" "Navegador para internet" \
     FALSE "Chromium-browser" "Navegador para internet" \
     FALSE "Firefox" "Navegador para internet" \
     FALSE "Opera" "Navegador para internet" \
