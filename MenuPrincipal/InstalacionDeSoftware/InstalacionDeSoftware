@@ -74,16 +74,30 @@ echo 'echo "- COMENZANDO LA INSTALACION DE SOFTWARE -"' >> /tmp/software
 echo 'echo "- Se paciente.. El tiempo depende de tu conexion. -"' >> /tmp/software
 
 #crea el fichero para comprobar la instalacion
-echo 'for programa in $(cat /tmp/ComprobarSoftware); do' >> /tmp/comprobacion
-echo '    if which "$programa" &>/dev/null; then' >> /tmp/comprobacion
-echo '        echo "$programa [ OK ]."' >> /tmp/comprobacion
-echo '    else' >> /tmp/comprobacion
-echo '        echo "$programa [ NO INSTALADO ]."' >> /tmp/comprobacion
-echo '    fi' >> /tmp/comprobacion
-echo 'done' >> /tmp/comprobacion
+#echo 'for programa in $(cat /tmp/ComprobarSoftware); do' >> /tmp/comprobacion
+#echo '    if which "$programa" &>/dev/null; then' >> /tmp/comprobacion
+#echo '        echo "$programa [ OK ]."' >> /tmp/comprobacion
+#echo '    else' >> /tmp/comprobacion
+#echo '        echo "$programa [ NO INSTALADO ]."' >> /tmp/comprobacion
+#echo '    fi' >> /tmp/comprobacion
+#echo 'done' >> /tmp/comprobacion
 
 while :
 do
+
+if [ -f /tmp/comprobacion ]; then
+    echo ""
+else
+    #crea el fichero para comprobar la instalacion
+    echo 'for programa in $(cat /tmp/ComprobarSoftware); do' >> /tmp/comprobacion
+    echo '    if which "$programa" &>/dev/null; then' >> /tmp/comprobacion
+    echo '        echo "$programa [ OK ]."' >> /tmp/comprobacion
+    echo '    else' >> /tmp/comprobacion
+    echo '        echo "$programa [ NO INSTALADO ]."' >> /tmp/comprobacion
+    echo '    fi' >> /tmp/comprobacion
+    echo 'done' >> /tmp/comprobacion
+fi
+
     opcion=$(zenity --list --title="Instalacion de software. - MegaTools -" \
     --text="\nSelecciona una categoria de software y vete marcando el que mas te guste o necesites.\n" \
     --column "Categorias principales:" --column="Descripcion." \
