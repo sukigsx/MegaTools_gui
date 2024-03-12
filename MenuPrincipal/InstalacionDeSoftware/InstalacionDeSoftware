@@ -184,7 +184,7 @@ fi
                     rm /tmp/software 2>/dev/null
                     rm /tmp/ComprobarSoftware 2>/dev/null
                     rm /tmp/comprobacion 2>/dev/null
-                    continue
+                    exit
                 fi
                 #le hemos dado a instalar y pregunta la password
                 password
