@@ -59,30 +59,54 @@ password(){
         fi
     done
 }
+
 #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
-rm /tmp/software 2>/dev/null
-rm /tmp/ComprobarSoftware 2>/dev/null
-rm /tmp/comprobacion 2>/dev/null
+#rm /tmp/software 2>/dev/null
+#rm /tmp/ComprobarSoftware 2>/dev/null
+#rm /tmp/comprobacion 2>/dev/null
 
-#crea el fichero de instalacion de software
-echo 'echo -e "\n- ACTUALIZANDO REPOSITORIOS.- \n"' >> /tmp/software
-echo 'sudo apt update' >> /tmp/software
-echo 'echo -e "\n- ACTUALIZACION DE REPOSITORIOS FINALIZADA. -"' >> /tmp/software
-echo 'echo ""' >> /tmp/software
-echo 'echo "- COMENZANDO LA INSTALACION DE SOFTWARE -"' >> /tmp/software
-echo 'echo "- Se paciente.. El tiempo depende de tu conexion. -"' >> /tmp/software
+##crea el fichero de instalacion de software
+#echo 'echo -e "\n- ACTUALIZANDO REPOSITORIOS.- \n"' >> /tmp/software
+#echo 'sudo apt update' >> /tmp/software
+#echo 'echo -e "\n- ACTUALIZACION DE REPOSITORIOS FINALIZADA. -"' >> /tmp/software
+#echo 'echo ""' >> /tmp/software
+#echo 'echo "- COMENZANDO LA INSTALACION DE SOFTWARE -"' >> /tmp/software
+#echo 'echo "- Se paciente.. El tiempo depende de tu conexion. -"' >> /tmp/software
 
-#crea el fichero para comprobar la instalacion
-echo 'for programa in $(cat /tmp/ComprobarSoftware); do' >> /tmp/comprobacion
-echo '    if which "$programa" &>/dev/null; then' >> /tmp/comprobacion
-echo '        echo "$programa [ OK ]."' >> /tmp/comprobacion
-echo '    else' >> /tmp/comprobacion
-echo '        echo "$programa [ NO INSTALADO ]."' >> /tmp/comprobacion
-echo '    fi' >> /tmp/comprobacion
-echo 'done' >> /tmp/comprobacion
+##crea el fichero para comprobar la instalacion
+#echo 'for programa in $(cat /tmp/ComprobarSoftware); do' >> /tmp/comprobacion
+#echo '    if which "$programa" &>/dev/null; then' >> /tmp/comprobacion
+#echo '        echo "$programa [ OK ]."' >> /tmp/comprobacion
+#echo '    else' >> /tmp/comprobacion
+#echo '        echo "$programa [ NO INSTALADO ]."' >> /tmp/comprobacion
+#echo '    fi' >> /tmp/comprobacion
+#echo 'done' >> /tmp/comprobacion
 
 while :
 do
+
+    #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
+    rm /tmp/software 2>/dev/null
+    rm /tmp/ComprobarSoftware 2>/dev/null
+    rm /tmp/comprobacion 2>/dev/null
+
+    #crea el fichero de instalacion de software
+    echo 'echo -e "\n- ACTUALIZANDO REPOSITORIOS.- \n"' >> /tmp/software
+    echo 'sudo apt update' >> /tmp/software
+    echo 'echo -e "\n- ACTUALIZACION DE REPOSITORIOS FINALIZADA. -"' >> /tmp/software
+    echo 'echo ""' >> /tmp/software
+    echo 'echo "- COMENZANDO LA INSTALACION DE SOFTWARE -"' >> /tmp/software
+    echo 'echo "- Se paciente.. El tiempo depende de tu conexion. -"' >> /tmp/software
+
+    #crea el fichero para comprobar la instalacion
+    echo 'for programa in $(cat /tmp/ComprobarSoftware); do' >> /tmp/comprobacion
+    echo '    if which "$programa" &>/dev/null; then' >> /tmp/comprobacion
+    echo '        echo "$programa [ OK ]."' >> /tmp/comprobacion
+    echo '    else' >> /tmp/comprobacion
+    echo '        echo "$programa [ NO INSTALADO ]."' >> /tmp/comprobacion
+    echo '    fi' >> /tmp/comprobacion
+    echo 'done' >> /tmp/comprobacion
+
     opcion=$(zenity --list --title="Instalacion de software. - MegaTools -" \
     --text="\nSelecciona una categoria de software y vete marcando el que mas te guste o necesites.\n" \
     --column "Categorias principales:" --column="Descripcion." \
