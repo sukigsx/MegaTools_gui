@@ -61,9 +61,9 @@ password(){
 }
 
 #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
-#rm /tmp/software 2>/dev/null
-#rm /tmp/ComprobarSoftware 2>/dev/null
-#rm /tmp/comprobacion 2>/dev/null
+rm /tmp/software 2>/dev/null
+rm /tmp/ComprobarSoftware 2>/dev/null
+rm /tmp/comprobacion 2>/dev/null
 
 ##crea el fichero de instalacion de software
 #echo 'echo -e "\n- ACTUALIZANDO REPOSITORIOS.- \n"' >> /tmp/software
@@ -84,11 +84,6 @@ password(){
 
 while :
 do
-
-    #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
-    rm /tmp/software 2>/dev/null
-    rm /tmp/ComprobarSoftware 2>/dev/null
-    rm /tmp/comprobacion 2>/dev/null
 
     #crea el fichero de instalacion de software
     echo 'echo -e "\n- ACTUALIZANDO REPOSITORIOS.- \n"' >> /tmp/software
