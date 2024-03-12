@@ -110,7 +110,7 @@ do
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "vivaldi" >> /tmp/ComprobarSoftware
+                echo "vivaldi-stable" >> /tmp/ComprobarSoftware
                 ;;
 
 
