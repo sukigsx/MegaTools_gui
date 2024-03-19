@@ -149,7 +149,7 @@ do
             ;;
 
         "Ayuda instalacion de software")
-            bash $ruta_ejecucion/MenuPrincipal/InstalacionDeSosfware/AyudaInstalacionSoftware
+            bash $ruta_ejecucion/AyudaInstalacionSoftware
             ;;
 
         "Ver software para instalar")
