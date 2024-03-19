@@ -104,7 +104,7 @@ do
     --height=650 \
     --ok-label="Aceptar" \
     --cancel-label="Atras" \
-    --extra-button="Crear lanzador de Instalacion de Software" \
+    --extra-button="Ayuda instalacion de software" \
     --extra-button="Ver software para instalar")
 
     # Manejar la opción seleccionada
@@ -148,9 +148,8 @@ do
         "MENSAJERIA")
             ;;
 
-        "Crear lanzador de Instalacion de Software")
-            ruta_script=$(find / -type d -name "MegaTools_gui" 2>/dev/null)
-            bash $ruta_script/MenuPrincipal/InstalacionDeSosfware/CrearLanzadorInstalacionDeSoftware
+        "Ayuda instalacion de software")
+            bash $ruta_ejecucion/MenuPrincipal/InstalacionDeSosfware/AyudaInstalacionSoftware
             ;;
 
         "Ver software para instalar")
