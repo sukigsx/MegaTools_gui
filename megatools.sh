@@ -353,7 +353,7 @@ do
             ;;
 
         "Ayuda")
-            zenity --text-info --title="Ayuda - MegaTools -" --filename=$ruta_ejecucion/ayuda --font="DejaVu Sans Mono" --width=650 --height=650
+            zenity --text-info --title="Ayuda - MegaTools -" --filename=$ruta_ejecucion/Ayuda --font="DejaVu Sans Mono" --width=650 --height=650
             ;;
 
         *)
