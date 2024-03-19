@@ -149,7 +149,7 @@ do
             ;;
 
         "Ayuda instalacion de software")
-            bash $ruta_ejecucion/AyudaInstalacionSoftware
+            zenity --text-info --title="Ayuda - MegaTools -" --filename=$ruta_ejecucion/AyudaInstalacionSoftware --font="DejaVu Sans Mono" --width=650 --height=650
             ;;
 
         "Ver software para instalar")
