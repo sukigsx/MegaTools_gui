@@ -135,7 +135,7 @@ do
             ;;
 
         "GESTOR DE PAQUETES")
-            bash $ruta_ejecucion/GestionDePaquetes
+            bash $ruta_ejecucion/GestorDePaquetes
             ;;
 
         "PARA TU TERMINAL")
