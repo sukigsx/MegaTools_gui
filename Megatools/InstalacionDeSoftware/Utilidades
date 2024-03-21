@@ -21,14 +21,21 @@ do
     --ok-label="Aceptar" \
     --width=850 \
     --height=650 \
-    FALSE "Vlc" "Reporoductor de todo." \
-    FALSE "Spotify" "Plataforma de musica, Requiere Snap." \
-    FALSE "Digikam" "Organizador de imágenes y editor de etiquetas." \
-    FALSE "Simple scan" "Software para tu escaner." \
-    FALSE "Handbrake" "Navegador para internet." \
-    FALSE "Shotwell" "Organizador de imágenes." \
-    FALSE "Skanlite" "Software para tu escaner." \
-    FALSE "krita" "Es un estudio de arte digital completo." \
+    FALSE "Grub-customizer" "Modifica el gestor de arranque." \
+    FALSE "Cairo-Dock" "Crear paneles y lanzadores, muy personalizados." \
+    FALSE "Latte-dock" "Crear lanzadores, muy personalizados." \
+    FALSE "Tellico" "Crea tu base de datos de cd dvd libros etc." \
+    FALSE "KDE Connect" "Sincroniza tu movil con el pc." \
+    FALSE "Usuarios y Grupos" "Gestiona Usuarios y Grupos de modo grafico." \
+    FALSE "Gnome-online-accouns" "Para poder sincronizar cuentas de google (drive)." \
+    FALSE "Kio gdrive" "Para poder sincronizar cuentas de google (drive) solo entornos KDE Plasma." \
+    FALSE "Ocamlfuse" "Otro para poder sincronizar cuentas de google (drive)." \
+    FALSE "Nemo" "Explorador de ficheos." \
+    FALSE "Systemback" "Utilidades para gestionar el sistema." \
+    FALSE "Deja-dup" "Copoa de seguridad de tus ficheros o sistema." \
+    FALSE "Transmision" "Gestor de descargas torrent." \
+    FALSE "Software-propietario" "Gestionar ppa y drives en modo grafico" \
+    FALSE "Joplin" "Software multiplataforma para tomar notas." \
     )
 
     # Verificar si se presionó "Atras" en el diálogo de Zenity
@@ -48,7 +55,7 @@ do
     IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
     for option in "${selected_options[@]}"; do
         case $option in
-            "Vlc")
+            "Grub-customizer")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#vlc" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y vlc" >> /tmp/software
@@ -58,7 +65,7 @@ do
                 echo "vlc" >> /tmp/ComprobarSoftware
                 ;;
 
-            "Spotify")
+            "Cairo-Dock")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#spotify" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y snapd; sudo snap install spotify" >> /tmp/software
@@ -68,7 +75,7 @@ do
                 echo "spotify" >> /tmp/ComprobarSoftware
                 ;;
 
-            "Digikam")
+            "Latte-dock")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#digikam" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y digikam" >> /tmp/software
@@ -78,7 +85,7 @@ do
                 echo "digikam" >> /tmp/ComprobarSoftware
                 ;;
 
-            "Simple scan")
+            "Tellico")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#simple-scan" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y simple-scan" >> /tmp/software
@@ -88,7 +95,7 @@ do
                 echo "simple-scan" >> /tmp/ComprobarSoftware
                 ;;
 
-            "Handbrake")
+            "KDE Connect")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#handbrake" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y handbrake" >> /tmp/software
@@ -98,7 +105,7 @@ do
                 echo "handbrake" >> /tmp/ComprobarSoftware
                 ;;
 
-            "Shotwell")
+            "Usuarios y Grupos")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#shotwell" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y shotwell" >> /tmp/software
@@ -108,7 +115,7 @@ do
                 echo "shotwell" >> /tmp/ComprobarSoftware
                 ;;
 
-            "Skanlite")
+            "Gnome-online-accouns")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#skanlite" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y skanlite" >> /tmp/software
@@ -118,7 +125,7 @@ do
                 echo "skanlite" >> /tmp/ComprobarSoftware
                 ;;
 
-            "krita")
+            "Kio gdrive")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#krita" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y krita" >> /tmp/software
@@ -127,6 +134,78 @@ do
                 #linea con el nombre del programa instalado para la comprobacion
                 echo "krita" >> /tmp/ComprobarSoftware
                 ;;
+
+            "Ocamlfuse")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#krita" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y krita" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "krita" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Nemo")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#krita" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y krita" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "krita" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Systemback")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#krita" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y krita" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "krita" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Deja-dup")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#krita" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y krita" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "krita" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Transmision")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#krita" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y krita" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "krita" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Software-propietario")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#krita" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y krita" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "krita" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Joplin")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#krita" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y krita" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "krita" >> /tmp/ComprobarSoftware
+                ;;
+
+
 
 
             *)
