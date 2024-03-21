@@ -119,6 +119,7 @@ do
             ;;
 
         "ENTORNOS GRAFICOS LINUX")
+            bash $ruta_ejecucion/Utilidades
             ;;
 
         "UTILIDADES")
