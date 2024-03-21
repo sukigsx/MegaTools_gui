@@ -10,35 +10,30 @@ else
 fi
 }
 
-# muestra una ventana de informacion informando de los riesgos si da atras se sale y si da aceptar continua
-respuesta=$(zenity --question --text="En linux se puedes instalar varios entornos graficos.\n\nPero pueden ser incompatibles entre ellos\nTenlo en cuenta.\n" --ok-label="Aceptar, Entiendo el riesgo" --cancel-label="Atrás" --title="Instalacion Entornos Graficos Linux - MegaTools")
-
-# Verificar qué botón se ha presionado
-if [ $? -eq 0 ]; then
-    echo ""
-else
-    exit
-fi
-
-
-
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
-    selection=$(zenity --list --title="Instalar entornos Graficos de Linux. - MegaTools" \
+    selection=$(zenity --list --title="Instalar software para tu terminal. - MegaTools" \
     --text="\nSoftware disponible para entornos graficos linux.\n" \
-    --checklist --column="Marca una o varias casillas para instalar" --column="Entorno graficos" --column="Descripcion." \
+    --checklist --column="Marca una o varias casillas para instalar" --column="Software para terminal" --column="Descripcion." \
     --width=300 --height=200 \
     --cancel-label="Atras" \
     --ok-label="Aceptar" \
     --width=950 \
     --height=650 \
-    FALSE "Gnome" "Entorno grafico de Gnome." \
-    FALSE "Plasma" "Entorno grafico Plasma." \
-    FALSE "Cinnamon" "Entorno grafico Cinnamon." \
-    FALSE "Xfce" "Entorno grafico Xfce." \
-    FALSE "Mate" "Entorno grafico Mate." \
-    FALSE "Lxde" "Entorno grafico Lxde." \
+    FALSE "sshpass" "Para poder incluir el password en conexiones ssh." \
+    FALSE "Screenfetch" "Informacion del sistema." \
+    FALSE "Neofetch" "Informacion del sistema." \
+    FALSE "Net-tools" "Herramientas de red." \
+    FALSE "Nmap" "Herramienta de scaneo." \
+    FALSE "Cifs-utils" "Nos servirán para montar en nuestro sistema de archivos Linux local (samba)." \
+    FALSE "Fping" "Nos permite enviar mensajes ICMP." \
+    FALSE "Rclone" "Sincroniza archivos." \
+    FALSE "Xterm" "Otra terminal." \
+    FALSE "Konsole" "Otra terminal." \
+    FALSE "Yakuake" "Otra terminal." \
+    FALSE "Terminal gnome" "Otra terminal." \
+    FALSE "Terminator" "Otra terminal." \
     )
 
     # Verificar si se presionó "Atras" en el diálogo de Zenity
@@ -48,7 +43,7 @@ do
 
     # Verificar si no se seleccionó ninguna opción
     if [ -z "$selection" ]; then
-        zenity --error --title="Instalacion de Utilidades - MegaTools -" --text="No has seleccionado ninguna Utilidad." --width=300
+        zenity --error --title="Instalacion de Utilidades - MegaTools -" --text="No has seleccionado ningun software de terminal." --width=300
     else
         echo ""
     fi
