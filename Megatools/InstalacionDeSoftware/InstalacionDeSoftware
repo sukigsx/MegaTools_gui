@@ -127,27 +127,35 @@ do
             ;;
 
         "OFIMATICA")
+            bash $ruta_ejecucion/Ofimatica
             ;;
 
         "SERVIDORES")
+            bash $ruta_ejecucion/Servidores
             ;;
 
         "GESTOR DE PAQUETES")
+            bash $ruta_ejecucion/GestionDePaquetes
             ;;
 
         "PARA TU TERMINAL")
+            bash $ruta_ejecucion/Terminal
             ;;
 
         "DISCOS")
+            bash $ruta_ejecucion/Discos
             ;;
 
         "JUEGOS")
+            bash $ruta_ejecucion/Juegos
             ;;
 
         "SEGURIDAD")
+            bash $ruta_ejecucion/Seguridad
             ;;
 
         "MENSAJERIA")
+            bash $ruta_ejecucion/Mensajeria
             ;;
 
         "Ayuda instalacion de software")
