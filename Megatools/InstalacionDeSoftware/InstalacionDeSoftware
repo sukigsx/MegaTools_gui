@@ -85,12 +85,12 @@ echo 'done' >> /tmp/comprobacion
 while :
 do
 
-    opcion=$(zenity --list --title="Instalacion de software. - MegaTools -" \
+    opcion=$(zenity --list --title="Instalacion de Software. - MegaTools -" \
     --text="\nSelecciona una categoria de software y vete marcando el que mas te guste o necesites.\n" \
     --column "Categorias principales:" --column="Descripcion." \
     "NAVEGADORES" "Los principales navegadores para internet." \
     "AUDIO - VIDEO" "Software relacionado el el Audio y el Video." \
-    "ENTORNOS GRAFICOS LINUX" "Los principales entornos graficos para linux basados en debian." \
+    "ENTORNOS GRAFICOS LINUX   " "Los principales entornos graficos para linux basados en debian." \
     "UTILIDADES" "Cantidad de utilidades" \
     "OFIMATICA" "Software dedicado a la ofimatica" \
     "SERVIDORES" "Servidores para tu sistema, (ssh, ftp, smb, etc)" \
@@ -118,8 +118,8 @@ do
             bash $ruta_ejecucion/AudioVideo
             ;;
 
-        "ENTORNOS GRAFICOS LINUX")
-
+        "ENTORNOS GRAFICOS LINUX   ")
+            bash $ruta_ejecucion/EntornosGraficosLinux
             ;;
 
         "UTILIDADES")
