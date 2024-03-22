@@ -14,7 +14,7 @@ while :
 do
     # Mostrar el menú de selección utilizando Zenity
     selection=$(zenity --list --title="Instalacion de Navegadores. - MegaTools" \
-    --text="\nSoftware disponible en repositorios para distribuciones basadas en debian.\n" \
+    --text="\nSoftware disponible de navegacion en internet para entornos linux.\n" \
     --checklist --column="Marca una o varias casillas para instalar" --column="Nombre del navegador" --column="Descripcion." \
     --width=300 --height=200 \
     --cancel-label="Atras" \

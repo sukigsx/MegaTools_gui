@@ -14,7 +14,7 @@ while :
 do
     # Mostrar el menú de selección utilizando Zenity
     selection=$(zenity --list --title="Instalar software de seguridad. - MegaTools" \
-    --text="\nSoftware de seguridad disponible para linux.\n" \
+    --text="\nSoftware de seguridad disponible para entornos linux.\n" \
     --checklist --column="Marca una o varias casillas para instalar" --column="Software de seguridad" --column="Descripcion." \
     --width=300 --height=200 \
     --cancel-label="Atras" \

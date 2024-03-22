@@ -14,7 +14,7 @@ while :
 do
     # Mostrar el menú de selección utilizando Zenity
     selection=$(zenity --list --title="Instalar gestor de paquetes. - MegaTools" \
-    --text="\nSoftware disponible para entornos graficos linux.\n" \
+    --text="\nSoftware disponible para gestion de paquetes en entornos linux.\n" \
     --checklist --column="Marca una o varias casillas para instalar" --column="Gestores de paquetes" --column="Descripcion." \
     --width=300 --height=200 \
     --cancel-label="Atras" \
