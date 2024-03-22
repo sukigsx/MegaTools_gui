@@ -10,35 +10,22 @@ else
 fi
 }
 
-# muestra una ventana de informacion informando de los riesgos si da atras se sale y si da aceptar continua
-respuesta=$(zenity --question --text="En linux se puedes instalar varios entornos graficos.\n\nPero pueden ser incompatibles entre ellos\nTenlo en cuenta.\n" --ok-label="Aceptar, Entiendo el riesgo" --cancel-label="Atrás" --title="Instalacion Entornos Graficos Linux - MegaTools")
-
-# Verificar qué botón se ha presionado
-if [ $? -eq 0 ]; then
-    echo ""
-else
-    exit
-fi
-
-
-
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
-    selection=$(zenity --list --title="Instalar entornos Graficos de Linux. - MegaTools" \
-    --text="\nSoftware disponible para entornos graficos linux.\n" \
-    --checklist --column="Marca una o varias casillas para instalar" --column="Entorno graficos" --column="Descripcion." \
+    selection=$(zenity --list --title="Instalar software para discos y unidades. - MegaTools" \
+    --text="\nSoftware disponible para discos y unidades.\n" \
+    --checklist --column="Marca una o varias casillas para instalar" --column="Software para discos y unidades" --column="Descripcion." \
     --width=300 --height=200 \
     --cancel-label="Atras" \
     --ok-label="Aceptar" \
     --width=950 \
     --height=650 \
-    FALSE "Gnome" "Entorno grafico de Gnome." \
-    FALSE "Plasma" "Entorno grafico Plasma." \
-    FALSE "Cinnamon" "Entorno grafico Cinnamon." \
-    FALSE "Xfce" "Entorno grafico Xfce." \
-    FALSE "Mate" "Entorno grafico Mate." \
-    FALSE "Lxde" "Entorno grafico Lxde." \
+    FALSE "Partition manager" "Gestor de particiones de KDE Plasma." \
+    FALSE "Gparted" "Gestor de particiones." \
+    FALSE "Braseo" "Software de grabacion de cd y dvd." \
+    FALSE "K3b" "Software de grabacion de cd y dvd." \
+    FALSE "Gnome-disk-utility" "Utilidades de disco, monta isos, etc (Funciona en entornos Kde Plasma)." \
     )
 
     # Verificar si se presionó "Atras" en el diálogo de Zenity
@@ -48,7 +35,7 @@ do
 
     # Verificar si no se seleccionó ninguna opción
     if [ -z "$selection" ]; then
-        zenity --error --title="Instalacion de Utilidades - MegaTools -" --text="No has seleccionado ninguna Utilidad." --width=300
+        zenity --error --title="Instalacion de Utilidades - MegaTools -" --text="No has seleccionado ningun software de discos y unidades." --width=300
     else
         echo ""
     fi
@@ -58,7 +45,7 @@ do
     IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
     for option in "${selected_options[@]}"; do
         case $option in
-            "Gnome")
+            "Partition manager")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#vlc" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y vlc" >> /tmp/software
@@ -68,7 +55,7 @@ do
                 echo "vlc" >> /tmp/ComprobarSoftware
                 ;;
 
-            "Plasma")
+            "Gparted")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#spotify" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y snapd; sudo snap install spotify" >> /tmp/software
@@ -78,7 +65,7 @@ do
                 echo "spotify" >> /tmp/ComprobarSoftware
                 ;;
 
-            "Cinnamon")
+            "Brasero")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#digikam" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y digikam" >> /tmp/software
@@ -88,7 +75,7 @@ do
                 echo "digikam" >> /tmp/ComprobarSoftware
                 ;;
 
-            "Xfce")
+            "K3b")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#simple-scan" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y simple-scan" >> /tmp/software
@@ -98,24 +85,14 @@ do
                 echo "simple-scan" >> /tmp/ComprobarSoftware
                 ;;
 
-            "Mate")
+            "Gnome-disk-utility")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#handbrake" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y handbrake" >> /tmp/software
+                echo "#simple-scan" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y simple-scan" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "handbrake" >> /tmp/ComprobarSoftware
-                ;;
-
-            "Xfce")
-                #codigo para la instalacion se mete a /tmp/software
-                echo "#shotwell" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y shotwell" >> /tmp/software
-                echo "" >> /tmp/software
-
-                #linea con el nombre del programa instalado para la comprobacion
-                echo "shotwell" >> /tmp/ComprobarSoftware
+                echo "simple-scan" >> /tmp/ComprobarSoftware
                 ;;
 
             *)

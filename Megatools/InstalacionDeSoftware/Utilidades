@@ -36,6 +36,7 @@ do
     FALSE "Transmision" "Gestor de descargas torrent." \
     FALSE "Software-propietario" "Gestionar ppa y drives en modo grafico" \
     FALSE "Joplin" "Software multiplataforma para tomar notas." \
+    FALSE "Keepass2" "Gestor de contraseñas." \
     )
 
     # Verificar si se presionó "Atras" en el diálogo de Zenity
@@ -205,7 +206,15 @@ do
                 echo "krita" >> /tmp/ComprobarSoftware
                 ;;
 
+            "Keepass2")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#vlc" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y vlc" >> /tmp/software
+                echo "" >> /tmp/software
 
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "vlc" >> /tmp/ComprobarSoftware
+                ;;
 
 
             *)
