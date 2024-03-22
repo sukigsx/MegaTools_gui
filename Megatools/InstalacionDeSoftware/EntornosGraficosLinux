@@ -59,13 +59,14 @@ do
     for option in "${selected_options[@]}"; do
         case $option in
             "Gnome")
+                #sudo DEBIAN_FRONTEND=noninteractive apt-get -y install msmtp 2>/dev/null 1>/dev/null 0>/dev/null
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#vlc" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y vlc" >> /tmp/software
+                echo "#Gnome" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo DEBIAN_FRONTEND=noninteractive apt install ubuntu-gnome-desktop -y 2>/dev/null 1>/dev/null 0>/dev/null" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "vlc" >> /tmp/ComprobarSoftware
+                echo "gnome-shell" >> /tmp/ComprobarSoftware
                 ;;
 
             "Plasma")
