@@ -36,7 +36,7 @@ do
     FALSE "Gnome" "Entorno grafico de Gnome." \
     FALSE "Plasma" "Entorno grafico Plasma." \
     FALSE "Cinnamon" "Entorno grafico Cinnamon." \
-    FALSE "Xfce" "Entorno grafico Xfce." \
+    FALSE "Xfce4" "Entorno grafico Xfce." \
     FALSE "Mate" "Entorno grafico Mate." \
     FALSE "Lxde" "Entorno grafico Lxde." \
     )
@@ -83,42 +83,42 @@ do
 
             "Cinnamon")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#digikam" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y digikam" >> /tmp/software
+                echo "#Cinnamon" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install Cinnamon -y" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "digikam" >> /tmp/ComprobarSoftware
+                echo "Cinnamon" >> /tmp/ComprobarSoftware
                 ;;
 
-            "Xfce")
+            "Xfce4")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#simple-scan" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y simple-scan" >> /tmp/software
+                echo "sudo apt install xfce4 -y" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "simple-scan" >> /tmp/ComprobarSoftware
+                echo "xfce4-about" >> /tmp/ComprobarSoftware
                 ;;
 
             "Mate")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#handbrake" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y handbrake" >> /tmp/software
+                echo "#mate" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install mate -y" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "handbrake" >> /tmp/ComprobarSoftware
+                echo "mate-about" >> /tmp/ComprobarSoftware
                 ;;
 
-            "Xfce")
+            "Lxde")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#shotwell" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y shotwell" >> /tmp/software
+                echo "#Lxde" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo DEBIAN_FRONTEND=noninteractive apt install lxde -y" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "shotwell" >> /tmp/ComprobarSoftware
+                echo "lxde-logout" >> /tmp/ComprobarSoftware
                 ;;
 
             *)
