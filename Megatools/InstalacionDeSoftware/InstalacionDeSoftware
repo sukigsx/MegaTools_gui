@@ -71,7 +71,7 @@ echo 'sudo apt update' >> /tmp/software
 echo 'echo -e "\n- ACTUALIZACION DE REPOSITORIOS FINALIZADA. -"' >> /tmp/software
 echo 'echo ""' >> /tmp/software
 echo 'echo "- COMENZANDO LA INSTALACION DE SOFTWARE -"' >> /tmp/software
-echo 'echo "- Se paciente.. El tiempo depende de tu conexion. -"' >> /tmp/software
+echo 'echo "- Se paciente.. El tiempo depende de tu conexion. -"; sleep 2' >> /tmp/software
 
 #crea el fichero para comprobar la instalacion
 echo 'for programa in $(cat /tmp/ComprobarSoftware); do' >> /tmp/comprobacion
