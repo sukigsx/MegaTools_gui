@@ -16,10 +16,9 @@ do
     selection=$(zenity --list --title="Instalar paquetes ofimaticos. - MegaTools" \
     --text="\nSoftware disponible para entornos graficos linux.\n" \
     --checklist --column="Marca una o varias casillas para instalar" --column="Paquetes ofimaticos" --column="Descripcion." \
-    --width=300 --height=200 \
     --cancel-label="Atras" \
     --ok-label="Aceptar" \
-    --width=950 \
+    --width=1050 \
     --height=650 \
     FALSE "Libre Office" "Paquete ofimatico, alternativa a Microsoft Office" \
     FALSE "OpenOffice" "Paquete ofimatico, alternativa a Microsoft Office." \

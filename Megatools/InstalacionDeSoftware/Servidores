@@ -13,8 +13,8 @@ fi
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
-    selection=$(zenity --list --title="Instalar servicion de servidores. - MegaTools" \
-    --text="\nSoftware disponible para entornos graficos linux.\n" \
+    selection=$(zenity --list --title="Instalar servicios en servidores. - MegaTools" \
+    --text="\nSoftware disponible para instalar en servidores linux.\n" \
     --checklist --column="Marca una o varias casillas para instalar" --column="Servicios para servidores" --column="Descripcion." \
     --width=300 --height=200 \
     --cancel-label="Atras" \
