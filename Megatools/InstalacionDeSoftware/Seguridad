@@ -22,7 +22,7 @@ do
     --width=950 \
     --height=650 \
     FALSE "Gufw" "Cortafuefos para linux." \
-    FALSE "ClamTK" "un programa gratuito de escáner antivirus de código abierto con una interfaz gráfica de usuario (GUI)." \
+    FALSE "ClamTK" "Sostware gratuito de antivirus con una interfaz gráfica de usuario (GUI)." \
     )
 
     # Verificar si se presionó "Atras" en el diálogo de Zenity
