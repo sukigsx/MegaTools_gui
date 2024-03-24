@@ -1,6 +1,6 @@
 #!/bin/bash
 ruta_escritorio=$(xdg-user-dir DESKTOP)
-
+ruta_script=$(find / -type d -name "MegaTools_gui" 2>/dev/null)
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
