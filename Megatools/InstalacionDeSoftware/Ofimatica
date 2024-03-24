@@ -21,10 +21,7 @@ do
     --width=1050 \
     --height=650 \
     FALSE "Libre Office" "Paquete ofimatico, alternativa a Microsoft Office" \
-    FALSE "OpenOffice" "Paquete ofimatico, alternativa a Microsoft Office." \
-    FALSE "WPS Office Free" "Paquete ofimatico, alternativa a Microsoft Office y pagada por los anuncios." \
     FALSE "Calligra Office" "Paquete ofimatico, alternativa a Microsoft Office y para personas creativas y usuarios de Linux." \
-    FALSE "Softmaker FreeOffice" "Paquete ofimatico, alternativa alemana a Microsoft Office." \
     FALSE "ReText" "Es un editor sencillo pero potente para los lenguajes de marcado." \
     FALSE "Typora" "Es un editor sencillo pero potente para los lenguajes de marcado." \
     )
@@ -48,72 +45,47 @@ do
         case $option in
             "Libre Office")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#vlc" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y vlc" >> /tmp/software
+                echo "#LibreOffice" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo add-apt-repository -y ppa:libreoffice/ppa" >> /tmp/software
+                echo "sudo apt install -y libreoffice" >> /tmp/software
+                echo "sudo apt install -y libreoffice-l10n-es" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "vlc" >> /tmp/ComprobarSoftware
-                ;;
-
-            "OpenOffice")
-                #codigo para la instalacion se mete a /tmp/software
-                echo "#spotify" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y snapd; sudo snap install spotify" >> /tmp/software
-                echo "" >> /tmp/software
-
-                #linea con el nombre del programa instalado para la comprobacion
-                echo "spotify" >> /tmp/ComprobarSoftware
-                ;;
-
-            "WPS Office Free")
-                #codigo para la instalacion se mete a /tmp/software
-                echo "#digikam" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y digikam" >> /tmp/software
-                echo "" >> /tmp/software
-
-                #linea con el nombre del programa instalado para la comprobacion
-                echo "digikam" >> /tmp/ComprobarSoftware
+                echo "libreoffice" >> /tmp/ComprobarSoftware
                 ;;
 
             "Calligra Office")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#simple-scan" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y simple-scan" >> /tmp/software
+                echo "#Calligra Office" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install calligra" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "simple-scan" >> /tmp/ComprobarSoftware
+                echo "calligra" >> /tmp/ComprobarSoftware
                 ;;
 
-            "Softmaker FreeOffice")
-                #codigo para la instalacion se mete a /tmp/software
-                echo "#simple-scan" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y simple-scan" >> /tmp/software
-                echo "" >> /tmp/software
-
-                #linea con el nombre del programa instalado para la comprobacion
-                echo "simple-scan" >> /tmp/ComprobarSoftware
-                ;;
 
             "ReText")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#vlc" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y vlc" >> /tmp/software
+                echo "sudo apt install -y retext" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "vlc" >> /tmp/ComprobarSoftware
+                echo "retext" >> /tmp/ComprobarSoftware
                 ;;
 
             "Typora")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#vlc" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y vlc" >> /tmp/software
+                echo "#Typora" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "wget -qO - https://typora.io/linux/public-key.asc | sudo tee /etc/apt/trusted.gpg.d/typora.asc" >> /tmp/software
+                echo "sudo add-apt-repository 'deb https://typora.io/linux ./' -y" >> /tmp/software
+                echo "sudo apt install -y typora" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "vlc" >> /tmp/ComprobarSoftware
+                echo "typora" >> /tmp/ComprobarSoftware
                 ;;
 
             *)
