@@ -44,7 +44,7 @@ do
             "Steam")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#Steam" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y steam-instaler" >> /tmp/software
+                echo "sudo apt install -y steam-installer" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
