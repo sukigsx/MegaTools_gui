@@ -81,6 +81,7 @@ echo '    else' >> /tmp/comprobacion
 echo '        echo "$programa [ NO INSTALADO ]."' >> /tmp/comprobacion
 echo '    fi' >> /tmp/comprobacion
 echo 'done' >> /tmp/comprobacion
+echo "sudo rm /usr/bin/Tienda_AppImage.AppImage 2>/dev/null" >> /tmp/comprobacion
 
 while :
 do

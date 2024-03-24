@@ -118,4 +118,4 @@ do
     done
     exit #sale cuando termiona el for con lo seleccionado.
 done
-sudo rm /usr/bin/Tienda_AppImage.AppImage
+
