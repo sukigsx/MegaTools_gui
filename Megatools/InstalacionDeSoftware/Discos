@@ -23,7 +23,7 @@ do
     --height=650 \
     FALSE "Partition manager" "Gestor de particiones de KDE Plasma." \
     FALSE "Gparted" "Gestor de particiones." \
-    FALSE "Braseo" "Software de grabacion de cd y dvd." \
+    FALSE "Brasero" "Software de grabacion de cd y dvd." \
     FALSE "K3b" "Software de grabacion de cd y dvd." \
     FALSE "Gnome-disk-utility" "Utilidades de disco, monta isos, etc (Funciona en entornos Kde Plasma)." \
     )
