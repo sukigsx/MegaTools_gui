@@ -47,52 +47,52 @@ do
         case $option in
             "Partition manager")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#vlc" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y vlc" >> /tmp/software
+                echo "#Partitionmanager" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y partitionmanager" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "vlc" >> /tmp/ComprobarSoftware
+                echo "partitionmanager" >> /tmp/ComprobarSoftware
                 ;;
 
             "Gparted")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#spotify" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y snapd; sudo snap install spotify" >> /tmp/software
+                echo "#Gparted" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y gparted" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "spotify" >> /tmp/ComprobarSoftware
+                echo "gparted" >> /tmp/ComprobarSoftware
                 ;;
 
             "Brasero")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#digikam" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y digikam" >> /tmp/software
+                echo "#Brasero" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y brasero" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "digikam" >> /tmp/ComprobarSoftware
+                echo "brasero" >> /tmp/ComprobarSoftware
                 ;;
 
             "K3b")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#simple-scan" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y simple-scan" >> /tmp/software
+                echo "#K3b" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y k3b" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "simple-scan" >> /tmp/ComprobarSoftware
+                echo "k3b" >> /tmp/ComprobarSoftware
                 ;;
 
             "Gnome-disk-utility")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#simple-scan" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y simple-scan" >> /tmp/software
+                echo "#Gnome-disk-utility" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y gnome-disk-utility" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "simple-scan" >> /tmp/ComprobarSoftware
+                echo "gnome-disks" >> /tmp/ComprobarSoftware
                 ;;
 
             *)

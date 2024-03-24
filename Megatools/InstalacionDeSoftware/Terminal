@@ -122,7 +122,7 @@ do
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "fpinf" >> /tmp/ComprobarSoftware
+                echo "fping" >> /tmp/ComprobarSoftware
                 ;;
 
             "Rclone")
