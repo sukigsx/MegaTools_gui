@@ -61,6 +61,7 @@ do
             echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/MegaTools.desktop
             echo 'X-KDE-Username=' >> $ruta_escritorio/MegaTools.desktop
             zenity --info --title="Crear lanzador - MegaTools -" --text="Lanzador creado en tu escritorio." --width=300
+            ;;
 
             *)
                 echo "he entrado en el *"; read p
