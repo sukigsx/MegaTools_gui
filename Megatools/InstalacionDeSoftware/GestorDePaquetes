@@ -23,6 +23,9 @@ do
     --height=650 \
     FALSE "Gdebi" "Instala paquetes deb." \
     FALSE "Synaptic" "interfaz gráfica, para el sistema de gestión de paquetes de Debian GNU/Linux.." \
+    FALSE "Snap" "Gestor de paquetes snap.(se añade a tu tienda de aplicaciones)" \
+    FALSE "Flatpak" "Gestor de paquetes Flatpak.(se añadade a tu tienda de aplicaciones)" \
+    FALSE "Appimage" "Gestor de paquetes Appimages." \
     )
 
     # Verificar si se presionó "Atras" en el diálogo de Zenity
@@ -44,24 +47,59 @@ do
         case $option in
             "Gdebi")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#vlc" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y vlc" >> /tmp/software
+                echo "#Gdebi" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y gdebi" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "vlc" >> /tmp/ComprobarSoftware
+                echo "gdebi" >> /tmp/ComprobarSoftware
                 ;;
 
             "Synaptic")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#spotify" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y snapd; sudo snap install spotify" >> /tmp/software
+                echo "#Synaptic" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y synaptic" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "spotify" >> /tmp/ComprobarSoftware
+                echo "synaptic" >> /tmp/ComprobarSoftware
                 ;;
 
+            "Snap")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Snap" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y snapd" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "snap" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Flatpak")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Flatpak" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install flatpak -y" >> /tmp/software
+                echo "sudo apt install gnome-software-plugin-flatpak -y" >> /tmp/software
+                echo "sudo apt install plasma-discover-backend-flatpak -y" >> /tmp/software
+                echo "sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo -y" >> /tmp/software
+
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "flatpak" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Appimage")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Appimage" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo 'ruta=$(xdg-user-dir DESKTOP)' >> /tmp/software
+                echo 'wget -P "$ruta" https://github.com/prateekmedia/appimagepool/releases/download/5.1.0/appimagepool-5.1.0-x86_64.AppImage' >> /tmp/software
+                echo 'mv $ruta/appimagepool-5.1.0-x86_64.AppImage $ruta/Tienda_AppImage.AppImage' >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo '$ruta/Tienda_AppImages.AppImage' >> /tmp/ComprobarSoftware
+                ;;
 
             *)
             #if [ $? -eq 0 ]; then
