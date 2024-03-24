@@ -96,6 +96,7 @@ do
                 echo 'wget -P "$ruta" https://github.com/prateekmedia/appimagepool/releases/download/5.1.0/appimagepool-5.1.0-x86_64.AppImage' >> /tmp/software
                 echo 'mv $ruta/appimagepool-5.1.0-x86_64.AppImage $ruta/Tienda_AppImage.AppImage' >> /tmp/software
                 echo 'sudo touch /usr/bin/Tienda_AppImage.AppImage' >> /tmp/software
+                echo 'sudo chmod +x /usr/bin/Tienda_AppImage.AppImage' >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
