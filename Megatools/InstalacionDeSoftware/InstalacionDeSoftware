@@ -180,7 +180,7 @@ do
                     rm /tmp/software 2>/dev/null
                     rm /tmp/ComprobarSoftware 2>/dev/null
                     rm /tmp/comprobacion 2>/dev/null
-                    sudo rm /usr/bin/Tienda_AppImage.AppImage 2>/dev/null
+                    sudo rm /usr/bin/Tienda_AppImage.AppImage
                     exit
                 fi
                 #le hemos dado a instalar y pregunta la password
@@ -209,7 +209,7 @@ do
                 rm /tmp/software 2>/dev/null
                 rm /tmp/ComprobarSoftware 2>/dev/null
                 rm /tmp/comprobacion 2>/dev/null
-                sudo rm /usr/bin/Tienda_AppImage.AppImage 2>/dev/null
+                sudo rm /usr/bin/Tienda_AppImage.AppImage
                 exit 0
             fi
             ;;
@@ -220,4 +220,4 @@ done
 rm /tmp/software 2>/dev/null
 rm /tmp/ComprobarSoftware 2>/dev/null
 rm /tmp/comprobacion 2>/dev/null
-sudo rm /usr/bin/Tienda_AppImage.AppImage 2>/dev/null
+sudo rm /usr/bin/Tienda_AppImage.AppImage
