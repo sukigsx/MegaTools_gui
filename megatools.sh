@@ -305,7 +305,7 @@ do
             "Crear/Borrar lanzadores")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash $ruta_ejecucion/Megatools/CrearBorrarLanzadores/CrearBorrarLanzadores
+                bash $ruta_ejecucion/Megatools/CrearLanzadores/CrearLanzadores
                 ;;
 
         "INFORMACION DE TU SISTEMA")
