@@ -100,7 +100,7 @@ do
 
                 #linea con el nombre del programa instalado para la comprobacion
                 echo 'Tienda_AppImage.AppImage' >> /tmp/ComprobarSoftware
-                echo 'sudo rm /usr/bin/Tienda_AppImage.AppImage' >> /tmp/software
+                sudo rm /usr/bin/Tienda_AppImage.AppImage
                 ;;
 
             *)
