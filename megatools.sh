@@ -276,7 +276,7 @@ do
     --text=" Version de MegaTools = $version\n Conexion a internet = $var_conexion\n software necesario para el correcto funcionamiento = $var_software\n Script esta actualizado = $var_actualizado\n\nInformacion de SUKIGSX: \n Correo electronico = scripts@mbbsistemas.es\n Pagina web = https://repositorio.mbbsistemas.es\n" \
     --column "Opciones del menu principal:" --column="Descripcion." \
     "UTILIDADES PARA EL SISTEMA" "" \
-    "Crear/Borrar lanzadores" "Crea o borra los lanzadores en tu escritorio." \
+    "Crear lanzadores" "Crea o borra los lanzadores en tu escritorio." \
     "Instalacion de software" "Script para instalar programas en tu sistema." \
     "" "" \
     "INFORMACION DE TU SISTEMA" "" \
@@ -302,7 +302,7 @@ do
                 bash $ruta_ejecucion/Megatools/InstalacionDeSoftware/InstalacionDeSoftware
                 ;;
 
-            "Crear/Borrar lanzadores")
+            "Crear lanzadores")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
                 bash $ruta_ejecucion/Megatools/CrearLanzadores/CrearLanzadores
