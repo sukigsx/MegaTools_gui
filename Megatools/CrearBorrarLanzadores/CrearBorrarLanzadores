@@ -1,20 +1,122 @@
 #!/bin/bash
+ruta_escritorio=$(xdg-user-dir DESKTOP)
 
-
-
-
-
-
-popo(){
 while :
 do
-    opcion=$(zenity --list --title="Crear/Borrar lanzador - MegaTools -" \
-    --text="Puedes crear o borrar un lanzador en tu escritorio" \
-    --column "Opciones para crear o borrar el lanzador:" --column="Descripcion." \
-    "Crear lanzador" "Crea el lanzador en tu escritorio" \
-    "Borrar lanzador" "Borra el lanzador de tu escritorio." \
-    --width=650 \
-    --height=250 \
+    # Mostrar el menú de selección utilizando Zenity
+    selection=$(zenity --list --title="Crear lanzadores - MegaTools -" \
+    --text="\nPuedes crear un o varios lanzadores de MegaTools en tu escritorio.\n" \
+    --checklist --column=" Selecciona uno o varios " --column="Lanzadores disponibles para crear:" --column="Descripcion." \
+    --width=300 --height=200 \
+    --cancel-label="Atras" \
+    --ok-label="Aceptar" \
+    --width=1050 \
+    --height=500 \
+    FALSE "Lanzador General" "Crea un lanzador en tu escritorio de todo Megatools" \
+    FALSE "Lanzador Instalacion de software" "Crea un lanzador en tu escritorio de la parte de instalacion de software." \
+    FALSE "Lanzador de Informacion General" "Crean un lanzador en tu escritorio de la informacion mas importante de tu sistema." \
+    FALSE "Lanzador de Informacion de Ips Lan/Wan" "Crea un lanzador en tu escritorio de la informacion de Lan/Wan." \
+    FALSE "Lanzador de Informacion de Discos" "Crea un lanzador en tu escritorio de informacion de discos." \
+    FALSE "Lanzador de Informacion de la memoria Ram" "Crea un lanzador en tu escritorio de la informacion de la memoria Ram." \
+    FALSE "Lanzador de Informacion de tu red" "Crea un lanzador en tu escritorio de la informacion de tu red." \
+    --ok-label="Crear lanzadores" \
+    --cancel-label="Atras"\
+    )
+
+    # Verificar si se presionó "Atras" en el diálogo de Zenity
+    if [ $? -eq 1 ]; then
+        exit 0
+    fi
+
+    # Verificar si no se seleccionó ninguna opción
+    if [ -z "$selection" ]; then
+        zenity --error --title="Crear lanzadores - MegaTools -" --text="No has seleccionado ningun lanzador." --width=300
+    else
+        echo ""
+    fi
+
+
+    # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
+    IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
+    for option in "${selected_options[@]}"; do
+        case $option in
+            "Lanzador General")
+            echo '[Desktop Entry]' >> $ruta_escritorio/MegaTools.desktop
+            echo 'Comment[es_ES]=' >> $ruta_escritorio/MegaTools.desktop
+            echo 'Comment=' >> $ruta_escritorio/MegaTools.desktop
+            echo "Exec=nohup bash $ruta_script/megatools.sh" >> $ruta_escritorio/MegaTools.desktop
+            echo 'GenericName[es_ES]=' >> $ruta_escritorio/MegaTools.desktop
+            echo 'GenericName=' >> $ruta_escritorio/MegaTools.desktop
+            echo "Icon=autocorrection" >> $ruta_escritorio/MegaTools.desktop
+            echo 'MimeType=' >> $ruta_escritorio/MegaTools.desktop
+            echo 'Name[es_ES]=MegaTools' >> $ruta_escritorio/MegaTools.desktop
+            echo 'Name=MegaTools' >> $ruta_escritorio/MegaTools.desktop
+            echo "Path=$ruta_script" >> $ruta_escritorio/MegaTools.desktop
+            echo 'StartupNotify=true' >> $ruta_escritorio/MegaTools.desktop
+            echo 'Terminal=false' >> $ruta_escritorio/MegaTools.desktop
+            echo 'TerminalOptions=' >> $ruta_escritorio/MegaTools.desktop
+            echo 'Type=Application' >> $ruta_escritorio/MegaTools.desktop
+            echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/MegaTools.desktop
+            echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/MegaTools.desktop
+            echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/MegaTools.desktop
+            echo 'X-KDE-Username=' >> $ruta_escritorio/MegaTools.desktop
+            zenity --info --title="Crear lanzador - MegaTools -" --text="Lanzador creado en tu escritorio." --width=300
+
+            *)
+                echo "he entrado en el *"; read p
+            ;;
+        esac
+    done
+    exit #sale cuando termiona el for con lo seleccionado.
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+while :
+do
+    opcion=$(zenity --list --title="Crear lanzadores - MegaTools -" \
+    --text="Puedes crear un o varios lanzadores de MegaTollos en tu escritorio." \
+    --column "Lanzadores disponibles para crear:" --column="Descripcion." \
+    "Lanzador General" "Crea un lanzador en tu escritorio de todo Megatools" \
+    "Lanzador Instalacion de software" "Crea un lanzador en tu escritorio de la parte de instalacion de software." \
+    "Lanzador de Informacion General" "Crean un lanzador en tu escritorio de la informacion mas importante de tu sistema." \
+    "Lanzador de Informacion de Ips Lan/Wan" "Crea un lanzador en tu escritorio de la informacion de Lan/Wan." \
+    "Lanzador de Informacion de Discos" "Crea un lanzador en tu escritorio de informacion de discos." \
+    "Lanzador de Informacion de la memoria Ram" "Crea un lanzador en tu escritorio de la informacion de la memoria Ram." \
+    "Lanzador de Informacion de tu red" "Crea un lanzador en tu escritorio de la informacion de tu red." \
+    --width=850 \
+    --height=400 \
     --extra-button="Salir sin preguntar" \
     --ok-label="Aceptar" \
     --cancel-label="Atras")
@@ -33,57 +135,11 @@ do
             else
                 ruta_lanzador=/home/$(whoami)/Desktop
             fi
-            echo '[Desktop Entry]' >> $ruta_lanzador/MegaTools.desktop
-            echo 'Comment[es_ES]=' >> $ruta_lanzador/MegaTools.desktop
-            echo 'Comment=' >> $ruta_lanzador/MegaTools.desktop
-            echo "Exec=nohup bash $ruta_script/megatools.sh" >> $ruta_lanzador/MegaTools.desktop
-            echo 'GenericName[es_ES]=' >> $ruta_lanzador/MegaTools.desktop
-            echo 'GenericName=' >> $ruta_lanzador/MegaTools.desktop
-            echo "Icon=autocorrection" >> $ruta_lanzador/MegaTools.desktop
-            echo 'MimeType=' >> $ruta_lanzador/MegaTools.desktop
-            echo 'Name[es_ES]=MegaTools' >> $ruta_lanzador/MegaTools.desktop
-            echo 'Name=MegaTools' >> $ruta_lanzador/MegaTools.desktop
-            echo "Path=$ruta_script" >> $ruta_lanzador/MegaTools.desktop
-            echo 'StartupNotify=true' >> $ruta_lanzador/MegaTools.desktop
-            echo 'Terminal=false' >> $ruta_lanzador/MegaTools.desktop
-            echo 'TerminalOptions=' >> $ruta_lanzador/MegaTools.desktop
-            echo 'Type=Application' >> $ruta_lanzador/MegaTools.desktop
-            echo 'X-DBUS-ServiceName=' >> $ruta_lanzador/MegaTools.desktop
-            echo 'X-DBUS-StartupType=none' >> $ruta_lanzador/MegaTools.desktop
-            echo 'X-KDE-SubstituteUID=false' >> $ruta_lanzador/MegaTools.desktop
-            echo 'X-KDE-Username=' >> $ruta_lanzador/MegaTools.desktop
-            zenity --info --title="Crear lanzador - MegaTools -" --text="Lanzador creado en tu escritorio." --width=300
+
             ;;
 
-        "Borrar lanzador")
-            #comprueba que exista la carpeta Escritorio
-            if [ -d /home/$(whoami)/Escritorio/ ];then
-                ruta_lanzador=/home/$(whoami)/Escritorio
-            else
-                ruta_lanzador=/home/$(whoami)/Desktop
-            fi
 
-            if [ -f $ruta_lanzador/MegaTools.desktop ] ;then
-                zenity --question --title="Borrar lanzador - MegaTools -" --text="¿Seguro que quieres borrar el lanzador?" --cancel-label="No" --ok-label="Si" --width=200
-                if [ $? = 0 ]; then
-                    rm $ruta_lanzador/MegaTools.desktop
-                    zenity --info --title="Borrar lanzador - MegaTools -" --text="Lanzador borrado." --width=300 --timeout=3
-                else
-                    zenity --info --title="Borrar lanzador - MegaTools -" --text="Cancelado. No se borra el lanzador." --width=300 --timeout=3
-                fi
-            else
-                zenity --info --title="Borrar lanzador - MegaTools -" --text="No existe lanzador." --width=300 --timeout=3
-            fi
-            ;;
 
-        "Salir sin preguntar")
-            # Leer el PID del archivo para matar el script pricipal
-            uno_pid=$(</tmp/ProcesoPidDeMegatools)
-
-            # Matar el proceso de uno.sh
-            kill $uno_pid
-            exit
-            ;;
 
         *)
             if [ $? -eq 0 ]; then
@@ -94,4 +150,3 @@ do
             ;;
     esac
 done
-}

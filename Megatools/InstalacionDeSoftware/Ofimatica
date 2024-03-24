@@ -68,7 +68,7 @@ do
 
             "ReText")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#vlc" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "#ReText" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y retext" >> /tmp/software
                 echo "" >> /tmp/software
 

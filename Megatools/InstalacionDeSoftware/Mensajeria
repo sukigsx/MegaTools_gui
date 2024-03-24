@@ -46,7 +46,7 @@ do
         case $option in
             "Telegram")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#vlc" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "#Telegram" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "sudo apt install -y telegram-desktop" >> /tmp/software
                 echo "" >> /tmp/software
 
