@@ -55,133 +55,135 @@ do
         case $option in
             "sshpass")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#vlc" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y vlc" >> /tmp/software
+                echo "#sshpass" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y sshpass" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "vlc" >> /tmp/ComprobarSoftware
+                echo "sshpass" >> /tmp/ComprobarSoftware
                 ;;
 
             "Screenfetch")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#spotify" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y snapd; sudo snap install spotify" >> /tmp/software
+                echo "#Screenfetch" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y screenfetch" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "spotify" >> /tmp/ComprobarSoftware
+                echo "screenfetch" >> /tmp/ComprobarSoftware
                 ;;
 
             "Neofetch")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#digikam" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y digikam" >> /tmp/software
+                echo "sudo apt install neofetch" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "digikam" >> /tmp/ComprobarSoftware
+                echo "neofetch" >> /tmp/ComprobarSoftware
                 ;;
 
             "Net-tools")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#simple-scan" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y simple-scan" >> /tmp/software
+                echo "#Net-tools" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y net-tools" >> /tmp/software
+                echo 'sudo touch /usr/bin/net-tools' >> /tmp/software
+                echo 'sudo chmod +x /usr/bin/net-tools' >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "simple-scan" >> /tmp/ComprobarSoftware
+                echo "net-tools" >> /tmp/ComprobarSoftware
                 ;;
 
             "Nmap")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#handbrake" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y handbrake" >> /tmp/software
+                echo "#Nmap" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y nmap" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "handbrake" >> /tmp/ComprobarSoftware
+                echo "nmap" >> /tmp/ComprobarSoftware
                 ;;
 
             "Cifs-utils")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#shotwell" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y shotwell" >> /tmp/software
+                echo "sudo apt install -y cifs-utils" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "shotwell" >> /tmp/ComprobarSoftware
+                echo "cifscreds" >> /tmp/ComprobarSoftware
                 ;;
 
             "Fping")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#shotwell" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y shotwell" >> /tmp/software
+                echo "#Fping" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y fping" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "shotwell" >> /tmp/ComprobarSoftware
+                echo "fpinf" >> /tmp/ComprobarSoftware
                 ;;
 
             "Rclone")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#shotwell" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y shotwell" >> /tmp/software
+                echo "#Rclone" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install rclone rclone-browser -y" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "shotwell" >> /tmp/ComprobarSoftware
+                echo "rclone" >> /tmp/ComprobarSoftware
                 ;;
 
             "Xterm")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#shotwell" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y shotwell" >> /tmp/software
+                echo "#Xterm" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y xterm" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "shotwell" >> /tmp/ComprobarSoftware
+                echo "xterm" >> /tmp/ComprobarSoftware
                 ;;
 
             "Konsole")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#shotwell" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y shotwell" >> /tmp/software
+                echo "#Konsole" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y konsole" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "shotwell" >> /tmp/ComprobarSoftware
+                echo "konsole" >> /tmp/ComprobarSoftware
                 ;;
 
 
             "Yakuake")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#shotwell" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y shotwell" >> /tmp/software
+                echo "#Yakuake" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y yakuake" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "shotwell" >> /tmp/ComprobarSoftware
+                echo "yakuake" >> /tmp/ComprobarSoftware
                 ;;
 
             "Terminal gnome")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#shotwell" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y shotwell" >> /tmp/software
+                echo "#Terminal gnome" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y gnome-terminal" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "shotwell" >> /tmp/ComprobarSoftware
+                echo "gnome-terminal" >> /tmp/ComprobarSoftware
                 ;;
 
             "Terminator")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#shotwell" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y shotwell" >> /tmp/software
+                echo "#Terminator" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y terminator" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "shotwell" >> /tmp/ComprobarSoftware
+                echo "terminator" >> /tmp/ComprobarSoftware
                 ;;
 
             *)
