@@ -22,6 +22,7 @@ do
     --width=950 \
     --height=650 \
     FALSE "Gufw" "Cortafuefos para linux." \
+    FALSE "ClamTK" "un programa gratuito de escáner antivirus de código abierto con una interfaz gráfica de usuario (GUI)." \
     )
 
     # Verificar si se presionó "Atras" en el diálogo de Zenity
@@ -43,12 +44,22 @@ do
         case $option in
             "Gufw")
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#vlc" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y vlc" >> /tmp/software
+                echo "#Gufw" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y gufw" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "vlc" >> /tmp/ComprobarSoftware
+                echo "gufw" >> /tmp/ComprobarSoftware
+                ;;
+
+            "ClamTK")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#ClamAV" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y clamav" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "clamtk" >> /tmp/ComprobarSoftware
                 ;;
 
 
