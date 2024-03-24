@@ -24,6 +24,7 @@ do
     --height=650 \
     FALSE "Telegram" "Mensajeria." \
     FALSE "Skype" "Software de video conferencia." \
+    FALSE "Whatsapp" "Mensajeria." \
     )
 
     # Verificar si se presionó "Atras" en el diálogo de Zenity
