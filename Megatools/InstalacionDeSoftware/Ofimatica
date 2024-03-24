@@ -58,7 +58,7 @@ do
             "Calligra Office")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#Calligra Office" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install calligra" >> /tmp/software
+                echo "sudo apt install calligra -y" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
