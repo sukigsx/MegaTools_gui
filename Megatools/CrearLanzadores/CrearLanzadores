@@ -63,25 +63,25 @@ do
                 ;;
 
           "Lanzador Instalacion de software")
-                echo '[Desktop Entry]' >> $ruta_escritorio/Mega.desktop
-                echo 'Comment[es_ES]=' >> $ruta_escritorio/Mega.desktop
-                echo 'Comment=' >> $ruta_escritorio/Mega.desktop
-                echo "Exec=nohup bash $ruta_script/megatools.sh" >> $ruta_escritorio/Mega.desktop
-                echo 'GenericName[es_ES]=' >> $ruta_escritorio/Mega.desktop
-                echo 'GenericName=' >> $ruta_escritorio/Mega.desktop
-                echo "Icon=autocorrection" >> $ruta_escritorio/Mega.desktop
-                echo 'MimeType=' >> $ruta_escritorio/Mega.desktop
-                echo 'Name[es_ES]=MegaTools' >> $ruta_escritorio/Mega.desktop
-                echo 'Name=MegaTools' >> $ruta_escritorio/Mega.desktop
-                echo "Path=$ruta_script" >> $ruta_escritorio/Mega.desktop
-                echo 'StartupNotify=true' >> $ruta_escritorio/Mega.desktop
-                echo 'Terminal=false' >> $ruta_escritorio/Mega.desktop
-                echo 'TerminalOptions=' >> $ruta_escritorio/Mega.desktop
-                echo 'Type=Application' >> $ruta_escritorio/Mega.desktop
-                echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/Mega.desktop
-                echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/Mega.desktop
-                echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/Mega.desktop
-                echo 'X-KDE-Username=' >> $ruta_escritorio/Mega.desktop
+                echo '[Desktop Entry]' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Comment[es_ES]=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Comment=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo "Exec=nohup bash $ruta_script/MegaTools/InstalacionDeSoftware/InstalacionDeSoftware" >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'GenericName[es_ES]=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'GenericName=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo "Icon=autocorrection" >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'MimeType=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Name[es_ES]=InstalacionDeSoftware MegaTools' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Name=InstalacionDeSoftware MegaTools' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo "Path=$ruta_script" >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'StartupNotify=true' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Terminal=false' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'TerminalOptions=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Type=Application' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'X-KDE-Username=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
 
                 ;;
 
