@@ -67,7 +67,7 @@ do
                 echo '[Desktop Entry]' >> $ruta_escritorio/Instalacion_de_software MegaTools.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/Instalacion_de_software MegaTools.desktop
                 echo 'Comment=' >> $ruta_escritorio/Instalacion_de_software MegaTools.desktop
-                echo "Exec=nohup bash $ruta_script/Megatools/InstalacionDeSoftware/InstalacionDeSostware" >> $ruta_escritorio/Instalacion_de_software MegaTools.desktop
+                echo "Exec=nohup bash $ruta_script/Megatools/InstalacionDeSoftware/InstalacionDeSostware/InstalacionDeSoftware" >> $ruta_escritorio/Instalacion_de_software MegaTools.desktop
                 echo 'GenericName[es_ES]=' >> $ruta_escritorio/Instalacion_de_software MegaTools.desktop
                 echo 'GenericName=' >> $ruta_escritorio/Instalacion_de_software MegaTools.desktop
                 echo "Icon=autocorrection" >> $ruta_escritorio/Instalacion_de_software MegaTools.desktop
