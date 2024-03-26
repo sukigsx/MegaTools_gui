@@ -69,7 +69,7 @@ do
                 echo "Exec=nohup bash $ruta_script/Megatools/InstalacionDeSoftware/InstalacionDeSoftware" >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'GenericName[es_ES]=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'GenericName=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
-                echo "Icon=autocorrection" >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo "Icon=$ruta_script/Megatools/icono/megatools.ico" >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'MimeType=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'Name[es_ES]=InstalacionDeSoftware MegaTools' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'Name=InstalacionDeSoftware MegaTools' >> $ruta_escritorio/Instalar_software_Megatools.desktop
