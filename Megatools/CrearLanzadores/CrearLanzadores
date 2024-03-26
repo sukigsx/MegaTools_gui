@@ -47,7 +47,7 @@ do
                 echo "Exec=nohup bash $ruta_script/megatools.sh" >> $ruta_escritorio/MegaTools.desktop
                 echo 'GenericName[es_ES]=' >> $ruta_escritorio/MegaTools.desktop
                 echo 'GenericName=' >> $ruta_escritorio/MegaTools.desktop
-                echo "Icon=$ruta_script/Megatools/icono/megatools.ico" >> $ruta_escritorio/MegaTools.desktop
+                echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/MegaTools.desktop
                 echo 'MimeType=' >> $ruta_escritorio/MegaTools.desktop
                 echo 'Name[es_ES]=MegaTools' >> $ruta_escritorio/MegaTools.desktop
                 echo 'Name=MegaTools' >> $ruta_escritorio/MegaTools.desktop
@@ -69,10 +69,10 @@ do
                 echo "Exec=nohup bash $ruta_script/Megatools/InstalacionDeSoftware/InstalacionDeSoftware" >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'GenericName[es_ES]=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'GenericName=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
-                echo "Icon=$ruta_script/Megatools/icono/megatools.ico" >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'MimeType=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
-                echo 'Name[es_ES]=InstalacionDeSoftware MegaTools' >> $ruta_escritorio/Instalar_software_Megatools.desktop
-                echo 'Name=InstalacionDeSoftware MegaTools' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Name[es_ES]=InstalacionDeSoftware' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Name=InstalacionDeSoftware' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'Terminal=false' >> $ruta_escritorio/Instalar_software_Megatools.desktop
