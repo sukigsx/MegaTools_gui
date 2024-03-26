@@ -47,7 +47,7 @@ do
                 echo "Exec=nohup bash $ruta_script/megatools.sh" >> $ruta_escritorio/MegaTools.desktop
                 echo 'GenericName[es_ES]=' >> $ruta_escritorio/MegaTools.desktop
                 echo 'GenericName=' >> $ruta_escritorio/MegaTools.desktop
-                echo "Icon=autocorrection" >> $ruta_escritorio/MegaTools.desktop
+                echo "Icon=$ruta_script/Megatools/icono/megatools.ico" >> $ruta_escritorio/MegaTools.desktop
                 echo 'MimeType=' >> $ruta_escritorio/MegaTools.desktop
                 echo 'Name[es_ES]=MegaTools' >> $ruta_escritorio/MegaTools.desktop
                 echo 'Name=MegaTools' >> $ruta_escritorio/MegaTools.desktop
