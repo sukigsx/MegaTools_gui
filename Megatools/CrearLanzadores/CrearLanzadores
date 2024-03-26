@@ -82,7 +82,6 @@ do
                 echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'X-KDE-Username=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
-
                 ;;
 
             *)
@@ -90,6 +89,7 @@ do
             ;;
         esac
     done
+    zenity --info --title="Crear lanzador - MegaTools -" --text="Lanzador's creado's en tu escritorio." --width=300
     exit #sale cuando termiona el for con lo seleccionado.
 done
-zenity --info --title="Crear lanzador - MegaTools -" --text="Lanzador's creado's en tu escritorio." --width=300
+
