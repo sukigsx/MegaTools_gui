@@ -60,7 +60,7 @@ do
                 echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/MegaTools.desktop
                 echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/MegaTools.desktop
                 echo 'X-KDE-Username=' >> $ruta_escritorio/MegaTools.desktop
-                sudo chmod +x $ruta_escritorio/MegaTools.desktop
+                chmod +x $ruta_escritorio/MegaTools.desktop
                 ;;
 
           "Lanzador Instalacion de software")
@@ -83,7 +83,7 @@ do
                 echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'X-KDE-Username=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
-                sudo chmod +x $ruta_escritorio
+                chmod +x $ruta_escritorio
                 ;;
 
             "Lanzador de Informacion General")
@@ -106,7 +106,7 @@ do
                 echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'X-KDE-Username=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
-                sudo chmod +x $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                chmod +x $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 ;;
 
             "Lanzador de Informacion de Ips Lan/Wan")
@@ -129,7 +129,7 @@ do
                 echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/InformacionIps.desktop
                 echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/InformacionIps.desktop
                 echo 'X-KDE-Username=' >> $ruta_escritorio/InformacionIps.desktop
-                sudo chmod +x $ruta_escritorio/InformacionIps.desktop
+                chmod +x $ruta_escritorio/InformacionIps.desktop
                 ;;
             *)
                 echo "he entrado en el *"; read p
