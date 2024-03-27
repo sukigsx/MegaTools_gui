@@ -1,0 +1,117 @@
+#!/bin/bash
+ruta_escritorio=$(xdg-user-dir DESKTOP)
+ruta_script=$(find / -type d -name "MegaTools_gui" 2>/dev/null)
+while :
+do
+    # Mostrar el menú de selección utilizando Zenity
+    selection=$(zenity --list --title="Crear lanzadores - MegaTools -" \
+    --text="\nPuedes crear un o varios lanzadores de MegaTools en tu escritorio.\n" \
+    --checklist --column=" Selecciona uno o varios " --column="Lanzadores disponibles para crear:" --column="Descripcion." \
+    --width=300 --height=200 \
+    --cancel-label="Atras" \
+    --ok-label="Aceptar" \
+    --width=1050 \
+    --height=500 \
+    FALSE "Lanzador General" "Crea un lanzador en tu escritorio de todo Megatools" \
+    FALSE "Lanzador Instalacion de software" "Crea un lanzador en tu escritorio de la parte de instalacion de software." \
+    FALSE "Lanzador de Informacion General" "Crean un lanzador en tu escritorio de la informacion mas importante de tu sistema." \
+    FALSE "Lanzador de Informacion de Ips Lan/Wan" "Crea un lanzador en tu escritorio de la informacion de Lan/Wan." \
+    FALSE "Lanzador de Informacion de Discos" "Crea un lanzador en tu escritorio de informacion de discos." \
+    FALSE "Lanzador de Informacion de la memoria Ram" "Crea un lanzador en tu escritorio de la informacion de la memoria Ram." \
+    FALSE "Lanzador de Informacion de tu red" "Crea un lanzador en tu escritorio de la informacion de tu red." \
+    --ok-label="Crear lanzadores" \
+    --cancel-label="Atras"\
+    )
+
+    # Verificar si se presionó "Atras" en el diálogo de Zenity
+    if [ $? -eq 1 ]; then
+        exit 0
+    fi
+
+    # Verificar si no se seleccionó ninguna opción
+    if [ -z "$selection" ]; then
+        zenity --error --title="Crear lanzadores - MegaTools -" --text="No has seleccionado ningun lanzador." --width=300
+    else
+        echo ""
+    fi
+
+
+    # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
+    IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
+    for option in "${selected_options[@]}"; do
+        case $option in
+            "Lanzador General")
+                echo '[Desktop Entry]' >> $ruta_escritorio/MegaTools.desktop
+                echo 'Comment[es_ES]=' >> $ruta_escritorio/MegaTools.desktop
+                echo 'Comment=' >> $ruta_escritorio/MegaTools.desktop
+                echo "Exec=nohup bash $ruta_script/megatools.sh" >> $ruta_escritorio/MegaTools.desktop
+                echo 'GenericName[es_ES]=' >> $ruta_escritorio/MegaTools.desktop
+                echo 'GenericName=' >> $ruta_escritorio/MegaTools.desktop
+                echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/MegaTools.desktop
+                echo 'MimeType=' >> $ruta_escritorio/MegaTools.desktop
+                echo 'Name[es_ES]=MegaTools' >> $ruta_escritorio/MegaTools.desktop
+                echo 'Name=MegaTools' >> $ruta_escritorio/MegaTools.desktop
+                echo "Path=$ruta_script" >> $ruta_escritorio/MegaTools.desktop
+                echo 'StartupNotify=true' >> $ruta_escritorio/MegaTools.desktop
+                echo 'Terminal=false' >> $ruta_escritorio/MegaTools.desktop
+                echo 'TerminalOptions=' >> $ruta_escritorio/MegaTools.desktop
+                echo 'Type=Application' >> $ruta_escritorio/MegaTools.desktop
+                echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/MegaTools.desktop
+                echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/MegaTools.desktop
+                echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/MegaTools.desktop
+                echo 'X-KDE-Username=' >> $ruta_escritorio/MegaTools.desktop
+                ;;
+
+          "Lanzador Instalacion de software")
+                echo '[Desktop Entry]' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Comment[es_ES]=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Comment=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo "Exec=nohup bash $ruta_script/Megatools/InstalacionDeSoftware/InstalacionDeSoftware" >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'GenericName[es_ES]=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'GenericName=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'MimeType=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Name[es_ES]=InstalacionDeSoftware' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Name=InstalacionDeSoftware' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo "Path=$ruta_script" >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'StartupNotify=true' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Terminal=false' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'TerminalOptions=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Type=Application' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'X-KDE-Username=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                ;;
+
+            "Lanzador de Informacion General")
+                echo '[Desktop Entry]' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'Comment[es_ES]=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'Comment=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo "Exec=nohup bash $ruta_script/Megatools/InformacionGeneral/InformacionGeneral" >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'GenericName[es_ES]=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'GenericName=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'MimeType=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'Name[es_ES]=InformacionGeneral' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'Name=InformacionGeneral' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo "Path=$ruta_script" >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'StartupNotify=true' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'Terminal=false' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'TerminalOptions=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'Type=Application' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'X-KDE-Username=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                ;;
+
+            *)
+                echo "he entrado en el *"; read p
+            ;;
+        esac
+    done
+    zenity --info --title="Crear lanzador's - MegaTools -" --text="Lanzador's creado's en tu escritorio." --width=300
+    exit #sale cuando termiona el for con lo seleccionado.
+done
+

@@ -59,6 +59,7 @@ password(){
         fi
     done
 }
+
 #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
 rm /tmp/software 2>/dev/null
 rm /tmp/ComprobarSoftware 2>/dev/null
@@ -70,7 +71,7 @@ echo 'sudo apt update' >> /tmp/software
 echo 'echo -e "\n- ACTUALIZACION DE REPOSITORIOS FINALIZADA. -"' >> /tmp/software
 echo 'echo ""' >> /tmp/software
 echo 'echo "- COMENZANDO LA INSTALACION DE SOFTWARE -"' >> /tmp/software
-echo 'echo "- Se paciente.. El tiempo depende de tu conexion. -"' >> /tmp/software
+echo 'echo "- Se paciente.. El tiempo depende de tu conexion. -"; sleep 2' >> /tmp/software
 
 #crea el fichero para comprobar la instalacion
 echo 'for programa in $(cat /tmp/ComprobarSoftware); do' >> /tmp/comprobacion
@@ -80,15 +81,18 @@ echo '    else' >> /tmp/comprobacion
 echo '        echo "$programa [ NO INSTALADO ]."' >> /tmp/comprobacion
 echo '    fi' >> /tmp/comprobacion
 echo 'done' >> /tmp/comprobacion
+echo "sudo rm /usr/bin/Tienda_AppImage.AppImage 2>/dev/null" >> /tmp/comprobacion
+echo "sudo rm /usr/bin/net-tools 2>/dev/null" >> /tmp/comprobacion
 
 while :
 do
-    opcion=$(zenity --list --title="Instalacion de software. - MegaTools -" \
+
+    opcion=$(zenity --list --title="Instalacion de Software. - MegaTools -" \
     --text="\nSelecciona una categoria de software y vete marcando el que mas te guste o necesites.\n" \
     --column "Categorias principales:" --column="Descripcion." \
     "NAVEGADORES" "Los principales navegadores para internet." \
     "AUDIO - VIDEO" "Software relacionado el el Audio y el Video." \
-    "ENTORNOS GRAFICOS LINUX" "Los principales entornos graficos para linux basados en debian." \
+    "ENTORNOS GRAFICOS LINUX   " "Los principales entornos graficos para linux basados en debian." \
     "UTILIDADES" "Cantidad de utilidades" \
     "OFIMATICA" "Software dedicado a la ofimatica" \
     "SERVIDORES" "Servidores para tu sistema, (ssh, ftp, smb, etc)" \
@@ -102,7 +106,7 @@ do
     --height=650 \
     --ok-label="Aceptar" \
     --cancel-label="Atras" \
-    --extra-button="Crear lanzador de Instalacion de Software" \
+    --extra-button="Ayuda instalacion de software" \
     --extra-button="Ver software para instalar")
 
     # Manejar la opción seleccionada
@@ -116,39 +120,48 @@ do
             bash $ruta_ejecucion/AudioVideo
             ;;
 
-        "ENTORNOS GRAFICOS LINUX")
+        "ENTORNOS GRAFICOS LINUX   ")
+            bash $ruta_ejecucion/EntornosGraficosLinux
             ;;
 
         "UTILIDADES")
+            bash $ruta_ejecucion/Utilidades
             ;;
 
         "OFIMATICA")
+            bash $ruta_ejecucion/Ofimatica
             ;;
 
         "SERVIDORES")
+            bash $ruta_ejecucion/Servidores
             ;;
 
         "GESTOR DE PAQUETES")
+            bash $ruta_ejecucion/GestorDePaquetes
             ;;
 
         "PARA TU TERMINAL")
+            bash $ruta_ejecucion/Terminal
             ;;
 
         "DISCOS")
+            bash $ruta_ejecucion/Discos
             ;;
 
         "JUEGOS")
+            bash $ruta_ejecucion/Juegos
             ;;
 
         "SEGURIDAD")
+            bash $ruta_ejecucion/Seguridad
             ;;
 
         "MENSAJERIA")
+            bash $ruta_ejecucion/Mensajeria
             ;;
 
-        "Crear lanzador de Instalacion de Software")
-            ruta_script=$(find / -type d -name "MegaTools_gui" 2>/dev/null)
-            bash $ruta_script/MenuPrincipal/InstalacionDeSosfware/CrearLanzadorInstalacionDeSoftware
+        "Ayuda instalacion de software")
+            zenity --text-info --title="Ayuda - MegaTools -" --filename=$ruta_ejecucion/AyudaInstalacionSoftware --font="DejaVu Sans Mono" --width=650 --height=650
             ;;
 
         "Ver software para instalar")
@@ -169,7 +182,7 @@ do
                     rm /tmp/software 2>/dev/null
                     rm /tmp/ComprobarSoftware 2>/dev/null
                     rm /tmp/comprobacion 2>/dev/null
-                    continue
+                    exit
                 fi
                 #le hemos dado a instalar y pregunta la password
                 password
@@ -181,6 +194,7 @@ do
                 (echo -e "\n - VERIFICACION DEL SOFTWARE INSTALADO -\n"; bash /tmp/comprobacion 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE VERIFICACION -") | zenity --text-info --width=600 --height=400 --title="Verificacion de software. - MegaTools" --auto-scroll
 
                 CrearInstalarSoftware
+                exit
 
             else
                 zenity --error --title="Instalacion del software seleccionado. - MegaTools -" --text="No hay seleccionado ningun software para instalar." --width=400

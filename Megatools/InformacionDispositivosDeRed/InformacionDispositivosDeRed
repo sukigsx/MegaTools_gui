@@ -38,15 +38,15 @@ else
         # Verificar el código de salida del comando sudo
         if [ $? -eq 0 ]; then
             # Contraseña correcta
-            zenity --info --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es correcta."
+            zenity --info --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es correcta." --timeout=2
             break
         else
             # Contraseña incorrecta
             let "attempts+=1"
             if [ $attempts -lt 3 ]; then
-                zenity --error --title="" --text="La contraseña es incorrecta. Inténtelo de nuevo."
+                zenity --error --title="" --text="La contraseña es incorrecta. Inténtelo de nuevo." --timeout=5
             else
-                zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Saliendo del script."
+                zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Saliendo del script." --timeout=5
                 exit
             fi
         fi
@@ -55,7 +55,10 @@ else
     conexion
     if [ "$var_conexion" = "SI" ]
     then
-        (echo -e "Comando: sudo apt install net-tools -y\n"; sudo apt install net-tools -y 2>/dev/null; echo -e "\nIntslacion Terminada") | zenity --text-info --title="Instalando net-tools. - MegaTools" --cancel-label="Salir sin preguntar" --ok-label="Listo" --width=650 --height=350 --auto-scroll
+        (echo -e "Comando: sudo apt install net-tools -y\n"; sudo apt install net-tools -y 2>/dev/null; echo -e "\nIntslacion Terminada") | zenity --text-info --title="Instalando net-tools. - MegaTools" --cancel-label="Atras" --ok-label="Listo" --width=650 --height=350 --auto-scroll
+        if [ $? -eq 1 ]; then
+            exit 0
+        fi
 
     else
         zenity --error --title="Instalando net-tools. - MegaTools -" --text="No se puede instalas las net-tools sin conexion a internet."

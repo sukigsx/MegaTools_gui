@@ -1,0 +1,103 @@
+ #!/bin/bash
+
+conexion(){
+if ping -c1 google.com &>/dev/null
+then
+    var_conexion="SI"
+else
+    var_conexion="NO"
+    var_actualizado="No hay conexion a internet"
+fi
+}
+
+while :
+do
+    # Mostrar el menú de selección utilizando Zenity
+    selection=$(zenity --list --title="Instalar servicios en servidores. - MegaTools" \
+    --text="\nSoftware disponible para instalar en servidores linux.\n" \
+    --checklist --column="Marca una o varias casillas para instalar" --column="Servicios para servidores" --column="Descripcion." \
+    --width=300 --height=200 \
+    --cancel-label="Atras" \
+    --ok-label="Aceptar" \
+    --width=950 \
+    --height=650 \
+    FALSE "ssh" "Servidor ssh, conexion en remoto por terminal." \
+    FALSE "Apache" "Servidor apache, Paginas web." \
+    FALSE "Ftp" "Servidor Ftp, Servicio para compartir ficheros." \
+    FALSE "OpenVpn" "Servidor OpenVpn, para tu red privada virtual VPN." \
+    )
+
+    # Verificar si se presionó "Atras" en el diálogo de Zenity
+    if [ $? -eq 1 ]; then
+        exit 0
+    fi
+
+    # Verificar si no se seleccionó ninguna opción
+    if [ -z "$selection" ]; then
+        zenity --error --title="Instalacion de Utilidades - MegaTools -" --text="No has seleccionado ningun servicio." --width=300
+    else
+        echo ""
+    fi
+
+
+    # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
+    IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
+    for option in "${selected_options[@]}"; do
+        case $option in
+            "ssh")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#ssh" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y ssh" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "sshd" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Apache")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Apache" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install apache2 -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "apache2" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Ftp")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Ftp" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y vsftpd" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "vsftpd" >> /tmp/ComprobarSoftware
+                ;;
+
+            "OpenVpn")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#OpenVpn" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y openvpn network-manager-openvpn network-manager-openvpn-gnome" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "openvpn" >> /tmp/ComprobarSoftware
+                ;;
+
+
+            *)
+            #if [ $? -eq 0 ]; then
+            #    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+            #else
+            #    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+            #    if [ $? -eq 0 ]; then
+            #        exit 0
+            #    fi
+            #fi
+            echo "he entrado en el *"; read p
+            ;;
+        esac
+    done
+    exit #sale cuando termiona el for con lo seleccionado.
+done
+

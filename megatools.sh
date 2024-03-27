@@ -1,7 +1,7 @@
 #!/bin/bash
 ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 
-version="1.00000"
+version="1.0gbclkjhlkjvbcvdsdf"
 #software necesario para la ejecucion del programa
 software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi find curl"
 
@@ -276,7 +276,7 @@ do
     --text=" Version de MegaTools = $version\n Conexion a internet = $var_conexion\n software necesario para el correcto funcionamiento = $var_software\n Script esta actualizado = $var_actualizado\n\nInformacion de SUKIGSX: \n Correo electronico = scripts@mbbsistemas.es\n Pagina web = https://repositorio.mbbsistemas.es\n" \
     --column "Opciones del menu principal:" --column="Descripcion." \
     "UTILIDADES PARA EL SISTEMA" "" \
-    "Crear/Borrar lanzadores" "Crea o borra los lanzadores en tu escritorio." \
+    "Crear lanzadores" "Crea o borra los lanzadores en tu escritorio." \
     "Instalacion de software" "Script para instalar programas en tu sistema." \
     "" "" \
     "INFORMACION DE TU SISTEMA" "" \
@@ -299,13 +299,13 @@ do
             ;;
 
             "Instalacion de software")
-                bash $ruta_ejecucion/MenuPrincipal/InstalacionDeSoftware/InstalacionDeSoftware
+                bash $ruta_ejecucion/Megatools/InstalacionDeSoftware/InstalacionDeSoftware
                 ;;
 
-            "Crear/Borrar lanzadores")
+            "Crear lanzadores")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash $ruta_ejecucion/MenuPrincipal/CreaBorrarLanzadores/CrearBorrarLanzadores
+                bash $ruta_ejecucion/Megatools/CrearLanzadores/CrearLanzadores
                 ;;
 
         "INFORMACION DE TU SISTEMA")
@@ -315,31 +315,31 @@ do
             "Informacion general")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash $ruta_ejecucion/MenuPrincipal/InformacionGeneral/InformacionGeneral
+                bash $ruta_ejecucion/Megatools/InformacionGeneral/InformacionGeneral
                 ;;
 
             "Informacion de ips Lan/Wan")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash $ruta_ejecucion/MenuPrincipal/InformacionDeIpsLanWan/InformacionDeIpsLanWan
+                bash $ruta_ejecucion/Megatools/InformacionDeIpsLanWan/InformacionDeIpsLanWan
                 ;;
 
             "Informacion de discos")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash $ruta_ejecucion/MenuPrincipal/InformacionDeDiscos/InformacionDeDiscos
+                bash $ruta_ejecucion/Megatools/InformacionDeDiscos/InformacionDeDiscos
                 ;;
 
             "Informacion memoria ram")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash $ruta_ejecucion/MenuPrincipal/InformacionMemoriaRam/InformacionMemoriaRam
+                bash $ruta_ejecucion/Megatools/InformacionMemoriaRam/InformacionMemoriaRam
                 ;;
 
             "Informacion dispositivos de red")
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
-                bash $ruta_ejecucion/MenuPrincipal/InformacionDispositivosDeRed/InformacionDispositivosDeRed
+                bash $ruta_ejecucion/Megatools/InformacionDispositivosDeRed/InformacionDispositivosDeRed
                 ;;
 
         "Web Sukigsx")
@@ -353,7 +353,7 @@ do
             ;;
 
         "Ayuda")
-            zenity --text-info --title="Ayuda - MegaTools -" --filename=Ayuda --font="DejaVu Sans Mono" --width=650 --height=650
+            zenity --text-info --title="Ayuda - MegaTools -" --filename=$ruta_ejecucion/Megatools/AyudaPrincipal --font="DejaVu Sans Mono" --width=650 --height=650
             ;;
 
         *)

@@ -1,0 +1,138 @@
+#!/bin/bash
+
+conexion(){
+if ping -c1 google.com &>/dev/null
+then
+    var_conexion="SI"
+else
+    var_conexion="NO"
+    var_actualizado="No hay conexion a internet"
+fi
+}
+
+# muestra una ventana de informacion informando de los riesgos si da atras se sale y si da aceptar continua
+respuesta=$(zenity --question --text="En linux se puedes instalar varios entornos graficos.\n\nPero pueden ser incompatibles entre ellos\nTenlo en cuenta.\n" --ok-label="Aceptar, Entiendo el riesgo" --cancel-label="Atrás" --title="Instalacion Entornos Graficos Linux - MegaTools")
+
+# Verificar qué botón se ha presionado
+if [ $? -eq 0 ]; then
+    echo ""
+else
+    exit
+fi
+
+
+
+while :
+do
+    # Mostrar el menú de selección utilizando Zenity
+    selection=$(zenity --list --title="Instalar entornos Graficos de Linux. - MegaTools" \
+    --text="\nSoftware disponible para entornos graficos linux.\n" \
+    --checklist --column="Marca una o varias casillas para instalar" --column="Entorno graficos" --column="Descripcion." \
+    --width=300 --height=200 \
+    --cancel-label="Atras" \
+    --ok-label="Aceptar" \
+    --width=950 \
+    --height=650 \
+    FALSE "Gnome" "Entorno grafico de Gnome." \
+    FALSE "Plasma" "Entorno grafico Plasma." \
+    FALSE "Cinnamon" "Entorno grafico Cinnamon." \
+    FALSE "Xfce4" "Entorno grafico Xfce." \
+    FALSE "Mate" "Entorno grafico Mate." \
+    FALSE "Lxde" "Entorno grafico Lxde." \
+    )
+
+    # Verificar si se presionó "Atras" en el diálogo de Zenity
+    if [ $? -eq 1 ]; then
+        exit 0
+    fi
+
+    # Verificar si no se seleccionó ninguna opción
+    if [ -z "$selection" ]; then
+        zenity --error --title="Instalacion de Utilidades - MegaTools -" --text="No has seleccionado ninguna Utilidad." --width=300
+    else
+        echo ""
+    fi
+
+
+    # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
+    IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
+    for option in "${selected_options[@]}"; do
+        case $option in
+            "Gnome")
+                #sudo DEBIAN_FRONTEND=noninteractive apt-get -y install msmtp 2>/dev/null 1>/dev/null 0>/dev/null
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Gnome" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo DEBIAN_FRONTEND=noninteractive apt install ubuntu-gnome-desktop -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "gnome-shell" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Plasma")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Plasma" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo add-apt-repository ppa:kubuntu-ci/stable -y" >> /tmp/software
+                echo "sudo add-apt-repository -r ppa:kubuntu-ppa/backports -y" >> /tmp/software
+                echo "sudo apt-get install plasma-desktop -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "plasmashell" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Cinnamon")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Cinnamon" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install Cinnamon -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "Cinnamon" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Xfce4")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#simple-scan" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install xfce4 -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "xfce4-about" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Mate")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#mate" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install mate -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "mate-about" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Lxde")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Lxde" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo DEBIAN_FRONTEND=noninteractive apt install lxde -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "lxde-logout" >> /tmp/ComprobarSoftware
+                ;;
+
+            *)
+            #if [ $? -eq 0 ]; then
+            #    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+            #else
+            #    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+            #    if [ $? -eq 0 ]; then
+            #        exit 0
+            #    fi
+            #fi
+            echo "he entrado en el *"; read p
+            ;;
+        esac
+    done
+    exit #sale cuando termiona el for con lo seleccionado.
+done

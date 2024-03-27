@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 
 conexion(){
 if ping -c1 google.com &>/dev/null
@@ -14,7 +14,7 @@ while :
 do
     # Mostrar el menú de selección utilizando Zenity
     selection=$(zenity --list --title="Instalacion de Navegadores. - MegaTools" \
-    --text="\nSoftware disponible en repositorios para distribuciones basadas en debian.\n" \
+    --text="\nSoftware disponible de navegacion en internet para entornos linux.\n" \
     --checklist --column="Marca una o varias casillas para instalar" --column="Nombre del navegador" --column="Descripcion." \
     --width=300 --height=200 \
     --cancel-label="Atras" \
@@ -79,7 +79,7 @@ do
             "Opera")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#opera" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y snap" >> /tmp/software
+                echo "sudo apt install -y snapd" >> /tmp/software
                 echo "sudo snap install opera" >> /tmp/software
                 echo "" >> /tmp/software
 
@@ -90,10 +90,8 @@ do
             "Brave")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#brave" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo 'sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg' >> /tmp/software
-                echo 'echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list' >> /tmp/software
-                echo "sudo apt update" >> /tmp/software
-                echo "sudo apt install brave-browser -y" >> /tmp/software
+                echo "sudo apt install -y snapd" >> /tmp/software
+                echo "sudo snap install brave" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
@@ -103,14 +101,14 @@ do
             "Vivaldi")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "#vivaldi" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo 'wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | gpg --dearmor | sudo dd of=/usr/share/keyrings/vivaldi-browser.gpg' >> /tmp/software
-                echo 'echo "deb [signed-by=/usr/share/keyrings/vivaldi-browser.gpg arch=$(dpkg --print-architecture)] https://repo.vivaldi.com/archive/deb/ stable main" | sudo dd of=/etc/apt/sources.list.d/vivaldi-archive.list' >> /tmp/software
-                echo "sudo apt update" >> /tmp/software
-                echo "sudo apt install vivaldi-stable -y" >> /tmp/software
+                echo 'latest_version_url=$(curl -s https://vivaldi.com/download/ | grep -o 'https://downloads.vivaldi.com/stable/vivaldi-stable_[0-9\.]*-1_amd64.deb' | head -n 1)' >> /tmp/software
+                echo 'curl -O "$latest_version_url"' >> /tmp/software
+                echo "sudo gdebi vivaldi-stable*.deb -n" >> /tmp/software
+                echo "rm vivaldi-stable*.deb" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "vivaldi" >> /tmp/ComprobarSoftware
+                echo "vivaldi-stable" >> /tmp/ComprobarSoftware
                 ;;
 
 
