@@ -71,8 +71,8 @@ do
                 echo 'GenericName=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'MimeType=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
-                echo 'Name[es_ES]=InstalacionDeSoftware' >> $ruta_escritorio/Instalar_software_Megatools.desktop
-                echo 'Name=InstalacionDeSoftware' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Name[es_ES]=Instalacion De Software' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Name=Instalacion De Software' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'Terminal=false' >> $ruta_escritorio/Instalar_software_Megatools.desktop
@@ -93,8 +93,8 @@ do
                 echo 'GenericName=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'MimeType=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
-                echo 'Name[es_ES]=InformacionGeneral' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
-                echo 'Name=InformacionGeneral' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'Name[es_ES]=Informacion General' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'Name=Informacion General' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'Terminal=false' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
@@ -106,6 +106,27 @@ do
                 echo 'X-KDE-Username=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 ;;
 
+            "Lanzador de Informacion de Ips Lan/Wan")
+                echo '[Desktop Entry]' >> $ruta_escritorio/InformacionIps.desktop
+                echo 'Comment[es_ES]=' >> $ruta_escritorio/InformacionIpes.desktop
+                echo 'Comment=' >> $ruta_escritorio/InformacionIps.desktop
+                echo "Exec=nohup bash $ruta_script/Megatools/InformacionDeIpsLanWan/InformacionDeIpsLanWan" >> $ruta_escritorio/InformacionIps.desktop
+                echo 'GenericName[es_ES]=' >> $ruta_escritorio/InformacionIps.desktop
+                echo 'GenericName=' >> $ruta_escritorio/InformacionIps.desktop
+                echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/InformacionIps.desktop
+                echo 'MimeType=' >> $ruta_escritorio/InformacionIps.desktop
+                echo 'Name[es_ES]=Informacion De Ips' >> $ruta_escritorio/InformacionIps.desktop
+                echo 'Name=Informacion De Ips' >> $ruta_escritorio/InformacionIps.desktop
+                echo "Path=$ruta_script" >> $ruta_escritorio/InformacionIps.desktop
+                echo 'StartupNotify=true' >> $ruta_escritorio/InformacionIps.desktop
+                echo 'Terminal=false' >> $ruta_escritorio/InformacionIps.desktop
+                echo 'TerminalOptions=' >> $ruta_escritorio/InformacionIps.desktop
+                echo 'Type=Application' >> $ruta_escritorio/InformacionIps.desktop
+                echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/InformacionIps.desktop
+                echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/InformacionIps.desktop
+                echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/InformacionIps.desktop
+                echo 'X-KDE-Username=' >> $ruta_escritorio/InformacionIps.desktop
+                ;;
             *)
                 echo "he entrado en el *"; read p
             ;;
