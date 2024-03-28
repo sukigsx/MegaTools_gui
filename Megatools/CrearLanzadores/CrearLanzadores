@@ -18,7 +18,7 @@ do
     FALSE "Lanzador de Informacion de Ips Lan/Wan" "Crea un lanzador en tu escritorio de la informacion de Lan/Wan." \
     FALSE "Lanzador de Informacion de Discos" "Crea un lanzador en tu escritorio de informacion de discos." \
     FALSE "Lanzador de Informacion de la memoria Ram" "Crea un lanzador en tu escritorio de la informacion de la memoria Ram." \
-    FALSE "Lanzador de Informacion de tu red" "Crea un lanzador en tu escritorio de la informacion de tu red." \
+    FALSE "Lanzador de Informacion de dispositivos de tu red" "Crea un lanzador en tu escritorio de la informacion de tu red." \
     --ok-label="Crear lanzadores" \
     --cancel-label="Atras"\
     )
@@ -60,7 +60,6 @@ do
                 echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/MegaTools.desktop
                 echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/MegaTools.desktop
                 echo 'X-KDE-Username=' >> $ruta_escritorio/MegaTools.desktop
-                chmod +x $ruta_escritorio/MegaTools.desktop
                 ;;
 
           "Lanzador Instalacion de software")
@@ -83,7 +82,6 @@ do
                 echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'X-KDE-Username=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
-                chmod +x $ruta_escritorio
                 ;;
 
             "Lanzador de Informacion General")
@@ -106,7 +104,6 @@ do
                 echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'X-KDE-Username=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
-                chmod +x $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 ;;
 
             "Lanzador de Informacion de Ips Lan/Wan")
@@ -129,8 +126,74 @@ do
                 echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/InformacionIps.desktop
                 echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/InformacionIps.desktop
                 echo 'X-KDE-Username=' >> $ruta_escritorio/InformacionIps.desktop
-                chmod +x $ruta_escritorio/InformacionIps.desktop
                 ;;
+
+            "Lanzador de Informacion de Discos")
+                echo '[Desktop Entry]' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'Comment[es_ES]=' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'Comment=' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo "Exec=nohup bash $ruta_script/Megatools/InformacionDeDiscos/InformacionDeDiscos" >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'GenericName[es_ES]=' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'GenericName=' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'MimeType=' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'Name[es_ES]=Informacion De Discos' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'Name=Informacion De Discos' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo "Path=$ruta_script" >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'StartupNotify=true' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'Terminal=false' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'TerminalOptions=' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'Type=Application' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'X-KDE-Username=' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                ;;
+
+            "Lanzador de Informacion de la memoria Ram")
+                echo '[Desktop Entry]' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'Comment[es_ES]=' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'Comment=' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo "Exec=nohup bash $ruta_script/Megatools/InformacionMemoriaRam/InformacionMemoriaRam" >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'GenericName[es_ES]=' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'GenericName=' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'MimeType=' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'Name[es_ES]=Informacion De Ram' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'Name=Informacion De Ram' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo "Path=$ruta_script" >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'StartupNotify=true' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'Terminal=false' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'TerminalOptions=' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'Type=Application' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'X-KDE-Username=' >> $ruta_escritorio/InformacionDeRam.desktop
+                ;;
+
+            "Lanzador de Informacion de dispositivos de tu red")
+                echo '[Desktop Entry]' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'Comment[es_ES]=' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'Comment=' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo "Exec=nohup bash $ruta_script/Megatools/InformacionDispositivosDeRed/InformacionDispositivosDeRed" >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'GenericName[es_ES]=' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'GenericName=' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'MimeType=' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'Name[es_ES]=Informacion De Dispostitivos De Red' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'Name=Informacion De Dispostitivos De Red' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo "Path=$ruta_script" >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'StartupNotify=true' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'Terminal=false' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'TerminalOptions=' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'Type=Application' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'X-KDE-Username=' >> $ruta_escritorio/InformacionDeRed.desktop
+                ;;
+
             *)
                 echo "he entrado en el *"; read p
             ;;
