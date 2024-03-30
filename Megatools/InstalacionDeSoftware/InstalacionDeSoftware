@@ -102,6 +102,8 @@ do
     "JUEGOS" "Pues ya lo dice todo, juegos." \
     "SEGURIDAD" "Software destinado a la seguridad de tu equipo." \
     "MENSAJERIA" "Software de mensajeria en red." \
+    "" "" \
+    "PAQUETES INDEPENDIENTES" "Descarga e instala paquetes deb manualmente."
     --width=650 \
     --height=650 \
     --ok-label="Aceptar" \
@@ -158,6 +160,10 @@ do
 
         "MENSAJERIA")
             bash $ruta_ejecucion/Mensajeria
+            ;;
+
+        "PAQUETES INDEPENDIENTES")
+            bash $ruta_ejecucion/PaquetesIndependientes
             ;;
 
         "Ayuda instalacion de software")

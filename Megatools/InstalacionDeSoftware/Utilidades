@@ -37,6 +37,7 @@ do
     FALSE "Software-propietario" "Gestionar ppa y drives en modo grafico" \
     FALSE "Joplin" "Software multiplataforma para tomar notas." \
     FALSE "Keepass2" "Gestor de contraseñas." \
+    FALSE "GitHub Desktop" "Sistema de control de versiones de GitHub de forma grafica." \
     )
 
     # Verificar si se presionó "Atras" en el diálogo de Zenity
@@ -222,6 +223,15 @@ do
                 echo "keepass2" >> /tmp/ComprobarSoftware
                 ;;
 
+            "GitHub Desktop")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Keepass2" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y keepass2" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "keepass2" >> /tmp/ComprobarSoftware
+                ;;
 
             *)
             #if [ $? -eq 0 ]; then
