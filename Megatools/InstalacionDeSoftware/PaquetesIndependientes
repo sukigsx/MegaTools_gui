@@ -1,4 +1,5 @@
  #!/bin/bash
+ruta_escritorio=$(xdg-user-dir DESKTOP)
 
 conexion(){
 if ping -c1 google.com &>/dev/null
@@ -11,12 +12,11 @@ fi
 }
 
 
-
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
     selection=$(zenity --list --title="Instalacion de Paquetes Independientes. - MegaTools" \
-    --text="\nSoftware en formato DEB que mas utilizo para entornos linux.\n" \
+    --text="\n Forma de instalacion de los paquetes independientes.\n -Selecciona el paque deb y descargalo en la carpeta descargas. \n -cuando termines, pulsa el boton Instalar paqueted deb.\n" \
     --checklist --column="Marca una o varias casillas para instalar" --column="Paquetes independientes" --column="Descripcion." \
     --width=300 --height=200 \
     --cancel-label="Atras" \
@@ -45,23 +45,12 @@ do
     for option in "${selected_options[@]}"; do
         case $option in
             "GitHub Desktop")
-                #codigo para la instalacion se mete a /tmp/software
-                echo "#Github-Desktop" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y gufw" >> /tmp/software
-                echo "" >> /tmp/software
+                firefox https://github.com/shiftkey/desktop/releases
 
-                #linea con el nombre del programa instalado para la comprobacion
-                echo "github-desktop" >> /tmp/ComprobarSoftware
                 ;;
 
             "ClamTK")
-                #codigo para la instalacion se mete a /tmp/software
-                echo "#ClamAV" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y clamtk" >> /tmp/software
-                echo "" >> /tmp/software
 
-                #linea con el nombre del programa instalado para la comprobacion
-                echo "clamtk" >> /tmp/ComprobarSoftware
                 ;;
 
 
