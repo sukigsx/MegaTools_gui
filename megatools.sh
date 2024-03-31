@@ -1,8 +1,8 @@
 #!/bin/bash
 ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 
-version="1.0lsssshgkaaaaaaaaaalj00"
-#software necesario para la ejecucion del programa
+version="1.0lsssshgkaaaaaaaaaassslj00"
+#software necesarios para la ejecucion del programa
 software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi find curl"
 
 #colores

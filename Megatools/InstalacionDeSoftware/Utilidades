@@ -226,24 +226,14 @@ do
             "GitHub-Desktop")
 
                 #codigo para la instalacion se mete a /tmp/software
-                echo "#Keepass2" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                echo "sudo apt install -y keepass2" >> /tmp/software
+                echo "GitHub Desktop" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                #echo 'wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null' >> /tmp/software
+                #echo 'sudo sh -c '\''echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'\''' >> /tmp/software
+                echo "sudo apt install github-desktop -y" >> /tmp/software
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "keepass2" >> /tmp/ComprobarSoftware
-
-
-
-                #codigo para la instalacion se mete a /tmp/software
-                #echo "GitHub Desktop" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
-                #echo 'wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null' >> /tmp/software
-                #echo 'sudo sh -c '\''echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'\''' >> /tmp/software
-                #echo "sudo apt install github-desktop -y" >> /tmp/software
-                #echo "" >> /tmp/software
-
-                #linea con el nombre del programa instalado para la comprobacion
-                #echo "github-desktop" >> /tmp/ComprobarSoftware
+                echo "github-desktop" >> /tmp/ComprobarSoftware
                 ;;
 
             *)
