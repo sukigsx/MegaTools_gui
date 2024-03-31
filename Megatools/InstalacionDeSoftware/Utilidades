@@ -37,7 +37,7 @@ do
     FALSE "Software-propietario" "Gestionar ppa y drives en modo grafico" \
     FALSE "Joplin" "Software multiplataforma para tomar notas." \
     FALSE "Keepass2" "Gestor de contraseñas." \
-    FALSE "GitHub Desktop" "Sistema de control de versiones de GitHub de forma grafica." \
+    FALSE "GitHub-Desktop" "Sistema de control de versiones de GitHub de forma grafica." \
     )
 
     # Verificar si se presionó "Atras" en el diálogo de Zenity
@@ -223,7 +223,7 @@ do
                 echo "keepass2" >> /tmp/ComprobarSoftware
                 ;;
 
-            "GitHub Desktop")
+            "GitHub-Desktop")
                 #codigo para la instalacion se mete a /tmp/software
                 echo "GitHub Desktop" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null" >> /tmp/software
