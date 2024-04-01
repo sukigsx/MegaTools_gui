@@ -11,20 +11,49 @@ else
 fi
 }
 
+# selecciona el navegador preferido
+navegador=$(zenity --list --title="Instalacion de Paquetes Independientes. - MegaTools" \
+    --text="\n Forma de instalacion de los paquetes independientes de paquetes independientes.\n \
+    \n - Selecciona el software que te interese. \
+    \n - Se abrira el navegador que hayas seleccionado anteriormente, en la pagina para descargar el paquete deb.\
+    \n - Descargalo en la carpeta DESCARGAS (Si no esta en esa ruta, NO lo encontrar para su instalacion).\
+    \n - Dale al boton Instalar y empezara el proceso de instalacion de todos los paquetes deb descargados. \
+    \n - Cuando termine se borraran todos los paquetes deb de la carpeta descargas.\
+    \n" \
+    --column="Selecciona tu navegador" --column="Descripcion." \
+    --width=300 --height=200 \
+    --cancel-label="Atras" \
+    --ok-label="Siguiente" \
+    --width=950 \
+    --height=650 \
+    "firefoxxxxx" "Navegador para descargar tu paquete deb." \
+    "google-chrome" "Navegador para descargar tu paquete deb." \
+    )
+
+#comprueba si esta instalado el navegador seleccionado
+if ! which $navegador; then
+    zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text="El navegador $navegador, NO lo tienes disponible en tu sistema." --width=400
+fi
 
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
     selection=$(zenity --list --title="Instalacion de Paquetes Independientes. - MegaTools" \
-    --text="\n Forma de instalacion de los paquetes independientes.\n -Selecciona el paque deb y descargalo en la carpeta descargas. \n -cuando termines, pulsa el boton Instalar paqueted deb.\n" \
-    --checklist --column="Marca una o varias casillas para instalar" --column="Paquetes independientes" --column="Descripcion." \
+    --text="\n Forma de instalacion de los paquetes independientes de paquetes independientes.\n \
+    \n - Selecciona el software que te interese. \
+    \n - Se abrira el navegador que hayas seleccionado anteriormente, en la pagina para descargar el paquete deb.\
+    \n - Descargalo en la carpeta DESCARGAS (Si no esta en esa ruta, NO lo encontrar para su instalacion).\
+    \n - Dale al boton Instalar y empezara el proceso de instalacion de todos los paquetes deb descargados. \
+    \n - Cuando termine se borraran todos los paquetes deb de la carpeta descargas.\
+    \n" \
+    --column="Paquetes independientes" --column="Descripcion." \
     --width=300 --height=200 \
     --cancel-label="Atras" \
-    --ok-label="Aceptar" \
+    --ok-label="Instalar" \
     --width=950 \
     --height=650 \
-    FALSE "GitHub Desktop" "Control de versiones de GitHup de tus proyectos en forma grafica." \
-    FALSE "ClamTK" "Sostware gratuito de antivirus con una interfaz gráfica de usuario (GUI)." \
+    "GitHub Desktop" "Control de versiones de GitHup de tus proyectos en forma grafica." \
+    "VirtualBox" "Sostware gratuito para crear maquinas virtuales." \
     )
 
     # Verificar si se presionó "Atras" en el diálogo de Zenity
@@ -34,7 +63,7 @@ do
 
     # Verificar si no se seleccionó ninguna opción
     if [ -z "$selection" ]; then
-        zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text="No has seleccionado ningun Paquete Independiente." --width=300
+        zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No has seleccionado ningun Paquete Independiente, para su instalacion." --width=400
     else
         echo ""
     fi
@@ -45,12 +74,12 @@ do
     for option in "${selected_options[@]}"; do
         case $option in
             "GitHub Desktop")
-                firefox https://github.com/shiftkey/desktop/releases
+                $navegador https://github.com/shiftkey/desktop/releases
 
                 ;;
 
-            "ClamTK")
-
+            "VirtualBox")
+                $navegador https://www.virtualbox.org/wiki/Linux_Downloads
                 ;;
 
 
