@@ -36,7 +36,7 @@ do
     --ok-label="Siguiente" \
     --width=950 \
     --height=650 \
-    "firefoxx" "Navegador para descargar tu paquete deb." \
+    "firefox" "Navegador para descargar tu paquete deb." \
     "google-chrome" "Navegador para descargar tu paquete deb." \
     )
 
@@ -46,8 +46,9 @@ do
     fi
 
     case $navegador in
-        "firefoxx")
+        "firefox")
             #comprobar_navegador
+            echo "si esta firefox"
             break
             ;;
 
