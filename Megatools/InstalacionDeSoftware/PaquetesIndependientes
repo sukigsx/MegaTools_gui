@@ -42,6 +42,7 @@ do
 
     if ! which $navegador; then
         zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text="El navegador $navegador, NO lo tienes disponible en tu sistema." --width=400
+        exit
     fi
 
     case $navegador in
