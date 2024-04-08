@@ -1,0 +1,67 @@
+#!/bin/bash
+ruta_escritorio=$(xdg-user-dir DESKTOP)
+
+conexion(){
+if ping -c1 google.com &>/dev/null
+then
+    var_conexion="SI"
+else
+    var_conexion="NO"
+    var_actualizado="No hay conexion a internet"
+fi
+}
+
+comprobar_navegador(){
+#comprueba si esta instalado el navegador seleccionado
+if ! which $navegador; then
+    zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text="El navegador $navegador, NO lo tienes disponible en tu sistema." --width=400
+fi
+}
+
+while :
+do
+    # selecciona el navegador preferido
+    navegador=$(zenity --list --title="Instalacion de Paquetes Independientes. - MegaTools" \
+    --text="\n Forma de instalacion de los paquetes independientes.\n \
+    \n 1- Selecciona un navegador. \
+    \n 2- Selecciona el software que te interese. \
+    \n 3- Se abrira el navegador que hayas seleccionado anteriormente, en la pagina para descargar el paquete deb.\
+    \n 4- Descargalo en la carpeta DESCARGAS (Si no esta en esa ruta, NO lo encontrar para su instalacion).\
+    \n 5- Dale al boton Instalar y empezara el proceso de instalacion de todos los paquetes deb descargados. \
+    \n 6- Cuando termine se borraran todos los paquetes deb de la carpeta descargas.\
+    \n" \
+    --column="Selecciona tu navegador" --column="Descripcion." \
+    --width=300 --height=200 \
+    --cancel-label="Atras" \
+    --ok-label="Siguiente" \
+    --width=950 \
+    --height=650 \
+    "firefox" "Navegador para descargar tu paquete deb." \
+    "google-chrome" "Navegador para descargar tu paquete deb." \
+    )
+
+    if ! which $navegador; then
+        zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text="El navegador $navegador, NO lo tienes disponible en tu sistema." --width=400
+        exit
+    fi
+
+    case $navegador in
+        "firefox")
+            navegador_seleccionado="firefox"
+
+            ;;
+
+        "google-chrome")
+            #comprobar_navegador
+            break
+            ;;
+
+        *)
+            if [ $? -eq 0 ]; then
+                zenity --error --title="- Megatools -" --text="No has seleccionado ningun navegador del menu." --width=300
+            else
+                exit 0
+            fi
+            ;;
+    esac
+done
