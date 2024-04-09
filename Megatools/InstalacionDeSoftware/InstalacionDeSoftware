@@ -163,7 +163,7 @@ do
             ;;
 
         "PAQUETES INDEPENDIENTES")
-            bash $ruta_ejecucion/PaquetesIndependientesNavegador
+            bash $ruta_ejecucion/PaquetesIndependientes
             ;;
 
         "Ayuda instalacion de software")
