@@ -1,23 +1,6 @@
 #!/bin/bash
 ruta_escritorio=$(xdg-user-dir DESKTOP)
-
-conexion(){
-if ping -c1 google.com &>/dev/null
-then
-    var_conexion="SI"
-else
-    var_conexion="NO"
-    var_actualizado="No hay conexion a internet"
-fi
-}
-
-comprobar_navegador(){
-#comprueba si esta instalado el navegador seleccionado
-if ! which $navegador; then
-    zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text="El navegador $navegador, NO lo tienes disponible en tu sistema." --width=400
-fi
-}
-
+ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 while :
 do
     # selecciona el navegador preferido
@@ -40,10 +23,10 @@ do
     "google-chrome" "Navegador para descargar tu paquete deb." \
     )
 
-    if ! which $navegador; then
-        zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text="El navegador $navegador, NO lo tienes disponible en tu sistema." --width=400
-        exit
-    fi
+    #if ! which $navegador; then
+    #    zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text="El navegador $navegador, NO lo tienes disponible en tu sistema." --width=400
+    #    exit
+    #fi
 
     case $navegador in
         "firefox")
