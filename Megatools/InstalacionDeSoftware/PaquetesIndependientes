@@ -1,6 +1,8 @@
 #!/bin/bash
 ruta_escritorio=$(xdg-user-dir DESKTOP)
 ruta_ejecucion=$(dirname "$(readlink -f "$0")")
+
+
 while :
 do
     # selecciona el navegador preferido
@@ -30,8 +32,8 @@ do
 
     case $navegador in
         "firefox")
-            navegador_seleccionado="firefox"
 
+                navegador_seleccionado="firefox"
             ;;
 
         "google-chrome")
