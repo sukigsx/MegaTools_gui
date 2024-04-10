@@ -2,7 +2,13 @@
 ruta_escritorio=$(xdg-user-dir DESKTOP)
 ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 
-
+comprobar_navegador(){
+if which $navegador
+then
+    navegador_seleccionado="navegador"
+else
+    zenity --error --title="- Megatools -" --text="No has seleccionado ningun navegador del menu." --width=300
+}
 while :
 do
     # selecciona el navegador preferido
