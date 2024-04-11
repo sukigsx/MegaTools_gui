@@ -134,6 +134,9 @@ do
                 $navegador https://www.virtualbox.org/wiki/Linux_Downloads
                 ;;
 
+            "Instalar")
+                echo "instalarrrrr"
+                ;;
 
             *)
             #if [ $? -eq 0 ]; then
