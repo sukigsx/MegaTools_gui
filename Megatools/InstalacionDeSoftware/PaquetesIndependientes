@@ -30,8 +30,12 @@ do
     --ok-label="Siguiente" \
     --width=950 \
     --height=650 \
+    "google-chrome-stable" "Navegador para descargar tu paquete deb." \
+    "chromium-browser" "Navegador para descargar tu paquete deb." \
     "firefox" "Navegador para descargar tu paquete deb." \
-    "google-chromee" "Navegador para descargar tu paquete deb." \
+    "opera" "Navegador para descargar tu paquete deb." \
+    "brave-browser" "Navegador para descargar tu paquete deb." \
+    "vivaldi" "Navegador para descargar tu paquete deb." \
     )
 
     #if ! which $navegador; then
@@ -45,7 +49,27 @@ do
             break
             ;;
 
-        "google-chromee")
+        "google-chrome-stable")
+            comprobar_navegador
+            break
+            ;;
+
+        "chromium-browser")
+            comprobar_navegador
+            break
+            ;;
+
+        "opera")
+            comprobar_navegador
+            break
+            ;;
+
+        "brave-browser")
+            comprobar_navegador
+            break
+            ;;
+
+        "vivaldi-stable")
             comprobar_navegador
             break
             ;;
