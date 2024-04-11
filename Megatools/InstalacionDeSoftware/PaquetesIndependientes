@@ -35,7 +35,7 @@ do
     "firefox" "Navegador para descargar tu paquete deb." \
     "opera" "Navegador para descargar tu paquete deb." \
     "brave-browser" "Navegador para descargar tu paquete deb." \
-    "vivaldi" "Navegador para descargar tu paquete deb." \
+    "vivaldi-stable" "Navegador para descargar tu paquete deb." \
     )
 
     #if ! which $navegador; then
@@ -83,25 +83,6 @@ do
             ;;
     esac
 done
-
-
-
-
-
-
-
-echo $navegador
-read -p " me paro"; exit
-
-
-
-
-
-
-
-
-
-
 
 
 
