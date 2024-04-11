@@ -91,16 +91,17 @@ do
     # Mostrar el menú de selección utilizando Zenity
     selection=$(zenity --list --title="Instalacion de Paquetes Independientes. - MegaTools" \
     --text="\n Forma de instalacion de los paquetes independientes de paquetes independientes.\n \
-    \n - Selecciona el software que te interese. \
+    \n - Selecciona el software que te interese. Y le das al boton Descargar. \
     \n - Se abrira el navegador que hayas seleccionado anteriormente, en la pagina para descargar el paquete deb.\
     \n - Descargalo en la carpeta DESCARGAS (Si no esta en esa ruta, NO lo encontrar para su instalacion).\
-    \n - Dale al boton Instalar y empezara el proceso de instalacion de todos los paquetes deb descargados. \
+    \n - Dale al boton Instalar y empezara el proceso de instalacion de todos los paquetes deb descargados en la carpeta DESCARGAS. \
     \n - Cuando termine se borraran todos los paquetes deb de la carpeta descargas.\
     \n" \
     --column="Paquetes independientes" --column="Descripcion." \
     --width=300 --height=200 \
     --cancel-label="Atras" \
-    --ok-label="Instalar" \
+    --ok-label="Descargar" \
+    --extra-button="Instalar" \
     --width=950 \
     --height=650 \
     "GitHub Desktop" "Control de versiones de GitHup de tus proyectos en forma grafica." \
