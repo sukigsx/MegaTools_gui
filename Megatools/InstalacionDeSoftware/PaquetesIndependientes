@@ -7,7 +7,7 @@ if which $navegador
 then
     navegador_seleccionado=$navegador
 else
-    zenity --error --title="Instalacion de Paquetes Independientes - Megatools -" --text="No dispones del navegador $navegador.\nPuedes instalarlo del menu Navegadores." --width=300
+    zenity --error --title="Instalacion de Paquetes Independientes - Megatools -" --text="No dispones del navegador $navegador.\nPuedes instalarlo del menu Navegadores." --width=400
     exit
 fi
 }
@@ -76,7 +76,7 @@ do
 
         *)
             if [ $? -eq 0 ]; then
-                zenity --error --title="- Megatools -" --text="No has seleccionado ningun navegador del menu." --width=300
+                zenity --error --title="Instalacion de Paquetes Independientes - Megatools -" --text="No has seleccionado ningun navegador del menu.\nSe necesita uno para poder descargar el paquete deb." --width=400
             else
                 exit 0
             fi
@@ -122,8 +122,8 @@ do
 
 
     # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
-    IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
-    for option in "${selected_options[@]}"; do
+    #IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
+    #for option in "${selected_options[@]}"; do
         case $option in
             "GitHub Desktop")
                 $navegador https://github.com/shiftkey/desktop/releases
@@ -147,7 +147,7 @@ do
             echo "he entrado en el *"; read p
             ;;
         esac
-    done
+    #done
     exit #sale cuando termiona el for con lo seleccionado.
 done
 
