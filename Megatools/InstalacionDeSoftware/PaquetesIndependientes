@@ -31,7 +31,7 @@ do
     --width=950 \
     --height=650 \
     "firefox" "Navegador para descargar tu paquete deb." \
-    "google-chrome" "Navegador para descargar tu paquete deb." \
+    "google-chromee" "Navegador para descargar tu paquete deb." \
     )
 
     #if ! which $navegador; then
@@ -45,7 +45,7 @@ do
             break
             ;;
 
-        "google-chromeeeee")
+        "google-chromee")
             comprobar_navegador
             break
             ;;
