@@ -7,7 +7,7 @@ if which $navegador
 then
     navegador_seleccionado=$navegador
 else
-    zenity --error --title="Instalacion de Paquetes Independientes - Megatools -" --text="No has seleccionado ningun navegador del menu." --width=300
+    zenity --error --title="Instalacion de Paquetes Independientes - Megatools -" --text="No dispones del navegador $navegador.\nPuedes instalarlo del menu Navegadores." --width=300
     exit
 fi
 }
