@@ -5,10 +5,13 @@ ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 comprobar_navegador(){
 if which $navegador
 then
-    navegador_seleccionado="navegador"
+    navegador_seleccionado=$navegador
 else
-    zenity --error --title="- Megatools -" --text="No has seleccionado ningun navegador del menu." --width=300
+    zenity --error --title="Instalacion de Paquetes Independientes - Megatools -" --text="No has seleccionado ningun navegador del menu." --width=300
+    exit
+fi
 }
+
 while :
 do
     # selecciona el navegador preferido
@@ -38,12 +41,12 @@ do
 
     case $navegador in
         "firefox")
-
-                navegador_seleccionado="firefox"
+            comprobar_navegador
+            break
             ;;
 
-        "google-chrome")
-            #comprobar_navegador
+        "google-chromeeeee")
+            comprobar_navegador
             break
             ;;
 
@@ -63,7 +66,7 @@ done
 
 
 
-
+echo $navegador
 read -p " me paro"; exit
 
 
