@@ -80,7 +80,6 @@ do
 done
 
 
-
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
@@ -103,49 +102,30 @@ do
     "VirtualBox" "Sostware gratuito para crear maquinas virtuales." \
     )
 
-    # Verificar si se presionó "Atras" en el diálogo de Zenity
-    if [ $? -eq 1 ]; then
-        exit 0
-    fi
-
-    # Verificar si no se seleccionó ninguna opción
-    if [ -z "$selection" ]; then
-        zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No has seleccionado ningun Paquete Independiente, para su instalacion." --width=400
-    else
-        echo ""
-    fi
-
-
-    # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
-    #IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
-    #for option in "${selected_options[@]}"; do
-        case $selection in
-            "GitHub Desktop")
-                $navegador https://github.com/shiftkey/desktop/releases
-
-                ;;
-
-            "VirtualBox")
-                $navegador https://www.virtualbox.org/wiki/Linux_Downloads
-                ;;
-
-            "Instalar")
-                echo "instalarrrrr"
-                ;;
-
-            *)
-            #if [ $? -eq 0 ]; then
-            #    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
-            #else
-            #    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
-            #    if [ $? -eq 0 ]; then
-            #        exit 0
-            #    fi
-            #fi
-            echo "he entrado en el *"; read p
+    case $selection in
+        "GitHub Desktop")
+            $navegador https://github.com/shiftkey/desktop/releases &>/dev/null
             ;;
-        esac
-    #done
-    exit #sale cuando termiona el for con lo seleccionado.
-done
 
+        "VirtualBox")
+            $navegador https://www.virtualbox.org/wiki/Linux_Downloads &>/dev/null
+            ;;
+
+        "Instalar")
+            # Verificar si existen archivos *.deb en la carpeta Descargas
+            if ls "$carpeta_descargas"/*.deb 1> /dev/null 2>&1; then
+                echo "Existen archivos *.deb en la carpeta Descargas."
+            else
+                echo "No existen archivos *.deb en la carpeta Descargas."
+            fi
+            ;;
+
+        *)
+            if [ $? = 1 ]; then
+                break
+            else
+                zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No has seleccionado ningun Paquete Independiente, para su instalacion." --width=400
+            fi
+            ;;
+    esac
+done
