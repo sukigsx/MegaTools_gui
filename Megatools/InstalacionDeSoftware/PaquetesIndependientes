@@ -1,5 +1,5 @@
 #!/bin/bash
-ruta_escritorio=$(xdg-user-dir DESKTOP)
+ruta_descargas=$(xdg-user-dir DOWNLOAD)
 ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 
 comprobar_navegador(){
@@ -113,7 +113,7 @@ do
 
         "Instalar")
             # Verificar si existen archivos *.deb en la carpeta Descargas
-            if ls "$carpeta_descargas"/*.deb 1> /dev/null 2>&1; then
+            if ls "$ruta_descargas"/*.deb 1> /dev/null 2>&1; then
                 echo "Existen archivos *.deb en la carpeta Descargas."
             else
                 echo "No existen archivos *.deb en la carpeta Descargas."
