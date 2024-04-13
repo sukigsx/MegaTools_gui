@@ -38,11 +38,6 @@ do
     "vivaldi-stable" "Navegador para descargar tu paquete deb." \
     )
 
-    #if ! which $navegador; then
-    #    zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text="El navegador $navegador, NO lo tienes disponible en tu sistema." --width=400
-    #    exit
-    #fi
-
     case $navegador in
         "firefox")
             comprobar_navegador
@@ -124,7 +119,7 @@ do
     # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
     #IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
     #for option in "${selected_options[@]}"; do
-        case $option in
+        case $selection in
             "GitHub Desktop")
                 $navegador https://github.com/shiftkey/desktop/releases
 
