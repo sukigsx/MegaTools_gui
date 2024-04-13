@@ -95,7 +95,7 @@ do
                 echo "" >> /tmp/software
 
                 #linea con el nombre del programa instalado para la comprobacion
-                echo "brave-browser" >> /tmp/ComprobarSoftware
+                echo "brave" >> /tmp/ComprobarSoftware
                 ;;
 
             "Vivaldi")

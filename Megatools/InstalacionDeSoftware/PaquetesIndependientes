@@ -34,7 +34,7 @@ do
     "chromium-browser" "Navegador para descargar tu paquete deb." \
     "firefox" "Navegador para descargar tu paquete deb." \
     "opera" "Navegador para descargar tu paquete deb." \
-    "brave-browser" "Navegador para descargar tu paquete deb." \
+    "brave" "Navegador para descargar tu paquete deb." \
     "vivaldi-stable" "Navegador para descargar tu paquete deb." \
     )
 
@@ -64,7 +64,7 @@ do
             break
             ;;
 
-        "brave-browser")
+        "brave")
             comprobar_navegador
             break
             ;;
