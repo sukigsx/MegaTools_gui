@@ -28,7 +28,7 @@ do
     --width=300 --height=200 \
     --cancel-label="Atras" \
     --ok-label="Siguiente" \
-    --extra-button="Ayuda"
+    --extra-button="Ayuda" \
     --width=950 \
     --height=650 \
     "google-chrome-stable" "Navegador para descargar tu paquete deb." \
