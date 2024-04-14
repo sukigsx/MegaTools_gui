@@ -28,6 +28,7 @@ do
     --width=300 --height=200 \
     --cancel-label="Atras" \
     --ok-label="Siguiente" \
+    --extra-button="Ayuda"
     --width=950 \
     --height=650 \
     "google-chrome-stable" "Navegador para descargar tu paquete deb." \
@@ -69,6 +70,10 @@ do
             break
             ;;
 
+        "Ayuda")
+            zenity --text-info --title="Ayuda, paquetes independientes - MegaTools -" --filename=$ruta_ejecucion/Megatools/AyudaPaquetesIndependientes --font="DejaVu Sans Mono" --width=650 --height=650
+            ;;
+
         *)
             if [ $? -eq 0 ]; then
                 zenity --error --title="Instalacion de Paquetes Independientes - Megatools -" --text="No has seleccionado ningun navegador del menu.\nSe necesita uno para poder descargar el paquete deb." --width=400
@@ -98,17 +103,41 @@ do
     --extra-button="Instalar paquetes deb" \
     --width=950 \
     --height=650 \
-    "GitHub Desktop" "Control de versiones de GitHup de tus proyectos en forma grafica." \
+    "Busqueda Libre" "Se abre el navegador $navegador en www.google.es para que busuqes manualmente tus paquetes deb." \
+    "Franz" "Control de varias cuentas a la vez como google, telegram,etc." \
+    "Debreate" "Construccion de paquetes deb." \
+    "Genymotion" "Emulador de Android en la nube y para PC con integraciones para marcos de prueba." \
     "VirtualBox" "Sostware gratuito para crear maquinas virtuales." \
+    "Script de Sukigsx" "Instalador de scripts de Sukigsx." \
+    "TeamViewer" "Control remoto de pc's, tablets y moviles." \
     )
 
     case $selection in
-        "GitHub Desktop")
-            $navegador https://github.com/shiftkey/desktop/releases &>/dev/null
+        "Busqueda Libre")
+            $navegador www.google.es &>/dev/null
+            ;;
+
+        "Franz")
+            $navegador https://meetfranz.com/ &>/dev/null
+            ;;
+        "Debreate")
+            $navegador https://antumdeluge.github.io/debreate-web/ &>/dev/null
+            ;;
+
+        "Genymotion")
+            $navegador https://www.genymotion.com/download/ &>/dev/null
             ;;
 
         "VirtualBox")
             $navegador https://www.virtualbox.org/wiki/Linux_Downloads &>/dev/null
+            ;;
+
+        "Script de Sukigsx")
+            $navegador  &>/dev/null
+            ;;
+
+        "TeamViewer")
+            $navegador https://www.teamviewer.com/es/download/linux/ &>/dev/null
             ;;
 
         "Instalar paquetes deb")
@@ -129,3 +158,15 @@ do
             ;;
     esac
 done
+
+
+
+
+
+
+  5. Debreate, Construccion de paquetes deb.
+  6. Instalar scripts de sukigsx.
+
+
+  9. Genymotion, Emulador de sistemas android.
+
