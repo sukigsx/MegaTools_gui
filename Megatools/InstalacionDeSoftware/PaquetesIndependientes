@@ -133,11 +133,8 @@ do
             ;;
 
         "Script de Sukigsx")
-            if which git &>/dev/null; then
-                echo "instalo"
-            else
-                zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No tienes el paque git instalado en tu sistema." --width=400
-            fi
+            git clone https://github.com/sukigsx/ejecutar_scripts.git /tmp/
+            bash /tmp/ejecutar_scripts/instalar.sh
             ;;
 
         "TeamViewer")
