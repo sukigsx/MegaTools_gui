@@ -95,7 +95,7 @@ do
     --width=300 --height=200 \
     --cancel-label="Atras" \
     --ok-label="Descargar" \
-    --extra-button="Instalar" \
+    --extra-button="Instalar paquetes deb" \
     --width=950 \
     --height=650 \
     "GitHub Desktop" "Control de versiones de GitHup de tus proyectos en forma grafica." \
@@ -111,7 +111,7 @@ do
             $navegador https://www.virtualbox.org/wiki/Linux_Downloads &>/dev/null
             ;;
 
-        "Instalar")
+        "Instalar paquetes deb")
             # Verificar si existen archivos *.deb en la carpeta Descargas
             if ls "$ruta_descargas"/*.deb 1> /dev/null 2>&1; then
                 echo "Existen archivos *.deb en la carpeta Descargas."
