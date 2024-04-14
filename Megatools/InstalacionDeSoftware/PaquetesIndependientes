@@ -133,7 +133,11 @@ do
             ;;
 
         "Script de Sukigsx")
-            $navegador  &>/dev/null
+            if which git &>/dev/null; then
+                echo "instalo"
+            else
+                zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No tienes el paque git instalado en tu sistema." --width=400
+            fi
             ;;
 
         "TeamViewer")
