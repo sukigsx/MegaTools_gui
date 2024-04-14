@@ -3,7 +3,7 @@ ruta_descargas=$(xdg-user-dir DOWNLOAD)
 ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 
 comprobar_navegador(){
-if which $navegador
+if which $navegador &>/dev/null
 then
     navegador_seleccionado=$navegador
 else
@@ -133,7 +133,7 @@ do
             ;;
 
         "Script de Sukigsx")
-            git clone https://github.com/sukigsx/ejecutar_scripts.git /tmp/
+            git clone https://github.com/sukigsx/ejecutar_scripts.git /tmp/ejecutar_scripts/
             bash /tmp/ejecutar_scripts/instalar.sh
             ;;
 
@@ -159,15 +159,4 @@ do
             ;;
     esac
 done
-
-
-
-
-
-
-  5. Debreate, Construccion de paquetes deb.
-  6. Instalar scripts de sukigsx.
-
-
-  9. Genymotion, Emulador de sistemas android.
 
