@@ -32,7 +32,7 @@ do
     --width=950 \
     --height=650 \
     "google-chrome-stable" "Navegador para descargar tu paquete deb." \
-    "chromium-browser" "Navegador para descargar tu paquete deb." \
+    "chromium" "Navegador para descargar tu paquete deb." \
     "firefox" "Navegador para descargar tu paquete deb." \
     "opera" "Navegador para descargar tu paquete deb." \
     "brave" "Navegador para descargar tu paquete deb." \
@@ -50,7 +50,7 @@ do
             break
             ;;
 
-        "chromium-browser")
+        "chromium")
             comprobar_navegador
             break
             ;;
