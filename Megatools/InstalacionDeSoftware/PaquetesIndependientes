@@ -137,7 +137,7 @@ do
             cd /tmp/ejecutar_scripts
             bash instalar.sh
             cd ..
-            rm -r ejecutar_scripts
+            sudo rm -r ejecutar_scripts
             ;;
 
         "TeamViewer")
