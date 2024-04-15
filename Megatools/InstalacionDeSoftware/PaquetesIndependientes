@@ -67,7 +67,9 @@ do
 
         "vivaldi-stable")
             comprobar_navegador
-            break
+            breaksudo dpkg -i /home/$(whoami)/Descargas/*.deb;
+            sudo apt-get -f -y install;
+            sudo rm /home/$(whoami)/Descargas/*.deb;
             ;;
 
         "Ayuda")
@@ -108,7 +110,7 @@ do
     "Debreate" "Construccion de paquetes deb." \
     "Genymotion" "Emulador de Android en la nube y para PC con integraciones para marcos de prueba." \
     "VirtualBox" "Sostware gratuito para crear maquinas virtuales." \
-    "Script de Sukigsx" "Instalador de scripts de Sukigsx." \
+    "Script de Sukigsx" "Instalador de scripts de Sukigsx.(al dar a Descargar se instala solo)" \
     "TeamViewer" "Control remoto de pc's, tablets y moviles." \
     )
 
@@ -138,7 +140,7 @@ do
             bash instalar.sh
             cd ..
             sudo rm -r ejecutar_scripts
-            sleep 2
+            zenity --info --title="Instalacion de Paquetes Independientes - MegaTools" --text="Script de sukigsx, Instalado correctamente.\n\n Forma de jecucion::\n Abre una terminal y escribe (scripts)" --timeout=10 --width=400
             ;;
 
         "TeamViewer")
@@ -148,9 +150,14 @@ do
         "Instalar paquetes deb")
             # Verificar si existen archivos *.deb en la carpeta Descargas
             if ls "$ruta_descargas"/*.deb 1> /dev/null 2>&1; then
-                echo "Existen archivos *.deb en la carpeta Descargas."
+                zenity --question --title="Instalacion de Paquetes Independientes - MegaTools~" --text="Listado de paquetes deb descargados \n\n$(ls *.deb)\n\n ¿ Deseas instalarlos todos ?" --width=400 --ok-label="Si" --cancel-label="No, atras"
+                if [ $? = 0 ]; then
+                    (sudo dpkg -i $ruta_descargas/*.deb; sudo apt-get -f -y install; sudo rm $ruta_descargas/*.deb) | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Empezar de nuevo" --ok-label="Instalar"
+
+                else
+                fi
             else
-                echo "No existen archivos *.deb en la carpeta Descargas."
+                zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No se encuentran paquetes *.deb, para su instalacion." --width=400 --timeout=10
             fi
             ;;
 
