@@ -138,6 +138,7 @@ do
             bash instalar.sh
             cd ..
             sudo rm -r ejecutar_scripts
+            sleep 2
             ;;
 
         "TeamViewer")
