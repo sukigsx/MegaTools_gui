@@ -134,7 +134,10 @@ do
 
         "Script de Sukigsx")
             git clone https://github.com/sukigsx/ejecutar_scripts.git /tmp/ejecutar_scripts/
-            bash /tmp/ejecutar_scripts/instalar.sh
+            cd /tmp/ejecutar_scripts
+            bash instalar.sh
+            cd ..
+            rm -r ejecutar_scripts
             ;;
 
         "TeamViewer")
