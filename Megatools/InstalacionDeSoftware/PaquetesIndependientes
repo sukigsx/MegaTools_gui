@@ -98,6 +98,7 @@ done
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
+    listado_paquetes_descargados
     selection=$(zenity --list --title="Instalacion de Paquetes Independientes. - MegaTools" \
     --text="\n Forma de instalacion de los paquetes independientes de paquetes independientes.\n \
     \n - Selecciona el software que te interese. Y le das al boton Descargar. \
@@ -108,7 +109,7 @@ do
     \n \
     \n Listado de paquetes para instalar: \
     \n \
-    \n $(listado_paquetes_descargados) \
+    \n $listado_paquetes \
     \n" \
     --column="Paquetes independientes" --column="Descripcion." \
     --width=300 --height=200 \
