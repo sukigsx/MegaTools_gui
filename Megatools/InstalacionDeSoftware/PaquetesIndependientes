@@ -166,11 +166,9 @@ do
         "Instalar paquetes deb")
             # Verificar si existen archivos *.deb en la carpeta Descargas
             if [ $existen_deb = "si" ]; then
-                existen_deb="si"
-                zenity --info --title="Instalacion de Paquetes Independientes - MegaTools" --text="instalando"
+                (sudo dpkg -i $ruta_descargas/*.deb; sudo apt-get -f -y install; sudo rm $ruta_descargas/*.deb) | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Empezar de nuevo" --ok-label="Instalar"
             else
-                zenity --info --title="Instalacion de Paquetes Independientes - MegaTools" --text="no hay paquetes"
-                existen_deb="no"
+                zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No existen paquetes *.deb para su instalacion." --width=400
             fi
 
 
