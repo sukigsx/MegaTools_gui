@@ -5,7 +5,7 @@ ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 listado_paquetes_descargados(){
 if [ "$(ls -A $ruta_descargas/*.deb 2>/dev/null)" ]; then
     listado_paquetes=$(basename -a $ruta_descargas/*.deb)
-    existen_deb="no"
+    existen_deb="si"
 else
     listado_paquetes="No tienes paquetes para instalar."
     existen_deb="no"
