@@ -2,6 +2,46 @@
 ruta_descargas=$(xdg-user-dir DOWNLOAD)
 ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 
+password(){
+# Inicializar el contador de intentos
+    attempts=0
+
+    # Bucle para solicitar la contraseña hasta tres intentos
+    while [ $attempts -lt 3 ]; do
+        # Solicitar la contraseña del usuario actual utilizando Zenity
+        PASSWORD=$(zenity --entry --hide-text --text="Ingrese tu contraseña" --title="Contraseña de usuario. - MegaTools -" --width=450 --height=100)
+
+        # Verificar si se ha cancelado la entrada de la contraseña
+        if [ $? -ne 0 ]; then
+            # Salir del script si se ha cancelado
+            rm /tmp/software 2>/dev/null
+            rm /tmp/ComprobarSoftware 2>/dev/null
+            rm /tmp/comprobacion 2>/dev/null
+            exit
+        fi
+
+        # Verificar la contraseña utilizando el comando sudo
+        echo "$PASSWORD" | sudo -S ls /root >/dev/null 2>&1
+
+        # Verificar el código de salida del comando sudo
+        if [ $? -eq 0 ]; then
+            # Contraseña correcta
+            zenity --info --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es correcta." --width=250 --height=100 --timeout 3
+            break
+        else
+            # Contraseña incorrecta
+            let "attempts+=1"
+            if [ $attempts -lt 3 ]; then
+                zenity --error --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es incorrecta. Inténtelo de nuevo." --width=250 --height=100 --timeout 3
+            else
+                zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Se regresa al menu principal." --width=250 --height=100 --timeout 7
+                rm /tmp/software 2>/dev/null
+                exit
+            fi
+        fi
+    done
+}
+
 listado_paquetes_descargados(){
 if [ "$(ls -A $ruta_descargas/*.deb 2>/dev/null)" ]; then
     listado_paquetes=$(basename -a $ruta_descargas/*.deb)
@@ -165,6 +205,7 @@ do
 
         "Instalar paquetes deb")
             # Verificar si existen archivos *.deb en la carpeta Descargas
+            password
             if [ $existen_deb = "si" ]; then
                 (sudo dpkg -i $ruta_descargas/*.deb; sudo apt-get -f -y install; sudo rm $ruta_descargas/*.deb) | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Empezar de nuevo" --ok-label="Instalar"
             else
