@@ -3,12 +3,13 @@ ruta_descargas=$(xdg-user-dir DOWNLOAD)
 ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 
 listado_paquetes_descargados(){
-if [ -z $ruta_descargas/*.deb ]; then
-    listado_paquetes="No tienes paquetes para instalar."
-else
+if [ "$(ls -A $ruta_descargas/*.deb 2>/dev/null)" ]; then
     listado_paquetes=$(basename -a $ruta_descargas/*.deb)
+else
+    listado_paquetes="No tienes paquetes para instalar."
 fi
 }
+
 
 comprobar_navegador(){
 if which $navegador &>/dev/null
