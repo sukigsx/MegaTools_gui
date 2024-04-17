@@ -165,7 +165,7 @@ do
 
         "Instalar paquetes deb")
             # Verificar si existen archivos *.deb en la carpeta Descargas
-            if [ existen_deb = "si" ]; then
+            if [ $existen_deb = "si" ]; then
                 zenity --info --title="Instalacion de Paquetes Independientes - MegaTools" --text="instalando"
             else
                 zenity --info --title="Instalacion de Paquetes Independientes - MegaTools" --text="no hay paquetes"
