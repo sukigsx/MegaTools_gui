@@ -5,8 +5,10 @@ ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 listado_paquetes_descargados(){
 if [ "$(ls -A $ruta_descargas/*.deb 2>/dev/null)" ]; then
     listado_paquetes=$(basename -a $ruta_descargas/*.deb)
+    existen_deb="no"
 else
     listado_paquetes="No tienes paquetes para instalar."
+    existen_deb="no"
 fi
 }
 
@@ -163,25 +165,23 @@ do
 
         "Instalar paquetes deb")
             # Verificar si existen archivos *.deb en la carpeta Descargas
-            if ls "$ruta_descargas"/*.deb 1> /dev/null 2>&1; then
-                zenity --question --title="Instalacion de Paquetes Independientes - MegaTools~" --text="Listado de paquetes deb descargados \n\n$(basename -a $ruta_descargas/*.deb)\n\n ¿ Deseas instalarlos todos ?" --width=400 --ok-label="Si" --cancel-label="No, atras"
-
-                if [ $? = 0 ]; then
-                    #(sudo dpkg -i $ruta_descargas/*.deb; sudo apt-get -f -y install; sudo rm $ruta_descargas/*.deb) | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Empezar de nuevo" --ok-label="Instalar"
-                    zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text="instalando." --width=400 --timeout=10
-                else
-                    zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text="atras." --width=400 --timeout=10
-                fi
+            if [ existen_deb = "si" ]; then
+                zenity --info --title="Instalacion de Paquetes Independientes - MegaTools" --text="instalando"
             else
-                zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No se encuentran paquetes *.deb, para su instalacion." --width=400 --timeout=10
+                zenity --info --title="Instalacion de Paquetes Independientes - MegaTools" --text="no hay paquetes"
             fi
+
+
+
+            #(sudo dpkg -i $ruta_descargas/*.deb; sudo apt-get -f -y install; sudo rm $ruta_descargas/*.deb) | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Empezar de nuevo" --ok-label="Instalar"
+
             ;;
 
         *)
             if [ $? = 1 ]; then
                 break
             else
-                zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No has seleccionado ningun Paquete Independiente, para su instalacion." --width=400
+                zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No has seleccionado ningun Paquete Independiente, para su descarga." --width=400
             fi
             ;;
     esac
