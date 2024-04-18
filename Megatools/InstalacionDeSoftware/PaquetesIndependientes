@@ -68,12 +68,9 @@ do
     # selecciona el navegador preferido
     navegador=$(zenity --list --title="Instalacion de Paquetes Independientes. - MegaTools" \
     --text="\n Forma de instalacion de los paquetes independientes.\n \
-    \n 1- Selecciona un navegador. \
-    \n 2- Selecciona el software que te interese. \
-    \n 3- Se abrira el navegador que hayas seleccionado anteriormente, en la pagina para descargar el paquete deb.\
-    \n 4- Descargalo en la carpeta DESCARGAS (Si no esta en esa ruta, NO lo encontrar para su instalacion).\
-    \n 5- Dale al boton Instalar y empezara el proceso de instalacion de todos los paquetes deb descargados. \
-    \n 6- Cuando termine se borraran todos los paquetes deb de la carpeta descargas.\
+    \n Selecciona un navegador. \
+    \n \
+    \n Sera el encargado de abrirse para descargar el software. \
     \n" \
     --column="Selecciona tu navegador" --column="Descripcion." \
     --width=300 --height=200 \
