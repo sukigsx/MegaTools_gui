@@ -186,7 +186,7 @@ do
             $navegador https://www.genymotion.com/download/ &>/dev/null
             if [ -f $ruta_descargas/genymotion*.bin ]; then
                 password
-                (sudo chmod 777 $ruta_descargas/genymotion*.bin; sudo $ruta_descargas/genymotion*.bin; rm $ruta_descargas/geny*.bin) | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Empezar de nuevo" --ok-label="Instalar"
+                (sudo chmod 777 $ruta_descargas/genymotion*.bin; sudo $ruta_descargas/genymotion*.bin -y; rm $ruta_descargas/geny*.bin) | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Empezar de nuevo" --ok-label="Instalar"
             else
                 zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No existe el paquete genymotion su instalacion." --width=400
             fi
