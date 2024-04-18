@@ -64,6 +64,7 @@ do
                 ;;
 
           "Lanzador Instalacion de software")
+                rm $ruta_escritorio/Instalar_software_Megatools.desktop 2>/dev/null
                 echo '[Desktop Entry]' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'Comment=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
@@ -86,6 +87,7 @@ do
                 ;;
 
             "Lanzador de Informacion General")
+                rm $ruta_escritorio/InformacionGeneral_Megatools.desktop 2>/dev/null
                 echo '[Desktop Entry]' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'Comment=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
@@ -108,6 +110,7 @@ do
                 ;;
 
             "Lanzador de Informacion de Ips Lan/Wan")
+                rm $ruta_escritorio/InformacionIps.desktop 2>/dev/null
                 echo '[Desktop Entry]' >> $ruta_escritorio/InformacionIps.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/InformacionIps.desktop
                 echo 'Comment=' >> $ruta_escritorio/InformacionIps.desktop
@@ -130,6 +133,7 @@ do
                 ;;
 
             "Lanzador de Informacion de Discos")
+                rm $ruta_escritorio/InformacionDeDiscos.desktop 2>/dev/null
                 echo '[Desktop Entry]' >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo 'Comment=' >> $ruta_escritorio/InformacionDeDiscos.desktop
@@ -152,6 +156,7 @@ do
                 ;;
 
             "Lanzador de Informacion de la memoria Ram")
+                rm $ruta_escritorio/InformacionDeRam.desktop 2>/dev/null
                 echo '[Desktop Entry]' >> $ruta_escritorio/InformacionDeRam.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/InformacionDeRam.desktop
                 echo 'Comment=' >> $ruta_escritorio/InformacionDeRam.desktop
@@ -174,6 +179,7 @@ do
                 ;;
 
             "Lanzador de Informacion de dispositivos de tu red")
+                rm $ruta_escritorio/InformacionDeRed.desktop 2>/dev/null
                 echo '[Desktop Entry]' >> $ruta_escritorio/InformacionDeRed.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/InformacionDeRed.desktop
                 echo 'Comment=' >> $ruta_escritorio/InformacionDeRed.desktop
