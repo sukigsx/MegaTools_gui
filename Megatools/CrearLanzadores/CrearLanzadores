@@ -41,6 +41,7 @@ do
     for option in "${selected_options[@]}"; do
         case $option in
             "Lanzador General")
+                rm $ruta_escritorio/MegaTools.desktop 2>/dev/null
                 echo '[Desktop Entry]' >> $ruta_escritorio/MegaTools.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/MegaTools.desktop
                 echo 'Comment=' >> $ruta_escritorio/MegaTools.desktop
