@@ -44,7 +44,7 @@ do
                 echo '[Desktop Entry]' >> $ruta_escritorio/MegaTools.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/MegaTools.desktop
                 echo 'Comment=' >> $ruta_escritorio/MegaTools.desktop
-                echo "Exec=nohup bash $ruta_script/megatools.sh" >> $ruta_escritorio/MegaTools.desktop
+                echo "Exec=bash $ruta_script/megatools.sh" >> $ruta_escritorio/MegaTools.desktop
                 echo 'GenericName[es_ES]=' >> $ruta_escritorio/MegaTools.desktop
                 echo 'GenericName=' >> $ruta_escritorio/MegaTools.desktop
                 echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/MegaTools.desktop
@@ -53,7 +53,7 @@ do
                 echo 'Name=MegaTools' >> $ruta_escritorio/MegaTools.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/MegaTools.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/MegaTools.desktop
-                echo 'Terminal=false' >> $ruta_escritorio/MegaTools.desktop
+                echo 'Terminal=true' >> $ruta_escritorio/MegaTools.desktop
                 echo 'TerminalOptions=' >> $ruta_escritorio/MegaTools.desktop
                 echo 'Type=Application' >> $ruta_escritorio/MegaTools.desktop
                 echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/MegaTools.desktop
@@ -66,7 +66,7 @@ do
                 echo '[Desktop Entry]' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'Comment=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
-                echo "Exec=nohup bash $ruta_script/Megatools/InstalacionDeSoftware/InstalacionDeSoftware" >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo "Exec=bash $ruta_script/Megatools/InstalacionDeSoftware/InstalacionDeSoftware" >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'GenericName[es_ES]=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'GenericName=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/Instalar_software_Megatools.desktop
@@ -75,7 +75,7 @@ do
                 echo 'Name=Instalacion De Software' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/Instalar_software_Megatools.desktop
-                echo 'Terminal=false' >> $ruta_escritorio/Instalar_software_Megatools.desktop
+                echo 'Terminal=true' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'TerminalOptions=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'Type=Application' >> $ruta_escritorio/Instalar_software_Megatools.desktop
                 echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/Instalar_software_Megatools.desktop
@@ -88,7 +88,7 @@ do
                 echo '[Desktop Entry]' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'Comment=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
-                echo "Exec=nohup bash $ruta_script/Megatools/InformacionGeneral/InformacionGeneral" >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo "Exec=bash $ruta_script/Megatools/InformacionGeneral/InformacionGeneral" >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'GenericName[es_ES]=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'GenericName=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
@@ -97,7 +97,7 @@ do
                 echo 'Name=Informacion General' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
-                echo 'Terminal=false' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'Terminal=true' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'TerminalOptions=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'Type=Application' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
@@ -110,7 +110,7 @@ do
                 echo '[Desktop Entry]' >> $ruta_escritorio/InformacionIps.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/InformacionIps.desktop
                 echo 'Comment=' >> $ruta_escritorio/InformacionIps.desktop
-                echo "Exec=nohup bash $ruta_script/Megatools/InformacionDeIpsLanWan/InformacionDeIpsLanWan" >> $ruta_escritorio/InformacionIps.desktop
+                echo "Exec=bash $ruta_script/Megatools/InformacionDeIpsLanWan/InformacionDeIpsLanWan" >> $ruta_escritorio/InformacionIps.desktop
                 echo 'GenericName[es_ES]=' >> $ruta_escritorio/InformacionIps.desktop
                 echo 'GenericName=' >> $ruta_escritorio/InformacionIps.desktop
                 echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/InformacionIps.desktop
@@ -119,7 +119,7 @@ do
                 echo 'Name=Informacion De Ips' >> $ruta_escritorio/InformacionIps.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/InformacionIps.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/InformacionIps.desktop
-                echo 'Terminal=false' >> $ruta_escritorio/InformacionIps.desktop
+                echo 'Terminal=true' >> $ruta_escritorio/InformacionIps.desktop
                 echo 'TerminalOptions=' >> $ruta_escritorio/InformacionIps.desktop
                 echo 'Type=Application' >> $ruta_escritorio/InformacionIps.desktop
                 echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/InformacionIps.desktop
@@ -132,7 +132,7 @@ do
                 echo '[Desktop Entry]' >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo 'Comment=' >> $ruta_escritorio/InformacionDeDiscos.desktop
-                echo "Exec=nohup bash $ruta_script/Megatools/InformacionDeDiscos/InformacionDeDiscos" >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo "Exec=bash $ruta_script/Megatools/InformacionDeDiscos/InformacionDeDiscos" >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo 'GenericName[es_ES]=' >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo 'GenericName=' >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/InformacionDeDiscos.desktop
@@ -141,7 +141,7 @@ do
                 echo 'Name=Informacion De Discos' >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/InformacionDeDiscos.desktop
-                echo 'Terminal=false' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'Terminal=true' >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo 'TerminalOptions=' >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo 'Type=Application' >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/InformacionDeDiscos.desktop
@@ -154,7 +154,7 @@ do
                 echo '[Desktop Entry]' >> $ruta_escritorio/InformacionDeRam.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/InformacionDeRam.desktop
                 echo 'Comment=' >> $ruta_escritorio/InformacionDeRam.desktop
-                echo "Exec=nohup bash $ruta_script/Megatools/InformacionMemoriaRam/InformacionMemoriaRam" >> $ruta_escritorio/InformacionDeRam.desktop
+                echo "Exec=bash $ruta_script/Megatools/InformacionMemoriaRam/InformacionMemoriaRam" >> $ruta_escritorio/InformacionDeRam.desktop
                 echo 'GenericName[es_ES]=' >> $ruta_escritorio/InformacionDeRam.desktop
                 echo 'GenericName=' >> $ruta_escritorio/InformacionDeRam.desktop
                 echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/InformacionDeRam.desktop
@@ -163,7 +163,7 @@ do
                 echo 'Name=Informacion De Ram' >> $ruta_escritorio/InformacionDeRam.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/InformacionDeRam.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/InformacionDeRam.desktop
-                echo 'Terminal=false' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'Terminal=true' >> $ruta_escritorio/InformacionDeRam.desktop
                 echo 'TerminalOptions=' >> $ruta_escritorio/InformacionDeRam.desktop
                 echo 'Type=Application' >> $ruta_escritorio/InformacionDeRam.desktop
                 echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/InformacionDeRam.desktop
@@ -176,7 +176,7 @@ do
                 echo '[Desktop Entry]' >> $ruta_escritorio/InformacionDeRed.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/InformacionDeRed.desktop
                 echo 'Comment=' >> $ruta_escritorio/InformacionDeRed.desktop
-                echo "Exec=nohup bash $ruta_script/Megatools/InformacionDispositivosDeRed/InformacionDispositivosDeRed" >> $ruta_escritorio/InformacionDeRed.desktop
+                echo "Exec=bash $ruta_script/Megatools/InformacionDispositivosDeRed/InformacionDispositivosDeRed" >> $ruta_escritorio/InformacionDeRed.desktop
                 echo 'GenericName[es_ES]=' >> $ruta_escritorio/InformacionDeRed.desktop
                 echo 'GenericName=' >> $ruta_escritorio/InformacionDeRed.desktop
                 echo "Icon=$ruta_script/Megatools/Icono/megatools.ico" >> $ruta_escritorio/InformacionDeRed.desktop
@@ -185,7 +185,7 @@ do
                 echo 'Name=Informacion De Dispostitivos De Red' >> $ruta_escritorio/InformacionDeRed.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/InformacionDeRed.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/InformacionDeRed.desktop
-                echo 'Terminal=false' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'Terminal=true' >> $ruta_escritorio/InformacionDeRed.desktop
                 echo 'TerminalOptions=' >> $ruta_escritorio/InformacionDeRed.desktop
                 echo 'Type=Application' >> $ruta_escritorio/InformacionDeRed.desktop
                 echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/InformacionDeRed.desktop
