@@ -184,6 +184,11 @@ do
 
         "Genymotion")
             $navegador https://www.genymotion.com/download/ &>/dev/null
+            if [ -f $ruta_descargas/genymotion*.bin ]; then
+                echo "existe"
+            else
+                zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No existe el paquete genymotion su instalacion." --width=400
+            fi
             ;;
 
         "VirtualBox")
