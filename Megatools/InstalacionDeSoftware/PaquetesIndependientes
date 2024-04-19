@@ -153,6 +153,7 @@ do
     --width=300 --height=200 \
     --cancel-label="Atras" \
     --ok-label="Descargar" \
+    --extra-button="Borrar paquetes descargos"
     --extra-button="Instalar paquetes deb" \
     --width=950 \
     --height=650 \
@@ -202,6 +203,17 @@ do
 
         "TeamViewer")
             $navegador https://www.teamviewer.com/es/download/linux/ &>/dev/null
+            ;;
+
+        "Borrar paquetes descargos")
+            if [ $existen_deb = "si" ]; then
+                zenity --question --title="Instalacion de Paquetes Independientes - MegaTools" --text="Listado de paquetes en la carpeta descargas:\n\n$listado_paquetes\n\n¿Desea borrar todos los paquetes descagados" --width=500 --ok-label="Aceptar" --cancel-label="Cancelar"
+                if [ $? = 0 ]; then
+                    rm $ruta_descargas/*.deb
+                fi
+            else
+                zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No existen paquetes *.deb para borrar." --width=400
+            fi
             ;;
 
         "Instalar paquetes deb")
