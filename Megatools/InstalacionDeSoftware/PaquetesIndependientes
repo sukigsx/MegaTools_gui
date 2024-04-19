@@ -153,7 +153,7 @@ do
     --width=300 --height=200 \
     --cancel-label="Atras" \
     --ok-label="Descargar" \
-    --extra-button="Borrar paquetes descargos"
+    --extra-button="Borrar paquetes descargos" \
     --extra-button="Instalar paquetes deb" \
     --width=950 \
     --height=650 \
