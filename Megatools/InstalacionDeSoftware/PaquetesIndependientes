@@ -115,9 +115,7 @@ do
 
         "vivaldi-stable")
             comprobar_navegador
-            breaksudo dpkg -i /home/$(whoami)/Descargas/*.deb;
-            sudo apt-get -f -y install;
-            sudo rm /home/$(whoami)/Descargas/*.deb;
+            break
             ;;
 
         "Ayuda")
