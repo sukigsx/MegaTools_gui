@@ -13,10 +13,11 @@ fi
 if [ $(which ifconfig) ]; then
     echo ""
 else
-    zenity --error --title="Informacion de dispositivos de red. - MegaTools -" --text="No dispones del paquete net-tools en tu sistema.\n\nPuedes instalarlo de estas formas:\n - Con MegaTools en la secion Instalacion de software/Para tu terminal\n- Con una terminal, comando = sudo apt install net-tools."
+    zenity --error --title="Informacion de dispositivos de red. - MegaTools -" --text="No dispones del paquete net-tools en tu sistema.\n\nPuedes instalarlo de estas formas:\n -Con MegaTools en la secion Instalacion de software/Para tu terminal\n-Con una terminal, comando = sudo apt install net-tools."
     exit
 fi
 
+echo -e "Comando: ifconfig -s\n" > /tmp/InfoDispositivosDeRed; ifconfig -s >> /tmp/InfoDispositivosDeRed; echo -e "\nInformacion de dispositivos de red finalizado." >> /tmp/InfoDispositivosDeRed
 
 while :
 do
