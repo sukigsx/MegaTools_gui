@@ -100,7 +100,7 @@ do
                 echo 'Name=Informacion General' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
-                echo 'Terminal=true' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
+                echo 'Terminal=false' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'TerminalOptions=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'Type=Application' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
                 echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/InformacionGeneral_Megatools.desktop
@@ -123,7 +123,7 @@ do
                 echo 'Name=Informacion De Ips' >> $ruta_escritorio/InformacionIps.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/InformacionIps.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/InformacionIps.desktop
-                echo 'Terminal=true' >> $ruta_escritorio/InformacionIps.desktop
+                echo 'Terminal=false' >> $ruta_escritorio/InformacionIps.desktop
                 echo 'TerminalOptions=' >> $ruta_escritorio/InformacionIps.desktop
                 echo 'Type=Application' >> $ruta_escritorio/InformacionIps.desktop
                 echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/InformacionIps.desktop
@@ -146,7 +146,7 @@ do
                 echo 'Name=Informacion De Discos' >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/InformacionDeDiscos.desktop
-                echo 'Terminal=true' >> $ruta_escritorio/InformacionDeDiscos.desktop
+                echo 'Terminal=false' >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo 'TerminalOptions=' >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo 'Type=Application' >> $ruta_escritorio/InformacionDeDiscos.desktop
                 echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/InformacionDeDiscos.desktop
@@ -169,7 +169,7 @@ do
                 echo 'Name=Informacion De Ram' >> $ruta_escritorio/InformacionDeRam.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/InformacionDeRam.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/InformacionDeRam.desktop
-                echo 'Terminal=true' >> $ruta_escritorio/InformacionDeRam.desktop
+                echo 'Terminal=false' >> $ruta_escritorio/InformacionDeRam.desktop
                 echo 'TerminalOptions=' >> $ruta_escritorio/InformacionDeRam.desktop
                 echo 'Type=Application' >> $ruta_escritorio/InformacionDeRam.desktop
                 echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/InformacionDeRam.desktop
@@ -192,7 +192,7 @@ do
                 echo 'Name=Informacion De Dispostitivos De Red' >> $ruta_escritorio/InformacionDeRed.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/InformacionDeRed.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/InformacionDeRed.desktop
-                echo 'Terminal=true' >> $ruta_escritorio/InformacionDeRed.desktop
+                echo 'Terminal=false' >> $ruta_escritorio/InformacionDeRed.desktop
                 echo 'TerminalOptions=' >> $ruta_escritorio/InformacionDeRed.desktop
                 echo 'Type=Application' >> $ruta_escritorio/InformacionDeRed.desktop
                 echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/InformacionDeRed.desktop

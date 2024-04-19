@@ -13,60 +13,10 @@ fi
 if [ $(which ifconfig) ]; then
     echo ""
 else
-    zenity --question --title="Informacion de dispositivos de red. - MegaTools -" --text="Se necesita el paquete net-tools. ¿ Quieres instalarlo ?" --cancel-label="No" --ok-label="Si" --width=300
-    if [ $? -eq 1 ]; then
-        exit 0
-    fi
-
-    # Inicializar el contador de intentos
-    attempts=0
-
-    # Bucle para solicitar la contraseña hasta tres intentos
-    while [ $attempts -lt 3 ]; do
-        # Solicitar la contraseña del usuario actual utilizando Zenity
-        PASSWORD=$(zenity --entry --hide-text --text="Ingrese tu contraseña" --title="Contraseña de usuario. - MegaTools -" --width=450 --height=100)
-
-        # Verificar si se ha cancelado la entrada de la contraseña
-        if [ $? -ne 0 ]; then
-            # Salir del script si se ha cancelado
-            exit
-        fi
-
-        # Verificar la contraseña utilizando el comando sudo
-        echo "$PASSWORD" | sudo -S ls /root >/dev/null 2>&1
-
-        # Verificar el código de salida del comando sudo
-        if [ $? -eq 0 ]; then
-            # Contraseña correcta
-            zenity --info --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es correcta." --timeout=2
-            break
-        else
-            # Contraseña incorrecta
-            let "attempts+=1"
-            if [ $attempts -lt 3 ]; then
-                zenity --error --title="" --text="La contraseña es incorrecta. Inténtelo de nuevo." --timeout=5
-            else
-                zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Saliendo del script." --timeout=5
-                exit
-            fi
-        fi
-    done
-
-    conexion
-    if [ "$var_conexion" = "SI" ]
-    then
-        (echo -e "Comando: sudo apt install net-tools -y\n"; sudo apt install net-tools -y 2>/dev/null; echo -e "\nIntslacion Terminada") | zenity --text-info --title="Instalando net-tools. - MegaTools" --cancel-label="Atras" --ok-label="Listo" --width=650 --height=350 --auto-scroll
-        if [ $? -eq 1 ]; then
-            exit 0
-        fi
-
-    else
-        zenity --error --title="Instalando net-tools. - MegaTools -" --text="No se puede instalas las net-tools sin conexion a internet."
-        exit
-    fi
+    zenity --error --title="Informacion de dispositivos de red. - MegaTools -" --text="No dispones del paquete net-tools en tu sistema.\n\nPuedes instalarlo de estas formas:\n - Con MegaTools en la secion Instalacion de software/Para tu terminal\n- Con una terminal, comando = sudo apt install net-tools."
+    exit
 fi
 
-echo -e "Comando: ifconfig -s\n" > /tmp/InfoDispositivosDeRed; ifconfig -s >> /tmp/InfoDispositivosDeRed; echo -e "\nInformacion de dispositivos de red finalizado." >> /tmp/InfoDispositivosDeRed
 
 while :
 do
