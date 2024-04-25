@@ -1,4 +1,5 @@
 #!/bin/bash
+ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 
 # Ejecutar el comando df -h y guardar la salida en una variable
 echo -e "Comando: df -h\n" > /tmp/discos; df -h >> /tmp/discos; echo -e "\nFinalizada la informacion.\n" >> /tmp/discos
@@ -20,20 +21,22 @@ opcion=$(zenity --text-info --filename=/tmp/discos --title="Informacion de disco
             ;;
 
         *)
-            if [ $? = "1" ]; then
-                # Leer el PID del archivo para matar el script pricipal
-                uno_pid=$(</tmp/ProcesoPidDeMegatools)
+            enity --info --text="$ruta_ejecucion" --title="Informacion de discos. - MegaTools -"
+            echo
+            #if [ $? = "1" ]; then
+            #    # Leer el PID del archivo para matar el script pricipal
+            #    uno_pid=$(</tmp/ProcesoPidDeMegatools)
 
-                # Matar el proceso de uno.sh
-                kill $uno_pid
-                rm /tmp/ProcesoPidDeMegatools
-                rm /tmp/discos
-                exit
-            else
-                rm /tmp/ProcesoPidDeMegatools
-                rm /tmp/discos
-                exit
-            fi
+            #    # Matar el proceso de uno.sh
+            #    kill $uno_pid
+            #    rm /tmp/ProcesoPidDeMegatools
+            #    rm /tmp/discos
+            #    exit
+            #else
+            #    rm /tmp/ProcesoPidDeMegatools
+            #    rm /tmp/discos
+            #    exit
+            #fi
         ;;
     esac
 done
