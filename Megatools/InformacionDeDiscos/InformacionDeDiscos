@@ -21,22 +21,20 @@ opcion=$(zenity --text-info --filename=/tmp/discos --title="Informacion de disco
             ;;
 
         *)
-            zenity --info --text="$ruta_ejecucion" --title="Informacion de discos. - MegaTools -"
-            echo
-            #if [ $? = "1" ]; then
-            #    # Leer el PID del archivo para matar el script pricipal
-            #    uno_pid=$(</tmp/ProcesoPidDeMegatools)
+            if [ $? = "1" ]; then
+                # Leer el PID del archivo para matar el script pricipal
+                uno_pid=$(</tmp/ProcesoPidDeMegatools)
 
-            #    # Matar el proceso de uno.sh
-            #    kill $uno_pid
-            #    rm /tmp/ProcesoPidDeMegatools
-            #    rm /tmp/discos
-            #    exit
-            #else
-            #    rm /tmp/ProcesoPidDeMegatools
-            #    rm /tmp/discos
-            #    exit
-            #fi
+                # Matar el proceso de uno.sh
+                kill $uno_pid
+                rm /tmp/ProcesoPidDeMegatools
+                rm /tmp/discos
+                exit
+            else
+                rm /tmp/ProcesoPidDeMegatools
+                rm /tmp/discos
+                exit
+            fi
         ;;
     esac
 done
