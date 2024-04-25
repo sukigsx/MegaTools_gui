@@ -21,7 +21,7 @@ opcion=$(zenity --text-info --filename=/tmp/discos --title="Informacion de disco
             ;;
 
         *)
-            enity --info --text="$ruta_ejecucion" --title="Informacion de discos. - MegaTools -"
+            zenity --info --text="$ruta_ejecucion" --title="Informacion de discos. - MegaTools -"
             echo
             #if [ $? = "1" ]; then
             #    # Leer el PID del archivo para matar el script pricipal
