@@ -203,7 +203,10 @@ do
                     if [ $? = 1 ]; then
                         kill $pid >/dev/null 2>&1
                         #borra el puto fichero de log que crea wget si cancelas la descarga
-                        rm $ruta_ejecucion/wget-log
+                        cd $ruta_ejecucion
+                        cd ..
+                        cd ..
+                        rm wget-log
                     fi
                     sleep 1
                 done
