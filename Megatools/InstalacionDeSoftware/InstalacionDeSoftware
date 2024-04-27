@@ -191,7 +191,6 @@ do
 
                 #cargamos en segundo plano la ejecucion de instalacion de software.
                 konsole -geometry 500x400+900+0 --noclose -e bash /tmp/software &
-                #konsole -e bash /tmp/software &
 
                 #creamos bucle que mientras este ejecutando el script software en segundo plano no sale del bucle
                 while ps -ef | grep "software" | grep -v grep >/dev/null 2>&1
@@ -201,7 +200,7 @@ do
                     zenity --question --text="- Puedes cancelar la instalacion.\n- Esperar a que termine y pulsar continuar." --title="Instalacion de software. - MegaTools" --cancel-label="Cancelar, la instalacion" --ok-label="Continuar"
 
                     if [ $? = 1 ]; then
-                        kill $pid
+                        kill $pid >/dev/null 2>&1
                     fi
                     sleep 1
                 done
