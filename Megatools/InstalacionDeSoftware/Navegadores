@@ -49,7 +49,7 @@ do
             "Google Chrome")
                 echo "#google-chrome" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
                 echo "rm /tmp/google* >/dev/null 2>&1" >> /tmp/software
-                echo 'wget -P /tmp --no-clobber https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb' >> /tmp/software
+                echo 'wget -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb --no-clobber' >> /tmp/software
                 echo 'sudo gdebi /tmp/google-chrome-stable_current_amd64.deb -n' >> /tmp/software
                 echo "rm /tmp/google-chrome-stable_current_amd64.deb" >> /tmp/software
                 echo "" >> /tmp/software
