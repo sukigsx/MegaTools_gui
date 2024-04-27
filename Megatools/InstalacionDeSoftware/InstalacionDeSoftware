@@ -67,7 +67,7 @@ rm /tmp/comprobacion 2>/dev/null
 
 #crea el fichero de instalacion de software
 echo 'echo -e "\n- ACTUALIZANDO REPOSITORIOS.- \n"' >> /tmp/software
-echo 'echo -e "\nIntroduce la password de usuario. \n"' >> /tmp/software
+echo 'echo -e "Introduce la password de usuario. \n"' >> /tmp/software
 echo 'sudo apt update' >> /tmp/software
 echo 'echo -e "\n- ACTUALIZACION DE REPOSITORIOS FINALIZADA. -"' >> /tmp/software
 echo 'echo ""' >> /tmp/software
