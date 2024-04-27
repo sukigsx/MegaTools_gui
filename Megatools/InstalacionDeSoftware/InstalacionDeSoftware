@@ -81,8 +81,6 @@ echo '    else' >> /tmp/comprobacion
 echo '        echo "$programa [ NO INSTALADO ]."' >> /tmp/comprobacion
 echo '    fi' >> /tmp/comprobacion
 echo 'done' >> /tmp/comprobacion
-echo "sudo rm /usr/bin/Tienda_AppImage.AppImage 2>/dev/null" >> /tmp/comprobacion
-echo "sudo rm /usr/bin/net-tools 2>/dev/null" >> /tmp/comprobacion
 
 while :
 do
@@ -190,11 +188,22 @@ do
                     rm /tmp/comprobacion 2>/dev/null
                     exit
                 fi
-                #le hemos dado a instalar y pregunta la password
-                password
 
-                #ejecuta el fichero de instalacion
-                (bash /tmp/software 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE INSTALACION DE SOFTWARE -") | zenity --text-info --width=600 --height=400 --title="Instalando software seleccionado. - MegaTools" --auto-scroll --font="DejaVu Sans Mono"
+                #cargamos en segundo plano la ejecucion de instalacion de software.
+                konsole -e bash /tmp/software &
+
+                #creamos bucle que mientras este ejecutando el script software en segundo plano no sale del bucle
+                while ps -ef | grep "software" | grep -v grep >/dev/null 2>&1
+                do
+                    pid=$(ps -ef | grep "software" | grep -v grep | awk '{print $2}')
+
+                    zenity --question --text="¿ Cancelar la instalacion ?" --title="este es el titulo" --cancel-label="Cancelar" --ok-label="Todo instalado, Continuar"
+
+                    if [ $? = 1 ]; then
+                        kill $pid
+                    fi
+                    sleep 1
+                done
 
                 #verifica el software que se ha instalado
                 (echo -e "\n - VERIFICACION DEL SOFTWARE INSTALADO -\n"; bash /tmp/comprobacion 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE VERIFICACION -") | zenity --text-info --width=600 --height=400 --title="Verificacion de software. - MegaTools" --auto-scroll
