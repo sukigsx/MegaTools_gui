@@ -53,7 +53,7 @@ do
                 echo 'wget -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb' >> /tmp/software
                 echo 'sudo gdebi /tmp/google-chrome-stable_current_amd64.deb -n' >> /tmp/software
                 echo "rm /tmp/google-chrome-stable_current_amd64.deb" >> /tmp/software
-                echo "rm /tmp/wget-log" >> /tmp/software
+                echo "rm /tmp/wget-*" >> /tmp/software
                 echo "" >> /tmp/software
                 echo "google-chrome-stable" >> /tmp/ComprobarSoftware
                 ;;
