@@ -31,7 +31,7 @@ do
 
     # Verificar si no se seleccionó ninguna opción
     if [ -z "$selection" ]; then
-        zenity --error --title="Instalacion de Utilidades - MegaTools -" --text="No has seleccionado ningun Juego." --width=300
+        zenity --error --title="Instalacion de Juegos - MegaTools -" --text="No has seleccionado ningun Juego." --width=300
     else
         echo ""
     fi

@@ -38,7 +38,7 @@ do
 
     # Verificar si no se seleccionó ninguna opción
     if [ -z "$selection" ]; then
-        zenity --error --title="Instalacion de Navegadores - MegaTools -" --text="No has seleccionado ningun Navegador." --width=300
+        zenity --error --title="Instalacion de Audio-Video - MegaTools -" --text="No has seleccionado ningun software de audio-video." --width=300
     else
         echo ""
     fi

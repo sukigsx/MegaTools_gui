@@ -35,7 +35,7 @@ do
 
     # Verificar si no se seleccionó ninguna opción
     if [ -z "$selection" ]; then
-        zenity --error --title="Instalacion de Utilidades - MegaTools -" --text="No has seleccionado ningun gestor de paquetes." --width=300
+        zenity --error --title="Instalacion de Gestores de Paquetes - MegaTools -" --text="No has seleccionado ningun Gestor de Paquetes." --width=300
     else
         echo ""
     fi

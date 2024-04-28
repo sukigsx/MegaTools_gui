@@ -35,7 +35,7 @@ do
 
     # Verificar si no se seleccionó ninguna opción
     if [ -z "$selection" ]; then
-        zenity --error --title="Instalacion de Utilidades - MegaTools -" --text="No has seleccionado ningun software de discos y unidades." --width=300
+        zenity --error --title="Instalacion de software Discos - MegaTools -" --text="No has seleccionado ningun software de Discos." --width=300
     else
         echo ""
     fi

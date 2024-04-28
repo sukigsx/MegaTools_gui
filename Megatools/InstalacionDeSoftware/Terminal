@@ -43,7 +43,7 @@ do
 
     # Verificar si no se seleccionó ninguna opción
     if [ -z "$selection" ]; then
-        zenity --error --title="Instalacion de Utilidades - MegaTools -" --text="No has seleccionado ningun software de terminal." --width=300
+        zenity --error --title="Instalacion de Utilidades para Terminal - MegaTools -" --text="No has seleccionado ninguna Utilidad de Terminal." --width=400
     else
         echo ""
     fi

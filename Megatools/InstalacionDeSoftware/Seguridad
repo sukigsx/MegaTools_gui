@@ -32,7 +32,7 @@ do
 
     # Verificar si no se seleccionó ninguna opción
     if [ -z "$selection" ]; then
-        zenity --error --title="Instalacion de Utilidades - MegaTools -" --text="No has seleccionado ningun software de seguridad." --width=300
+        zenity --error --title="Instalacion de software de Seguridad - MegaTools -" --text="No has seleccionado ningun software de seguridad." --width=400
     else
         echo ""
     fi

@@ -25,7 +25,7 @@ fi
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
-    selection=$(zenity --list --title="Instalar entornos Graficos de Linux. - MegaTools" \
+    selection=$(zenity --list --title="Instalar Entornos Graficos de Linux. - MegaTools" \
     --text="\nSoftware disponible para entornos graficos linux.\n" \
     --checklist --column="Marca una o varias casillas para instalar" --column="Entorno graficos" --column="Descripcion." \
     --width=300 --height=200 \
@@ -48,7 +48,7 @@ do
 
     # Verificar si no se seleccionó ninguna opción
     if [ -z "$selection" ]; then
-        zenity --error --title="Instalacion de Utilidades - MegaTools -" --text="No has seleccionado ninguna Utilidad." --width=300
+        zenity --error --title="Instalacion de Entorno Graficos Linux - MegaTools -" --text="No has seleccionado ninguna Utilidad." --width=400
     else
         echo ""
     fi
