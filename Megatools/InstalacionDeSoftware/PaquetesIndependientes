@@ -222,7 +222,6 @@ do
 
         "Instalar paquetes deb")
             # Verificar si existen archivos *.deb en la carpeta Descargas
-            password
             if [ $existen_deb = "si" ]; then
                 #borra por si hay restos de InstalarPaquetesDeb
                 rm $ruta_descargas/InstalarPaquetesDeb > /dev/null 2>&1
@@ -239,21 +238,6 @@ do
 
                 #cargamos en segundo plano la ejecucion de instalacion de software.
                 konsole -geometry 500x400+900+0 --noclose -e bash $ruta_descargas/InstalarPaquetesDeb &
-
-                #creamos bucle que mientras este ejecutando el script software en segundo plano no sale del bucle
-                #while ps -ef | grep "InstalarPaquetesDeb" | grep -v grep >/dev/null 2>&1
-                #do
-                #    pid=$(ps -ef | grep "InstalarPaquetesDeb" | grep -v grep | awk '{print $2}')
-
-                #    zenity --question --text="- Puedes cancelar la instalacion.\n- Esperar a que termine y pulsar continuar." --title="Instalacion de software. - MegaTools" --cancel-label="Cancelar, la instalacion" --ok-label="Continuar"
-
-                #    if [ $? = 1 ]; then
-                #        kill $pid >/dev/null 2>&1
-                #    fi
-                #    sleep 1
-                #done
-
-
 
             else
                 zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No existen paquetes *.deb para su instalacion." --width=400
