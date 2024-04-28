@@ -138,7 +138,7 @@ do
     # Mostrar el menú de selección utilizando Zenity
     listado_paquetes_descargados
     selection=$(zenity --list --title="Instalacion de Paquetes Independientes. - MegaTools" \
-    --text="\n Forma de instalacion de los paquetes independientes de paquetes independientes.\n \
+    --text="\n Forma de instalacion de los paquetes independientes.\n \
     \n - Selecciona el software que te interese. Y le das al boton Descargar. \
     \n - Se abrira el navegador que hayas seleccionado anteriormente, en la pagina para descargar el paquete deb.\
     \n - Descargalo en la carpeta DESCARGAS (Si no esta en esa ruta, NO lo encontrar para su instalacion).\
