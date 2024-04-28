@@ -253,8 +253,7 @@ do
                 #    sleep 1
                 #done
 
-                #borramos el fichero de InstalarPaquetesDeb
-                rm $ruta_descargas/InstalarPaquetesDeb > /dev/null 2>&1
+
 
             else
                 zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No existen paquetes *.deb para su instalacion." --width=400
@@ -271,4 +270,5 @@ do
             ;;
     esac
 done
-
+#borramos el fichero de InstalarPaquetesDeb
+rm $ruta_descargas/InstalarPaquetesDeb > /dev/null 2>&1
