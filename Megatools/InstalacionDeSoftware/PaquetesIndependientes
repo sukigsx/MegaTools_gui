@@ -198,7 +198,8 @@ do
                 echo 'echo ""' >> /tmp/geny
                 echo 'echo "Instalacion de GenyMotion = ok"' >> /tmp/geny
                 echo 'echo ""' >> /tmp/geny
-                echo "sleep 2" >> /tmp/geny
+                echo 'echo "Pulsa en continuar"' >> /tmp/geny
+                echo "sleep 3" >> /tmp/geny
                 konsole -geometry 800x500+0+0 -e bash /tmp/geny &
 
                 #creamos bucle que mientras este ejecutando el script software en segundo plano no sale del bucle
