@@ -181,15 +181,25 @@ do
         "Genymotion")
             $navegador https://www.genymotion.com/download/ &>/dev/null
             if [ -f $ruta_descargas/genymotion*.bin ]; then
-                password
-                if [ -f $ruta_descargas/genymotion*.bin ]; then
-                    (sudo chmod 777 $ruta_descargas/genymotion*.bin; sudo $ruta_descargas/genymotion*.bin -y; rm $ruta_descargas/geny*.bin) | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Empezar de nuevo" --ok-label="Instalar"
-                else
-                    zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No existe el paquete Genymotion para su instalacion." --width=400
-                fi
-            else
-                zenity --error --title="Instalacion de Paquetes Independientes - MegaTools -" --text=" No existe el paquete genymotion su instalacion." --width=400
-            fi
+                #crea el fichero de instalacion geny
+                echo 'sudo chmod 777 $ruta_descargas/genymotion*.bin' >> /tmp/geny
+                echo 'sudo ./$ruta_descargas/genymotion*.bin -y' >> /tmp/geny
+                echo 'rm $ruta_descargas/geny*.bin' >> /tmp/geny
+
+                konsole -geometry 800x500+0+0 -e bash /tmp/geny &
+
+                #creamos bucle que mientras este ejecutando el script software en segundo plano no sale del bucle
+                while ps -ef | grep "geny" | grep -v grep >/dev/null 2>&1
+                do
+                    pid=$(ps -ef | grep "geny" | grep -v grep | awk '{print $2}')
+
+                    zenity --question --text="- Puedes cancelar la instalacion.\n- Esperar a que termine y pulsar continuar." --title="Instalacion de software. - MegaTools" --cancel-label="Cancelar, la instalacion" --ok-label="Continuar"
+
+                    if [ $? = 1 ]; then
+                        kill $pid >/dev/null 2>&1
+                    fi
+                    sleep 1
+                done
             ;;
 
         "VirtualBox")
