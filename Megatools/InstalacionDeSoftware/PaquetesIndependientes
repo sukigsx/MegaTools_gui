@@ -195,7 +195,10 @@ do
                 echo "sudo chmod 777 $ruta_descargas/genymotion*.bin" >> /tmp/geny
                 echo "sudo $ruta_descargas/genymotion*.bin -y" >> /tmp/geny
                 echo "rm $ruta_descargas/geny*.bin" >> /tmp/geny
-
+                echo 'echo ""' >> /tmp/geny
+                echo 'echo "Instalacion de GenyMotion = ok"' >> /tmp/geny
+                echo 'echo ""' >> /tmp/geny
+                echo 'echo "sleep 2"' >> /tmp/geny
                 konsole -geometry 800x500+0+0 -e bash /tmp/geny &
 
                 #creamos bucle que mientras este ejecutando el script software en segundo plano no sale del bucle
