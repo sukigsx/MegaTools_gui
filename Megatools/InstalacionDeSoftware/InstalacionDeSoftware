@@ -179,7 +179,7 @@ do
                 awk '!seen[$0]++' /tmp/ComprobarSoftware > /tmp/ComprobarSoftware_duplicados
                 mv /tmp/ComprobarSoftware_duplicados /tmp/ComprobarSoftware
 
-                (echo -e "\nEste es tu software para instalar\n"; grep '^#' /tmp/software | sed 's/^#/- /') | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --extra-button="Atras, sin borrar selecciones" --cancel-label="Cancelar, Empezar de nuevo" --ok-label="Instalar"
+                (echo -e "\nEste es tu software para instalar\n"; grep '^#' /tmp/software | sed 's/^#/- /') | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Empezar de nuevo" --ok-label="Instalar"
 
                 #comprueba si le damos a cancelar si es asi, sale del script al anterior
                 if [ $? = 1 ]; then
