@@ -4,4 +4,56 @@
 | |  | |  __/ (_| | (_| || | (_) | (_) | \__ \
 |_|  |_|\___|\__, |\__,_||_|\___/ \___/|_|___/
              |___/
-ayuda principal megatools
+
+
+             INFORMACION GENERAL
+Esta utilidad presenta un menú interactivo utilizando Zenity, una herramienta para crear interfaces gráficas en shell scripts. Aquí está la descripción de cómo funciona:
+
+Menú Principal: El script muestra un menú con varias opciones organizadas en dos secciones: "UTILIDADES PARA EL SISTEMA" e "INFORMACION DE TU SISTEMA".
+
+Contenido del Menú: Cada opción del menú está asociada a una tarea específica que el usuario puede realizar. Por ejemplo:
+    "Crear lanzadores": Permite al usuario crear o borrar lanzadores en el escritorio.
+    "Instalacion de software": Ejecuta un script para instalar programas en el sistema.
+    "Informacion general": Proporciona información importante del sistema.
+    "Web Sukigsx": Abre una ventana del navegador con la página web del diseñador del programa.
+    "Ayuda": Muestra información de ayuda sobre el uso del programa.
+
+Interacción del Usuario:
+El usuario puede seleccionar una opción del menú haciendo clic en ella. Dependiendo de la opción seleccionada, se ejecuta una tarea específica.
+
+Manejo de Opciones:
+El script utiliza un bucle infinito (while :) para mantener el menú visible hasta que el usuario decida salir. Se utiliza zenity --list para mostrar el menú y capturar la opción seleccionada por el usuario.
+
+Gestión de Acciones:
+Según la opción seleccionada, se ejecuta un bloque de código correspondiente utilizando una estructura case. Por ejemplo, si el usuario elige "Crear lanzadores", se ejecuta un script para manejar esta tarea específica.
+
+Salida del Programa:
+El usuario puede elegir salir del programa en cualquier momento seleccionando la opción "Salir" o cerrando la ventana. El script maneja esta salida con mensajes de confirmación para asegurarse de que el usuario realmente desea salir.
+
+En resumen, esta utilidad proporciona una forma conveniente para que el usuario interactúe con el programa seleccionando opciones del menú y realizando diferentes tareas relacionadas con la gestión del sistema y la obtención de información.
+
+        INFORMACION MAS DETALLADA
+Este código es un script de shell (bash) que parece ser una herramienta de automatización y gestión llamada "MegaTools". A continuación, te proporcionaré un resumen de lo que hace el código:
+
+Definición de variables:
+Se definen algunas variables al principio del script, como la versión del programa, el software necesario para su ejecución, y códigos de colores para mejorar la salida en la terminal.
+Funciones:
+Se definen varias funciones que realizan tareas específicas:
+    conexion: Comprueba si hay conexión a Internet.
+    software_necesario_zenity: Verifica y, si es necesario, instala el software necesario utilizando la interfaz gráfica de Zenity.
+    software_necesario: Similar a la función anterior, pero realiza la verificación e instalación del software necesario en la terminal.
+    software_necesario_sino: Recorre el software para comprobar si está instalado.
+    actualizar_script: Actualiza el script desde un repositorio remoto si hay una nueva versión disponible.
+    comprobar_actualizacion_sino: Comprueba si hay una actualización disponible del script.
+
+Lógica principal:
+Se comprueba si el software necesario está instalado. Si no lo está, se verifica la conexión a Internet y se intenta instalar utilizando diferentes métodos dependiendo de si se tiene Zenity disponible o no.
+Si hay una conexión a Internet y el software está instalado, se verifica si hay una actualización del script. Si hay una actualización disponible, se descarga y se reemplaza el script actual.
+Luego, se muestra un menú principal utilizando Zenity que proporciona opciones para diferentes funciones del programa, como la instalación de software, la creación de lanzadores, y la obtención de información del sistema.
+Dependiendo de la opción seleccionada en el menú, se ejecutan diferentes partes del script para realizar las tareas correspondientes.
+
+Interfaz de usuario:
+Se utiliza Zenity para proporcionar una interfaz de usuario gráfica para interactuar con el script. Esto incluye la presentación de mensajes, la selección de opciones del menú y la visualización de información.
+
+En resumen:
+El script es una herramienta que automatiza varias tareas relacionadas con la gestión de software, la verificación de actualizaciones y la obtención de información del sistema, todo ello presentado en una interfaz gráfica para una mejor experiencia del usuario.
