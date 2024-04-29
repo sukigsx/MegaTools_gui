@@ -13,7 +13,7 @@ fi
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
-    selection=$(zenity --list --title="Instalacion de Audio-Video. - MegaTools" \
+    selection=$(zenity --list --title="Instalacion de Audio-Video. - MegaTools -" \
     --text="\nSoftware disponible para edicion y visionado de multimedia en general, para entornos linux.\n" \
     --checklist --column="Marca una o varias casillas para instalar" --column="Nombre del navegador" --column="Descripcion." \
     --width=300 --height=200 \
@@ -25,7 +25,7 @@ do
     FALSE "Spotify" "Plataforma de musica, Requiere Snap." \
     FALSE "Digikam" "Organizador de imágenes y editor de etiquetas." \
     FALSE "Simple scan" "Software para tu escaner." \
-    FALSE "Handbrake" "Navegador para internet." \
+    FALSE "Handbrake" "Editor de video." \
     FALSE "Shotwell" "Organizador de imágenes." \
     FALSE "Skanlite" "Software para tu escaner." \
     FALSE "krita" "Es un estudio de arte digital completo." \
@@ -38,7 +38,7 @@ do
 
     # Verificar si no se seleccionó ninguna opción
     if [ -z "$selection" ]; then
-        zenity --error --title="Instalacion de Audio-Video - MegaTools -" --text="No has seleccionado ningun software de audio-video." --width=300
+        zenity --error --title="Instalacion de Audio-Video - MegaTools -" --text="No has seleccionado ningun software de Audio-Video." --width=300
     else
         echo ""
     fi

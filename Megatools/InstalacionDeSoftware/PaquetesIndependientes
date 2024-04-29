@@ -66,7 +66,7 @@ fi
 while :
 do
     # selecciona el navegador preferido
-    navegador=$(zenity --list --title="Instalacion de Paquetes Independientes. - MegaTools" \
+    navegador=$(zenity --list --title="Instalacion de Paquetes Independientes. - MegaTools -" \
     --text="\n Forma de instalacion de los paquetes independientes.\n \
     \n Selecciona un navegador. \
     \n \
@@ -137,11 +137,11 @@ while :
 do
     # Mostrar el menú de selección utilizando Zenity
     listado_paquetes_descargados
-    selection=$(zenity --list --title="Instalacion de Paquetes Independientes. - MegaTools" \
+    selection=$(zenity --list --title="Instalacion de Paquetes Independientes. - MegaTools -" \
     --text="\n Forma de instalacion de los paquetes independientes.\n \
     \n - Selecciona el software que te interese. Y le das al boton Descargar. \
-    \n - Se abrira el navegador que hayas seleccionado anteriormente, en la pagina para descargar el paquete deb.\
-    \n - Descargalo en la carpeta DESCARGAS (Si no esta en esa ruta, NO lo encontrar para su instalacion).\
+    \n - Se abrira el navegador que hayas seleccionado anteriormente en la pagina para descargar el paquete deb.\
+    \n - Descargalo en la carpeta DESCARGAS (Si no esta en esa ruta, NO lo encontrara para su instalacion).\
     \n - Dale al boton Instalar y empezara el proceso de instalacion de todos los paquetes deb descargados en la carpeta DESCARGAS. \
     \n - Cuando termine se borraran todos los paquetes deb de la carpeta descargas.\
     \n \
@@ -160,9 +160,9 @@ do
     "Busqueda Libre" "Se abre el navegador $navegador en www.google.es para que busuqes manualmente tus paquetes deb." \
     "Franz" "Control de varias cuentas a la vez como google, telegram,etc." \
     "Debreate" "Construccion de paquetes deb." \
-    "Genymotion" "Emulador de Android en la nube y para PC con integraciones para marcos de prueba.(al dar a Descargar se instala solo)" \
+    "Genymotion" "Emulador de Android en la nube y para PC con integraciones para marcos de prueba. (al dar a Descargar se instala solo)" \
     "VirtualBox" "Sostware gratuito para crear maquinas virtuales." \
-    "Script de Sukigsx" "Instalador de scripts de Sukigsx.(al dar a Descargar se instala solo)" \
+    "Script de Sukigsx" "Instalador de scripts de Sukigsx. (al dar a Descargar se instala solo)" \
     "TeamViewer" "Control remoto de pc's, tablets y moviles." \
     )
 
@@ -202,7 +202,7 @@ do
             bash instalar.sh
             cd ..
             sudo rm -r ejecutar_scripts
-            zenity --info --title="Instalacion de Paquetes Independientes - MegaTools" --text="Script de sukigsx, Instalado correctamente.\n\n Forma de jecucion::\n Abre una terminal y escribe (scripts)" --timeout=10 --width=400
+            zenity --info --title="Instalacion de Paquetes Independientes - MegaTools -" --text="Script de sukigsx, Instalado correctamente.\n\n Forma de jecucion::\n Abre una terminal y escribe (scripts)" --timeout=10 --width=400
             ;;
 
         "TeamViewer")
@@ -211,7 +211,7 @@ do
 
         "Borrar paquetes descargos")
             if [ $existen_deb = "si" ]; then
-                zenity --question --title="Instalacion de Paquetes Independientes - MegaTools" --text="Listado de paquetes en la carpeta descargas:\n\n$listado_paquetes\n\n¿Desea borrar todos los paquetes descagados?" --width=500 --ok-label="Aceptar" --cancel-label="Cancelar"
+                zenity --question --title="Instalacion de Paquetes Independientes - MegaTools -" --text="Listado de paquetes en la carpeta descargas:\n\n$listado_paquetes\n\n¿Desea borrar todos los paquetes descagados?" --width=500 --ok-label="Aceptar" --cancel-label="Cancelar"
                 if [ $? = 0 ]; then
                     rm $ruta_descargas/*.deb
                 fi

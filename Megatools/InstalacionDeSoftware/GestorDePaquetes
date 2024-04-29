@@ -13,7 +13,7 @@ fi
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
-    selection=$(zenity --list --title="Instalar gestor de paquetes. - MegaTools" \
+    selection=$(zenity --list --title="Instalar Gestor de paquetes. - MegaTools -" \
     --text="\nSoftware disponible para gestion de paquetes en entornos linux.\n" \
     --checklist --column="Marca una o varias casillas para instalar" --column="Gestores de paquetes" --column="Descripcion." \
     --width=300 --height=200 \
@@ -22,7 +22,7 @@ do
     --width=950 \
     --height=650 \
     FALSE "Gdebi" "Instala paquetes deb." \
-    FALSE "Synaptic" "interfaz gráfica, para el sistema de gestión de paquetes de Debian GNU/Linux.." \
+    FALSE "Synaptic" "interfaz gráfica, para el sistema de gestión de paquetes de Debian GNU/Linux." \
     FALSE "Snap" "Gestor de paquetes snap.(se añade a tu tienda de aplicaciones)" \
     FALSE "Flatpak" "Gestor de paquetes Flatpak.(se añadade a tu tienda de aplicaciones)" \
     FALSE "Appimage" "Gestor de paquetes Appimages." \

@@ -13,7 +13,7 @@ fi
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
-    selection=$(zenity --list --title="Instalar paquetes ofimaticos. - MegaTools" \
+    selection=$(zenity --list --title="Instalar paquetes ofimaticos. - MegaTools -" \
     --text="\nSoftware disponible de ofimatica para entornos linux.\n" \
     --checklist --column="Marca una o varias casillas para instalar" --column="Paquetes ofimaticos" --column="Descripcion." \
     --cancel-label="Atras" \

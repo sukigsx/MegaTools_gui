@@ -14,9 +14,9 @@ fi
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
-    selection=$(zenity --list --title="Instalar software para mensajeria en linux. - MegaTools" \
+    selection=$(zenity --list --title="Instalar software para Mensajeria en linux. - MegaTools -" \
     --text="\nSoftware disponible de mensajeria para entornos linux.\n" \
-    --checklist --column="Marca una o varias casillas para instalar" --column="software de mensajeria" --column="Descripcion." \
+    --checklist --column="Marca una o varias casillas para instalar" --column="Software de Mensajeria" --column="Descripcion." \
     --width=300 --height=200 \
     --cancel-label="Atras" \
     --ok-label="Aceptar" \

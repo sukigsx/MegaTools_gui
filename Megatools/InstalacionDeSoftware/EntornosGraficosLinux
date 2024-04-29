@@ -11,7 +11,7 @@ fi
 }
 
 # muestra una ventana de informacion informando de los riesgos si da atras se sale y si da aceptar continua
-respuesta=$(zenity --question --text="En linux se puedes instalar varios entornos graficos.\n\nPero pueden ser incompatibles entre ellos\nTenlo en cuenta.\n" --ok-label="Aceptar, Entiendo el riesgo" --cancel-label="Atrás" --title="Instalacion Entornos Graficos Linux - MegaTools")
+respuesta=$(zenity --question --text="En linux se puedes instalar varios entornos graficos.\n\nPero pueden ser incompatibles entre ellos\nTenlo en cuenta.\n" --ok-label="Aceptar, Entiendo el riesgo" --cancel-label="Atrás" --title="Instalacion Entornos Graficos Linux - MegaTools -")
 
 # Verificar qué botón se ha presionado
 if [ $? -eq 0 ]; then
@@ -25,9 +25,9 @@ fi
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
-    selection=$(zenity --list --title="Instalar Entornos Graficos de Linux. - MegaTools" \
-    --text="\nSoftware disponible para entornos graficos linux.\n" \
-    --checklist --column="Marca una o varias casillas para instalar" --column="Entorno graficos" --column="Descripcion." \
+    selection=$(zenity --list --title="Instalar Entornos Graficos de Linux. - MegaTools -" \
+    --text="\nEntornos Graficos para Linux disponibles.\n" \
+    --checklist --column="Marca una o varias casillas para instalar" --column="Entornos graficos" --column="Descripcion." \
     --width=300 --height=200 \
     --cancel-label="Atras" \
     --ok-label="Aceptar" \
@@ -48,7 +48,7 @@ do
 
     # Verificar si no se seleccionó ninguna opción
     if [ -z "$selection" ]; then
-        zenity --error --title="Instalacion de Entorno Graficos Linux - MegaTools -" --text="No has seleccionado ninguna Utilidad." --width=400
+        zenity --error --title="Instalacion de Entorno Graficos Linux - MegaTools -" --text="No has seleccionado ningun Entorno Grafico." --width=400
     else
         echo ""
     fi
