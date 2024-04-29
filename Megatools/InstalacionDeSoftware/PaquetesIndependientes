@@ -184,6 +184,7 @@ do
             if [ -f $ruta_descargas/genymotion*.bin ]; then
                 #crea el fichero de instalacion geny
                 rm /tmp/geny >/dev/null 2>&1
+                rm $ruta_descargas/geny*
                 echo 'sudo chmod 777 $ruta_descargas/genymotion*.bin' >> /tmp/geny
                 echo 'sudo ./$ruta_descargas/genymotion*.bin -y' >> /tmp/geny
                 echo 'rm $ruta_descargas/geny*.bin' >> /tmp/geny
