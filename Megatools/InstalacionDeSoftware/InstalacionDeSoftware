@@ -190,11 +190,6 @@ do
                     exit
                 fi
 
-                #comprueba si le hemos dado a atras sin borrar selecciones
-                if [ $? = "Atras, sin borrar selecciones" ]; then
-                    exit
-                fi
-
                 #cargamos en segundo plano la ejecucion de instalacion de software.
                 konsole -geometry 800x500+0+0 -e bash /tmp/software &
 
