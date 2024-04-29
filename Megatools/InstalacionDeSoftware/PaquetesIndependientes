@@ -199,7 +199,7 @@ do
                 echo 'echo "Instalacion de GenyMotion = ok"' >> /tmp/geny
                 echo 'echo ""' >> /tmp/geny
                 echo 'echo "Pulsa en continuar"' >> /tmp/geny
-                echo "sleep 3" >> /tmp/geny
+                echo "sleep 5" >> /tmp/geny
                 konsole -geometry 800x500+0+0 -e bash /tmp/geny &
 
                 #creamos bucle que mientras este ejecutando el script software en segundo plano no sale del bucle
@@ -226,7 +226,7 @@ do
             ;;
 
         "Script de Sukigsx")
-            git clone https://github.com/sukigsx/ejecutar_scripts.git /tmp/ejecutar_scripts/
+            git clone https://github.com/sukigsx/ejecutar_scripts.git /tmp/ejecutar_scripts/ >/dev/null 2>&1
             cd /tmp/ejecutar_scripts
             bash instalar.sh
             cd ..
