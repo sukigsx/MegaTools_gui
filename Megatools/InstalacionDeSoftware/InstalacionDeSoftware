@@ -191,7 +191,7 @@ do
                 fi
 
                 #cargamos en segundo plano la ejecucion de instalacion de software.
-                konsole -geometry 500x400+900+0 -e bash /tmp/software &
+                konsole -geometry 500x800+0+0 -e bash /tmp/software &
 
                 #creamos bucle que mientras este ejecutando el script software en segundo plano no sale del bucle
                 while ps -ef | grep "software" | grep -v grep >/dev/null 2>&1
@@ -202,8 +202,14 @@ do
 
                     if [ $? = 1 ]; then
                         kill $pid >/dev/null 2>&1
+                        rm /tmp/software 2>/dev/null
+                        rm /tmp/ComprobarSoftware 2>/dev/null
+                        rm /tmp/comprobacion 2>/dev/null
                     fi
                     sleep 1
+                    rm /tmp/software 2>/dev/null
+                    rm /tmp/ComprobarSoftware 2>/dev/null
+                    rm /tmp/comprobacion 2>/dev/null
                 done
 
                 #verifica el software que se ha instalado
