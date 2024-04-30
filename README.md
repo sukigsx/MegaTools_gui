@@ -152,8 +152,8 @@ Tambien hay que tener en cuenta que no todo el software se instala desde un .deb
 
 De dos maneras:
 
-1- Utilizando mi script de (ejecutar scripts) = git clone https://github.com/sukigsx/ejecutar_scripts.git
-2- Clonando el repositorio = git clone https://github.com/sukigsx/MegaTools_gui.git
+Utilizando mi script de (ejecutar scripts) = git clone https://github.com/sukigsx/ejecutar_scripts.git
+Clonando el repositorio = git clone https://github.com/sukigsx/MegaTools_gui.git
 
 ESPERO OS GUSTE................
 
