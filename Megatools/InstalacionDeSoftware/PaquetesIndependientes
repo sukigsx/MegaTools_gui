@@ -119,7 +119,7 @@ do
             ;;
 
         "Ayuda")
-            zenity --text-info --title="Ayuda, paquetes independientes - MegaTools -" --filename=$ruta_ejecucion/Megatools/AyudaPaquetesIndependientes --font="DejaVu Sans Mono" --width=650 --height=650
+            zenity --text-info --title="Ayuda, paquetes independientes - MegaTools -" --filename=$ruta_ejecucion/Megatools/AyudaPaquetesIndependientes --font="DejaVu Sans Mono" --width=800 --height=600
             ;;
 
         *)
