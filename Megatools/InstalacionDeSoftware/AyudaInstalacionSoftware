@@ -7,7 +7,8 @@
 
              INSTALACION DE SOFTWARE
 
-Este script es un instalador de software interactivo para sistemas Linux que utiliza Zenity para crear una interfaz gráfica de usuario. El script presenta al usuario una lista de categorías de software para elegir y luego ejecuta scripts específicos de cada categoría según la elección del usuario.
+Este script es un instalador de software interactivo para sistemas Linux que utiliza Zenity para crear una interfaz gráfica de usuario.
+El script presenta al usuario una lista de categorías de software para elegir y luego ejecuta scripts específicos de cada categoría según la elección del usuario.
 
 Aquí hay una descripción general de cómo funciona el script:
 
