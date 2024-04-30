@@ -1,20 +1,9 @@
-  __  __                 _____           _
-|  \/  | ___  __ _  __ |_   _|__   ___ | |___
-| |\/| |/ _ \/ _` |/ _` || |/ _ \ / _ \| / __|
-| |  | |  __/ (_| | (_| || | (_) | (_) | \__ \
-|_|  |_|\___|\__, |\__,_||_|\___/ \___/|_|___/
-             |___/
 
-    _                   _         ____       _            _             _
-   / \  _   _ _   _  __| | __ _  |  _ \ _ __(_)_ __   ___(_)_ __   __ _| |
-  / _ \| | | | | | |/ _` |/ _` | | |_) | '__| | '_ \ / __| | '_ \ / _` | |
- / ___ \ |_| | |_| | (_| | (_| | |  __/| |  | | | | | (__| | |_) | (_| | |
-/_/   \_\__, |\__,_|\__,_|\__,_| |_|   |_|  |_|_| |_|\___|_| .__/ \__,_|_|
-        |___/                                              |_|
+             - MEGATOOLS -
 
 
+INFORMACION GENERAL
 
-             INFORMACION GENERAL
 Esta utilidad presenta un menú interactivo utilizando Zenity, una herramienta para crear interfaces gráficas en shell scripts.
 Aquí está la descripción de cómo funciona:
 
@@ -81,19 +70,7 @@ Se utiliza Zenity para proporcionar una interfaz de usuario gráfica para intera
 En resumen:
 El script es una herramienta que automatiza varias tareas relacionadas con la gestión de software, la verificación de actualizaciones y la obtención de información del sistema, todo ello presentado en una interfaz gráfica para una mejor experiencia del usuario.
 
-
-         ___           _        _            _                   _
-        |_ _|_ __  ___| |_ __ _| | __ _  ___(_) ___  _ __     __| | ___
-         | || '_ \/ __| __/ _` | |/ _` |/ __| |/ _ \| '_ \   / _` |/ _ \
-         | || | | \__ \ || (_| | | (_| | (__| | (_) | | | | | (_| |  __/
-        |___|_| |_|___/\__\__,_|_|\__,_|\___|_|\___/|_| |_|  \__,_|\___|
-
-                   ____         __ _
-                  / ___|  ___  / _| |___      ____ _ _ __ ___
-                  \___ \ / _ \| |_| __\ \ /\ / / _` | '__/ _ \
-                   ___) | (_) |  _| |_ \ V  V / (_| | | |  __/
-                  |____/ \___/|_|  \__| \_/\_/ \__,_|_|  \___|
-
+    INSTALACION DE SOFTWARE
 
 Este script es un instalador de software interactivo para sistemas Linux que utiliza Zenity para crear una interfaz gráfica de usuario.
 El script presenta al usuario una lista de categorías de software para elegir y luego ejecuta scripts específicos de cada categoría según la elección del usuario.
@@ -137,19 +114,7 @@ Al final, el script elimina los archivos temporales utilizados durante el proces
 
 En resumen, este script proporciona una interfaz de usuario gráfica para seleccionar, instalar y verificar software en un sistema Linux. Es útil para simplificar el proceso de instalación de software para usuarios que prefieren una interfaz gráfica en lugar de trabajar en la línea de comandos.
 
-                                ____                        _
-                   |  _ \ __ _  __ _ _   _  ___| |_ ___  ___
-                   | |_) / _` |/ _` | | | |/ _ \ __/ _ \/ __|
-                   |  __/ (_| | (_| | |_| |  __/ ||  __/\__ \
-                   |_|   \__,_|\__, |\__,_|\___|\__\___||___/
-                                  |_|
-     ___           _                           _ _            _
-    |_ _|_ __   __| | ___ _ __   ___ _ __   __| (_) ___ _ __ | |_ ___  ___
-     | || '_ \ / _` |/ _ \ '_ \ / _ \ '_ \ / _` | |/ _ \ '_ \| __/ _ \/ __|
-     | || | | | (_| |  __/ |_) |  __/ | | | (_| | |  __/ | | | ||  __/\__ \
-    |___|_| |_|\__,_|\___| .__/ \___|_| |_|\__,_|_|\___|_| |_|\__\___||___/
-                         |_|
-
+      PAQUETES INDEPENDIENTES
 
 Este script maneja la instalación de paquetes .deb de forma interactiva y ofrece opciones para descargar, instalar y administrar dichos paquetes. Para ello primero tienes que seleccionar un navegador para poder cargar la paquina web de dicho paquete a instalar.
 Aquí está el resumen de las opciones en el menú:
@@ -182,4 +147,15 @@ En resumen, este script facilita la descarga, instalación y gestión de paquete
 
 Tambien hay que tener en cuenta que no todo el software se instala desde un .deb, en ocasiones hay que ejecutar un binario de instalacion o cosas similares, en esos casos el script decidira su forma de instalacion del mismo, el el menu de Paquetes independientes en la descripcion de informa de ello, como es el ejemplo de:
   Genymotion Emulador de Android en la nube y para PC con integraciones para marcos de prueba. (al dar a Descargar se instala solo)
+
+      INSTALACION
+
+De dos maneras:
+  1- Utilizando mi script de (ejecutar scripts)
+    git clone https://github.com/sukigsx/ejecutar_scripts.git
+
+  2- Clonando el repositorio
+    git clone https://github.com/sukigsx/MegaTools_gui.git
+
+ESPERO OS GUSTE................
 
