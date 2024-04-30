@@ -166,7 +166,7 @@ do
             ;;
 
         "Ayuda instalacion de software")
-            zenity --text-info --title="Ayuda - MegaTools -" --filename=$ruta_ejecucion/AyudaInstalacionSoftware --font="DejaVu Sans Mono" --width=800 --height=600
+            zenity --text-info --title="Ayuda - MegaTools -" --filename=$ruta_ejecucion/AyudaInstalacionSoftware --font="DejaVu Sans Mono" --width=1024 --height=600
             ;;
 
         "Ver software para instalar")
