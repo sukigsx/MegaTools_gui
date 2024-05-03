@@ -1,0 +1,253 @@
+#!/bin/bash
+
+conexion(){
+if ping -c1 google.com &>/dev/null
+then
+    var_conexion="SI"
+else
+    var_conexion="NO"
+    var_actualizado="No hay conexion a internet"
+fi
+}
+
+while :
+do
+    # Mostrar el menú de selección utilizando Zenity
+    selection=$(zenity --list --title="Instalar Utilidades. - MegaTools -" \
+    --text="\nSoftware disponible de utilidades para entornos linux.\n" \
+    --checklist --column="Marca una o varias casillas para instalar" --column="Utilidades" --column="Descripcion." \
+    --width=300 --height=200 \
+    --cancel-label="Atras" \
+    --ok-label="Aceptar" \
+    --width=950 \
+    --height=650 \
+    FALSE "Grub-customizer" "Modifica el gestor de arranque." \
+    FALSE "Cairo-Dock" "Crear paneles y lanzadores, muy personalizados." \
+    FALSE "Latte-dock" "Crear lanzadores, muy personalizados." \
+    FALSE "Tellico" "Crea tu base de datos de cd dvd libros etc." \
+    FALSE "KDE Connect" "Sincroniza tu movil con el pc." \
+    FALSE "Usuarios y Grupos" "Gestiona Usuarios y Grupos de modo grafico." \
+    FALSE "Gnome-online-accouns   " "Para poder sincronizar cuentas de google (drive)." \
+    FALSE "Kio gdrive" "Para poder sincronizar cuentas de google (drive) solo entornos KDE Plasma." \
+    FALSE "Ocamlfuse" "Otro para poder sincronizar cuentas de google (drive)." \
+    FALSE "Nemo" "Explorador de ficheos." \
+    FALSE "Systemback" "Utilidades para gestionar el sistema." \
+    FALSE "Deja-dup" "Copoa de seguridad de tus ficheros o sistema." \
+    FALSE "Transmision" "Gestor de descargas torrent." \
+    FALSE "Software-propietario" "Gestionar ppa y drives en modo grafico" \
+    FALSE "Joplin" "Software multiplataforma para tomar notas." \
+    FALSE "Keepass2" "Gestor de contraseñas." \
+    FALSE "GitHub-Desktop" "Sistema de control de versiones de GitHub de forma grafica." \
+    )
+
+    # Verificar si se presionó "Atras" en el diálogo de Zenity
+    if [ $? -eq 1 ]; then
+        exit 0
+    fi
+
+    # Verificar si no se seleccionó ninguna opción
+    if [ -z "$selection" ]; then
+        zenity --error --title="Instalacion de Utilidades - MegaTools -" --text="No has seleccionado ninguna Utilidad." --width=300
+    else
+        echo ""
+    fi
+
+
+    # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
+    IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
+    for option in "${selected_options[@]}"; do
+        case $option in
+            "Grub-customizer")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#grub-customizer" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo add-apt-repository -y deb http://archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse" >> /tmp/software
+                echo "sudo apt install grub-customizer -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "grub-customizer" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Cairo-Dock")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Cairo-dock" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install cairo-dock -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "cairo-dock" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Latte-dock")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Latte-dock" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install latte-dock -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "latte-dock" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Tellico")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Tellico" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install tellico -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "tellico" >> /tmp/ComprobarSoftware
+                ;;
+
+            "KDE Connect")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#KDE Connect" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install kdeconnect -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "kdeconnect-cli" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Usuarios y Grupos")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Usuarios y grupos" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y gnome-system-tools" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "users-admin" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Gnome-online-accouns   ")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Gnome-online-accouns" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y gnome-online-accounts" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "gnome-control-center" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Kio gdrive")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Kio gdrive" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install kio-gdrive kaccounts-providers -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "kioclient5" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Ocamlfuse")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Ocamlfuse" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo add-apt-repository -y ppa:alessandro-strada/ppa" >> /tmp/software
+                echo "sudo apt update" >> /tmp/software
+                echo "sudo apt install -y google-drive-ocamlfuse" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "google-drive-ocamlfuse" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Nemo")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Nemo" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y nemo" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "nemo" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Systemback")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Systemback" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 382003C2C8B7B4AB813E915B14E4942973C62A1B" >> /tmp/software
+                echo "sudo add-apt-repository -y deb http://ppa.launchpad.net/nemh/systemback/ubuntu xenial main" >> /tmp/software
+                echo "sudo apt update" >> /tmp/software
+                echo "sudo apt install -y systemback" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "systemback" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Deja-dup")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Deja-dup" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y deja-dup" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "deja-dup" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Transmision")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Transmission" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install transmission -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "transmission-gtk" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Software-propietario")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Software-propietario" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y software-properties-gtk software-properties-qt" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "software-properties-kde" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Joplin")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Joplin" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "/home/$(whoami)/.joplin/Joplin.AppImage" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Keepass2")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Keepass2" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y keepass2" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "keepass2" >> /tmp/ComprobarSoftware
+                ;;
+
+            "GitHub-Desktop")
+
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#GitHub Desktop" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo 'wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null' >> /tmp/software
+                echo 'sudo sh -c '\''echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'\''' >> /tmp/software
+                echo "sudo apt install github-desktop -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "github-desktop" >> /tmp/ComprobarSoftware
+                ;;
+
+            *)
+            #if [ $? -eq 0 ]; then
+            #    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+            #else
+            #    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+            #    if [ $? -eq 0 ]; then
+            #        exit 0
+            #    fi
+            #fi
+            echo "he entrado en el *"; read p
+            ;;
+        esac
+    done
+    exit #sale cuando termiona el for con lo seleccionado.
+done

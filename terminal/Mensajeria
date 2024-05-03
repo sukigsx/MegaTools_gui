@@ -1,0 +1,92 @@
+ #!/bin/bash
+
+conexion(){
+if ping -c1 google.com &>/dev/null
+then
+    var_conexion="SI"
+else
+    var_conexion="NO"
+    var_actualizado="No hay conexion a internet"
+fi
+}
+
+
+while :
+do
+    # Mostrar el menú de selección utilizando Zenity
+    selection=$(zenity --list --title="Instalar software para Mensajeria en linux. - MegaTools -" \
+    --text="\nSoftware disponible de mensajeria para entornos linux.\n" \
+    --checklist --column="Marca una o varias casillas para instalar" --column="Software de Mensajeria" --column="Descripcion." \
+    --width=300 --height=200 \
+    --cancel-label="Atras" \
+    --ok-label="Aceptar" \
+    --width=950 \
+    --height=650 \
+    FALSE "Telegram" "Mensajeria." \
+    FALSE "Skype" "Software de video conferencia." \
+    FALSE "Whatsapp" "Mensajeria." \
+    )
+
+    # Verificar si se presionó "Atras" en el diálogo de Zenity
+    if [ $? -eq 1 ]; then
+        exit 0
+    fi
+
+    # Verificar si no se seleccionó ninguna opción
+    if [ -z "$selection" ]; then
+        zenity --error --title="Instalacion de software Mensajeria - MegaTools -" --text="No has seleccionado ningun software de Mensajeria." --width=300
+    else
+        echo ""
+    fi
+
+
+    # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
+    IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
+    for option in "${selected_options[@]}"; do
+        case $option in
+            "Telegram")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Telegram" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y telegram-desktop" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "telegram-desktop" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Skype")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Skype" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo snap install skype --classic" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "skype" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Whatsapp")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Whatsapp" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo snap install whatsapp-app" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "whatsapp-app" >> /tmp/ComprobarSoftware
+                ;;
+
+            *)
+            #if [ $? -eq 0 ]; then
+            #    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+            #else
+            #    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+            #    if [ $? -eq 0 ]; then
+            #        exit 0
+            #    fi
+            #fi
+            echo "he entrado en el *"; read p
+            ;;
+        esac
+    done
+    exit #sale cuando termiona el for con lo seleccionado.
+done
+

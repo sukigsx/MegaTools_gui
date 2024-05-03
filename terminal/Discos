@@ -1,0 +1,113 @@
+ #!/bin/bash
+
+conexion(){
+if ping -c1 google.com &>/dev/null
+then
+    var_conexion="SI"
+else
+    var_conexion="NO"
+    var_actualizado="No hay conexion a internet"
+fi
+}
+
+while :
+do
+    # Mostrar el menú de selección utilizando Zenity
+    selection=$(zenity --list --title="Instalar software para Discos y unidades. - MegaTools -" \
+    --text="\nSoftware disponible para Discos y unidades en entornos linux.\n" \
+    --checklist --column="Marca una o varias casillas para instalar" --column="Software para Discos y unidades" --column="Descripcion." \
+    --width=300 --height=200 \
+    --cancel-label="Atras" \
+    --ok-label="Aceptar" \
+    --width=950 \
+    --height=650 \
+    FALSE "Partition manager" "Gestor de particiones de KDE Plasma." \
+    FALSE "Gparted" "Gestor de particiones." \
+    FALSE "Brasero" "Software de grabacion de cd y dvd." \
+    FALSE "K3b" "Software de grabacion de cd y dvd." \
+    FALSE "Gnome-disk-utility" "Utilidades de disco, monta isos, etc (Funciona en entornos Kde Plasma)." \
+    )
+
+    # Verificar si se presionó "Atras" en el diálogo de Zenity
+    if [ $? -eq 1 ]; then
+        exit 0
+    fi
+
+    # Verificar si no se seleccionó ninguna opción
+    if [ -z "$selection" ]; then
+        zenity --error --title="Instalacion de software Discos - MegaTools -" --text="No has seleccionado ningun software de Discos." --width=300
+    else
+        echo ""
+    fi
+
+
+    # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
+    IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
+    for option in "${selected_options[@]}"; do
+        case $option in
+            "Partition manager")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Partitionmanager" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y partitionmanager" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "partitionmanager" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Gparted")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Gparted" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y gparted" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "gparted" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Brasero")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Brasero" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y brasero" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "brasero" >> /tmp/ComprobarSoftware
+                ;;
+
+            "K3b")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#K3b" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y k3b" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "k3b" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Gnome-disk-utility")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Gnome-disk-utility" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y gnome-disk-utility" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "gnome-disks" >> /tmp/ComprobarSoftware
+                ;;
+
+            *)
+            #if [ $? -eq 0 ]; then
+            #    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+            #else
+            #    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+            #    if [ $? -eq 0 ]; then
+            #        exit 0
+            #    fi
+            #fi
+            echo "he entrado en el *"; read p
+            ;;
+        esac
+    done
+    exit #sale cuando termiona el for con lo seleccionado.
+done
+

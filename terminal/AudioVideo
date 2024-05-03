@@ -1,0 +1,149 @@
+#!/bin/bash
+
+conexion(){
+if ping -c1 google.com &>/dev/null
+then
+    var_conexion="SI"
+else
+    var_conexion="NO"
+    var_actualizado="No hay conexion a internet"
+fi
+}
+
+while :
+do
+    # Mostrar el menú de selección utilizando Zenity
+    selection=$(zenity --list --title="Instalacion de Audio-Video. - MegaTools -" \
+    --text="\nSoftware disponible para edicion y visionado de multimedia en general, para entornos linux.\n" \
+    --checklist --column="Marca una o varias casillas para instalar" --column="Nombre del navegador" --column="Descripcion." \
+    --width=300 --height=200 \
+    --cancel-label="Atras" \
+    --ok-label="Aceptar" \
+    --width=850 \
+    --height=650 \
+    FALSE "Vlc" "Reporoductor de todo." \
+    FALSE "Spotify" "Plataforma de musica, Requiere Snap." \
+    FALSE "Digikam" "Organizador de imágenes y editor de etiquetas." \
+    FALSE "Simple scan" "Software para tu escaner." \
+    FALSE "Handbrake" "Editor de video." \
+    FALSE "Shotwell" "Organizador de imágenes." \
+    FALSE "Skanlite" "Software para tu escaner." \
+    FALSE "krita" "Es un estudio de arte digital completo." \
+    )
+
+    # Verificar si se presionó "Atras" en el diálogo de Zenity
+    if [ $? -eq 1 ]; then
+        exit 0
+    fi
+
+    # Verificar si no se seleccionó ninguna opción
+    if [ -z "$selection" ]; then
+        zenity --error --title="Instalacion de Audio-Video - MegaTools -" --text="No has seleccionado ningun software de Audio-Video." --width=300
+    else
+        echo ""
+    fi
+
+
+    # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
+    IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
+    for option in "${selected_options[@]}"; do
+        case $option in
+            "Vlc")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#vlc" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y vlc" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "vlc" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Spotify")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#spotify" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y snapd; sudo snap install spotify" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "spotify" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Digikam")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#digikam" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y digikam" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "digikam" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Simple scan")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#simple-scan" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y simple-scan" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "simple-scan" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Handbrake")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#handbrake" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y handbrake" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "handbrake" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Shotwell")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#shotwell" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y shotwell" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "shotwell" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Skanlite")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#skanlite" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y skanlite" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "skanlite" >> /tmp/ComprobarSoftware
+                ;;
+
+            "krita")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#krita" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y krita" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "krita" >> /tmp/ComprobarSoftware
+                ;;
+
+
+            *)
+            #if [ $? -eq 0 ]; then
+            #    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+            #else
+            #    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+            #    if [ $? -eq 0 ]; then
+            #        exit 0
+            #    fi
+            #fi
+            echo "he entrado en el *"; read p
+            ;;
+        esac
+    done
+    exit #sale cuando termiona el for con lo seleccionado.
+done
+
+
+

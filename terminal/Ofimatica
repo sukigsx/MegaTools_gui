@@ -1,0 +1,106 @@
+ #!/bin/bash
+
+conexion(){
+if ping -c1 google.com &>/dev/null
+then
+    var_conexion="SI"
+else
+    var_conexion="NO"
+    var_actualizado="No hay conexion a internet"
+fi
+}
+
+while :
+do
+    # Mostrar el menú de selección utilizando Zenity
+    selection=$(zenity --list --title="Instalar paquetes ofimaticos. - MegaTools -" \
+    --text="\nSoftware disponible de ofimatica para entornos linux.\n" \
+    --checklist --column="Marca una o varias casillas para instalar" --column="Paquetes ofimaticos" --column="Descripcion." \
+    --cancel-label="Atras" \
+    --ok-label="Aceptar" \
+    --width=1050 \
+    --height=650 \
+    FALSE "Libre Office" "Paquete ofimatico, alternativa a Microsoft Office" \
+    FALSE "Calligra Office" "Paquete ofimatico, alternativa a Microsoft Office y para personas creativas y usuarios de Linux." \
+    FALSE "ReText" "Es un editor sencillo pero potente para los lenguajes de marcado." \
+    FALSE "Typora" "Es un editor sencillo pero potente para los lenguajes de marcado." \
+    )
+
+    # Verificar si se presionó "Atras" en el diálogo de Zenity
+    if [ $? -eq 1 ]; then
+        exit 0
+    fi
+
+    # Verificar si no se seleccionó ninguna opción
+    if [ -z "$selection" ]; then
+        zenity --error --title="Instalacion de Ofimatica - MegaTools -" --text="No has seleccionado ningun paquete ofimatico." --width=300
+    else
+        echo ""
+    fi
+
+
+    # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
+    IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
+    for option in "${selected_options[@]}"; do
+        case $option in
+            "Libre Office")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#LibreOffice" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo add-apt-repository -y ppa:libreoffice/ppa" >> /tmp/software
+                echo "sudo apt install -y libreoffice" >> /tmp/software
+                echo "sudo apt install -y libreoffice-l10n-es" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "libreoffice" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Calligra Office")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Calligra Office" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install calligra -y" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "calligra" >> /tmp/ComprobarSoftware
+                ;;
+
+
+            "ReText")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#ReText" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y retext" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "retext" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Typora")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#Typora" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "wget -qO - https://typora.io/linux/public-key.asc | sudo tee /etc/apt/trusted.gpg.d/typora.asc" >> /tmp/software
+                echo "sudo add-apt-repository 'deb https://typora.io/linux ./' -y" >> /tmp/software
+                echo "sudo apt install -y typora" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "typora" >> /tmp/ComprobarSoftware
+                ;;
+
+            *)
+            #if [ $? -eq 0 ]; then
+            #    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+            #else
+            #    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+            #    if [ $? -eq 0 ]; then
+            #        exit 0
+            #    fi
+            #fi
+            echo "he entrado en el *"; read p
+            ;;
+        esac
+    done
+    exit #sale cuando termiona el for con lo seleccionado.
+done
+

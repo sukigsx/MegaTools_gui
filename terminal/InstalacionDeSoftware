@@ -1,0 +1,206 @@
+#!/bin/bash
+ruta_ejecucion=$(dirname "$(readlink -f "$0")")
+
+CrearInstalarSoftware(){
+#pregunta si quiero guardar la instalacion
+if zenity --question --title="Instalacion de software - MegaTools -" --text="¿Quieres guardar un script de instalacion del software seleccionado?\n\nSe guardara en tu escritorio." --cancel-label="No" --ok-label="Si"
+then
+    #entra si la respuesta es si
+    if [ -d /home/$(whoami)/Escritorio ]
+    then
+        #rm /tmp/software /home/$(whoami)/Escritorio/InstalarSosftware.sh 2>/dev/null
+        cp /tmp/software /home/$(whoami)/Escritorio/InstalarSosftware.sh
+    else
+        #rm /tmp/software /home/$(whoami)/Desktop/InstalarSoftware.sh 2>/dev/null
+        cp /tmp/software /home/$(whoami)/Desktop/InstalarSoftware.sh
+    fi
+else
+    echo ""
+fi
+}
+
+
+#Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
+rm /tmp/software 2>/dev/null
+rm /tmp/ComprobarSoftware 2>/dev/null
+rm /tmp/comprobacion 2>/dev/null
+
+#crea el fichero de instalacion de software
+echo 'echo -e "\n- ACTUALIZANDO REPOSITORIOS.- \n"' >> /tmp/software
+echo 'echo -e "Introduce la password de usuario. \n"' >> /tmp/software
+echo 'sudo apt update' >> /tmp/software
+echo 'echo -e "\n- ACTUALIZACION DE REPOSITORIOS FINALIZADA. -"' >> /tmp/software
+echo 'echo ""' >> /tmp/software
+echo 'echo "- COMENZANDO LA INSTALACION DE SOFTWARE -"' >> /tmp/software
+echo 'echo "- Se paciente.. El tiempo depende de tu conexion. -"; sleep 2' >> /tmp/software
+
+#crea el fichero para comprobar la instalacion
+echo 'for programa in $(cat /tmp/ComprobarSoftware); do' >> /tmp/comprobacion
+echo '    if which "$programa" &>/dev/null; then' >> /tmp/comprobacion
+echo '        echo "$programa [ OK ]."' >> /tmp/comprobacion
+echo '    else' >> /tmp/comprobacion
+echo '        echo "$programa [ NO INSTALADO ]."' >> /tmp/comprobacion
+echo '    fi' >> /tmp/comprobacion
+echo 'done' >> /tmp/comprobacion
+
+while :
+do
+    clear
+    echo -e "Instalacion de Software. - MegaTools -"
+    echo -e "\nSelecciona una categoria de software y vete marcando el que mas te guste o necesites.\n"
+    echo -e "Categorias principales     Descripcion."
+    echo -e ""
+    echo -e "  1) NAVEGADORES                Los principales navegadores para internet."
+    echo -e "  2) AUDIO - VIDEO              Software relacionado el el Audio y el Video."
+    echo -e "  3) ENTORNOS GRAFICOS LINUX    Los principales entornos graficos para linux basados en debian."
+    echo -e "  4) UTILIDADES                 Cantidad de utilidades"
+    echo -e "  5) OFIMATICA                  Software dedicado a la ofimatica"
+    echo -e "  6) SERVIDORES                 Servidores para tu sistema, (ssh, ftp, smb, etc)"
+    echo -e "  7) GESTOR DE PAQUETES         Software para el control de paquetes. (snap apt etc)."
+    echo -e "  8) PARA TU TERMINAL           Software pensado para la terminal linux."
+    echo -e "  9) DISCOS                     Software de control de discos duros y unidades en general."
+    echo -e " 10) JUEGOS                     Pues ya lo dice todo, juegos."
+    echo -e " 11) SEGURIDAD                  Software destinado a la seguridad de tu equipo."
+    echo -e " 12) MENSAJERIA                 Software de mensajeria en red."
+    echo -e ""
+    echo -e " 13) PAQUETES INDEPENDIENTES    Descarga e instala paquetes deb manualmente."
+    echo ""
+    echo -e " 70) Ver el software marcado para instalar."
+    echo -e " 80) Borrar el software para instalar"
+    echo -e ""
+    echo -e " 90) Ayuda                     Carga la ayuda"
+    echo -e " 99) Salir                     Para salir 99  o ctrl-c"
+    echo -e ""
+    read -p " Selcciona numero de categoria de software -> " opcion
+
+    # Manejar la opción seleccionada
+    case $opcion in
+
+        "1") #navegadores
+            bash $ruta_ejecucion/Navegadores
+            ;;
+
+        "2") #audio -video
+            bash $ruta_ejecucion/AudioVideo
+            ;;
+
+        "3") #Entorno graficos linux
+            bash $ruta_ejecucion/EntornosGraficosLinux
+            ;;
+
+        "4") #Utilidades
+            bash $ruta_ejecucion/Utilidades
+            ;;
+
+        "5") #Ofimatica
+            bash $ruta_ejecucion/Ofimatica
+            ;;
+
+        "6") # Servidores
+            bash $ruta_ejecucion/Servidores
+            ;;
+
+        "7") # Gestor de paquetes
+            bash $ruta_ejecucion/GestorDePaquetes
+            ;;
+
+        "8") # Para tu terminal
+            bash $ruta_ejecucion/Terminal
+            ;;
+
+        "9") # Discos
+            bash $ruta_ejecucion/Discos
+            ;;
+
+        "10") # Seguridad
+            bash $ruta_ejecucion/Juegos
+            ;;
+
+        "11") #seguridad
+            bash $ruta_ejecucion/Seguridad
+            ;;
+
+        "12") #Mensajeria
+            bash $ruta_ejecucion/Mensajeria
+            ;;
+
+        "13") #Paquetes independientes
+            bash $ruta_ejecucion/PaquetesIndependientes
+            ;;
+
+        "70") #ver el software maecado para instalar
+            #muestra el software seleccionado
+            if grep -q '^#' /tmp/software 2>/dev/null; then #comprueba si hay algun software para instalar verificando la #
+                #elimina lineas duplicadas del fichero de instalacion
+                awk '!seen[$0]++' /tmp/software > /tmp/software_sin_duplicados
+                mv /tmp/software_sin_duplicados /tmp/software
+
+                awk '!seen[$0]++' /tmp/ComprobarSoftware > /tmp/ComprobarSoftware_duplicados
+                mv /tmp/ComprobarSoftware_duplicados /tmp/ComprobarSoftware
+
+                (echo -e "\nEste es tu software para instalar\n"; grep '^#' /tmp/software | sed 's/^#/- /') | zenity --text-info --width=600 --height=400 --title="Software para instalar. - MegaTools" --auto-scroll --font="DejaVu Sans Mono" --cancel-label="Cancelar, Empezar de nuevo" --ok-label="Instalar"
+
+                #comprueba si le damos a cancelar si es asi, sale del script al anterior
+                if [ $? = 1 ]; then
+                    #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
+                    rm /tmp/software 2>/dev/null
+                    rm /tmp/ComprobarSoftware 2>/dev/null
+                    rm /tmp/comprobacion 2>/dev/null
+                    exit
+                fi
+
+                #cargamos en segundo plano la ejecucion de instalacion de software.
+                konsole -geometry 800x500+0+0 -e bash /tmp/software &
+
+                #creamos bucle que mientras este ejecutando el script software en segundo plano no sale del bucle
+                while ps -ef | grep "software" | grep -v grep >/dev/null 2>&1
+                do
+                    pid=$(ps -ef | grep "software" | grep -v grep | awk '{print $2}')
+
+                    zenity --question --text="- Puedes cancelar la instalacion.\n- Esperar a que termine y pulsar continuar." --title="Instalacion de software. - MegaTools" --cancel-label="Cancelar, la instalacion" --ok-label="Continuar"
+
+                    if [ $? = 1 ]; then
+                        kill $pid >/dev/null 2>&1
+                    fi
+                    sleep 1
+                done
+
+                #verifica el software que se ha instalado
+                (echo -e "\n - VERIFICACION DEL SOFTWARE INSTALADO -\n"; bash /tmp/comprobacion 2>/dev/null; echo -e "\n- TERMINADO EL PROCESO DE VERIFICACION -") | zenity --text-info --width=600 --height=400 --title="Verificacion de software. - MegaTools" --auto-scroll
+
+                CrearInstalarSoftware
+                exit
+
+            else
+                zenity --error --title="Instalacion del software seleccionado. - MegaTools -" --text="No hay seleccionado ningun software para instalar." --width=400
+            fi
+
+            ;;
+        "80") #Borrar el software para instalar
+            ;;
+
+
+        "90") #ayuda
+            cat $ruta_ejecucion/AyudaInstalacionSoftware
+            ;;
+
+        "99") #salir
+            #Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
+            rm /tmp/software 2>/dev/null
+            rm /tmp/ComprobarSoftware 2>/dev/null
+            rm /tmp/comprobacion 2>/dev/null
+            exit 0
+            ;;
+
+        *) #fallo de seleccion en menu
+            echo -e ""
+            echo -e " No has seleccionado una opcion valida del menu."
+            sleep 3
+            ;;
+    esac
+done
+
+#Elimina el fichero /tmp/software donde mete la informacion de los paquetes a instalar.
+rm /tmp/software 2>/dev/null
+rm /tmp/ComprobarSoftware 2>/dev/null
+rm /tmp/comprobacion 2>/dev/null

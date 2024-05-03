@@ -1,0 +1,133 @@
+#!/bin/bash
+
+conexion(){
+if ping -c1 google.com &>/dev/null
+then
+    var_conexion="SI"
+else
+    var_conexion="NO"
+    var_actualizado="No hay conexion a internet"
+fi
+}
+
+while :
+do
+    # Mostrar el menú de selección utilizando Zenity
+    selection=$(zenity --list --title="Instalacion de Navegadores. - MegaTools -" \
+    --text="\nSoftware disponible de navegacion en internet para entornos linux.\n" \
+    --checklist --column="Marca una o varias casillas para instalar" --column="Nombre del navegador" --column="Descripcion." \
+    --width=300 --height=200 \
+    --cancel-label="Atras" \
+    --ok-label="Aceptar" \
+    --width=850 \
+    --height=650 \
+    FALSE "Google Chrome" "Navegador para internet" \
+    FALSE "Chromium-browser" "Navegador para internet" \
+    FALSE "Firefox" "Navegador para internet" \
+    FALSE "Opera" "Navegador para internet" \
+    FALSE "Brave" "Navegador para internet" \
+    FALSE "Vivaldi" "Navegador para internet" \
+    )
+
+    # Verificar si se presionó "Atras" en el diálogo de Zenity
+    if [ $? -eq 1 ]; then
+        exit 0
+    fi
+
+    # Verificar si no se seleccionó ninguna opción
+    if [ -z "$selection" ]; then
+        zenity --error --title="Instalacion de Navegadores - MegaTools -" --text="No has seleccionado ningun Navegador." --width=300
+    else
+        echo ""
+    fi
+
+
+    # Verificar las opciones seleccionadas y ejecutar los comandos correspondientes
+    IFS="|" read -ra selected_options <<< "$selection"  # Establecer el separador como "|"
+    for option in "${selected_options[@]}"; do
+        case $option in
+            "Google Chrome")
+                echo "#google-chrome" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "rm /tmp/google* >/dev/null 2>&1" >> /tmp/software
+                echo "cd /tmp" >> /tmp/software
+                echo 'wget -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb' >> /tmp/software
+                echo 'sudo gdebi /tmp/google-chrome-stable_current_amd64.deb -n' >> /tmp/software
+                echo "rm /tmp/google-chrome-stable_current_amd64.deb" >> /tmp/software
+                echo "" >> /tmp/software
+                echo "google-chrome-stable" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Chromium-browser")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#chromium-browser" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y chromium-browser" >> /tmp/software
+                echo "sudo apt install -y chromium-browser-l10n" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "chromium" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Firefox")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#firefox" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y firefox" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "firefox" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Opera")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#opera" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y snapd" >> /tmp/software
+                echo "sudo snap install opera" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "opera" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Brave")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#brave" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo "sudo apt install -y snapd" >> /tmp/software
+                echo "sudo snap install brave" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "brave" >> /tmp/ComprobarSoftware
+                ;;
+
+            "Vivaldi")
+                #codigo para la instalacion se mete a /tmp/software
+                echo "#vivaldi" >> /tmp/software #mete el nombre del programa para poder comprobar su instalacion
+                echo 'latest_version_url=$(curl -s https://vivaldi.com/download/ | grep -o 'https://downloads.vivaldi.com/stable/vivaldi-stable_[0-9\.]*-1_amd64.deb' | head -n 1)' >> /tmp/software
+                echo 'curl -O "$latest_version_url"' >> /tmp/software
+                echo "sudo gdebi vivaldi-stable*.deb -n" >> /tmp/software
+                echo "rm vivaldi-stable*.deb" >> /tmp/software
+                echo "" >> /tmp/software
+
+                #linea con el nombre del programa instalado para la comprobacion
+                echo "vivaldi-stable" >> /tmp/ComprobarSoftware
+                ;;
+
+
+            *)
+            #if [ $? -eq 0 ]; then
+            #    zenity --error --title="MegaTools ( Diseñado por SUKIGSX )" --text="No has seleccionado ninguna opcion del menu." --width=300
+            #else
+            #    zenity --question --title="MegaTools ( Diseñado por SUKIGSX )" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+            #    if [ $? -eq 0 ]; then
+            #        exit 0
+            #    fi
+            #fi
+            echo "he entrado en el *"; read p
+            ;;
+        esac
+    done
+    exit #sale cuando termiona el for con lo seleccionado.
+done
+
+
