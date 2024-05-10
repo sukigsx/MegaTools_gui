@@ -259,7 +259,7 @@ do
                 echo 'echo "- Empezando la instalacion de paquetes descargados -"' >> $ruta_descargas/InstalarPaquetesDeb
                 echo 'echo ""' >> $ruta_descargas/InstalarPaquetesDeb
                 echo 'echo "Te pedira el password de tu usurio"' >> $ruta_descargas/InstalarPaquetesDeb
-                echo "sudo dpkg -i $ruta_descargas*.deb" >> $ruta_descargas/InstalarPaquetesDeb
+                echo "sudo dpkg -i $ruta_descargas/*.deb" >> $ruta_descargas/InstalarPaquetesDeb
                 echo "sudo apt -f -y install" >> $ruta_descargas/InstalarPaquetesDeb
                 echo "sudo rm $ruta_descargas/*.deb" >> $ruta_descargas/InstalarPaquetesDeb
                 echo 'echo "- TERMINADA LA INSTALACION DE PAQUETES -"' >> $ruta_descargas/InstalarPaquetesDeb
