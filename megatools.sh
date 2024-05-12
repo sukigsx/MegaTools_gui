@@ -278,6 +278,7 @@ do
     "UTILIDADES PARA EL SISTEMA" "" \
     "Crear lanzadores" "Crea o borra los lanzadores en tu escritorio." \
     "Instalacion de software" "Script para instalar programas en tu sistema." \
+    "Crear prompt" "Script para crear un prompt para tu terminal de linux." \
     "" "" \
     "INFORMACION DE TU SISTEMA" "" \
     "Informacion general" "Te da la informacion mas importante de tu sistema" \
@@ -340,6 +341,10 @@ do
                 #mete el pid del proceso a un archivo para poder matar este script desde otro
                 echo $$ > /tmp/ProcesoPidDeMegatools
                 bash $ruta_ejecucion/Megatools/InformacionDispositivosDeRed/InformacionDispositivosDeRed
+                ;;
+
+            "Crear prompt")
+                bash $ruta_ejecucion/Megatools/PromptTerminal_gui/crear_prompt_gui
                 ;;
 
         "Web Sukigsx")
