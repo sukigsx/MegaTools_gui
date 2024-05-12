@@ -1,52 +1,51 @@
+# MEGATOOLS
 
-             - MEGATOOLS -
-
-
-INFORMACION GENERAL
+## INFORMACION GENERAL
 
 Esta utilidad presenta un menú interactivo utilizando Zenity, una herramienta para crear interfaces gráficas en shell scripts.
 Aquí está la descripción de cómo funciona:
 
-Menú Principal: El script muestra un menú con varias opciones organizadas en dos secciones:
+## Menú Principal
+El script muestra un menú con varias opciones organizadas en dos secciones:
     "UTILIDADES PARA EL SISTEMA"
     "INFORMACION DE TU SISTEMA"
 
 Contenido del Menú: Cada opción del menú está asociada a una tarea específica que el usuario puede realizar. Por ejemplo:
 
-    "Crear lanzadores": Permite al usuario crear lanzadores en el escritorio.
-    "Instalacion de software": Ejecuta un script para instalar programas en el sistema.
-    "Informacion general": Proporciona información importante del sistema.
-    "Web Sukigsx": Abre una ventana del navegador con la página web del diseñador del programa.
-    "Ayuda": Muestra información de ayuda sobre el uso del programa.
+  "Crear lanzadores": Permite al usuario crear lanzadores en el escritorio.
+  "Instalacion de software": Ejecuta un script para instalar programas en el sistema.
+  "Informacion general": Proporciona información importante del sistema.
+  "Web Sukigsx": Abre una ventana del navegador con la página web del diseñador del programa.
+  "Ayuda": Muestra información de ayuda sobre el uso del programa.
 
-Interacción del Usuario:
+## Interacción del Usuario
 El usuario puede seleccionar una opción del menú haciendo clic en ella.
 Dependiendo de la opción seleccionada, se ejecuta una tarea específica.
 
-Manejo de Opciones:
+## Manejo de Opciones
 El script utiliza un bucle infinito (while :) para mantener el menú visible hasta que el usuario decida salir.
 Se utiliza zenity --list para mostrar el menú y capturar la opción seleccionada por el usuario.
 
-Gestión de Acciones:
+## Gestión de Acciones
 Según la opción seleccionada, se ejecuta un bloque de código correspondiente utilizando una estructura case.
 Por ejemplo, si el usuario elige "Crear lanzadores", se ejecuta un script para manejar esta tarea específica.
 
-Salida del Programa:
+## Salida del Programa
 El usuario puede elegir salir del programa en cualquier momento seleccionando la opción "Salir" o cerrando la ventana.
 El script maneja esta salida con mensajes de confirmación para asegurarse de que el usuario realmente desea salir.
 
 En resumen, esta utilidad proporciona una forma conveniente para que el usuario interactúe con el programa.
 Seleccionando opciones del menú y realizando diferentes tareas relacionadas con la gestión del sistema y la obtención de información.
 
-        INFORMACION MAS DETALLADA
+# INFORMACION MAS DETALLADA
 Este código es un script de shell (bash) que parece ser una herramienta de automatización y gestión llamada "MegaTools".
 A continuación, te proporcionaré un resumen de lo que hace el código:
 
-Definición de variables:
+## Definición de variables
 Se definen algunas variables al principio del script, como la versión del programa.
 El software necesario para su ejecución, y códigos de colores para mejorar la salida en la terminal.
 
-Funciones:
+## Funciones
 Se definen varias funciones que realizan tareas específicas:
     conexion: Comprueba si hay conexión a Internet.
     software_necesario_zenity: Verifica y, si es necesario instala el software necesario utilizando la interfaz gráfica de Zenity.
@@ -55,8 +54,7 @@ Se definen varias funciones que realizan tareas específicas:
     actualizar_script: Actualiza el script desde un repositorio remoto si hay una nueva versión disponible.
     comprobar_actualizacion_sino: Comprueba si hay una actualización disponible del script.
 
-Lógica principal:
-
+## Lógica principal
 Se comprueba si el software necesario está instalado.
 Si no lo está, se verifica la conexión a Internet y se intenta instalar utilizando diferentes métodos dependiendo de si se tiene Zenity disponible o no.
 
@@ -64,14 +62,13 @@ Si hay una conexión a Internet y el software está instalado, se verifica si ha
 Luego, se muestra un menú principal utilizando Zenity que proporciona opciones para diferentes funciones del programa, como la instalación de software, la creación de lanzadores, y la obtención de información del sistema.
 Dependiendo de la opción seleccionada en el menú, se ejecutan diferentes partes del script para realizar las tareas correspondientes.
 
-Interfaz de usuario:
+## Interfaz de usuario
 Se utiliza Zenity para proporcionar una interfaz de usuario gráfica para interactuar con el script. Esto incluye la presentación de mensajes, la selección de opciones del menú y la visualización de información.
 
-En resumen:
+## En resumen
 El script es una herramienta que automatiza varias tareas relacionadas con la gestión de software, la verificación de actualizaciones y la obtención de información del sistema, todo ello presentado en una interfaz gráfica para una mejor experiencia del usuario.
 
-    INSTALACION DE SOFTWARE
-
+# INSTALACION DE SOFTWARE
 Este script es un instalador de software interactivo para sistemas Linux que utiliza Zenity para crear una interfaz gráfica de usuario.
 El script presenta al usuario una lista de categorías de software para elegir y luego ejecuta scripts específicos de cada categoría según la elección del usuario.
 
@@ -114,7 +111,7 @@ Al final, el script elimina los archivos temporales utilizados durante el proces
 
 En resumen, este script proporciona una interfaz de usuario gráfica para seleccionar, instalar y verificar software en un sistema Linux. Es útil para simplificar el proceso de instalación de software para usuarios que prefieren una interfaz gráfica en lugar de trabajar en la línea de comandos.
 
-      PAQUETES INDEPENDIENTES
+## PAQUETES INDEPENDIENTES
 
 Este script maneja la instalación de paquetes .deb de forma interactiva y ofrece opciones para descargar, instalar y administrar dichos paquetes. Para ello primero tienes que seleccionar un navegador para poder cargar la paquina web de dicho paquete a instalar.
 Aquí está el resumen de las opciones en el menú:
@@ -148,12 +145,14 @@ En resumen, este script facilita la descarga, instalación y gestión de paquete
 Tambien hay que tener en cuenta que no todo el software se instala desde un .deb, en ocasiones hay que ejecutar un binario de instalacion o cosas similares, en esos casos el script decidira su forma de instalacion del mismo, el el menu de Paquetes independientes en la descripcion de informa de ello, como es el ejemplo de:
   Genymotion Emulador de Android en la nube y para PC con integraciones para marcos de prueba. (al dar a Descargar se instala solo)
 
-      INSTALACION
+## INSTALACION
+Clonando el repositorio:
 
-De dos maneras:
+    git clone https://github.com/sukigsx/MegaTools_gui.git
+Tambien puedes utilizar mi script (ejecutar_escripts), en el cual puedes instalar todos mis script del repositorio.
 
-Utilizando mi script de (ejecutar scripts) = git clone https://github.com/sukigsx/ejecutar_scripts.git
-Clonando el repositorio = git clone https://github.com/sukigsx/MegaTools_gui.git
+    git clone https://github.com/sukigsx/ejecutar_scripts.git
+
 
 ESPERO OS GUSTE................
 
