@@ -3,7 +3,7 @@ ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 
 version="1.0"
 #software necesarios para la ejecucion del programa
-software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi find curl konsole"
+software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi find curl konsole xclip"
 
 #colores
 #ejemplo: echo -e "${verde} La opcion (-e) es para que pille el color.${borra_colores}"
