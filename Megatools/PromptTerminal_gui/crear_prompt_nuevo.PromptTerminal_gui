@@ -14,6 +14,7 @@ borra_colores="\033[0m\e[0m" #borra colores
 
 # Lista de navegadores a comprobar
 navegadores_comprobar="firefox google-chrome-stable chromium opera vivaldi brave"
+navegador_no_instalado="no"
 
 # Bucle for para comprobar cada navegador
 for navegador in $navegadores_comprobar; do
@@ -23,14 +24,16 @@ for navegador in $navegadores_comprobar; do
         #echo -e "\n ${verde}Navegador${borra_colores} $navegador${verde}, seleccionado${borra_colores}"; sleep 1
         navegador_no_instalado="si"
         break
-    else
-        # Si ninguno de los navegadores está instalado
-        zenity --error --title="Crear Prompt -MegaTools-" --text="No dispones de un navegador para podel crear el Prompt.\nPuedes instalar uno en la seccion:\n Instalacion de software/navegadores." --timeout=10
-        exit
-        #echo -e "\n ${amarillo}Navegador${borra_colores} $navegador ${amarillo}No disponible.${borra_colores}"; sleep 1
-        navegador_no_instalado="no"
     fi
 done
+
+# Si ninguno de los navegadores está instalado
+if [ "$navegador_no_instalado" = "no" ]; then
+    zenity --error --title="Crear Prompt -MegaTools-" --text="No dispones de un navegador para podel crear el Prompt.\nPuedes instalar uno en la seccion:\n Instalacion de software/navegadores." --timeout=10
+    #echo -e "\n ${amarillo}Navegador${borra_colores} $navegador ${amarillo}No disponible.${borra_colores}"; sleep 1
+    navegador_no_instalado="no"
+    exit
+fi
 
 #comprueba que no tengas ningun prompt creado por el script crear_prompt.sh
 #comprueba que existe la carpeta .config
