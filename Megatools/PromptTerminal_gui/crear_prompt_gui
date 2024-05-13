@@ -28,7 +28,7 @@ then
     #zenity --info --title="Creado por SUKIGSX" --text="$(software_necesario)"
 else
     conexion="NO"
-    zenity --error --title="Creado por SUKIGSX" --text=" Fallo de Conexion a internet, NO se puede continuar." --ok-label="Salir" --width=300 --height=50 --timeout=10
+    zenity --error --title="-MegaTools-" --text=" Fallo de Conexion a internet, NO se puede continuar." --ok-label="Salir" --width=300 --height=50 --timeout=10
     exit
 fi
 
@@ -39,7 +39,7 @@ fi
 # Menú principal
 while :
 do
-opcion=$(zenity --list --title="Creado por SUKIGSX" \
+opcion=$(zenity --list --title="Crear Prompt -MegaTools-" \
 --text="Crear prompt para tu terminal de linux bash." \
 --column="Menu de opciones" --column="Descripcion" \
 "Crear prompt nuevo" "Diseña e instala tu prompt para la terminal bash." \
@@ -85,33 +85,33 @@ else
             echo 'X-DBUS-StartupType=none' >> $ruta_lanzador/crear_prompt.desktop
             echo 'X-KDE-SubstituteUID=false' >> $ruta_lanzador/crear_prompt.desktop
             echo 'X-KDE-Username=' >> $ruta_lanzador/crear_prompt.desktop
-            zenity --info --title="Creado por SUKIGSX" --text="Lanzador creado en tu escritorio." --width=200
+            zenity --info --title="Crear Prompt -MegaTools-" --text="Lanzador creado en tu escritorio." --width=200
             ;;
 
         "Crear prompt nuevo")
             bash $ruta_ejecucion/crear_prompt_nuevo.PromptTerminal_gui
             ;;
         "Borrar prompt")
-            if zenity --question --title="Creado por SUKIGSX" --text="¿Quieres borrar el prompt que tienes actualmente?\n\n- Se borrara la entrada del .bashrc.\n- Se eliminara el fichero que guarda el prompt." --title="Confirmación de borrado" --cancel-label="No" --ok-label="Si"; then
+            if zenity --question --title="Crear Prompt -MegaTools-" --text="¿Quieres borrar el prompt que tienes actualmente?\n\n- Se borrara la entrada del .bashrc.\n- Se eliminara el fichero que guarda el prompt." --title="Confirmación de borrado" --cancel-label="No" --ok-label="Si"; then
                 rm -r /home/$(whoami)/.config/crear_prompt 1> /dev/null 2> /dev/null
                 sed -i "/source \/home\/$(whoami)\/.config\/crear_prompt\/prompt/d" /home/$(whoami)/.bashrc
-                zenity --info --title="Creado por SUKIGSX" --text="Prompt borrado = ok\nEntrada del bashrc eliminada = ok\nFichero configuracion eliminado = ok" --timeout=5
+                zenity --info --title="Crear Prompt -MegaTools-" --text="Prompt borrado = ok\nEntrada del bashrc eliminada = ok\nFichero configuracion eliminado = ok" --timeout=5
 
             else
-                echo "Borrado cancelado."
+                zenity --error --title="Crear Prompt -MegaTools-" --text="Se cancela el borrado del Prompt" --timeout=2
             fi
             ;;
 
         "Ayuda")
-            zenity --text-info --title="Creado por SUKIGSX" --filename="$ruta_ejecucion/ayuda.PromptTerminal_gui" --cancel-label="Ver mas grande" --ok-label="Aceptar" --width=600 --height=400
+            zenity --text-info --title="Crear Prompt -MegaTools-" --filename="$ruta_ejecucion/ayuda.PromptTerminal_gui" --cancel-label="Ver mas grande" --ok-label="Aceptar" --width=600 --height=400
             if [ $? = 0 ]; then
                 echo ""
             else
-                zenity --text-info --title="Creado por SUKIGSX" --filename="$ruta_ejecucion/ayuda.PromptTerminal_gui" --cancel-label="Menu principal" --ok-label="Aceptar" --width=1500 --height=1000
+                zenity --text-info --title="Crear Prompt -MegaTools-" --filename="$ruta_ejecucion/ayuda.PromptTerminal_gui" --cancel-label="Menu principal" --ok-label="Aceptar" --width=1500 --height=1000
             fi
             ;;
         *)
-            zenity --error --title="Creado por SUKIGSX" --text="No has seleccionado una opcion del menu."
+            zenity --error --title="Crear Prompt -MegaTools-" --text="No has seleccionado una opcion del menu."
             ;;
     esac
 fi

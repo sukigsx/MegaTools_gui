@@ -14,11 +14,13 @@ do
     --height=500 \
     FALSE "Lanzador General" "Crea un lanzador en tu escritorio de todo Megatools" \
     FALSE "Lanzador Instalacion de software" "Crea un lanzador en tu escritorio de la parte de instalacion de software." \
+    FALSE "Lanzador de creacion/moificacion del Prompt" "Crea un lanzador para modificar tu Prompt del terminal" \
     FALSE "Lanzador de Informacion General" "Crean un lanzador en tu escritorio de la informacion mas importante de tu sistema." \
     FALSE "Lanzador de Informacion de Ips Lan/Wan" "Crea un lanzador en tu escritorio de la informacion de Lan/Wan." \
     FALSE "Lanzador de Informacion de Discos" "Crea un lanzador en tu escritorio de informacion de discos." \
     FALSE "Lanzador de Informacion de la memoria Ram" "Crea un lanzador en tu escritorio de la informacion de la memoria Ram." \
     FALSE "Lanzador de Informacion de dispositivos de tu red" "Crea un lanzador en tu escritorio de la informacion de tu red." \
+
     --ok-label="Crear lanzadores" \
     --cancel-label="Atras"\
     )
@@ -201,6 +203,28 @@ do
                 echo 'X-KDE-Username=' >> $ruta_escritorio/InformacionDeRed.desktop
                 ;;
 
+            "Lanzador de creacion/moificacion del Prompt")
+                rm $ruta_escritorio/CrearPrompt.desktop 2>/dev/null
+                echo '[Desktop Entry]' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'Comment[es_ES]=' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'Comment=' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'Exec=bash $ruta_script/Megatools/PromptTerminal_gui\crear_prompt_gui' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'GenericName[es_ES]=' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'GenericName=' >> $ruta_escritorio/CrearPrompt.desktop
+                echo "Icon=autocorrection" >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'MimeType=' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'Name[es_ES]=CrearPrompt: por SUKIGSX' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'Name=CrearPromptpor SUKIGSX' >> $ruta_escritorio/CrearPrompt.desktop
+                echo "Path=$ruta_script" >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'StartupNotify=true' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'Terminal=false' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'TerminalOptions=' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'Type=Application' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'X-DBUS-ServiceName=' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'X-DBUS-StartupType=none' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'X-KDE-SubstituteUID=false' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'X-KDE-Username=' >> $ruta_escritorio/CrearPrompt.desktop
+                ;;
             *)
                 echo "he entrado en el *"; read p
             ;;

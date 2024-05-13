@@ -1,6 +1,17 @@
 #!/bin/bash
 ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 
+#colores
+#ejemplo: echo -e "${verde} La opcion (-e) es para que pille el color.${borra_colores}"
+
+rojo="\e[0;31m\033[1m" #rojo
+verde="\e[;32m\033[1m"
+azul="\e[0;34m\033[1m"
+amarillo="\e[0;33m\033[1m"
+rosa="\e[0;35m\033[1m"
+turquesa="\e[0;36m\033[1m"
+borra_colores="\033[0m\e[0m" #borra colores
+
 # Lista de navegadores a comprobar
 navegadores_comprobar=("firefox" "google-chrome-stable" "chromium" "opera" "vivaldi" "brave")
 
@@ -8,24 +19,18 @@ navegadores_comprobar=("firefox" "google-chrome-stable" "chromium" "opera" "viva
 for navegador in "${navegadores_comprobar[@]}"; do
     # Verificar si el navegador está instalado
     if which "$navegador" >/dev/null 2>&1; then
-        echo -e "\n ${verde}Navegador${borra_colores} $navegador${verde}, seleccionado${borra_colores}"; sleep 1
+        zenity --info --title="Crear Prompt -MegaTools-" --text="Navegador seleccionado para la creacion del Prompt = $navegador." --timeout=2
+        #echo -e "\n ${verde}Navegador${borra_colores} $navegador${verde}, seleccionado${borra_colores}"; sleep 1
         navegador_no_instalado="si"
         break
     else
         # Si ninguno de los navegadores está instalado
-        echo -e "\n ${amarillo}Navegador${borra_colores} $navegador ${amarillo}No disponible.${borra_colores}"; sleep 1
+        zenity --error --title="Crear Prompt -MegaTools-" --text="No dispones de un navegador para podel crear el Prompt.\nPuedes instalar uno en la seccion:\n Instalacion de software/navegadores." --timeout=10
+        exit
+        #echo -e "\n ${amarillo}Navegador${borra_colores} $navegador ${amarillo}No disponible.${borra_colores}"; sleep 1
         navegador_no_instalado="no"
     fi
 done
-
-if [ "$navegador_no_instalado" = "no" ]; then
-    echo -e "\n ${rojo}Imposible continuar sin un navegador compatible.${borra_colores}"
-    echo -e "${amarillo} Puedes instalar uno desde la seccion Navegadores del menu.${borra_colores}\n"
-    read -p " Pulsa una tecla para continuar"
-    exit
-fi
-
-
 
 #comprueba que no tengas ningun prompt creado por el script crear_prompt.sh
 #comprueba que existe la carpeta .config
@@ -38,7 +43,7 @@ fi
 
 #comprueba que no tengas ya un prompt
 if grep -q "source /home/$(whoami)/.config/crear_prompt/prompt" "/home/$(whoami)/.bashrc"; then
-    zenity --info --title="Creado por SUKIGSX" --text="Ya tienes un prompt creado con este script.\nBorralo desde el menu principal." --timeout=5; exit
+    zenity --info --title="Crear Prompt -MegaTools-" --text="Ya tienes un prompt creado con este script.\nBorralo desde el menu principal." --timeout=5; exit
 else
     #vacia el portapapeles
     echo -n | xclip -selection clipboard
@@ -50,7 +55,7 @@ else
     prompt=$(xclip -o)
 
     #le pregunta y muestra el contenido del portapapeles o prompt seleccionado
-    zenity --question --title="Creado por SUKIGSX" --text="Este es el prompt que has seleccionado:\n\n$prompt\n\n¿ Es correcpto ?" --cancel-label="No" --ok-label="Si"
+    zenity --question --title="Crear Prompt -MegaTools-" --text="Este es el prompt que has seleccionado:\n\n$prompt\n\n¿ Es correcpto ?" --cancel-label="No" --ok-label="Si"
     if [ $? = 0 ]; then
         #crea la entrada en el .bashrc
         echo "source /home/$(whoami)/.config/crear_prompt/prompt" >> /home/$(whoami)/.bashrc
@@ -62,10 +67,10 @@ else
         echo "$prompt" > "/home/$(whoami)/.config/crear_prompt/prompt"
 
         #le indico que ya esta creado
-        zenity --info --title="Creado por SUKIGSX" --text="Tu prompt se ha mofificado correctamente." --timeout=5; exit
+        zenity --info --title="Crear Prompt -MegaTools-" --text="Tu prompt se ha mofificado correctamente." --timeout=5; exit
     else
         echo -n | xclip -selection clipboard
-        zenity --info --title="Creado por SUKIGSX" --text="Se regresa al menu principal sin modificar nada." --timeout=5; exit
+        zenity --info --title="Crear Prompt -MegaTools-" --text="Se regresa al menu principal sin modificar nada." --timeout=5; exit
     fi
 
     echo "$prompt" > "/home/$(whoami)/.config/crear_prompt/prompt"
