@@ -1,6 +1,6 @@
 #!/bin/bash
 ruta_escritorio=$(xdg-user-dir DESKTOP)
-ruta_script=$(find / -type d -name "MegaTools_gui" 2>/dev/null)
+ruta_script=$(dirname "$(readlink -f "$0")")
 while :
 do
     # Mostrar el menú de selección utilizando Zenity
@@ -212,8 +212,8 @@ do
                 echo 'GenericName=' >> $ruta_escritorio/CrearPrompt.desktop
                 echo "Icon=autocorrection" >> $ruta_escritorio/CrearPrompt.desktop
                 echo 'MimeType=' >> $ruta_escritorio/CrearPrompt.desktop
-                echo 'Name[es_ES]=CrearPrompt: por SUKIGSX' >> $ruta_escritorio/CrearPrompt.desktop
-                echo 'Name=CrearPromptpor SUKIGSX' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'Name[es_ES]=CrearPrompt' >> $ruta_escritorio/CrearPrompt.desktop
+                echo 'Name=CrearPrompt' >> $ruta_escritorio/CrearPrompt.desktop
                 echo "Path=$ruta_script" >> $ruta_escritorio/CrearPrompt.desktop
                 echo 'StartupNotify=true' >> $ruta_escritorio/CrearPrompt.desktop
                 echo 'Terminal=false' >> $ruta_escritorio/CrearPrompt.desktop

@@ -12,13 +12,6 @@ rosa="\e[0;35m\033[1m"
 turquesa="\e[0;36m\033[1m"
 borra_colores="\033[0m\e[0m" #borra colores
 
-
-
-
-
-
-
-
 #comprobamos la conexion a internet
 if ping -c1 google.com &>/dev/null
 then
