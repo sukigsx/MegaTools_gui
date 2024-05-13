@@ -20,7 +20,6 @@ do
     FALSE "Lanzador de Informacion de Discos" "Crea un lanzador en tu escritorio de informacion de discos." \
     FALSE "Lanzador de Informacion de la memoria Ram" "Crea un lanzador en tu escritorio de la informacion de la memoria Ram." \
     FALSE "Lanzador de Informacion de dispositivos de tu red" "Crea un lanzador en tu escritorio de la informacion de tu red." \
-
     --ok-label="Crear lanzadores" \
     --cancel-label="Atras"\
     )
@@ -208,7 +207,7 @@ do
                 echo '[Desktop Entry]' >> $ruta_escritorio/CrearPrompt.desktop
                 echo 'Comment[es_ES]=' >> $ruta_escritorio/CrearPrompt.desktop
                 echo 'Comment=' >> $ruta_escritorio/CrearPrompt.desktop
-                echo 'Exec=bash $ruta_script/Megatools/PromptTerminal_gui\crear_prompt_gui' >> $ruta_escritorio/CrearPrompt.desktop
+                echo "Exec=bash $ruta_script/Megatools/PromptTerminal_gui\crear_prompt_gui" >> $ruta_escritorio/CrearPrompt.desktop
                 echo 'GenericName[es_ES]=' >> $ruta_escritorio/CrearPrompt.desktop
                 echo 'GenericName=' >> $ruta_escritorio/CrearPrompt.desktop
                 echo "Icon=autocorrection" >> $ruta_escritorio/CrearPrompt.desktop

@@ -57,36 +57,6 @@ if [ $? -ne 0 ]; then
 else
     # Ejecutar la opción seleccionada solo si no se ha presionado Cancelar o cerrado la ventana
     case $opcion in
-        "Crear un lanzador")
-            #recopila la ruta de donde esta el script
-            ruta_script=$(dirname "$(readlink -f "$0")")
-            #comprueba que exista la carpeta Escritorio
-            if [ -d /home/$(whoami)/Escritorio/ ];then
-                ruta_lanzador=/home/$(whoami)/Escritorio
-            else
-                ruta_lanzador=/home/$(whoami)/Desktop
-            fi
-            echo '[Desktop Entry]' >> $ruta_lanzador/crear_prompt.desktop
-            echo 'Comment[es_ES]=' >> $ruta_lanzador/crear_prompt.desktop
-            echo 'Comment=' >> $ruta_lanzador/crear_prompt.desktop
-            echo 'Exec=nohup bash crear_prompt.sh' >> $ruta_lanzador/crear_prompt.desktop
-            echo 'GenericName[es_ES]=' >> $ruta_lanzador/crear_prompt.desktop
-            echo 'GenericName=' >> $ruta_lanzador/crear_prompt.desktop
-            echo "Icon=autocorrection" >> $ruta_lanzador/crear_prompt.desktop
-            echo 'MimeType=' >> $ruta_lanzador/crear_prompt.desktop
-            echo 'Name[es_ES]=CrearPrompt: por SUKIGSX' >> $ruta_lanzador/crear_prompt.desktop
-            echo 'Name=CrearPromptpor SUKIGSX' >> $ruta_lanzador/crear_prompt.desktop
-            echo "Path=$ruta_script" >> $ruta_lanzador/crear_prompt.desktop
-            echo 'StartupNotify=true' >> $ruta_lanzador/crear_prompt.desktop
-            echo 'Terminal=false' >> $ruta_lanzador/crear_prompt.desktop
-            echo 'TerminalOptions=' >> $ruta_lanzador/crear_prompt.desktop
-            echo 'Type=Application' >> $ruta_lanzador/crear_prompt.desktop
-            echo 'X-DBUS-ServiceName=' >> $ruta_lanzador/crear_prompt.desktop
-            echo 'X-DBUS-StartupType=none' >> $ruta_lanzador/crear_prompt.desktop
-            echo 'X-KDE-SubstituteUID=false' >> $ruta_lanzador/crear_prompt.desktop
-            echo 'X-KDE-Username=' >> $ruta_lanzador/crear_prompt.desktop
-            zenity --info --title="Crear Prompt -MegaTools-" --text="Lanzador creado en tu escritorio." --width=200
-            ;;
 
         "Crear prompt nuevo")
             bash $ruta_ejecucion/crear_prompt_nuevo.PromptTerminal_gui
