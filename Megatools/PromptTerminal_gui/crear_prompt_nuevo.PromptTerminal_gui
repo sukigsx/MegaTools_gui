@@ -48,8 +48,8 @@ fi
 if grep -q "source /home/$(whoami)/.config/crear_prompt/prompt" "/home/$(whoami)/.bashrc"; then
     zenity --info --title="Crear Prompt -MegaTools-" --text="Ya tienes un prompt creado con este script.\nBorralo desde el menu principal." --timeout=5; exit
 else
-    #vacia el portapapeles
-    echo -n | xclip -selection clipboard
+    #mete al portapapeles que esta la seleccion vacia
+    echo "Seleccion vacia" | xclip -i
 
     #carga la pagina con el navegador seleccionado
     $navegador https://bash-prompt-generator.org/
