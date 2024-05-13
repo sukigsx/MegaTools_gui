@@ -13,10 +13,10 @@ turquesa="\e[0;36m\033[1m"
 borra_colores="\033[0m\e[0m" #borra colores
 
 # Lista de navegadores a comprobar
-navegadores_comprobar=("firefox" "google-chrome-stable" "chromium" "opera" "vivaldi" "brave")
+navegadores_comprobar="firefox google-chrome-stable chromium opera vivaldi brave"
 
 # Bucle for para comprobar cada navegador
-for navegador in "${navegadores_comprobar[@]}"; do
+for navegador in $navegadores_comprobar; do
     # Verificar si el navegador está instalado
     if which "$navegador" >/dev/null 2>&1; then
         zenity --info --title="Crear Prompt -MegaTools-" --text="Navegador seleccionado para la creacion del Prompt = $navegador." --timeout=2
