@@ -49,28 +49,32 @@ if grep -q "source /home/$(whoami)/.config/crear_prompt/prompt" "/home/$(whoami)
     zenity --info --title="Crear Prompt -MegaTools-" --text="Ya tienes un prompt creado con este script.\nBorralo desde el menu principal." --timeout=5; exit
 else
     #mete al portapapeles que esta la seleccion vacia
-    echo "Seleccion vacia" | xclip -i
+    echo "Seleccion invalida" | xclip -i
 
     #carga la pagina con el navegador seleccionado
-    $navegador https://bash-prompt-generator.org/
+    $navegador https://bash-prompt-generator.org/ > /dev/null 2>&1
 
     #copia el portapapeles a fichero prompt
     prompt=$(xclip -o)
 
     #le pregunta y muestra el contenido del portapapeles o prompt seleccionado
-    zenity --question --title="Crear Prompt -MegaTools-" --text="Este es el prompt que has seleccionado:\n\n$prompt\n\n¿ Es correcpto ?" --cancel-label="No" --ok-label="Si"
+    zenity --question --title="Crear Prompt -MegaTools-" --text="Este es el prompt que has seleccionado:\n\n( $prompt )\n\n¿ Es correcpto ?" --cancel-label="No" --ok-label="Si"
     if [ $? = 0 ]; then
-        #crea la entrada en el .bashrc
-        echo "source /home/$(whoami)/.config/crear_prompt/prompt" >> /home/$(whoami)/.bashrc
+        if [ "$prompt " = "Seleccion invalida" ]; then
+            zenity --error --title="Crear Prompt -MegaTools-" --text="Seleccion para tu Prompt es Invalida." --timeout=5; exit
+        else
+            #crea la entrada en el .bashrc
+            echo "source /home/$(whoami)/.config/crear_prompt/prompt" >> /home/$(whoami)/.bashrc
 
-        #crea la carpeta de configuracion
-        mkdir /home/$(whoami)/.config/crear_prompt
+            #crea la carpeta de configuracion
+            mkdir /home/$(whoami)/.config/crear_prompt
 
-        #mete el contenido al fichero de configuracion
-        echo "$prompt" > "/home/$(whoami)/.config/crear_prompt/prompt"
+            #mete el contenido al fichero de configuracion
+            echo "$prompt" > "/home/$(whoami)/.config/crear_prompt/prompt"
 
-        #le indico que ya esta creado
-        zenity --info --title="Crear Prompt -MegaTools-" --text="Tu prompt se ha mofificado correctamente." --timeout=5; exit
+            #le indico que ya esta creado
+            zenity --info --title="Crear Prompt -MegaTools-" --text="Tu prompt se ha mofificado correctamente." --timeout=5; exit
+        fi
     else
         echo -n | xclip -selection clipboard
         zenity --info --title="Crear Prompt -MegaTools-" --text="Se regresa al menu principal sin modificar nada." --timeout=5; exit
