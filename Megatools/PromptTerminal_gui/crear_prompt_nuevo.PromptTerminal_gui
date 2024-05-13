@@ -60,7 +60,7 @@ else
     #le pregunta y muestra el contenido del portapapeles o prompt seleccionado
     zenity --question --title="Crear Prompt -MegaTools-" --text="Este es el prompt que has seleccionado:\n\n( $prompt )\n\n¿ Es correcpto ?" --cancel-label="No" --ok-label="Si"
     if [ $? = 0 ]; then
-        if [ "$prompt " = "Seleccion invalida" ]; then
+        if [ "$prompt" = "Seleccion invalida" ]; then
             zenity --error --title="Crear Prompt -MegaTools-" --text="Seleccion para tu Prompt es Invalida." --timeout=5; exit
         else
             #crea la entrada en el .bashrc
