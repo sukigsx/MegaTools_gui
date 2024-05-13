@@ -1,5 +1,6 @@
 #!/bin/bash
 ruta_ejecucion=$(dirname "$(readlink -f "$0")")
+export ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 
 version="1.1"
 #software necesarios para la ejecucion del programa
