@@ -1,6 +1,6 @@
 #!/bin/bash
 ruta_ejecucion=$(dirname "$(readlink -f "$0")")
-
+ruta_escritorio=$(xdg-user-dir DESKTOP)
 #colores
 #ejemplo: echo -e "${verde} La opcion (-e) es para que pille el color.${borra_colores}"
 
@@ -37,6 +37,7 @@ opcion=$(zenity --list --title="Crear Prompt -MegaTools-" \
 --column="Menu de opciones" --column="Descripcion" \
 "Crear prompt nuevo" "Diseña e instala tu prompt para la terminal bash." \
 "Borrar prompt" "Borra el prompt que tengas diseñado con esta aplicacion." \
+"Exportar el prompt" "Guarda tu prompt en un fichero de texto en tu escritorio." \
 "" "" \
 "Ayuda" "Su nombre lo dice, carga la ayuda de la aplicacion." \
 --width=650 \
@@ -62,6 +63,15 @@ else
 
             else
                 zenity --error --title="Crear Prompt -MegaTools-" --text="Se cancela el borrado del Prompt" --timeout=2
+            fi
+            ;;
+
+        "Exportar el prompt")
+            if [ -f /home/$(whoami)/.config/crear_prompt/prompt ]; then
+                cp /home/$(whoami)/.config/crear_prompt/prompt $ruta_escritorio/PromptPersonalizado.txt
+                zenity --info --title="Crear Prompt -MegaTools-" --text="Se ha guardado un fichero de texto en tu escritorio con tu prompt personalizado\n\nNombre: PromptPersonalizado.txt\nRuta: $ruta_escritorio" --ok-label="Aceptar" --width=200 --height=100 --timeout=10
+            else
+                zenity --error --title="Crear Prompt -MegaTools-" --text="No tienes un prompt personalizado creado.\n\nCrea uno primero." --ok-label="Aceptar" --width=200 --height=100 --timeout=10
             fi
             ;;
 
