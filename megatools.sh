@@ -2,7 +2,7 @@
 ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 export ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 
-version="1.10"
+version="1.0"
 #software necesarios para la ejecucion del programa
 software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi find curl konsole xclip"
 
@@ -38,7 +38,7 @@ echo -e "\n Actualizando repositorios y verificando software necesario:\n"
 # Bucle para solicitar la contraseña hasta tres intentos
 while [ $attempts -lt 3 ]; do
     # Solicitar la contraseña del usuario actual utilizando Zenity
-    PASSWORD=$(zenity --entry --hide-text --text="Ingrese tu contraseña" --title="Contraseña de usuario. - MegaTools -" --width=450 --height=100)
+    PASSWORD=$(zenity --entry --hide-text --text="Ingrese tu contraseña" --title="Contraseña de usuario. - MegaTools -" --width=450 --height=100 >/dev/null 2>&1)
 
     # Verificar si se ha cancelado la entrada de la contraseña
     if [ $? -ne 0 ]; then
@@ -52,15 +52,15 @@ while [ $attempts -lt 3 ]; do
     # Verificar el código de salida del comando sudo
     if [ $? -eq 0 ]; then
         # Contraseña correcta
-        zenity --info --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es correcta."
+        zenity --info --title="Contraseña de usuario. - MegaTools -" --text="La contraseña es correcta." >/dev/null 2>&1
         break
     else
         # Contraseña incorrecta
         let "attempts+=1"
         if [ $attempts -lt 3 ]; then
-            zenity --error --title="" --text="La contraseña es incorrecta. Inténtelo de nuevo."
+            zenity --error --title="" --text="La contraseña es incorrecta. Inténtelo de nuevo." >/dev/null 2>&1
         else
-            zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Saliendo del script."
+            zenity --error --title="Contraseña de usuario. - MegaTools -" --text="Se han superado los tres intentos. Saliendo del script." >/dev/null 2>&1
             exit
         fi
     fi
@@ -221,20 +221,20 @@ if [ "$var_software" = "NO" ]; then
     conexion
         if [ $var_conexion = "SI" ]; then
             if which zenity >/dev/null 2>&1; then
-                software_necesario_zenity | zenity --text-info --title="Software necesario - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=700 --height=450
+                software_necesario_zenity | zenity --text-info --title="Software necesario - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=700 --height=450 >/dev/null 2>&1
 
                 if [ "$var_software" = "SI" ]; then
-                    actualizar_script | zenity --text-info --title="Actualizacion - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=700 --height=450
+                    actualizar_script | zenity --text-info --title="Actualizacion - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=700 --height=450 >/dev/null 2>&1
                 fi
             else
                 software_necesario
                 actualizar_script
             fi
         else
-             if which zenity>/dev/null 2>&1; then
+             if which zenity >/dev/null 2>&1; then
 
                 zenity --info --title="- MegaTools -" --text="\n Verificando software necesario = $var_software.\n Conexion a internet = $var_conexion.\n No se puede ejecutar el script sin el software necesario.\n" --width=400 --height=150
-                salir="SI"
+                salir="SI" >/dev/null 2>&1
             else
                 clear
                 echo ""
@@ -255,7 +255,7 @@ conexion
 if [ $var_conexion = "SI" ]; then
     comprobar_actualizacion_sino
     if [ $var_actualizado = "NO" ]; then
-        actualizar_script | zenity --text-info --title="Actualizacion - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450
+        actualizar_script | zenity --text-info --title="Actualizacion - MegaTools -" --auto-scroll --font="DejaVu Sans Mono" --width=600 --height=450 >/dev/null 2>&1
         if [ $salir="SI" ]; then
             exit
         fi
@@ -292,12 +292,12 @@ do
     --ok-label="Aceptar" \
     --cancel-label="Salir" \
     --extra-button="Web Sukigsx" \
-    --extra-button="Ayuda")
+    --extra-button="Ayuda" >/dev/null 2>&1)
 
     # Manejar la opción seleccionada
     case $opcion in
         "UTILIDADES PARA EL SISTEMA")
-            zenity --error --title="- MegaTools -" --text="Selecciona una opcion de UTILIDADES PARA TU SISTEMA."
+            zenity --error --title="- MegaTools -" --text="Selecciona una opcion de UTILIDADES PARA TU SISTEMA." >/dev/null 2>&1
             ;;
 
             "Instalacion de software")
@@ -311,7 +311,7 @@ do
                 ;;
 
         "INFORMACION DE TU SISTEMA")
-            zenity --error --title="- MegaTools -" --text="Selecciona una opcion de INFORMACION DE TU SISTEMA."
+            zenity --error --title="- MegaTools -" --text="Selecciona una opcion de INFORMACION DE TU SISTEMA." >/dev/null 2>&1
             ;;
 
             "Informacion general")
@@ -349,9 +349,9 @@ do
                 ;;
 
         "Web Sukigsx")
-            zenity --text-info --title="Web de Sukigsx, Diseñador de MegaTools" --html --url="https://repositorio.mbbsistemas.es" --ok-label="Salir" --cancel-label="Atras" --width=10000 --height=10000 2>/dev/null
+            zenity --text-info --title="Web de Sukigsx, Diseñador de MegaTools" --html --url="https://repositorio.mbbsistemas.es" --ok-label="Salir" --cancel-label="Atras" --width=10000 --height=10000 >/dev/null 2>&1
             if [ $? = 0 ]; then
-                zenity --question --title="- MegaTools -" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+                zenity --question --title="- MegaTools -" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300 >/dev/null 2>&1
                 if [ $? -eq 0 ]; then
                     exit 0
                 fi
@@ -359,14 +359,14 @@ do
             ;;
 
         "Ayuda")
-            zenity --text-info --title="Ayuda - MegaTools -" --filename=$ruta_ejecucion/Megatools/AyudaPrincipal --font="DejaVu Sans Mono" --width=1024 --height=600
+            zenity --text-info --title="Ayuda - MegaTools -" --filename=$ruta_ejecucion/Megatools/AyudaPrincipal --font="DejaVu Sans Mono" --width=1024 --height=600 >/dev/null 2>&1
             ;;
 
         *)
             if [ $? -eq 0 ]; then
-                zenity --error --title="- Megatools -" --text="No has seleccionado ninguna opcion del menu." --width=300
+                zenity --error --title="- Megatools -" --text="No has seleccionado ninguna opcion del menu." --width=300 >/dev/null 2>&1
             else
-                zenity --question --title="- MegaTools -" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300
+                zenity --question --title="- MegaTools -" --text="¿ Estás seguro de que deseas salir ?" --cancel-label="No" --ok-label="Si" --width=300 >/dev/null 2>&1
                 if [ $? -eq 0 ]; then
                     exit 0
                 fi
