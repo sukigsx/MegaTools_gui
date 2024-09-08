@@ -2,7 +2,7 @@
 ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 export ruta_ejecucion=$(dirname "$(readlink -f "$0")")
 
-version="1.0"
+version="1.1"
 #software necesarios para la ejecucion del programa
 software="which git diff ping figlet nano neofetch lsblk ethtool zenity wget gdebi find curl konsole xclip"
 
